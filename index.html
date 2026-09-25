@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Ana Silva · GIS & remote sensing">
+<meta property="og:description" content="Satellite analytics, large geospatial datasets and machine learning for environment and agriculture.">
+<meta property="og:image" content="assets/clock_hero.jpg">
+<title>Ana Silva</title>
+<meta name="description" content="Ana Silva — GIS and remote sensing for environment and agriculture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  /* palette: oleander blush → rose → teal → deep green → pine */
+  --blush:#F8D3DA; --rose:#DB8FAB; --rose-ink:#A94C73; --teal:#15A19A; --forest:#0B6152; --pine:#073B35;
+  --ground:#FDF6F7; --surface:#FFFFFF; --wash:#FBE9ED;
+  --ink:#0A2F2B; --ink-2:#3E5B56; --muted:#6F8783; --hair:#EFD9DF;
+  --on-dark:#FDF1F4;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:18px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ground:#062724; --surface:#0A3531; --wash:#0D3D38;
+  --ink:#FBEAEE; --ink-2:#C9DEDA; --muted:#8FB0AA; --hair:#17504A;
+  --rose:#E9A3BD; --rose-ink:#F0B3C9; --teal:#3CC2BA; --blush:#F4C6D0;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#062724; --surface:#0A3531; --wash:#0D3D38;
+  --ink:#FBEAEE; --ink-2:#C9DEDA; --muted:#8FB0AA; --hair:#17504A;
+  --rose:#E9A3BD; --rose-ink:#F0B3C9; --teal:#3CC2BA; --blush:#F4C6D0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:var(--rose-ink);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- nav ---------- */
+nav.top{position:absolute;inset:0 0 auto 0;z-index:3;padding-top:env(safe-area-inset-top,0px)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
+.mark{font:italic 400 28px/1 var(--serif);color:#fff;text-decoration:none;text-shadow:0 1px 12px rgba(7,59,53,.45)}
+nav.top ul{display:flex;gap:clamp(12px,2.4vw,28px);list-style:none;margin:0;padding:0}
+nav.top ul a{color:#fff;text-decoration:none;font-weight:500;font-size:15px;text-shadow:0 1px 10px rgba(7,59,53,.5)}
+nav.top ul a:hover{text-decoration:underline}
+
+/* ---------- hero: photo cut by the Porto→Sofia terrain ---------- */
+.hero{position:relative;min-height:clamp(560px,86vh,860px);background:var(--pine) url("assets/hero_belogradchik.jpg") center 58%/cover no-repeat;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(7,59,53,.55) 0%,rgba(7,59,53,.12) 38%,rgba(219,143,171,.18) 70%,rgba(248,211,218,.0) 100%)}
+.hero-copy{position:relative;padding-top:clamp(120px,18vh,190px);color:#fff;max-width:780px}
+.hero-copy .eyebrow{color:var(--blush)}
+.hero h1{font:400 clamp(46px,7.4vw,96px)/.98 var(--serif);letter-spacing:-.01em;margin-top:18px;text-shadow:0 2px 30px rgba(7,59,53,.35)}
+.hero h1 em{color:var(--blush)}
+.hero p.lede{font-size:clamp(17px,1.6vw,20px);max-width:560px;margin:22px 0 0;color:#fff;text-shadow:0 1px 14px rgba(7,59,53,.55)}
+.photo-note{position:absolute;right:clamp(16px,4vw,40px);bottom:calc(19.7vw + 10px);font:400 11px/1.3 var(--mono);color:rgba(255,255,255,.85);text-align:right;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.terrain{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:auto;display:block}
+.terrain .edge{fill:var(--ground)}
+.terrain .line{fill:none;stroke:var(--rose);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.terrain .sea{fill:var(--teal);opacity:.75}
+.terrain .lead{stroke:var(--rose);stroke-width:1;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.terrain .pk{fill:var(--ground);stroke:var(--rose-ink);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.terrain .lab{font:500 12.5px var(--sans);fill:var(--ink)}
+.terrain .lab-sea{font:italic 400 15px var(--serif);fill:var(--teal)}
+.terrain .num{font:400 11px var(--mono);fill:var(--muted)}
+.terrain-cap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 24px;font:400 12px/1.5 var(--mono);color:var(--muted);padding-block:8px 0}
+.terrain-cap b{font-weight:500;color:var(--ink-2)}
+
+/* ---------- intro ---------- */
+section{padding-block:clamp(56px,8vw,104px)}
+.intro{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:start;padding-top:clamp(40px,6vw,72px)}
+.intro h2{font:400 clamp(34px,4.2vw,54px)/1.06 var(--serif)}
+.intro h2 em{color:var(--rose-ink)}
+.intro p{color:var(--ink-2);margin:0 0 14px;max-width:60ch}
+.path{list-style:none;margin:0;padding:0;border-left:1.5px solid var(--rose);display:grid;gap:18px}
+.path li{position:relative;padding-left:22px}
+.path li::before{content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--ground);border:2px solid var(--rose-ink)}
+.path li:last-child::before{background:var(--rose-ink)}
+.path b{display:block;font-weight:600}
+.path span{color:var(--muted);font-size:14.5px}
+
+/* ---------- work mosaic ---------- */
+.work{background:var(--wash);position:relative}
+.blob{position:absolute;left:0;width:100%;height:clamp(40px,6vw,80px);display:block}
+.blob path{fill:var(--wash)}
+.blob.top{top:1px;transform:translateY(-100%)}
+.blob.bottom{bottom:1px;transform:translateY(100%) scaleY(-1)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.sec-head h2{font:400 clamp(36px,4.6vw,60px)/1 var(--serif)}
+.sec-head p{max-width:46ch;color:var(--ink-2);margin:0}
+.mosaic{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tile{background:var(--surface);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--hair)}
+.tile figure{margin:0;background:#0b2e2a;overflow:hidden}
+.tile figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.tile:hover figure img{transform:scale(1.03)}
+.tile .body{padding:18px 20px 20px;display:grid;gap:8px}
+.tile h3{font:400 26px/1.1 var(--serif)}
+.tile p{margin:0;color:var(--ink-2);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tag{font:400 11.5px/1 var(--mono);padding:6px 9px;border-radius:99px;background:var(--wash);color:var(--ink-2)}
+.status{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.status.wip{color:var(--rose-ink)}
+.tile figure.fig{background:#FDF6F7;border-bottom:1px solid var(--hair)}
+.tile figure.fig img{object-fit:contain}
+.tile a.zoom{display:block;height:100%;cursor:zoom-in}
+.t-lead{grid-column:span 4}
+.t-lead figure{aspect-ratio:1.7}
+.t-side{grid-column:span 2}
+.t-side figure{aspect-ratio:1.86}
+.t-third{grid-column:span 2}
+.t-third figure{aspect-ratio:1.41}
+.t-wide{grid-column:span 6}
+.t-wide figure{aspect-ratio:2.45}
+.t-note{grid-column:span 2;background:var(--forest);border-color:transparent;color:var(--on-dark);justify-content:space-between;padding:24px}
+.t-note p{font:italic 400 clamp(24px,2.3vw,30px)/1.15 var(--serif);margin:0;color:var(--on-dark)}
+.t-note small{font:400 12px/1.5 var(--mono);color:var(--blush)}
+.more{display:inline-block;font:500 12px/1 var(--mono);color:var(--rose-ink);text-decoration:none;margin-top:2px}
+.more:hover{text-decoration:underline}
+.next{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.next h3{grid-column:1/-1;font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.next div{border-top:1.5px solid var(--rose);padding-top:12px}
+.next b{display:block;font:400 21px/1.15 var(--serif);margin-bottom:6px}
+.next span{color:var(--ink-2);font-size:14px}
+
+/* ---------- services ---------- */
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,36px)}
+.svc{border-top:1.5px solid var(--rose);padding-top:18px}
+.svc h3{font:400 25px/1.1 var(--serif);margin-bottom:10px}
+.svc p{margin:0;color:var(--ink-2);font-size:15px}
+.svc .for{display:block;margin-top:12px;font:400 12px/1.5 var(--mono);color:var(--muted)}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.about .ph{border-radius:200px 200px var(--r) var(--r);overflow:hidden;aspect-ratio:4/5}
+.about .ph img{width:100%;height:100%;object-fit:cover}
+.about h2{font:400 clamp(34px,4.2vw,52px)/1.05 var(--serif);margin-bottom:18px}
+.about p{color:var(--ink-2);max-width:60ch;margin:0 0 14px}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hair)}
+.facts dt{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.facts dd{margin:0;font-size:15px}
+.facts .clients{grid-column:1/-1}
+.facts .clients dd{color:var(--ink-2);line-height:1.6}
+
+/* ---------- contact ---------- */
+.contact{background:var(--pine);color:var(--on-dark);position:relative;margin-top:clamp(40px,6vw,80px)}
+.contact .blob path{fill:var(--pine)}
+.contact h2{font:400 clamp(40px,6vw,76px)/1 var(--serif);max-width:14ch}
+.contact h2 em{color:var(--rose)}
+.contact .row{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
+.links{display:grid;gap:10px;font:400 15px/1.4 var(--mono)}
+.links span{color:var(--blush)}
+.links .ph-txt{color:#fff;opacity:.9;text-decoration:none;user-select:all}
+.links a.ph-txt:hover{text-decoration:underline}
+footer{background:var(--pine);color:rgba(253,241,244,.6);font:400 12px/1.6 var(--mono);padding-block:0 28px}
+footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .intro,.about{grid-template-columns:1fr}
+  .services{grid-template-columns:repeat(2,1fr)}
+  .mosaic{grid-template-columns:repeat(2,1fr)}
+  .t-lead,.t-side,.t-third,.t-note,.t-wide{grid-column:span 2}
+  .next{grid-template-columns:repeat(2,1fr)}
+  .about .ph{max-width:420px}
+}
+@media (max-width:640px){
+  nav.top ul{display:none}
+  .services,.facts{grid-template-columns:1fr}
+  .terrain .lab,.terrain .num,.terrain .lead{display:none}
+  .photo-note{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <nav class="top" aria-label="Main">
+    <div class="wrap">
+      <a class="mark" href="#top">Ana Silva</a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">GIS &amp; remote sensing · environment &amp; agriculture</span>
+      <h1>From pixels to <em>the full picture</em>.</h1>
+      <p class="lede">Satellite analytics, large geospatial datasets and machine learning for deforestation, crops and carbon, mapped with a cartographer's eye to show what the naked eye misses.</p>
+    </div>
+  </div>
+  <span class="photo-note">Belogradchik Rocks, NW Bulgaria<br>43.62° N · 22.68° E</span>
+  <svg class="terrain" viewBox="0 0 1200 236" role="img" aria-labelledby="terrain-t">
+    <title id="terrain-t">Elevation profile along the great circle from Porto to Sofia</title>
+    <path class="edge" d="M0,236 L0.0,171.3 L1.3,167.9 L2.7,172.2 L4.0,169.6 L5.3,167.1 L6.7,170.5 L8.0,166.6 L9.3,152.7 L10.7,165.2 L12.0,167.7 L13.4,167.4 L14.7,159.2 L16.0,154.1 L17.4,162.7 L18.7,157.0 L20.0,159.7 L21.4,169.2 L22.7,160.0 L24.0,153.3 L25.3,154.5 L26.7,142.2 L28.0,117.2 L29.4,134.7 L30.7,129.4 L32.0,128.6 L33.4,146.7 L34.7,153.0 L36.1,150.6 L37.4,135.4 L38.7,133.9 L40.1,136.5 L41.4,143.8 L42.7,142.4 L44.1,132.9 L45.4,143.8 L46.7,151.6 L48.0,156.5 L49.4,153.0 L50.7,155.0 L52.0,147.2 L53.4,156.3 L54.7,158.4 L56.1,153.9 L57.4,165.1 L58.7,154.6 L60.1,146.2 L61.4,147.4 L62.8,135.7 L64.1,136.3 L65.4,118.4 L66.7,134.6 L68.1,148.3 L69.4,147.1 L70.7,144.5 L72.1,137.8 L73.4,143.7 L74.7,147.3 L76.1,152.7 L77.4,148.1 L78.8,144.8 L80.1,156.5 L81.4,142.4 L82.8,147.6 L84.1,137.8 L85.4,135.0 L86.8,134.8 L88.1,133.1 L89.4,134.8 L90.8,134.1 L92.1,134.6 L93.4,132.5 L94.8,137.8 L96.1,135.0 L97.4,134.7 L98.8,133.5 L100.1,132.9 L101.5,131.0 L102.8,133.9 L104.1,134.7 L105.5,137.0 L106.8,139.8 L108.1,139.8 L109.5,138.9 L110.8,138.1 L112.1,138.3 L113.4,138.3 L114.8,138.5 L116.1,140.2 L117.4,138.6 L118.8,139.2 L120.1,139.9 L121.5,139.6 L122.8,138.0 L124.1,136.2 L125.5,137.1 L126.8,136.2 L128.2,137.5 L129.5,137.9 L130.8,137.8 L132.2,137.7 L133.5,137.2 L134.8,135.3 L136.1,130.9 L137.5,130.6 L138.8,130.6 L140.1,130.6 L141.5,130.5 L142.8,130.3 L144.2,129.9 L145.5,130.0 L146.8,130.0 L148.2,130.0 L149.5,129.9 L150.9,130.0 L152.2,130.0 L153.5,130.6 L154.8,133.9 L156.2,131.6 L157.5,134.3 L158.8,136.5 L160.2,137.5 L161.5,129.8 L162.8,128.9 L164.2,129.2 L165.5,128.7 L166.9,128.4 L168.2,128.0 L169.5,128.1 L170.9,127.9 L172.2,130.3 L173.5,127.2 L174.9,128.3 L176.2,130.0 L177.5,126.7 L178.9,126.4 L180.2,127.7 L181.5,127.2 L182.8,127.8 L184.2,127.6 L185.5,128.9 L186.9,128.4 L188.2,126.8 L189.5,127.2 L190.9,128.9 L192.2,126.5 L193.6,127.2 L194.9,126.1 L196.2,124.0 L197.6,120.5 L198.9,126.6 L200.2,125.2 L201.6,123.8 L202.9,110.1 L204.2,125.6 L205.5,123.2 L206.9,116.7 L208.2,120.9 L209.6,112.8 L210.9,109.8 L212.2,87.9 L213.6,99.1 L214.9,98.1 L216.3,103.1 L217.6,82.0 L218.9,114.1 L220.3,83.9 L221.6,104.3 L222.9,95.9 L224.2,92.9 L225.6,79.1 L226.9,87.9 L228.2,98.4 L229.6,81.1 L230.9,109.1 L232.3,110.1 L233.6,99.0 L234.9,111.1 L236.3,106.5 L237.6,110.7 L239.0,111.9 L240.3,110.7 L241.6,101.6 L242.9,121.6 L244.3,122.7 L245.6,127.2 L246.9,138.6 L248.3,134.2 L249.6,144.0 L250.9,145.7 L252.3,147.8 L253.6,147.4 L254.9,150.5 L256.3,151.4 L257.6,147.4 L259.0,153.6 L260.3,158.7 L261.6,160.7 L263.0,160.7 L264.3,157.1 L265.6,161.2 L267.0,160.3 L268.3,160.6 L269.6,159.0 L270.9,154.7 L272.3,156.1 L273.6,153.8 L275.0,152.9 L276.3,153.1 L277.6,150.0 L279.0,153.2 L280.3,155.0 L281.7,155.7 L283.0,154.7 L284.3,148.3 L285.7,145.9 L287.0,143.6 L288.3,146.1 L289.7,139.0 L291.0,136.8 L292.3,137.8 L293.6,134.0 L295.0,130.5 L296.3,133.8 L297.7,133.6 L299.0,135.8 L300.3,132.6 L301.7,130.2 L303.0,119.0 L304.4,147.1 L305.7,139.6 L307.0,141.3 L308.4,143.7 L309.7,124.7 L311.0,125.9 L312.3,138.6 L313.7,130.3 L315.0,140.1 L316.3,135.3 L317.7,134.1 L319.0,128.8 L320.3,108.8 L321.7,106.7 L323.0,98.7 L324.4,110.4 L325.7,105.1 L327.0,85.0 L328.4,125.3 L329.7,121.4 L331.0,139.2 L332.4,136.9 L333.7,100.2 L335.0,125.8 L336.4,121.8 L337.7,131.2 L339.0,109.9 L340.4,94.0 L341.7,81.6 L343.0,63.1 L344.4,33.5 L345.7,64.1 L347.1,94.9 L348.4,74.3 L349.7,107.3 L351.1,123.5 L352.4,86.0 L353.7,47.2 L355.1,34.7 L356.4,78.8 L357.7,70.1 L359.0,76.9 L360.4,96.4 L361.7,71.1 L363.1,51.9 L364.4,93.5 L365.7,26.0 L367.1,33.8 L368.4,45.3 L369.8,57.0 L371.1,66.3 L372.4,76.8 L373.8,73.5 L375.1,115.8 L376.4,82.1 L377.8,80.1 L379.1,105.7 L380.4,103.3 L381.7,62.2 L383.1,83.0 L384.4,69.1 L385.8,40.8 L387.1,71.5 L388.4,56.2 L389.8,65.9 L391.1,51.0 L392.4,49.8 L393.8,54.7 L395.1,43.5 L396.5,62.5 L397.8,70.3 L399.1,80.4 L400.4,65.1 L401.8,116.6 L403.1,100.4 L404.4,75.7 L405.8,107.6 L407.1,62.4 L408.4,72.0 L409.8,72.1 L411.1,100.7 L412.5,102.6 L413.8,93.8 L415.1,91.2 L416.5,103.3 L417.8,78.3 L419.1,101.9 L420.5,104.2 L421.8,122.7 L423.1,139.0 L424.5,149.3 L425.8,150.0 L427.1,145.5 L428.5,155.7 L429.8,162.8 L431.1,157.3 L432.5,162.4 L433.8,167.8 L435.2,166.5 L436.5,165.3 L437.8,168.4 L439.2,173.3 L440.5,174.7 L441.8,175.2 L443.2,175.5 L444.5,175.7 L445.8,175.8 L447.2,176.0 L448.5,176.0 L449.8,176.0 L451.2,176.0 L452.5,176.0 L453.8,176.0 L455.2,176.0 L456.5,176.0 L457.9,176.0 L459.2,176.0 L460.5,176.0 L461.9,176.0 L463.2,176.0 L464.5,176.0 L465.9,176.0 L467.2,176.0 L468.5,176.0 L469.8,176.0 L471.2,176.0 L472.5,176.0 L473.8,176.0 L475.2,176.0 L476.5,176.0 L477.9,176.0 L479.2,176.0 L480.5,176.0 L481.9,176.0 L483.2,176.0 L484.6,176.0 L485.9,176.0 L487.2,176.0 L488.5,176.0 L489.9,176.0 L491.2,176.0 L492.5,176.0 L493.9,176.0 L495.2,176.0 L496.5,176.0 L497.9,176.0 L499.2,176.0 L500.6,176.0 L501.9,176.0 L503.2,176.0 L504.6,176.0 L505.9,176.0 L507.2,176.0 L508.6,176.0 L509.9,176.0 L511.2,176.0 L512.6,176.0 L513.9,176.0 L515.2,176.0 L516.6,176.0 L517.9,176.0 L519.2,176.0 L520.6,176.0 L521.9,176.0 L523.3,176.0 L524.6,176.0 L525.9,176.0 L527.3,176.0 L528.6,176.0 L529.9,176.0 L531.3,176.0 L532.6,176.0 L533.9,176.0 L535.3,176.0 L536.6,176.0 L537.9,176.0 L539.2,176.0 L540.6,176.0 L541.9,176.0 L543.3,176.0 L544.6,176.0 L545.9,176.0 L547.3,176.0 L548.6,176.0 L550.0,176.0 L551.3,176.0 L552.6,176.0 L554.0,176.0 L555.3,176.0 L556.6,176.0 L557.9,176.0 L559.3,176.0 L560.6,176.0 L561.9,176.0 L563.3,176.0 L564.6,175.6 L566.0,174.2 L567.3,176.0 L568.6,176.0 L570.0,176.0 L571.3,176.0 L572.7,174.8 L574.0,172.6 L575.3,176.0 L576.6,176.0 L578.0,176.0 L579.3,176.0 L580.6,176.0 L582.0,176.0 L583.3,176.0 L584.6,176.0 L586.0,176.0 L587.3,176.0 L588.7,176.0 L590.0,176.0 L591.3,176.0 L592.7,176.0 L594.0,176.0 L595.3,176.0 L596.7,176.0 L598.0,176.0 L599.3,176.0 L600.7,176.0 L602.0,176.0 L603.3,176.0 L604.7,176.0 L606.0,176.0 L607.3,176.0 L608.7,176.0 L610.0,176.0 L611.3,176.0 L612.7,176.0 L614.0,176.0 L615.4,176.0 L616.7,176.0 L618.0,176.0 L619.4,176.0 L620.7,176.0 L622.0,176.0 L623.4,176.0 L624.7,176.0 L626.0,176.0 L627.3,176.0 L628.7,176.0 L630.0,176.0 L631.4,176.0 L632.7,176.0 L634.0,176.0 L635.4,176.0 L636.7,176.0 L638.1,176.0 L639.4,176.0 L640.7,176.0 L642.1,176.0 L643.4,176.0 L644.7,176.0 L646.0,176.0 L647.4,176.0 L648.7,176.0 L650.0,176.0 L651.4,176.0 L652.7,176.0 L654.1,176.0 L655.4,176.0 L656.7,176.0 L658.1,176.0 L659.4,176.0 L660.8,176.0 L662.1,176.0 L663.4,176.0 L664.7,176.0 L666.1,176.0 L667.4,176.0 L668.7,176.0 L670.1,176.0 L671.4,176.0 L672.7,176.0 L674.1,176.0 L675.4,176.0 L676.7,176.0 L678.1,176.0 L679.4,176.0 L680.8,176.0 L682.1,176.0 L683.4,176.0 L684.8,176.0 L686.1,176.0 L687.4,176.0 L688.8,176.0 L690.1,176.0 L691.4,176.0 L692.8,176.0 L694.1,176.0 L695.4,176.0 L696.8,176.0 L698.1,176.0 L699.4,176.0 L700.8,176.0 L702.1,176.0 L703.5,176.0 L704.8,176.0 L706.1,176.0 L707.5,176.0 L708.8,176.0 L710.1,176.0 L711.5,176.0 L712.8,176.0 L714.1,176.0 L715.4,176.0 L716.8,176.0 L718.1,176.0 L719.5,176.0 L720.8,176.0 L722.1,176.0 L723.5,176.0 L724.8,176.0 L726.2,175.3 L727.5,173.8 L728.8,169.6 L730.2,159.6 L731.5,162.9 L732.8,164.8 L734.1,162.7 L735.5,165.9 L736.8,146.5 L738.1,146.2 L739.5,146.5 L740.8,135.2 L742.1,135.6 L743.5,144.7 L744.8,151.1 L746.2,154.6 L747.5,160.4 L748.8,161.2 L750.2,151.8 L751.5,154.9 L752.8,166.1 L754.2,162.5 L755.5,156.9 L756.8,161.0 L758.2,165.4 L759.5,165.5 L760.8,163.9 L762.2,165.1 L763.5,158.4 L764.8,158.0 L766.2,156.8 L767.5,151.5 L768.9,154.3 L770.2,159.9 L771.5,162.3 L772.9,162.6 L774.2,162.6 L775.5,161.0 L776.9,159.7 L778.2,160.5 L779.5,161.4 L780.9,162.0 L782.2,162.3 L783.5,162.3 L784.9,159.6 L786.2,155.1 L787.5,153.7 L788.9,155.9 L790.2,156.2 L791.6,159.9 L792.9,140.4 L794.2,156.8 L795.6,164.1 L796.9,161.1 L798.2,156.4 L799.6,145.9 L800.9,156.5 L802.2,151.3 L803.5,145.7 L804.9,150.5 L806.2,139.6 L807.6,146.9 L808.9,143.0 L810.2,122.2 L811.6,149.1 L812.9,133.5 L814.2,149.5 L815.6,142.2 L816.9,149.2 L818.3,158.1 L819.6,149.8 L820.9,135.3 L822.2,132.4 L823.6,150.0 L824.9,152.4 L826.2,163.3 L827.6,152.3 L828.9,158.7 L830.2,158.5 L831.6,164.1 L832.9,164.0 L834.3,159.1 L835.6,170.6 L836.9,168.5 L838.3,171.8 L839.6,171.2 L840.9,167.7 L842.3,173.0 L843.6,170.9 L844.9,173.3 L846.3,176.0 L847.6,176.0 L848.9,176.0 L850.3,176.0 L851.6,176.0 L852.9,176.0 L854.3,176.0 L855.6,176.0 L857.0,176.0 L858.3,176.0 L859.6,176.0 L861.0,176.0 L862.3,176.0 L863.6,176.0 L865.0,176.0 L866.3,176.0 L867.6,176.0 L869.0,176.0 L870.3,176.0 L871.6,176.0 L873.0,176.0 L874.3,176.0 L875.6,176.0 L877.0,176.0 L878.3,176.0 L879.7,176.0 L881.0,176.0 L882.3,176.0 L883.7,176.0 L885.0,176.0 L886.3,176.0 L887.7,176.0 L889.0,176.0 L890.3,176.0 L891.6,176.0 L893.0,176.0 L894.3,176.0 L895.6,176.0 L897.0,176.0 L898.3,176.0 L899.7,176.0 L901.0,176.0 L902.3,176.0 L903.7,176.0 L905.0,176.0 L906.4,176.0 L907.7,176.0 L909.0,176.0 L910.3,176.0 L911.7,176.0 L913.0,176.0 L914.3,176.0 L915.7,176.0 L917.0,176.0 L918.3,176.0 L919.7,176.0 L921.0,176.0 L922.4,176.0 L923.7,176.0 L925.0,176.0 L926.4,176.0 L927.7,176.0 L929.1,176.0 L930.4,176.0 L931.7,176.0 L933.0,176.0 L934.4,176.0 L935.7,176.0 L937.0,176.0 L938.4,176.0 L939.7,176.0 L941.0,176.0 L942.4,176.0 L943.7,176.0 L945.1,176.0 L946.4,176.0 L947.7,176.0 L949.1,176.0 L950.4,176.0 L951.7,176.0 L953.1,176.0 L954.4,176.0 L955.7,176.0 L957.1,176.0 L958.4,176.0 L959.7,176.0 L961.0,176.0 L962.4,176.0 L963.7,176.0 L965.1,176.0 L966.4,176.0 L967.7,176.0 L969.1,176.0 L970.4,176.0 L971.8,176.0 L973.1,176.0 L974.4,176.0 L975.8,176.0 L977.1,176.0 L978.4,156.2 L979.7,160.4 L981.1,167.5 L982.4,161.3 L983.7,153.7 L985.1,175.8 L986.4,167.1 L987.8,175.9 L989.1,174.1 L990.4,175.7 L991.8,171.6 L993.1,169.1 L994.5,170.0 L995.8,170.7 L997.1,162.0 L998.4,168.2 L999.8,167.7 L1001.1,161.6 L1002.4,150.8 L1003.8,147.2 L1005.1,137.4 L1006.4,131.3 L1007.8,130.9 L1009.1,143.8 L1010.5,150.5 L1011.8,134.0 L1013.1,130.0 L1014.5,119.9 L1015.8,125.1 L1017.2,123.3 L1018.5,125.1 L1019.8,126.4 L1021.1,112.0 L1022.5,112.8 L1023.8,113.8 L1025.1,122.4 L1026.5,120.8 L1027.8,108.1 L1029.1,118.3 L1030.5,84.6 L1031.8,99.5 L1033.1,114.7 L1034.5,118.4 L1035.8,115.2 L1037.2,110.9 L1038.5,108.5 L1039.8,102.6 L1041.2,103.4 L1042.5,87.9 L1043.8,87.8 L1045.2,110.4 L1046.5,85.3 L1047.8,79.4 L1049.1,85.3 L1050.5,84.1 L1051.8,83.8 L1053.2,88.1 L1054.5,132.4 L1055.8,118.5 L1057.2,126.4 L1058.5,123.9 L1059.9,124.2 L1061.2,123.1 L1062.5,128.2 L1063.9,130.0 L1065.2,135.5 L1066.5,135.7 L1067.8,125.6 L1069.2,140.5 L1070.5,130.7 L1071.8,133.9 L1073.2,124.5 L1074.5,102.9 L1075.9,107.6 L1077.2,99.3 L1078.5,96.1 L1079.9,87.8 L1081.2,107.8 L1082.6,112.1 L1083.9,114.8 L1085.2,115.5 L1086.6,121.9 L1087.9,123.4 L1089.2,127.4 L1090.5,134.8 L1091.9,123.3 L1093.2,105.6 L1094.5,107.5 L1095.9,111.4 L1097.2,117.1 L1098.5,129.8 L1099.9,135.5 L1101.2,137.7 L1102.6,146.0 L1103.9,143.2 L1105.2,135.8 L1106.6,143.9 L1107.9,147.1 L1109.2,146.7 L1110.6,134.0 L1111.9,127.7 L1113.2,140.3 L1114.6,132.2 L1115.9,126.3 L1117.2,133.1 L1118.6,141.6 L1119.9,144.1 L1121.2,144.3 L1122.6,139.1 L1123.9,136.3 L1125.3,133.8 L1126.6,124.7 L1127.9,123.3 L1129.3,127.3 L1130.6,134.8 L1131.9,134.3 L1133.3,142.6 L1134.6,151.5 L1135.9,146.5 L1137.2,134.2 L1138.6,137.2 L1139.9,143.1 L1141.3,148.3 L1142.6,153.7 L1143.9,152.8 L1145.3,139.5 L1146.6,128.4 L1148.0,131.0 L1149.3,124.6 L1150.6,124.1 L1152.0,116.0 L1153.3,138.1 L1154.6,153.9 L1155.9,132.5 L1157.3,121.2 L1158.6,109.6 L1159.9,105.1 L1161.3,112.4 L1162.6,112.9 L1163.9,90.6 L1165.3,110.1 L1166.6,130.0 L1168.0,120.5 L1169.3,123.4 L1170.6,128.1 L1172.0,132.6 L1173.3,132.6 L1174.7,120.9 L1176.0,115.8 L1177.3,122.0 L1178.6,116.7 L1180.0,129.9 L1181.3,131.7 L1182.6,135.9 L1184.0,136.5 L1185.3,134.1 L1186.6,127.9 L1188.0,129.1 L1189.3,129.4 L1190.7,129.5 L1192.0,136.2 L1193.3,140.2 L1194.7,139.9 L1196.0,142.0 L1197.3,143.3 L1198.7,145.9 L1200.0,146.5 L1200,236 Z"/>
+    <path class="line" d="M0.0,171.3 L1.3,167.9 L2.7,172.2 L4.0,169.6 L5.3,167.1 L6.7,170.5 L8.0,166.6 L9.3,152.7 L10.7,165.2 L12.0,167.7 L13.4,167.4 L14.7,159.2 L16.0,154.1 L17.4,162.7 L18.7,157.0 L20.0,159.7 L21.4,169.2 L22.7,160.0 L24.0,153.3 L25.3,154.5 L26.7,142.2 L28.0,117.2 L29.4,134.7 L30.7,129.4 L32.0,128.6 L33.4,146.7 L34.7,153.0 L36.1,150.6 L37.4,135.4 L38.7,133.9 L40.1,136.5 L41.4,143.8 L42.7,142.4 L44.1,132.9 L45.4,143.8 L46.7,151.6 L48.0,156.5 L49.4,153.0 L50.7,155.0 L52.0,147.2 L53.4,156.3 L54.7,158.4 L56.1,153.9 L57.4,165.1 L58.7,154.6 L60.1,146.2 L61.4,147.4 L62.8,135.7 L64.1,136.3 L65.4,118.4 L66.7,134.6 L68.1,148.3 L69.4,147.1 L70.7,144.5 L72.1,137.8 L73.4,143.7 L74.7,147.3 L76.1,152.7 L77.4,148.1 L78.8,144.8 L80.1,156.5 L81.4,142.4 L82.8,147.6 L84.1,137.8 L85.4,135.0 L86.8,134.8 L88.1,133.1 L89.4,134.8 L90.8,134.1 L92.1,134.6 L93.4,132.5 L94.8,137.8 L96.1,135.0 L97.4,134.7 L98.8,133.5 L100.1,132.9 L101.5,131.0 L102.8,133.9 L104.1,134.7 L105.5,137.0 L106.8,139.8 L108.1,139.8 L109.5,138.9 L110.8,138.1 L112.1,138.3 L113.4,138.3 L114.8,138.5 L116.1,140.2 L117.4,138.6 L118.8,139.2 L120.1,139.9 L121.5,139.6 L122.8,138.0 L124.1,136.2 L125.5,137.1 L126.8,136.2 L128.2,137.5 L129.5,137.9 L130.8,137.8 L132.2,137.7 L133.5,137.2 L134.8,135.3 L136.1,130.9 L137.5,130.6 L138.8,130.6 L140.1,130.6 L141.5,130.5 L142.8,130.3 L144.2,129.9 L145.5,130.0 L146.8,130.0 L148.2,130.0 L149.5,129.9 L150.9,130.0 L152.2,130.0 L153.5,130.6 L154.8,133.9 L156.2,131.6 L157.5,134.3 L158.8,136.5 L160.2,137.5 L161.5,129.8 L162.8,128.9 L164.2,129.2 L165.5,128.7 L166.9,128.4 L168.2,128.0 L169.5,128.1 L170.9,127.9 L172.2,130.3 L173.5,127.2 L174.9,128.3 L176.2,130.0 L177.5,126.7 L178.9,126.4 L180.2,127.7 L181.5,127.2 L182.8,127.8 L184.2,127.6 L185.5,128.9 L186.9,128.4 L188.2,126.8 L189.5,127.2 L190.9,128.9 L192.2,126.5 L193.6,127.2 L194.9,126.1 L196.2,124.0 L197.6,120.5 L198.9,126.6 L200.2,125.2 L201.6,123.8 L202.9,110.1 L204.2,125.6 L205.5,123.2 L206.9,116.7 L208.2,120.9 L209.6,112.8 L210.9,109.8 L212.2,87.9 L213.6,99.1 L214.9,98.1 L216.3,103.1 L217.6,82.0 L218.9,114.1 L220.3,83.9 L221.6,104.3 L222.9,95.9 L224.2,92.9 L225.6,79.1 L226.9,87.9 L228.2,98.4 L229.6,81.1 L230.9,109.1 L232.3,110.1 L233.6,99.0 L234.9,111.1 L236.3,106.5 L237.6,110.7 L239.0,111.9 L240.3,110.7 L241.6,101.6 L242.9,121.6 L244.3,122.7 L245.6,127.2 L246.9,138.6 L248.3,134.2 L249.6,144.0 L250.9,145.7 L252.3,147.8 L253.6,147.4 L254.9,150.5 L256.3,151.4 L257.6,147.4 L259.0,153.6 L260.3,158.7 L261.6,160.7 L263.0,160.7 L264.3,157.1 L265.6,161.2 L267.0,160.3 L268.3,160.6 L269.6,159.0 L270.9,154.7 L272.3,156.1 L273.6,153.8 L275.0,152.9 L276.3,153.1 L277.6,150.0 L279.0,153.2 L280.3,155.0 L281.7,155.7 L283.0,154.7 L284.3,148.3 L285.7,145.9 L287.0,143.6 L288.3,146.1 L289.7,139.0 L291.0,136.8 L292.3,137.8 L293.6,134.0 L295.0,130.5 L296.3,133.8 L297.7,133.6 L299.0,135.8 L300.3,132.6 L301.7,130.2 L303.0,119.0 L304.4,147.1 L305.7,139.6 L307.0,141.3 L308.4,143.7 L309.7,124.7 L311.0,125.9 L312.3,138.6 L313.7,130.3 L315.0,140.1 L316.3,135.3 L317.7,134.1 L319.0,128.8 L320.3,108.8 L321.7,106.7 L323.0,98.7 L324.4,110.4 L325.7,105.1 L327.0,85.0 L328.4,125.3 L329.7,121.4 L331.0,139.2 L332.4,136.9 L333.7,100.2 L335.0,125.8 L336.4,121.8 L337.7,131.2 L339.0,109.9 L340.4,94.0 L341.7,81.6 L343.0,63.1 L344.4,33.5 L345.7,64.1 L347.1,94.9 L348.4,74.3 L349.7,107.3 L351.1,123.5 L352.4,86.0 L353.7,47.2 L355.1,34.7 L356.4,78.8 L357.7,70.1 L359.0,76.9 L360.4,96.4 L361.7,71.1 L363.1,51.9 L364.4,93.5 L365.7,26.0 L367.1,33.8 L368.4,45.3 L369.8,57.0 L371.1,66.3 L372.4,76.8 L373.8,73.5 L375.1,115.8 L376.4,82.1 L377.8,80.1 L379.1,105.7 L380.4,103.3 L381.7,62.2 L383.1,83.0 L384.4,69.1 L385.8,40.8 L387.1,71.5 L388.4,56.2 L389.8,65.9 L391.1,51.0 L392.4,49.8 L393.8,54.7 L395.1,43.5 L396.5,62.5 L397.8,70.3 L399.1,80.4 L400.4,65.1 L401.8,116.6 L403.1,100.4 L404.4,75.7 L405.8,107.6 L407.1,62.4 L408.4,72.0 L409.8,72.1 L411.1,100.7 L412.5,102.6 L413.8,93.8 L415.1,91.2 L416.5,103.3 L417.8,78.3 L419.1,101.9 L420.5,104.2 L421.8,122.7 L423.1,139.0 L424.5,149.3 L425.8,150.0 L427.1,145.5 L428.5,155.7 L429.8,162.8 L431.1,157.3 L432.5,162.4 L433.8,167.8 L435.2,166.5 L436.5,165.3 L437.8,168.4 L439.2,173.3 L440.5,174.7 L441.8,175.2 L443.2,175.5 L444.5,175.7 L445.8,175.8 L447.2,176.0 L448.5,176.0 L449.8,176.0 L451.2,176.0 L452.5,176.0 L453.8,176.0 L455.2,176.0 L456.5,176.0 L457.9,176.0 L459.2,176.0 L460.5,176.0 L461.9,176.0 L463.2,176.0 L464.5,176.0 L465.9,176.0 L467.2,176.0 L468.5,176.0 L469.8,176.0 L471.2,176.0 L472.5,176.0 L473.8,176.0 L475.2,176.0 L476.5,176.0 L477.9,176.0 L479.2,176.0 L480.5,176.0 L481.9,176.0 L483.2,176.0 L484.6,176.0 L485.9,176.0 L487.2,176.0 L488.5,176.0 L489.9,176.0 L491.2,176.0 L492.5,176.0 L493.9,176.0 L495.2,176.0 L496.5,176.0 L497.9,176.0 L499.2,176.0 L500.6,176.0 L501.9,176.0 L503.2,176.0 L504.6,176.0 L505.9,176.0 L507.2,176.0 L508.6,176.0 L509.9,176.0 L511.2,176.0 L512.6,176.0 L513.9,176.0 L515.2,176.0 L516.6,176.0 L517.9,176.0 L519.2,176.0 L520.6,176.0 L521.9,176.0 L523.3,176.0 L524.6,176.0 L525.9,176.0 L527.3,176.0 L528.6,176.0 L529.9,176.0 L531.3,176.0 L532.6,176.0 L533.9,176.0 L535.3,176.0 L536.6,176.0 L537.9,176.0 L539.2,176.0 L540.6,176.0 L541.9,176.0 L543.3,176.0 L544.6,176.0 L545.9,176.0 L547.3,176.0 L548.6,176.0 L550.0,176.0 L551.3,176.0 L552.6,176.0 L554.0,176.0 L555.3,176.0 L556.6,176.0 L557.9,176.0 L559.3,176.0 L560.6,176.0 L561.9,176.0 L563.3,176.0 L564.6,175.6 L566.0,174.2 L567.3,176.0 L568.6,176.0 L570.0,176.0 L571.3,176.0 L572.7,174.8 L574.0,172.6 L575.3,176.0 L576.6,176.0 L578.0,176.0 L579.3,176.0 L580.6,176.0 L582.0,176.0 L583.3,176.0 L584.6,176.0 L586.0,176.0 L587.3,176.0 L588.7,176.0 L590.0,176.0 L591.3,176.0 L592.7,176.0 L594.0,176.0 L595.3,176.0 L596.7,176.0 L598.0,176.0 L599.3,176.0 L600.7,176.0 L602.0,176.0 L603.3,176.0 L604.7,176.0 L606.0,176.0 L607.3,176.0 L608.7,176.0 L610.0,176.0 L611.3,176.0 L612.7,176.0 L614.0,176.0 L615.4,176.0 L616.7,176.0 L618.0,176.0 L619.4,176.0 L620.7,176.0 L622.0,176.0 L623.4,176.0 L624.7,176.0 L626.0,176.0 L627.3,176.0 L628.7,176.0 L630.0,176.0 L631.4,176.0 L632.7,176.0 L634.0,176.0 L635.4,176.0 L636.7,176.0 L638.1,176.0 L639.4,176.0 L640.7,176.0 L642.1,176.0 L643.4,176.0 L644.7,176.0 L646.0,176.0 L647.4,176.0 L648.7,176.0 L650.0,176.0 L651.4,176.0 L652.7,176.0 L654.1,176.0 L655.4,176.0 L656.7,176.0 L658.1,176.0 L659.4,176.0 L660.8,176.0 L662.1,176.0 L663.4,176.0 L664.7,176.0 L666.1,176.0 L667.4,176.0 L668.7,176.0 L670.1,176.0 L671.4,176.0 L672.7,176.0 L674.1,176.0 L675.4,176.0 L676.7,176.0 L678.1,176.0 L679.4,176.0 L680.8,176.0 L682.1,176.0 L683.4,176.0 L684.8,176.0 L686.1,176.0 L687.4,176.0 L688.8,176.0 L690.1,176.0 L691.4,176.0 L692.8,176.0 L694.1,176.0 L695.4,176.0 L696.8,176.0 L698.1,176.0 L699.4,176.0 L700.8,176.0 L702.1,176.0 L703.5,176.0 L704.8,176.0 L706.1,176.0 L707.5,176.0 L708.8,176.0 L710.1,176.0 L711.5,176.0 L712.8,176.0 L714.1,176.0 L715.4,176.0 L716.8,176.0 L718.1,176.0 L719.5,176.0 L720.8,176.0 L722.1,176.0 L723.5,176.0 L724.8,176.0 L726.2,175.3 L727.5,173.8 L728.8,169.6 L730.2,159.6 L731.5,162.9 L732.8,164.8 L734.1,162.7 L735.5,165.9 L736.8,146.5 L738.1,146.2 L739.5,146.5 L740.8,135.2 L742.1,135.6 L743.5,144.7 L744.8,151.1 L746.2,154.6 L747.5,160.4 L748.8,161.2 L750.2,151.8 L751.5,154.9 L752.8,166.1 L754.2,162.5 L755.5,156.9 L756.8,161.0 L758.2,165.4 L759.5,165.5 L760.8,163.9 L762.2,165.1 L763.5,158.4 L764.8,158.0 L766.2,156.8 L767.5,151.5 L768.9,154.3 L770.2,159.9 L771.5,162.3 L772.9,162.6 L774.2,162.6 L775.5,161.0 L776.9,159.7 L778.2,160.5 L779.5,161.4 L780.9,162.0 L782.2,162.3 L783.5,162.3 L784.9,159.6 L786.2,155.1 L787.5,153.7 L788.9,155.9 L790.2,156.2 L791.6,159.9 L792.9,140.4 L794.2,156.8 L795.6,164.1 L796.9,161.1 L798.2,156.4 L799.6,145.9 L800.9,156.5 L802.2,151.3 L803.5,145.7 L804.9,150.5 L806.2,139.6 L807.6,146.9 L808.9,143.0 L810.2,122.2 L811.6,149.1 L812.9,133.5 L814.2,149.5 L815.6,142.2 L816.9,149.2 L818.3,158.1 L819.6,149.8 L820.9,135.3 L822.2,132.4 L823.6,150.0 L824.9,152.4 L826.2,163.3 L827.6,152.3 L828.9,158.7 L830.2,158.5 L831.6,164.1 L832.9,164.0 L834.3,159.1 L835.6,170.6 L836.9,168.5 L838.3,171.8 L839.6,171.2 L840.9,167.7 L842.3,173.0 L843.6,170.9 L844.9,173.3 L846.3,176.0 L847.6,176.0 L848.9,176.0 L850.3,176.0 L851.6,176.0 L852.9,176.0 L854.3,176.0 L855.6,176.0 L857.0,176.0 L858.3,176.0 L859.6,176.0 L861.0,176.0 L862.3,176.0 L863.6,176.0 L865.0,176.0 L866.3,176.0 L867.6,176.0 L869.0,176.0 L870.3,176.0 L871.6,176.0 L873.0,176.0 L874.3,176.0 L875.6,176.0 L877.0,176.0 L878.3,176.0 L879.7,176.0 L881.0,176.0 L882.3,176.0 L883.7,176.0 L885.0,176.0 L886.3,176.0 L887.7,176.0 L889.0,176.0 L890.3,176.0 L891.6,176.0 L893.0,176.0 L894.3,176.0 L895.6,176.0 L897.0,176.0 L898.3,176.0 L899.7,176.0 L901.0,176.0 L902.3,176.0 L903.7,176.0 L905.0,176.0 L906.4,176.0 L907.7,176.0 L909.0,176.0 L910.3,176.0 L911.7,176.0 L913.0,176.0 L914.3,176.0 L915.7,176.0 L917.0,176.0 L918.3,176.0 L919.7,176.0 L921.0,176.0 L922.4,176.0 L923.7,176.0 L925.0,176.0 L926.4,176.0 L927.7,176.0 L929.1,176.0 L930.4,176.0 L931.7,176.0 L933.0,176.0 L934.4,176.0 L935.7,176.0 L937.0,176.0 L938.4,176.0 L939.7,176.0 L941.0,176.0 L942.4,176.0 L943.7,176.0 L945.1,176.0 L946.4,176.0 L947.7,176.0 L949.1,176.0 L950.4,176.0 L951.7,176.0 L953.1,176.0 L954.4,176.0 L955.7,176.0 L957.1,176.0 L958.4,176.0 L959.7,176.0 L961.0,176.0 L962.4,176.0 L963.7,176.0 L965.1,176.0 L966.4,176.0 L967.7,176.0 L969.1,176.0 L970.4,176.0 L971.8,176.0 L973.1,176.0 L974.4,176.0 L975.8,176.0 L977.1,176.0 L978.4,156.2 L979.7,160.4 L981.1,167.5 L982.4,161.3 L983.7,153.7 L985.1,175.8 L986.4,167.1 L987.8,175.9 L989.1,174.1 L990.4,175.7 L991.8,171.6 L993.1,169.1 L994.5,170.0 L995.8,170.7 L997.1,162.0 L998.4,168.2 L999.8,167.7 L1001.1,161.6 L1002.4,150.8 L1003.8,147.2 L1005.1,137.4 L1006.4,131.3 L1007.8,130.9 L1009.1,143.8 L1010.5,150.5 L1011.8,134.0 L1013.1,130.0 L1014.5,119.9 L1015.8,125.1 L1017.2,123.3 L1018.5,125.1 L1019.8,126.4 L1021.1,112.0 L1022.5,112.8 L1023.8,113.8 L1025.1,122.4 L1026.5,120.8 L1027.8,108.1 L1029.1,118.3 L1030.5,84.6 L1031.8,99.5 L1033.1,114.7 L1034.5,118.4 L1035.8,115.2 L1037.2,110.9 L1038.5,108.5 L1039.8,102.6 L1041.2,103.4 L1042.5,87.9 L1043.8,87.8 L1045.2,110.4 L1046.5,85.3 L1047.8,79.4 L1049.1,85.3 L1050.5,84.1 L1051.8,83.8 L1053.2,88.1 L1054.5,132.4 L1055.8,118.5 L1057.2,126.4 L1058.5,123.9 L1059.9,124.2 L1061.2,123.1 L1062.5,128.2 L1063.9,130.0 L1065.2,135.5 L1066.5,135.7 L1067.8,125.6 L1069.2,140.5 L1070.5,130.7 L1071.8,133.9 L1073.2,124.5 L1074.5,102.9 L1075.9,107.6 L1077.2,99.3 L1078.5,96.1 L1079.9,87.8 L1081.2,107.8 L1082.6,112.1 L1083.9,114.8 L1085.2,115.5 L1086.6,121.9 L1087.9,123.4 L1089.2,127.4 L1090.5,134.8 L1091.9,123.3 L1093.2,105.6 L1094.5,107.5 L1095.9,111.4 L1097.2,117.1 L1098.5,129.8 L1099.9,135.5 L1101.2,137.7 L1102.6,146.0 L1103.9,143.2 L1105.2,135.8 L1106.6,143.9 L1107.9,147.1 L1109.2,146.7 L1110.6,134.0 L1111.9,127.7 L1113.2,140.3 L1114.6,132.2 L1115.9,126.3 L1117.2,133.1 L1118.6,141.6 L1119.9,144.1 L1121.2,144.3 L1122.6,139.1 L1123.9,136.3 L1125.3,133.8 L1126.6,124.7 L1127.9,123.3 L1129.3,127.3 L1130.6,134.8 L1131.9,134.3 L1133.3,142.6 L1134.6,151.5 L1135.9,146.5 L1137.2,134.2 L1138.6,137.2 L1139.9,143.1 L1141.3,148.3 L1142.6,153.7 L1143.9,152.8 L1145.3,139.5 L1146.6,128.4 L1148.0,131.0 L1149.3,124.6 L1150.6,124.1 L1152.0,116.0 L1153.3,138.1 L1154.6,153.9 L1155.9,132.5 L1157.3,121.2 L1158.6,109.6 L1159.9,105.1 L1161.3,112.4 L1162.6,112.9 L1163.9,90.6 L1165.3,110.1 L1166.6,130.0 L1168.0,120.5 L1169.3,123.4 L1170.6,128.1 L1172.0,132.6 L1173.3,132.6 L1174.7,120.9 L1176.0,115.8 L1177.3,122.0 L1178.6,116.7 L1180.0,129.9 L1181.3,131.7 L1182.6,135.9 L1184.0,136.5 L1185.3,134.1 L1186.6,127.9 L1188.0,129.1 L1189.3,129.4 L1190.7,129.5 L1192.0,136.2 L1193.3,140.2 L1194.7,139.9 L1196.0,142.0 L1197.3,143.3 L1198.7,145.9 L1200.0,146.5"/>
+    <rect class="sea" x="447.2" y="175" width="117.4" height="3" rx="1.5"/><rect class="sea" x="575.3" y="175" width="150.9" height="3" rx="1.5"/><rect class="sea" x="846.3" y="175" width="132.1" height="3" rx="1.5"/>
+    <text class="lab" x="0.0" y="212" text-anchor="start">Porto</text><line class="lead" x1="365.7" y1="31.0" x2="365.7" y2="198"/><circle class="pk" cx="365.7" cy="26.0" r="3.2"/><text class="lab" x="365.7" y="212" text-anchor="middle">Pyrenees<tspan class="num" x="365.7" dy="15">2,783 m</tspan></text><text class="lab lab-sea" x="505.9" y="212" text-anchor="middle">Gulf of Lion</text><line class="lead" x1="810.2" y1="127.2" x2="810.2" y2="198"/><circle class="pk" cx="810.2" cy="122.2" r="3.2"/><text class="lab" x="810.2" y="212" text-anchor="middle">Apennines<tspan class="num" x="810.2" dy="15">998 m</tspan></text><text class="lab lab-sea" x="912.4" y="212" text-anchor="middle">Adriatic</text><line class="lead" x1="1047.8" y1="84.4" x2="1047.8" y2="198"/><circle class="pk" cx="1047.8" cy="79.4" r="3.2"/><text class="lab" x="1047.8" y="212" text-anchor="middle">Dinaric Alps<tspan class="num" x="1047.8" dy="15">1,793 m</tspan></text><text class="lab" x="1200.0" y="212" text-anchor="end">Sofia</text>
+  </svg>
+</header>
+
+<div class="wrap">
+  <div class="terrain-cap">
+    <span><b>Porto → Sofia</b> · where I'm from to where I live · <span class="num">2,633 km</span> great circle, highest point <span class="num">2,783 m</span></span>
+    <span>Copernicus GLO-90 DEM · vertical exaggeration ×120</span>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <section class="intro" aria-labelledby="intro-h">
+      <div>
+        <h2 id="intro-h">From paper maps and cadastre to <em>satellite time series</em> and foundation models.</h2>
+      </div>
+      <div>
+        <p>My career started with cartography and cadastre, where every boundary had to be right. Since then I've worked on environmental assessment and six years of agtech, turning satellite imagery, open and commercial, into decisions about fields, forests and supply chains.</p>
+        <p>Everything shown here is built on open data, so every map can be reproduced and checked.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="work" id="work" aria-labelledby="work-h">
+    <svg class="blob top" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,80 L0,46 C140,18 260,60 420,44 C590,26 700,6 860,22 C990,35 1090,58 1200,30 L1200,80 Z"/></svg>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="work-h">Selected work</h2>
+        <p>Studies on real Sentinel-1 and Sentinel-2 imagery and public parcel registers. Click any figure to open it full size.</p>
+      </div>
+      <div class="mosaic">
+        <article class="tile t-lead">
+          <figure class="fig"><a class="zoom" href="assets/clock_multiyear.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Seven years, ring by ring"><img src="assets/clock_multiyear.jpg" alt="Ring charts of monthly greenness for three fields from 2020 to 2026" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status">Complete</span>
+            <h3>Seven years, ring by ring</h3>
+            <p>Seven years of real Sentinel-2 on three neighbouring fields, one ring per year: rotations read ring by ring (wheat → maize → sunflower), with every emergence, peak and harvest detected. 20,207 observations, 2020–2026.</p>
+            
+            <div class="tags"><span class="tag">Sentinel-2</span><span class="tag">NDVI</span><span class="tag">20% amplitude method</span><span class="tag">LPIS rotations</span></div>
+          </div>
+        </article>
+        <article class="tile t-side">
+          <figure class="fig"><a class="zoom" href="assets/clock_hero.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Phenological clock"><img src="assets/clock_hero.jpg" alt="Two circular charts showing a year of greenness, moisture, bare soil and radar for a wheat field and a sunflower field" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status">Complete</span>
+            <h3>Phenological clock</h3>
+            <p>One season as a clock from Sentinel-2 and Sentinel-1: sowing, green-up, peak and dry-down. Every crop keeps its own time.</p>
+
+            <a class="more" href="assets/clocks_by_crop.jpg" target="_blank" rel="noopener">See all seven crops →</a>
+          </div>
+        </article>
+        <article class="tile t-third">
+          <figure class="fig"><a class="zoom" href="assets/national_fields.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: A country, field by field"><img src="assets/national_fields.jpg" alt="Map of Bulgaria made of 1.1 million farm parcels coloured by declared crop" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status">Complete</span>
+            <h3>A country, field by field</h3>
+            <p>Every declared field in Bulgaria in 2025: 1,122,696 parcels, 3.86 million ha, drawn by the crop farmers declared.</p>
+            
+          </div>
+        </article>
+        <article class="tile t-third">
+          <figure class="fig"><a class="zoom" href="assets/drought_2020.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Drought from space"><img src="assets/drought_2020.jpg" alt="Map of 2020 greenness anomaly over farmland in south-east Romania" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status">Complete</span>
+            <h3>Drought from space</h3>
+            <p>The 2020 drought on the Danube plain: peak greenness 0.60 against 0.76–0.85 in every other year since 2018; 72% of cropland below normal. A yield-risk signal for insurers.</p>
+            
+          </div>
+        </article>
+        <article class="tile t-third">
+          <figure class="fig"><a class="zoom" href="assets/cap_map.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Do declarations match the satellite?"><img src="assets/cap_map.jpg" alt="Map of farm parcels coloured by agreement between declared crop and satellite observations" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status">Complete</span>
+            <h3>Do declarations match the satellite?</h3>
+            <p>CAP area monitoring on 1,339 parcels: 89.6% agreement, 68.2% balanced accuracy, 60 parcels flagged for a priority check.</p>
+            
+          </div>
+        </article>
+        <article class="tile t-third">
+          <figure class="fig"><a class="zoom" href="assets/lulc_change.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Land-use change that lasts"><img src="assets/lulc_change.jpg" alt="Map of persistent land-use change on the edge of Sofia" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status">Complete</span>
+            <h3>Land-use change that lasts</h3>
+            <p>686 ha of persistent change 2018–2023 on Sofia's south-eastern edge, including 202 ha of new settlement. Year-to-year map noise filtered out.</p>
+            
+          </div>
+        </article>
+        <article class="tile t-third">
+          <figure class="fig"><a class="zoom" href="assets/cover_between_crops.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Bare soil between crops"><img src="assets/cover_between_crops.jpg" alt="Map of arable fields coloured by soil cover between crops" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status wip">Pilot</span>
+            <h3>Bare soil between crops</h3>
+            <p>280 of 409 arable fields left bare between harvest and the next crop: the practice evidence carbon-farming schemes ask for.</p>
+            
+          </div>
+        </article>
+        <article class="tile t-note">
+          <p>Open data only. Every map here can be rebuilt from public sources.</p>
+          <small>Sentinel-1 · Sentinel-2 · Copernicus DEM · ESA WorldCereal · LPIS · OpenStreetMap</small>
+        </article>
+        <article class="tile t-wide">
+          <figure class="fig"><a class="zoom" href="assets/three_sensors.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: One landscape, three sensors"><img src="assets/three_sensors.jpg" alt="The same farmland seen by an aerial orthophoto, Sentinel-2 and Sentinel-1 radar" loading="lazy"></a></figure>
+          <div class="body">
+            
+            <h3>One landscape, three sensors</h3>
+            <p>Aerial orthophoto, optical and radar views of the Plovdiv–Haskovo corridor. Knowing what each one sees is half the method.</p>
+            
+          </div>
+        </article>
+      </div>
+      <div class="next">
+        <h3>In progress</h3>
+        <div><b>Palm oil mills</b><span>Sourcing-area deforestation risk by road travel time, mill by mill.</span></div>
+        <div><b>Carbon farming, Dobrudja</b><span>Soil-cover practices across a whole grain region.</span></div>
+        <div><b>Trees on farmland, Niger</b><span>Farmer-managed regreening since the 1980s, from Landsat and Sentinel-2.</span></div>
+        <div><b>Power-plant emissions</b><span>Sentinel-5P SO₂ and NO₂ over Maritsa Iztok vs reported emissions.</span></div>
+      </div>
+    </div>
+    <svg class="blob bottom" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,80 L0,40 C170,62 300,20 480,34 C640,46 760,70 920,50 C1040,35 1120,22 1200,40 L1200,80 Z"/></svg>
+  </section>
+
+  <div class="wrap">
+    <section id="services" aria-labelledby="svc-h">
+      <div class="sec-head">
+        <h2 id="svc-h">How I can help</h2>
+        <p>Delivered as maps, GIS files and short reports that decision-makers can actually read.</p>
+      </div>
+      <div class="services">
+        <div class="svc">
+          <h3>Environmental due diligence</h3>
+          <p>Deforestation screening against the EUDR cutoff, protected-area proximity, soil and climate exposure for an area or a list of plots.</p>
+          <span class="for">For: traders, food companies, lenders</span>
+        </div>
+        <div class="svc">
+          <h3>Crop &amp; field monitoring</h3>
+          <p>Crop-type mapping, phenology, anomalies and declaration checks at field scale, from one farm to a whole country.</p>
+          <span class="for">For: agtech, cooperatives, paying agencies</span>
+        </div>
+        <div class="svc">
+          <h3>Carbon &amp; soil MRV</h3>
+          <p>Evidence of practices like cover crops and reduced bare soil, and land-use change with carbon accounting.</p>
+          <span class="for">For: carbon programmes, sustainability teams</span>
+        </div>
+        <div class="svc">
+          <h3>Cartography</h3>
+          <p>Maps designed to be understood, for reports, publications, presentations and print.</p>
+          <span class="for">For: NGOs, consultancies, institutions</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-h">
+      <div class="ph"><img src="assets/forest_road.jpg" alt="A road through a bright green beech forest in spring" loading="lazy"></div>
+      <div>
+        <span class="eyebrow">About</span>
+        <h2 id="about-h" style="margin-top:14px">Hi, I'm Ana.</h2>
+        <p>I grew up in Porto and now live in Sofia. The line at the top of this page is the real terrain between the two, and it's a reminder that data can show us where we come from and where we're going, and reveal what we'd never see with our eyes alone.</p>
+        <p>I've drawn cartographic and cadastral maps, assessed environmental impacts, and spent the last several years building crop analytics, learning how crops behave across every continent and season. Today I help organisations turn satellite data into evidence they can act on.</p>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>Sofia, Bulgaria</dd></div>
+          <div><dt>Languages</dt><dd>English, Portuguese, Bulgarian, Spanish</dd></div>
+          <div class="clients"><dt>Worked with</dt><dd>Multinational food, beverage and retail companies, agricultural and forestry producers in Brazil, agricultural insurers, and the World Health Organization.</dd></div>
+        </dl>
+      </div>
+    </section>
+  </div>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <svg class="blob top" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,80 L0,52 C200,24 330,58 520,40 C700,22 820,6 980,26 C1080,38 1150,52 1200,44 L1200,80 Z"/></svg>
+    <div class="wrap">
+      <div class="row">
+        <h2 id="contact-h">Have land you need to <em>understand?</em></h2>
+        <div class="links">
+          <div><span>Email</span> <a class="ph-txt" href="mailto:ana.fernandes.cerqueira+portfolio@gmail.com">ana.fernandes.cerqueira+portfolio@gmail.com</a></div>
+          <div><span>LinkedIn</span> <a class="ph-txt" href="https://www.linkedin.com/in/ana-luisa-silva" target="_blank" rel="noopener">linkedin.com/in/ana-luisa-silva</a></div>
+          <div><span>GitHub</span> <span class="ph-txt">github.com/Kirjawa</span></div>
+          <div><span>PDF</span> <a class="ph-txt" href="ana_silva_portfolio.pdf">2-page portfolio</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© Ana Silva</span>
+    <span>Photos: Ana Silva · Imagery: Copernicus Sentinel data · Terrain: Copernicus GLO-90</span>
+  </div>
+</footer>
+</body>
+</html>
