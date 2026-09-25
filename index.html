@@ -185,6 +185,23 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
   .terrain .lab,.terrain .num,.terrain .lead{display:none}
   .photo-note{display:none}
 }
+/* ---------- lightbox ---------- */
+dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;max-height:none;background:rgba(7,39,36,.94);color:#fff}
+dialog.lb::backdrop{background:rgba(7,39,36,.6)}
+.lb-stage{position:absolute;inset:56px 64px 64px;overflow:auto;display:grid;place-items:center;overscroll-behavior:contain}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in;border-radius:6px;background:#FDF6F7}
+.lb.full .lb-stage{place-items:start}
+.lb.full .lb-stage img{max-width:none;max-height:none;cursor:zoom-out}
+.lb-cap{position:absolute;left:64px;right:64px;bottom:18px;font:400 14px/1.4 var(--sans);color:#E8F1EF;text-align:center}
+.lb-cap span{font:400 12px var(--mono);color:var(--blush);margin-left:10px}
+.lb button{position:absolute;background:rgba(253,246,247,.1);color:#fff;border:1px solid rgba(248,211,218,.3);border-radius:99px;
+  width:44px;height:44px;font:400 22px/1 var(--sans);cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:rgba(248,211,218,.22)}
+.lb .x{top:10px;right:14px}
+.lb .prev{left:12px;top:50%;transform:translateY(-50%)}
+.lb .next-b{right:12px;top:50%;transform:translateY(-50%)}
+.lb .hint{position:absolute;top:22px;left:64px;font:400 12px var(--mono);color:rgba(248,211,218,.8)}
+@media (max-width:640px){.lb-stage{inset:52px 8px 70px}.lb .prev,.lb .next-b{top:auto;bottom:14px;transform:none}.lb-cap{left:60px;right:60px;bottom:22px;font-size:12.5px}.lb .hint{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -263,7 +280,7 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
             <h3>Phenological clock</h3>
             <p>One season as a clock from Sentinel-2 and Sentinel-1: sowing, green-up, peak and dry-down. Every crop keeps its own time.</p>
 
-            <a class="more" href="assets/clocks_by_crop.jpg" target="_blank" rel="noopener">See all seven crops →</a>
+            <a class="more zoom" href="assets/clocks_by_crop.jpg" data-caption="Phenological clocks for seven crops, 2024–25" target="_blank" rel="noopener">See all seven crops →</a>
           </div>
         </article>
         <article class="tile t-third">
@@ -403,5 +420,43 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
     <span>Photos: Ana Silva · Imagery: Copernicus Sentinel data · Terrain: Copernicus GLO-90</span>
   </div>
 </footer>
+<dialog class="lb" id="lb" aria-label="Figure viewer">
+  <span class="hint">click image for full size · ← → to browse · Esc to close</span>
+  <button class="x" type="button" aria-label="Close">✕</button>
+  <button class="prev" type="button" aria-label="Previous figure">‹</button>
+  <button class="next-b" type="button" aria-label="Next figure">›</button>
+  <div class="lb-stage"><img alt=""></div>
+  <div class="lb-cap"></div>
+</dialog>
+<script>
+(function(){
+  var dlg=document.getElementById('lb'); if(!dlg||!dlg.showModal) return;   // no <dialog>: links still open the image
+  var img=dlg.querySelector('img'), cap=dlg.querySelector('.lb-cap'), stage=dlg.querySelector('.lb-stage');
+  var links=[].slice.call(document.querySelectorAll('a.zoom')), i=0;
+  function caption(a){
+    if(a.dataset.caption) return a.dataset.caption;
+    var t=a.closest('.tile'); var h=t&&t.querySelector('h3'); return h?h.textContent:'';
+  }
+  function show(k){
+    i=(k+links.length)%links.length; var a=links[i];
+    dlg.classList.remove('full'); img.src=a.getAttribute('href');
+    img.alt=(a.querySelector('img')||{}).alt||caption(a);
+    cap.innerHTML=''; cap.textContent=caption(a);
+    var n=document.createElement('span'); n.textContent=(i+1)+' / '+links.length; cap.appendChild(n);
+    stage.scrollTo(0,0);
+  }
+  links.forEach(function(a,k){ a.addEventListener('click',function(e){
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0) return;   // allow "open in new tab" on purpose
+    e.preventDefault(); show(k); dlg.showModal(); }); });
+  img.addEventListener('click',function(){ dlg.classList.toggle('full'); });
+  dlg.querySelector('.x').addEventListener('click',function(){ dlg.close(); });
+  dlg.querySelector('.prev').addEventListener('click',function(){ show(i-1); });
+  dlg.querySelector('.next-b').addEventListener('click',function(){ show(i+1); });
+  dlg.addEventListener('click',function(e){ if(e.target===dlg||e.target===stage) dlg.close(); });
+  dlg.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){ show(i+1); } else if(e.key==='ArrowLeft'){ show(i-1); } });
+  dlg.addEventListener('close',function(){ img.removeAttribute('src'); });
+})();
+</script>
 </body>
 </html>
