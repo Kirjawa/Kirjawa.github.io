@@ -130,9 +130,9 @@ section{padding-block:clamp(56px,8vw,104px)}
 .t-note{grid-column:span 2;background:var(--forest);border-color:transparent;color:var(--on-dark);justify-content:space-between;padding:24px}
 .t-note p{font:italic 400 clamp(24px,2.3vw,30px)/1.15 var(--serif);margin:0;color:var(--on-dark)}
 .t-note small{font:400 12px/1.5 var(--mono);color:var(--blush)}
-.more{display:inline-block;font:500 12px/1 var(--mono);color:var(--rose-ink);text-decoration:none;margin-top:2px}
+.more{display:inline-block;margin-right:18px;font:500 12px/1 var(--mono);color:var(--rose-ink);text-decoration:none;margin-top:2px}
 .more:hover{text-decoration:underline}
-.next{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.next{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .next h3{grid-column:1/-1;font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .next div{border-top:1.5px solid var(--rose);padding-top:12px}
 .next b{display:block;font:400 21px/1.15 var(--serif);margin-bottom:6px}
@@ -283,6 +283,25 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
             <a class="more zoom" href="assets/clocks_by_crop.jpg" data-caption="Phenological clocks for seven crops, 2024–25" target="_blank" rel="noopener">See all seven crops →</a>
           </div>
         </article>
+        <article class="tile t-lead">
+          <figure class="fig"><a class="zoom" href="assets/palm_spotcheck.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Not all clearing near palm oil mills is palm"><img src="assets/palm_spotcheck.jpg" alt="Sentinel-2 before and after images of two sites in West Kalimantan: forest turned into a new oil palm plantation, and forest turned into open-pit mining" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status wip">West Kalimantan done · Riau next</span>
+            <h3>Palm oil mills: where does the fruit come from?</h3>
+            <p>121 mills, the oil palm around them, and the road network trucks actually drive. Each mill's sourcing landscape is screened for forest cleared since the EUDR cutoff, split by driver, so mining and other clearing stay out of the palm score. Checked on Sentinel-2, before and after.</p>
+            <div class="tags"><span class="tag">OpenStreetMap routing</span><span class="tag">JRC forest 2020</span><span class="tag">Hansen loss</span><span class="tag">WRI drivers</span><span class="tag">Sentinel-2</span></div>
+            <a class="more zoom" href="assets/palm_access.jpg" data-caption="How far is the palm from the nearest mill?" target="_blank" rel="noopener">Travel time from palm to mill →</a>
+            <a class="more zoom" href="assets/palm_competition.jpg" data-caption="How many mills compete for the same fruit?" target="_blank" rel="noopener">Mills competing for the same fruit →</a>
+          </div>
+        </article>
+        <article class="tile t-side">
+          <figure class="fig"><a class="zoom" href="assets/palm_mill_risk.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Which mills sit on an active agricultural clearing front?"><img src="assets/palm_mill_risk.jpg" alt="Map of palm oil mills in West Kalimantan coloured by agricultural clearing in their sourcing landscape, with a ranked table" loading="lazy"></a></figure>
+          <div class="body">
+            <span class="status">Complete</span>
+            <h3>Mills on the clearing front</h3>
+            <p>Agricultural clearing of 2020 forest per 1,000 ha of palm in reach, with fires on peat and protected areas alongside. A screening signal, shown by mill ID.</p>
+          </div>
+        </article>
         <article class="tile t-third">
           <figure class="fig"><a class="zoom" href="assets/national_fields.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: A country, field by field"><img src="assets/national_fields.jpg" alt="Map of Bulgaria made of 1.1 million farm parcels coloured by declared crop" loading="lazy"></a></figure>
           <div class="body">
@@ -344,7 +363,6 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
       </div>
       <div class="next">
         <h3>In progress</h3>
-        <div><b>Palm oil mills</b><span>Sourcing-area deforestation risk by road travel time, mill by mill.</span></div>
         <div><b>Carbon farming, Dobrudja</b><span>Soil-cover practices across a whole grain region.</span></div>
         <div><b>Trees on farmland, Niger</b><span>Farmer-managed regreening since the 1980s, from Landsat and Sentinel-2.</span></div>
         <div><b>Power-plant emissions</b><span>Sentinel-5P SO₂ and NO₂ over Maritsa Iztok vs reported emissions.</span></div>
