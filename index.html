@@ -56,7 +56,10 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 nav.top{position:absolute;inset:0 0 auto 0;z-index:3;padding-top:env(safe-area-inset-top,0px)}
 nav.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
 .mark{font:italic 400 28px/1 var(--serif);color:#fff;text-decoration:none;text-shadow:0 1px 12px rgba(7,59,53,.45)}
-nav.top ul{display:flex;gap:clamp(12px,2.4vw,28px);list-style:none;margin:0;padding:0}
+nav.top ul{display:flex;align-items:center;gap:clamp(12px,2.4vw,28px);list-style:none;margin:0;padding:0}
+.nav-right{display:flex;align-items:center;gap:clamp(14px,2.4vw,28px)}
+a.nav-li{color:var(--pine);background:var(--blush);text-decoration:none;font:600 14px/1 var(--sans);padding:10px 16px;border-radius:99px;text-shadow:none}
+a.nav-li:hover{background:#fff}
 nav.top ul a{color:#fff;text-decoration:none;font-weight:500;font-size:15px;text-shadow:0 1px 10px rgba(7,59,53,.5)}
 nav.top ul a:hover{text-decoration:underline}
 
@@ -163,6 +166,8 @@ section{padding-block:clamp(56px,8vw,104px)}
 .contact h2{font:400 clamp(40px,6vw,76px)/1 var(--serif);max-width:14ch}
 .contact h2 em{color:var(--rose)}
 .contact .row{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:clamp(18px,3vw,36px);flex-wrap:wrap}
+.portrait{width:clamp(120px,14vw,180px);aspect-ratio:1;border-radius:50%;object-fit:cover;border:3px solid var(--rose);flex:none}
 .links{display:grid;gap:14px;justify-items:start}
 .btns{display:flex;flex-wrap:wrap;gap:10px}
 .btn-c{display:inline-block;font:500 15px/1 var(--sans);padding:14px 22px;border-radius:99px;text-decoration:none;
@@ -216,12 +221,15 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
   <nav class="top" aria-label="Main">
     <div class="wrap">
       <a class="mark" href="#top">Ana Silva</a>
+      <div class="nav-right">
       <ul>
         <li><a href="#work">Work</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <a class="nav-li" href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
   </nav>
   <div class="wrap">
@@ -428,7 +436,10 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
     <svg class="blob top" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0,80 L0,52 C200,24 330,58 520,40 C700,22 820,6 980,26 C1080,38 1150,52 1200,44 L1200,80 Z"/></svg>
     <div class="wrap">
       <div class="row">
-        <h2 id="contact-h">Have land you need to <em>understand?</em></h2>
+        <div class="who">
+          <img class="portrait" src="assets/ana.jpg" alt="Ana Silva, smiling, in a green jacket in a rose garden" loading="lazy">
+          <h2 id="contact-h">Have land you need to <em>understand?</em></h2>
+        </div>
         <div class="links">
           <div class="btns">
             <a class="btn-c primary" href="mailto:ana.fernandes.cerqueira+portfolio@gmail.com?subject=Hello%20from%20your%20portfolio">Email me</a>
