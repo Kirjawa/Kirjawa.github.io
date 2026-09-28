@@ -163,10 +163,16 @@ section{padding-block:clamp(56px,8vw,104px)}
 .contact h2{font:400 clamp(40px,6vw,76px)/1 var(--serif);max-width:14ch}
 .contact h2 em{color:var(--rose)}
 .contact .row{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
-.links{display:grid;gap:10px;font:400 15px/1.4 var(--mono)}
-.links span{color:var(--blush)}
-.links .ph-txt{color:#fff;opacity:.9;text-decoration:none;user-select:all}
-.links a.ph-txt:hover{text-decoration:underline}
+.links{display:grid;gap:14px;justify-items:start}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn-c{display:inline-block;font:500 15px/1 var(--sans);padding:14px 22px;border-radius:99px;text-decoration:none;
+  color:#fff;border:1px solid rgba(248,211,218,.45);transition:background .2s}
+.btn-c:hover{background:rgba(248,211,218,.14)}
+.btn-c.primary{background:var(--rose);border-color:var(--rose);color:var(--pine)}
+.btn-c.primary:hover{background:var(--blush)}
+.copyline{font:400 13px var(--mono);color:var(--blush)}
+.copyline button{background:none;border:0;padding:0;color:var(--blush);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+#copy-ok{margin-left:10px;color:#fff}
 footer{background:var(--pine);color:rgba(253,241,244,.6);font:400 12px/1.6 var(--mono);padding-block:0 28px}
 footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
@@ -424,10 +430,12 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
       <div class="row">
         <h2 id="contact-h">Have land you need to <em>understand?</em></h2>
         <div class="links">
-          <div><span>Email</span> <a class="ph-txt" href="mailto:ana.fernandes.cerqueira+portfolio@gmail.com">ana.fernandes.cerqueira+portfolio@gmail.com</a></div>
-          <div><span>LinkedIn</span> <a class="ph-txt" href="https://www.linkedin.com/in/ana-luisa-silva" target="_blank" rel="noopener">linkedin.com/in/ana-luisa-silva</a></div>
-          <div><span>GitHub</span> <span class="ph-txt">github.com/Kirjawa</span></div>
-          <div><span>PDF</span> <a class="ph-txt" href="ana_silva_portfolio.pdf">2-page portfolio</a></div>
+          <div class="btns">
+            <a class="btn-c primary" href="mailto:ana.fernandes.cerqueira+portfolio@gmail.com?subject=Hello%20from%20your%20portfolio">Email me</a>
+            <a class="btn-c" href="https://www.linkedin.com/in/ana-luisa-silva" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn-c" href="ana_silva_portfolio.pdf">2-page PDF</a>
+          </div>
+          <div class="copyline"><button type="button" id="copy-mail" data-mail="ana.fernandes.cerqueira+portfolio@gmail.com">Copy email address</button><span id="copy-ok" role="status"></span></div>
         </div>
       </div>
     </div>
@@ -439,6 +447,18 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
     <span>Photos: Ana Silva · Imagery: Copernicus Sentinel data · Terrain: Copernicus GLO-90</span>
   </div>
 </footer>
+<script>
+(function(){
+  var b=document.getElementById('copy-mail'), ok=document.getElementById('copy-ok'); if(!b) return;
+  b.addEventListener('click',function(){
+    var m=b.dataset.mail;
+    function done(t){ ok.textContent=t; setTimeout(function(){ ok.textContent=''; },3000); }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(m).then(function(){ done('Copied'); },function(){ done(m); });
+    } else { done(m); }
+  });
+})();
+</script>
 <dialog class="lb" id="lb" aria-label="Figure viewer">
   <span class="hint">click image for full size · ← → to browse · Esc to close</span>
   <button class="x" type="button" aria-label="Close">✕</button>
