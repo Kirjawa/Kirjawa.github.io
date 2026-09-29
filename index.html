@@ -130,6 +130,13 @@ section{padding-block:clamp(56px,8vw,104px)}
 .t-third figure{aspect-ratio:1.41}
 .t-wide{grid-column:span 6}
 .t-wide figure{aspect-ratio:2.45}
+.t-duo{grid-column:span 6}
+.t-duo .figs{display:flex;gap:1px;background:var(--hair);border-bottom:1px solid var(--hair)}
+.t-duo .figs figure.fig{border-bottom:0}
+.t-duo .figs figure:nth-child(1){flex:1.6 1 0;aspect-ratio:1.6}
+.t-duo .figs figure:nth-child(2){flex:2.2 1 0;aspect-ratio:2.2}
+.t-duo .body{grid-template-columns:1.1fr 1fr;column-gap:32px;align-items:start}
+.t-duo .body>.status,.t-duo .body>h3{grid-column:1/-1}
 .t-note{grid-column:span 2;background:var(--forest);border-color:transparent;color:var(--on-dark);justify-content:space-between;padding:24px}
 .t-note p{font:italic 400 clamp(24px,2.3vw,30px)/1.15 var(--serif);margin:0;color:var(--on-dark)}
 .t-note small{font:400 12px/1.5 var(--mono);color:var(--blush)}
@@ -186,7 +193,8 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
   .intro,.about{grid-template-columns:1fr}
   .services{grid-template-columns:repeat(2,1fr)}
   .mosaic{grid-template-columns:repeat(2,1fr)}
-  .t-lead,.t-side,.t-third,.t-note,.t-wide{grid-column:span 2}
+  .t-lead,.t-side,.t-third,.t-note,.t-wide,.t-duo{grid-column:span 2}
+  .t-duo .figs{flex-direction:column}.t-duo .body{grid-template-columns:1fr}
   .next{grid-template-columns:repeat(2,1fr)}
   .about .ph{max-width:420px}
 }
@@ -317,22 +325,20 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
             <p>Agricultural clearing of 2020 forest per 1,000 ha of palm in reach, with fires on peat and protected areas alongside. A screening signal, shown by mill ID.</p>
           </div>
         </article>
-        <article class="tile t-lead">
-          <figure class="fig"><a class="zoom" href="assets/soil_results.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Fewer Dobrudja fields left bare all summer since 2021"><img src="assets/soil_results.jpg" alt="Results for 8 sample areas in Dobrudja: a Sentinel-2 map, bare days per crop, the share of land bare all summer by year and winter cover" loading="lazy"></a></figure>
+        <article class="tile t-duo">
+          <div class="figs">
+            <figure class="fig"><a class="zoom" href="assets/soil_results.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Fewer Dobrudja fields left bare all summer since 2021"><img src="assets/soil_results.jpg" alt="Results for 8 sample areas in Dobrudja: a Sentinel-2 map, bare days per crop, the share of land bare all summer by year and winter cover" loading="lazy"></a></figure>
+            <figure class="fig"><a class="zoom" href="assets/soil_winter_check.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Checking the two winter signals on the images"><img src="assets/soil_winter_check.jpg" alt="Sentinel-2 winter images of 12 fields, each with what the image shows: dense green, patchy green or tilled soil" loading="lazy"></a></figure>
+          </div>
           <div class="body">
             <span class="status">Complete · Dobrudja, Bulgaria</span>
             <h3>Dobrudja: how long does the soil lie bare?</h3>
             <p>About 70,000 field-years in Bulgaria's grain belt, every clear Sentinel-2 image from 2019 to 2025, each day classed as living plants, stubble or bare soil. Fewer fields now sit bare all summer, but the drop came before the 2023 soil-cover rule. Winter is still the gap.</p>
-            <div class="tags"><span class="tag">Sentinel-2</span><span class="tag">Sentinel-1</span><span class="tag">Parcel register 2018–2025</span><span class="tag">ERA5</span><span class="tag">GAEC 6</span></div>
-            <a class="more" href="soil-cover.html">Read how I did it →</a>
-          </div>
-        </article>
-        <article class="tile t-side">
-          <figure class="fig"><a class="zoom" href="assets/soil_winter_check.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Checking the two winter signals on the images"><img src="assets/soil_winter_check.jpg" alt="Sentinel-2 winter images of 12 fields, each with what the image shows: dense green, patchy green or tilled soil" loading="lazy"></a></figure>
-          <div class="body">
-            <span class="status">Complete</span>
-            <h3>Checked on the images</h3>
-            <p>Random fields judged by eye. The green winter of 2025 held up, mostly as weeds and regrowth. The 2019 "stubble" turned out to be tilled soil, so the method changed.</p>
+            <div>
+              <p>Every result was checked on the images: random fields judged by eye, and the method changed where it didn't hold up.</p>
+              <div class="tags" style="margin-top:10px"><span class="tag">Sentinel-2</span><span class="tag">Sentinel-1</span><span class="tag">Parcel register 2018–2025</span><span class="tag">ERA5</span><span class="tag">GAEC 6</span></div>
+              <a class="more" href="soil-cover.html" style="display:inline-block;margin-top:10px">Read how I did it →</a>
+            </div>
           </div>
         </article>
         <article class="tile t-third">
