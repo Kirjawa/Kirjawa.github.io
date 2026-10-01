@@ -54,6 +54,7 @@ th{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase}
 .fieldhead{display:flex;align-items:center;gap:14px;margin:6px 0 4px}
 .cropicon{width:64px;height:64px;flex:none;border-radius:16px;border:1.5px solid;display:grid;place-items:center}
 .cropicon svg{width:48px;height:48px}
+body.clean #maplegend,body.clean #layers,body.clean .maplibregl-ctrl{display:none}
 .flagnote{background:var(--wash);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:13.5px}
 @media (max-width:760px){main{flex-direction:column}.mapwrap{height:52vh;flex:none}#maplegend{bottom:24px;max-width:200px;padding:6px 8px}#maplegend .legend span{font-size:11px}header.brand h1{font-size:28px}aside{width:auto;max-width:none;border-left:0;border-top:1px solid var(--hair)}
 .replay .d{min-width:110px;font-size:12px}}
@@ -137,8 +138,9 @@ let fc = "crop", img = "none", showFlags = true, imgTimer = null; const searchCa
 const META_P = fetch("meta.json").then(r=>r.json()); let META, dk = 50, selected = null, fieldCache = {};
 const panel = document.getElementById("panel"), slider = document.getElementById("dk"), dkl = document.getElementById("dklabel");
 
+const Q0 = new URLSearchParams(location.search); if(Q0.get("clean")) document.body.classList.add("clean");   // for snapshots
 const map = new maplibregl.Map({container:"map", style:"https://tiles.openfreemap.org/styles/positron",
-  center:[23.52,43.68], zoom:10.3, attributionControl:false});
+  center: Q0.get("c") ? Q0.get("c").split(",").map(Number) : [23.52,43.68], zoom: Q0.get("z") ? +Q0.get("z") : 10.3, attributionControl:false});
 let attrCtl = null;
 function setAttribution(){ if(attrCtl) map.removeControl(attrCtl);
   attrCtl = new maplibregl.AttributionControl({compact:true, customAttribution: showFlood ? 'Flood susceptibility: <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">Waleed 2026, GFSM v1</a> (CC BY 4.0)' : undefined});
