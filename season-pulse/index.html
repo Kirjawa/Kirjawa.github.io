@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo/export/favicon.svg" type="image/svg+xml"><link rel="icon" href="logo/export/favicon_32.png" sizes="32x32"><link rel="apple-touch-icon" href="logo/export/favicon_180.png">
+<title>Season’s Pulse · Ana Silva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+:root{--blush:#F8D3DA;--rose:#DB8FAB;--rose-ink:#A94C73;--teal:#15A19A;--forest:#0B6152;--pine:#073B35;
+--ground:#FDF6F7;--surface:#FFFFFF;--wash:#FBE9ED;--ink:#0A2F2B;--ink-2:#3E5B56;--muted:#6F8783;--hair:#EFD9DF;
+--serif:"Instrument Serif",Georgia,serif;--sans:"Figtree",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--ground);color:var(--ink);font:400 15px/1.5 var(--sans);display:flex;flex-direction:column}
+.topline{padding:8px 20px;border-bottom:1px solid var(--hair)}
+.topline a{font:500 12px var(--mono);color:var(--rose-ink);text-decoration:none}
+header.brand{padding:12px 20px 12px;background:var(--forest);color:#fff}
+.brand-row{display:flex;align-items:center;gap:12px}
+.logo{width:50px;height:50px;flex:none}
+header.brand h1{font:400 34px/1 var(--serif);margin:0;letter-spacing:.01em;white-space:nowrap}
+header.brand h1 em{font-style:italic;color:var(--blush)}
+header.brand p{margin:6px 0 0;color:#D6EDE8;font-size:13.5px}
+#maplegend{position:absolute;left:10px;bottom:30px;background:rgba(255,255,255,.93);border:1px solid var(--hair);border-radius:10px;padding:8px 10px;max-width:250px;z-index:2;box-shadow:0 2px 8px rgba(10,47,43,.08)}
+#maplegend .legend span{font-size:12px;margin:2px 8px 2px 0}
+#maplegend b{display:block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.mapwrap{flex:1;min-width:0;position:relative;display:flex}
+#layers{position:absolute;left:10px;top:10px;z-index:3;background:rgba(255,255,255,.95);border:1px solid var(--hair);border-radius:10px;padding:8px 12px;max-width:250px;box-shadow:0 2px 8px rgba(10,47,43,.08);font-size:13px}
+#layers summary{cursor:pointer;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+#layers fieldset{border:0;margin:8px 0 0;padding:0}
+#layers legend{font:500 10.5px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:0;margin-bottom:2px}
+#layers label{display:flex;align-items:center;gap:6px;padding:2px 0;cursor:pointer}
+#layers input{accent-color:var(--forest);margin:0}
+#imgnote{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.35}
+main{flex:1;display:flex;min-height:0}
+#map{flex:1;min-width:0}
+aside{width:440px;max-width:44vw;overflow-y:auto;border-left:1px solid var(--hair);background:var(--surface);padding:18px 20px 30px}
+.replay{display:flex;align-items:center;gap:10px;padding:10px 20px;border-top:1px solid var(--hair);background:var(--surface)}
+.replay input{flex:1;accent-color:var(--forest)}
+.replay button{border:1px solid var(--hair);background:var(--ground);border-radius:99px;padding:6px 14px;font:500 13px var(--sans);cursor:pointer}
+.replay .d{font:500 13px var(--mono);min-width:150px;color:var(--ink)}
+h2{font:400 26px/1.1 var(--serif);margin:0 0 4px}
+h3{font:600 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+.big{font:400 22px/1.2 var(--serif)}
+.muted{color:var(--muted);font-size:12.5px}
+.chip{display:inline-block;padding:2px 10px;border-radius:99px;font:500 12px var(--mono);margin:2px 4px 2px 0;background:var(--wash)}
+.reading{display:grid;grid-template-columns:110px 1fr;gap:4px 12px;margin:6px 0}
+.reading b{font:500 12px var(--mono);color:var(--ink-2);text-transform:uppercase;letter-spacing:.04em;padding-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:5px 6px;border-bottom:1px solid var(--hair);text-align:left}
+th{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase}
+.legend span{display:inline-flex;align-items:center;gap:5px;margin-right:10px;font-size:12.5px}
+.legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.flagnote{background:var(--wash);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:13.5px}
+@media (max-width:760px){main{flex-direction:column}.mapwrap{height:52vh;flex:none}#maplegend{bottom:24px;max-width:200px;padding:6px 8px}#maplegend .legend span{font-size:11px}header.brand h1{font-size:28px}aside{width:auto;max-width:none;border-left:0;border-top:1px solid var(--hair)}
+.replay .d{min-width:110px;font-size:12px}}
+</style>
+<!-- seo --><link rel="canonical" href="https://kirjawa.github.io/season-pulse/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Season's Pulse: every field's season, dekad by dekad", "description": "An interactive replay of the 2026 season for 7,567 fields on Bulgaria's Danube plain: likely crop, growth against the region and the field's own past, and flagged events, from Sentinel-1 and Sentinel-2.", "url": "https://kirjawa.github.io/season-pulse/", "image": "https://kirjawa.github.io/assets/season_pulse_map.jpg", "datePublished": "2026-10-01", "inLanguage": "en", "keywords": ["crop monitoring", "in-season crop identification", "phenology", "Sentinel-2", "Sentinel-1", "Bulgaria"], "applicationCategory": "Map", "operatingSystem": "Any web browser", "isAccessibleForFree": true, "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
+</head>
+<body>
+<div class="topline"><a href="../">← Ana Silva · portfolio</a></div>
+<header class="brand">
+  <div class="brand-row"><svg class="logo" aria-hidden="true" viewBox="6 3 52 52"><path d="M9 44 H13 L15 40 L17 47 L19 44 C24 44 28 40 32 32 C36 40 40 44 45 44 H55" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 32 L32 16.900000000000002" stroke="#FFFFFF" stroke-width="1.32" stroke-linecap="round"/><path d="M0 0 Q2.5 -3.5 0 -7.0 Q-2.5 -3.5 0 0Z" fill="#FFFFFF" transform="translate(31.10 29.80) rotate(-30)"/><path d="M0 0 Q2.5 -3.5 0 -7.0 Q-2.5 -3.5 0 0Z" fill="#FFFFFF" transform="translate(32.90 29.80) rotate(30)"/><path d="M0 0 Q2.3499999999999996 -3.29 0 -6.58 Q-2.3499999999999996 -3.29 0 0Z" fill="#FFFFFF" transform="translate(31.10 25.50) rotate(-30)"/><path d="M0 0 Q2.3499999999999996 -3.29 0 -6.58 Q-2.3499999999999996 -3.29 0 0Z" fill="#FFFFFF" transform="translate(32.90 25.50) rotate(30)"/><path d="M0 0 Q2.2 -3.08 0 -6.16 Q-2.2 -3.08 0 0Z" fill="#FFFFFF" transform="translate(31.10 21.20) rotate(-30)"/><path d="M0 0 Q2.2 -3.08 0 -6.16 Q-2.2 -3.08 0 0Z" fill="#FFFFFF" transform="translate(32.90 21.20) rotate(30)"/><path d="M0 0 Q2.0500000000000003 -2.87 0 -5.74 Q-2.0500000000000003 -2.87 0 0Z" fill="#FFFFFF" transform="translate(31.10 16.90) rotate(-30)"/><path d="M0 0 Q2.0500000000000003 -2.87 0 -5.74 Q-2.0500000000000003 -2.87 0 0Z" fill="#FFFFFF" transform="translate(32.90 16.90) rotate(30)"/><path d="M0 0 Q1.9500000000000002 -2.8000000000000003 0 -5.6000000000000005 Q-1.9500000000000002 -2.8000000000000003 0 0Z" fill="#FFFFFF" transform="translate(32.00 16.10) rotate(0)"/></svg><h1>Season’s <em>Pulse</em></h1></div>
+  <p>Every field's season, dekad by dekad. Valchedram–Kozloduy, Danube plain, 2026 season replay.</p>
+</header>
+<main>
+  <div class="mapwrap"><div id="map"></div>
+    <details id="layers"><summary>Layers</summary>
+      <fieldset><legend>Fields</legend>
+        <label><input type="radio" name="fc" value="crop" checked> Crop this dekad</label>
+        <label><input type="radio" name="fc" value="anom"> Greenness vs same crop</label>
+        <label><input type="radio" name="fc" value="flood"> Flood susceptibility</label>
+        <label><input type="radio" name="fc" value="none"> Outlines only</label>
+        <label><input type="checkbox" id="showflags" checked> Flags</label>
+      </fieldset>
+      <fieldset><legend>Satellite this dekad</legend>
+        <label><input type="radio" name="img" value="none" checked> None</label>
+        <label><input type="radio" name="img" value="s2tc"> Sentinel-2, true colour</label>
+        <label><input type="radio" name="img" value="s2ndvi"> Sentinel-2, NDVI</label>
+        <label><input type="radio" name="img" value="s1"> Sentinel-1 radar</label>
+        <div id="imgnote"></div>
+      </fieldset>
+      <fieldset><legend>Other maps</legend>
+        <label><input type="checkbox" id="showflood"> Flood susceptibility, 30 m</label>
+      </fieldset>
+    </details>
+    <div id="maplegend"></div></div>
+  <aside id="panel"></aside>
+</main>
+<div class="replay">
+  <button id="play">▶ Play</button>
+  <input id="dk" type="range" min="0" max="35" value="26" aria-label="Dekad of the season">
+  <span class="d" id="dklabel"></span>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+<script>
+const CROP = {W:["Winter cereals","#C9A66B"],R:["Rapeseed","#E2C744"],S:["Sunflower","#E08A3C"],M:["Maize","#4F7A4A"],O:["Other","#B9B4C6"],"-":["Not known yet","#E8E2DA"]};
+const NAME2CODE = {"Winter cereals":"W","Rapeseed":"R","Sunflower":"S","Maize":"M","Other":"O"};
+const FLAG = {s:["Slower than usual","#A94C73"],d:["Unexplained drop","#C8645A"],h:["Likely harvest or dry-down","#8C7B6B"],m:["Likely cut or mowed","#8C7B6B"],t:["Likely tillage before sowing","#8C7B6B"],w:["Winter (frost, snow or fog)","#8FB3D1"]};
+const SOURCES = `<h3>Sources</h3><ul class="muted" style="padding-left:16px;margin:0;line-height:1.5">
+  <li>Copernicus Sentinel-2 and Sentinel-1 data (European Union, ESA), processed by Ana Silva. Map imagery streamed from Microsoft Planetary Computer.</li>
+  <li>Field boundaries and declared crops 2020–2025: Bulgarian public parcel register (open data).</li>
+  <li>Crop type and season reference 2017–2024: Copernicus Land Monitoring Service, Vegetated Land Cover Characteristics (European Union).</li>
+  <li>Flood susceptibility: Waleed, M. (2026). <i>Global Flood Susceptibility Map (GFSM v1): A high resolution (30m) flood susceptibility dataset derived from multi-source Earth observation and geospatial data</i> [Data set]. Zenodo. <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">doi:10.5281/zenodo.20568218</a>. CC BY 4.0. Described in <i>Scientific Data</i> (2026), <a href="https://doi.org/10.1038/s41597-026-08338-1" target="_blank" rel="noopener">doi:10.1038/s41597-026-08338-1</a>. Shown here reprojected to Web Mercator and recoloured; per-field shares computed by Ana Silva.</li>
+  <li>Basemap: OpenFreeMap, OpenMapTiles, © OpenStreetMap contributors.</li></ul>`;
+const FLOODC = ["#F3EFEA","#D3EAE5","#8FCFC4","#15A19A","#0B6152"];
+let showFlood = false; const propsCache = {};
+const ANOM = ["#A94C73","#A94C73","#DB8FAB","#F1D5DE","#EEEAE4","#EEEAE4","#D3EAE5","#8FCFC4","#15A19A","#0B6152"];
+const AOI = [23.22,43.53,23.82,43.83], PC = "https://planetarycomputer.microsoft.com/api";
+let fc = "crop", img = "none", showFlags = true, imgTimer = null; const searchCache = {};
+const META_P = fetch("meta.json").then(r=>r.json()); let META, dk = 26, selected = null, fieldCache = {};
+const panel = document.getElementById("panel"), slider = document.getElementById("dk"), dkl = document.getElementById("dklabel");
+
+const map = new maplibregl.Map({container:"map", style:"https://tiles.openfreemap.org/styles/positron",
+  center:[23.52,43.68], zoom:10.3, attributionControl:false});
+let attrCtl = null;
+function setAttribution(){ if(attrCtl) map.removeControl(attrCtl);
+  attrCtl = new maplibregl.AttributionControl({compact:true, customAttribution: showFlood ? 'Flood susceptibility: <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">Waleed 2026, GFSM v1</a> (CC BY 4.0)' : undefined});
+  map.addControl(attrCtl, "bottom-right"); }
+setAttribution();
+map.addControl(new maplibregl.NavigationControl({showCompass:false}), "top-right");
+
+function cropExpr(){ return ["slice",["get","c"],dk,dk+1]; }
+function flagExpr(){ return ["slice",["get","f"],dk,dk+1]; }
+function styleFields(){
+  if(!map.getLayer("fields")) return;                 // map still loading: applied once it is ready
+  if(fc==="flood") map.setPaintProperty("fields","fill-color",["case",["!",["has","fh"]],"#E8E2DA",["==",["get","fh"],null],"#E8E2DA",
+      ["step",["get","fh"],FLOODC[0],0.1,FLOODC[1],0.25,FLOODC[2],0.5,FLOODC[3],0.75,FLOODC[4]]]);
+  else if(fc==="anom") map.setPaintProperty("fields","fill-color",["match",["slice",["get","a"],dk,dk+1],...ANOM.flatMap((c,i)=>[String(i),c]),"#E8E2DA"]);
+  else map.setPaintProperty("fields","fill-color",["match",cropExpr(),...Object.entries(CROP).flatMap(([k,v])=>[k,v[1]]),"#E8E2DA"]);
+  map.setPaintProperty("fields","fill-opacity", fc==="none" ? 0 : (img==="none" ? 0.82 : 0.5));
+  map.setPaintProperty("edges","line-color", img==="none" ? "#FFFFFF" : "rgba(255,255,255,0.75)");
+  map.setPaintProperty("flags","line-color",["match",flagExpr(),"s",FLAG.s[1],"d",FLAG.d[1],"rgba(0,0,0,0)"]);
+  map.setPaintProperty("flags","line-width",showFlags ? ["match",flagExpr(),"s",2.4,"d",2.4,0] : 0);
+  document.getElementById("maplegend").innerHTML = legend();
+}
+// --- satellite imagery for the dekad, streamed from Microsoft Planetary Computer (Copernicus Sentinel data) ---
+function dkRange(k){ const y = k<9 ? 2025 : 2026, mo = (9 + Math.floor(k/3)) % 12, p = k % 3;
+  const a = new Date(Date.UTC(y, mo, 1 + 10*p)), b = p<2 ? new Date(Date.UTC(y, mo, 10 + 10*p, 23, 59, 59)) : new Date(Date.UTC(y, mo+1, 0, 23, 59, 59));
+  return [a.toISOString().slice(0,19)+"Z", b.toISOString().slice(0,19)+"Z"]; }
+function cql(kind, k){ const [a,b] = dkRange(k), args = [
+    {op:"anyinteracts",args:[{property:"datetime"},{interval:[a,b]}]},
+    {op:"s_intersects",args:[{property:"geometry"},{type:"Polygon",coordinates:[[[AOI[0],AOI[1]],[AOI[2],AOI[1]],[AOI[2],AOI[3]],[AOI[0],AOI[3]],[AOI[0],AOI[1]]]]}]}];
+  if(kind!=="s1") args.push({op:"<=",args:[{property:"eo:cloud_cover"},30]});
+  return {op:"and",args}; }
+async function register(kind, k){
+  const key = (kind==="s1"?"s1":"s2")+k; if(searchCache[key]) return searchCache[key];
+  const coll = kind==="s1" ? "sentinel-1-rtc" : "sentinel-2-l2a", filter = cql(kind, k);
+  const [reg, items] = await Promise.all([
+    fetch(PC+"/data/v1/mosaic/register",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({collections:[coll],"filter-lang":"cql2-json",filter,
+      sortby:[kind==="s1"?{field:"datetime",direction:"desc"}:{field:"eo:cloud_cover",direction:"asc"}]})}).then(r=>r.json()),
+    fetch(PC+"/stac/v1/search",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({collections:[coll],"filter-lang":"cql2-json",filter,limit:50})}).then(r=>r.json())]);
+  const days = [...new Set((items.features||[]).map(f=>f.properties.datetime.slice(0,10)))].sort();
+  return (searchCache[key] = {id: reg.searchid, days, coll}); }
+function tileUrl(kind, r){
+  const base = `${PC}/data/v1/mosaic/${r.id}/tiles/WebMercatorQuad/{z}/{x}/{y}?collection=${r.coll}&format=png`;
+  if(kind==="s2tc") return base + "&assets=visual";
+  if(kind==="s2ndvi") return base + "&expression=" + encodeURIComponent("(B08_b1-B04_b1)/(B08_b1+B04_b1)") + "&rescale=0,0.9&colormap_name=rdylgn";
+  return base + "&expression=" + encodeURIComponent("vv;vh;vv/vh") + "&asset_as_band=true&rescale=0,0.6&rescale=0,0.06&rescale=0,15"; }
+function fmtDay(d){ return new Date(d+"T00:00:00Z").toLocaleDateString("en-GB",{day:"numeric",month:"short",timeZone:"UTC"}); }
+async function updateImagery(){
+  const note = document.getElementById("imgnote");
+  if(map.getLayer("img")) map.removeLayer("img"); if(map.getSource("img")) map.removeSource("img");
+  if(img==="none"){ note.textContent=""; return; }
+  const want = img + dk; note.textContent = "Loading…";
+  try{
+    const r = await register(img, dk); if(img + dk !== want) return;
+    if(!r.days.length){ note.textContent = img==="s1" ? "No radar pass this dekad." : "No Sentinel-2 view under 30% cloud this dekad. Try radar, it sees through cloud."; return; }
+    map.addSource("img",{type:"raster",tiles:[tileUrl(img, r)],tileSize:256,attribution:"Copernicus Sentinel data, via Microsoft Planetary Computer"});
+    map.addLayer({id:"img",type:"raster",source:"img",paint:{"raster-opacity":1}},"fields");
+    const what = img==="s1" ? "Radar: green = vegetation, blue/dark = bare or smooth soil." : img==="s2ndvi" ? "NDVI: red = bare, green = dense crop." : "True colour.";
+    note.innerHTML = `${what}<br>Views: ${r.days.map(fmtDay).join(", ")}${img!=="s1" && r.days.length>1 ? " (least cloudy on top)" : ""}.`;
+  }catch(e){ note.textContent = "Imagery service not reachable right now."; }
+}
+function scheduleImagery(){ clearTimeout(imgTimer); if(img!=="none") imgTimer = setTimeout(updateImagery, 900); }
+document.querySelectorAll('input[name=fc]').forEach(el=>el.addEventListener("change",e=>{ fc=e.target.value; styleFields(); if(!selected) summary(); }));
+document.querySelectorAll('input[name=img]').forEach(el=>el.addEventListener("change",e=>{ img=e.target.value; styleFields(); updateImagery(); }));
+document.getElementById("showflood").addEventListener("change",async e=>{ showFlood=e.target.checked;
+  if(!map.getLayer("edges")) await new Promise(r=>map.once("idle",r));
+  if(showFlood && !map.getSource("flood")){ const fj = await (await fetch("flood.json")).json();
+    map.addSource("flood",{type:"image",url:"flood.png",coordinates:fj.coordinates});
+    map.addLayer({id:"flood",type:"raster",source:"flood",paint:{"raster-opacity":0.85,"raster-resampling":"nearest"}},"edges"); }
+  if(map.getLayer("flood")) map.setLayoutProperty("flood","visibility",showFlood?"visible":"none"); setAttribution(); styleFields(); if(!selected) summary(); });
+document.getElementById("showflags").addEventListener("change",e=>{ showFlags=e.target.checked; styleFields(); if(!selected) summary(); });
+map.on("load", async () => {
+  META = await META_P;
+  map.addSource("f",{type:"geojson",data:"fields_2026.geojson",promoteId:"field_id"});
+  map.addLayer({id:"fields",type:"fill",source:"f",paint:{"fill-opacity":0.82}});
+  map.addLayer({id:"edges",type:"line",source:"f",paint:{"line-color":"#FFFFFF","line-width":["interpolate",["linear"],["zoom"],10,0.1,14,0.8]}});
+  map.addLayer({id:"flags",type:"line",source:"f",paint:{}});
+  map.addLayer({id:"sel",type:"line",source:"f",paint:{"line-color":"#0A2F2B","line-width":3},filter:["==",["get","field_id"],""]});
+  if(showFlood) document.getElementById("showflood").dispatchEvent(new Event("change"));
+  setDk(dk); if(window.innerWidth > 760) document.getElementById("layers").open = true;
+  map.on("click","fields",e=>{ const p=e.features[0].properties; propsCache[p.field_id]=p; select(p.field_id); });
+  map.on("mouseenter","fields",()=>map.getCanvas().style.cursor="pointer");
+  map.on("mouseleave","fields",()=>map.getCanvas().style.cursor="");
+  map.on("moveend",()=>{ if(!selected) summary(); });
+  map.once("idle",()=>{ const q=new URLSearchParams(location.search); if(q.get("dk")) setDk(+q.get("dk")); if(q.get("field")) select(q.get("field")); else if(!selected) summary(); });
+});
+function setDk(v){ dk=+v; slider.value=dk; dkl.textContent=META?META.dekads[dk]:""; if(map.getLayer("fields")) styleFields(); scheduleImagery();
+  if(selected) renderField(fieldCache[selected]); else if(map.loaded()) summary(); }
+slider.addEventListener("input",e=>setDk(e.target.value));
+let timer=null; document.getElementById("play").onclick=e=>{ if(timer){clearInterval(timer);timer=null;e.target.textContent="▶ Play";return;}
+  e.target.textContent="❚❚ Pause"; timer=setInterval(()=>setDk(dk>=35?0:dk+1),700); };
+
+function legend(){
+  const fl = showFlags ? `<span><i style="border:2px solid ${FLAG.s[1]}"></i>${FLAG.s[0]}</span><span><i style="border:2px solid ${FLAG.d[1]}"></i>${FLAG.d[0]}</span>` : "";
+  if(fc==="anom") return `<b>Greenness vs same crop, this dekad</b><div class="legend"><span><i style="background:${ANOM[0]}"></i>lowest 20%</span><span><i style="background:${ANOM[2]}"></i>20–30%</span><span><i style="background:${ANOM[4]}"></i>middle</span><span><i style="background:${ANOM[7]}"></i>70–80%</span><span><i style="background:${ANOM[9]}"></i>top 20%</span><span><i style="background:#E8E2DA"></i>no reading</span>${fl}</div>${fd}`;
+  const fd = showFlood ? `<b style="margin-top:6px">Flood susceptibility (GFSM)</b><div class="legend"><span><i style="background:#D3EAE5"></i>low</span><span><i style="background:#8FCFC4"></i>moderate</span><span><i style="background:#15A19A"></i>high</span><span><i style="background:#0B6152"></i>very high</span></div><div class="muted" style="font-size:11px">Source: <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">Waleed, M. (2026), GFSM v1, Zenodo</a>, CC BY 4.0</div>` : "";
+  if(fc==="flood") return `<b>Share of field with high or very high flood susceptibility</b><div class="legend"><span><i style="background:${FLOODC[0]}"></i>under 10%</span><span><i style="background:${FLOODC[1]}"></i>10–25%</span><span><i style="background:${FLOODC[2]}"></i>25–50%</span><span><i style="background:${FLOODC[3]}"></i>50–75%</span><span><i style="background:${FLOODC[4]}"></i>over 75%</span>${fl}</div><div class="muted" style="font-size:11px">Source: <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">Waleed, M. (2026), GFSM v1, Zenodo</a>, CC BY 4.0</div>${fd}`;
+  if(fc==="none") return (fl ? `<b>Flags</b><div class="legend">${fl}</div>` : "") + fd;
+  return `<b>Crop this dekad</b><div class="legend">${Object.values(CROP).map(([n,c])=>`<span><i style="background:${c}"></i>${n}</span>`).join("")}${fl}</div>${fd}`; }
+function summary(){
+  if(!META || !map.getLayer("fields")) return;
+  const fs = map.queryRenderedFeatures({layers:["fields"]}); const seen=new Map(); fs.forEach(f=>seen.set(f.properties.field_id,f.properties));
+  const n=seen.size, crops={}, flags={};
+  seen.forEach(p=>{ const c=p.c[dk]; crops[c]=(crops[c]||0)+1; const f=p.f[dk]; if(f!=".") flags[f]=(flags[f]||0)+1; });
+  panel.innerHTML = `<h2>${n.toLocaleString()} fields in view</h2><div class="muted">${META.dekads[dk]} · crops inferred from Sentinel-1/2 (2026 declarations are not public yet)</div>
+   <h3>Crops in view</h3>${Object.entries(crops).sort((a,b)=>b[1]-a[1]).map(([c,k])=>`<span class="chip" style="background:${CROP[c][1]}33">${CROP[c][0]} ${Math.round(k/n*100)}%</span>`).join("")}
+   <h3>This dekad</h3>${Object.keys(flags).length?Object.entries(flags).map(([f,k])=>`<span class="chip">${FLAG[f][0]}: ${k}</span>`).join(""):'<span class="muted">No flags in view.</span>'}
+   <h3>Legend</h3>${legend()}<p class="muted" style="margin-top:18px">Click a field to see its season. Fields under 1 ha are left out.</p>${SOURCES}`;
+}
+async function select(id){
+  META = await META_P; selected=id; map.setFilter("sel",["==",["get","field_id"],id]);
+  if(!fieldCache[id]) fieldCache[id]=await (await fetch(`fields/${id}.json`)).json();
+  renderField(fieldCache[id]);
+}
+function pctText(p){ return p==null?"—":`greener than ${Math.round(p)}% of the same crop today`; }
+function renderField(F){
+  const s=F.season_2026, crop=s.crop[dk], conf=s.conf[dk], code=NAME2CODE[crop];
+  const guess = !crop ? "Too early to tell" : (conf<0.6 ? `Possibly ${crop.toLowerCase()} (${Math.round(conf*100)}%)` : `Likely ${crop.toLowerCase()} · ${Math.round(conf*100)}%`);
+  const g=s.growth_z[dk], gtxt = g==null?"—":(g>1?"growing faster than usual for this crop at this stage":g<-1?"growing slower than usual for this crop at this stage":"growing as usual for this crop at this stage");
+  const past = F.history.filter(h=>NAME2CODE[h.declared]===code && h.curve);
+  let own="—"; if(past.length>=2 && s.ndvi_now[dk]!=null){ const vals=past.map(h=>h.curve[dk]).filter(v=>v!=null); if(vals.length>=2){ const below=vals.filter(v=>v<s.ndvi_now[dk]).length; own=`greener than ${below} of ${vals.length} past ${crop.toLowerCase()} seasons on this field at this time`; } }
+  const fl=s.flag[dk];
+  const events=[]; if(s.emergence) events.push(`Emerged around ${s.emergence}`);
+  s.flag.slice(0,dk+1).forEach((f,i)=>{ if(f&&s.flag[i-1]!==f) events.push(`${META.dekads[i]}: ${f}`); });
+  panel.innerHTML = `<button onclick="selected=null;map.setFilter('sel',['==',['get','field_id'],'']);summary()" class="chip" style="border:0;cursor:pointer">← fields in view</button>
+   <h2>${guess}</h2><div class="muted">Field ${F.id} · ${F.area_ha} ha · ${META.dekads[dk]} · inferred from Sentinel-1/2</div>
+   ${fl?`<div class="flagnote"><b>${fl}</b></div>`:""}
+   <h3>Readings this dekad</h3>
+   <div class="reading"><b>Growth</b><span>${gtxt}</span></div>
+   <div class="reading"><b>Region</b><span>${pctText(s.region_pct[dk])}</span></div>
+   <div class="reading"><b>Own past</b><span>${own}</span></div>
+   ${floodLine(F.id)}
+   <h3>Season so far</h3><div id="curve"></div>
+   <div class="muted">Line: this field, as knowable at each dekad. Band: 10–90% of fields with the same crop guess this season. Grey: this field's past seasons of that crop.</div>
+   <h3>Phenological clock, 2020–2026</h3><div id="clock"></div><div class="muted">One ring per season, inner 2020 to outer 2026, starting in October at the top. Darker green = greener.</div>
+   <h3>Events</h3>${events.length?events.map(e=>`<div>${e}</div>`).join(""):'<span class="muted">None so far.</span>'}
+   <h3>History</h3><table><tr><th>Season</th><th>Declared</th><th>Behaved like</th><th>Emerged</th></tr>
+   ${F.history.map(h=>`<tr><td>${h.season}</td><td>${h.declared}</td><td>${h.consistent?"✓ as declared":(h.behaves_like||"—")}</td><td>${h.emergence||"—"}${h.late_days&&Math.abs(h.late_days)>=20?` <span class="muted">(${h.late_days>0?"+":""}${h.late_days} d)</span>`:""}</td></tr>`).join("")}</table>
+   <p class="muted">"Behaved like" = the phenological clock check: does the season look like the crop that was declared? (d) = emergence days later (+) or earlier (−) than that crop's median that season.</p>`;
+  drawCurve(F); drawClock(F);
+}
+function floodLine(id){
+  let p = propsCache[id]; if(!p){ const q = map.querySourceFeatures("f",{filter:["==",["get","field_id"],id]}); if(q.length) p = propsCache[id] = q[0].properties; }
+  if(!p || p.fh==null) return "";
+  const lvl = ["very low","low","moderate","high","very high"][Math.max(0,Math.min(4,Math.round(p.fm)-1))];
+  return `<div class="reading"><b>Flood</b><span>${Math.round(p.fh*100)}% of the field has high or very high flood susceptibility (average: ${lvl}). A terrain-based screening map, not observed floods. Source: <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">Waleed, M. (2026), GFSM v1, Zenodo</a>, CC BY 4.0.</span></div>`; }
+function drawCurve(F){
+  const s=F.season_2026, x=d3.range(36), pts=[];
+  x.forEach(i=>{ if(i<=dk && s.ndvi_now[i]!=null) pts.push({i,v:s.ndvi_now[i],k:"this field"}); });
+  const band=F.band?x.map(i=>({i,lo:F.band[0][i],md:F.band[1][i],hi:F.band[2][i]})).filter(d=>d.lo!=null):[];
+  const code=NAME2CODE[s.crop[dk]]; const past=[]; F.history.filter(h=>NAME2CODE[h.declared]===code&&h.curve).forEach(h=>h.curve.forEach((v,i)=>past.push({i,v,season:h.season})));
+  const el=document.getElementById("curve"); el.innerHTML="";
+  el.append(Plot.plot({width:Math.min(400,el.clientWidth||400),height:200,marginLeft:36,
+    x:{domain:[0,35],ticks:[0,9,18,27],tickFormat:i=>["Oct","Jan","Apr","Jul"][i/9],label:null},y:{domain:[0,1],label:"NDVI"},
+    marks:[Plot.areaY(band,{x:"i",y1:"lo",y2:"hi",fill:"#DB8FAB",fillOpacity:0.18}),Plot.lineY(band,{x:"i",y:"md",stroke:"#DB8FAB",strokeDasharray:"3,3"}),
+      Plot.lineY(past,{x:"i",y:"v",z:"season",stroke:"#B8C2BF",strokeWidth:1}),
+      Plot.lineY(pts,{x:"i",y:"v",stroke:CROP[code||"-"][1],strokeWidth:2.5}),Plot.ruleX([dk],{stroke:"#0A2F2B",strokeOpacity:0.3})]}));
+}
+function drawClock(F){
+  const el=document.getElementById("clock"); el.innerHTML=""; const W=Math.min(380,el.clientWidth||380), R0=34, ring=(W/2-30-R0)/7;
+  const svg=d3.select(el).append("svg").attr("width",W).attr("height",W).append("g").attr("transform",`translate(${W/2},${W/2})`);
+  const col=d3.scaleLinear().domain([0.05,0.4,0.85]).range(["#EFE3C8","#9CCB8F","#0B4F43"]).clamp(true);
+  const arc=d3.arc(), seasons=[2020,2021,2022,2023,2024,2025,2026];
+  seasons.forEach((S,j)=>{ const h=F.history.find(x=>x.season===S); const curve=S===2026?F.season_2026.ndvi_now:(h?h.curve:null); if(!curve) return;
+    curve.forEach((v,i)=>{ if(v==null||(S===2026&&i>dk)) return;
+      svg.append("path").attr("d",arc({innerRadius:R0+j*ring,outerRadius:R0+(j+1)*ring-1,startAngle:i/36*2*Math.PI,endAngle:(i+1)/36*2*Math.PI-0.01})).attr("fill",col(v)); });
+    svg.append("text").attr("x",3).attr("y",-(R0+j*ring+ring/2)).attr("font-size",9).attr("font-family","IBM Plex Mono").attr("fill","#3E5B56").attr("dominant-baseline","middle").text(S);
+  });
+  ["Oct","Jan","Apr","Jul"].forEach((m,q)=>{ const a=q*Math.PI/2; svg.append("text").attr("x",Math.sin(a)*(W/2-14)).attr("y",-Math.cos(a)*(W/2-14)).attr("text-anchor","middle").attr("dominant-baseline","middle").attr("font-size",11).attr("fill","#6F8783").text(m); });
+}
+</script>
+<!-- analytics --><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "804d5b1726c6476db1c04a238d7c114f"}'></script><!-- End Cloudflare Web Analytics --><!-- /analytics -->
+</body>
+</html>

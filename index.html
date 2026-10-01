@@ -139,6 +139,19 @@ section{padding-block:clamp(56px,8vw,104px)}
 .t-duo .figs figure:nth-child(2){flex:2.2 1 0;aspect-ratio:2.2}
 .t-duo .body{grid-template-columns:1.1fr 1fr;column-gap:32px;align-items:start}
 .t-duo .body>.status,.t-duo .body>h3{grid-column:1/-1}
+.t-feature{grid-column:span 6;background:var(--forest);border-color:transparent;color:#fff;display:grid;grid-template-columns:1fr 1.35fr}
+.t-feature .body{padding:clamp(22px,3vw,40px);align-content:center;gap:12px}
+.t-feature .sp-brand{display:flex;align-items:center;gap:12px}
+.t-feature .sp-logo{width:56px;height:56px;flex:none}
+.t-feature h3{font:400 clamp(34px,3.6vw,46px)/1 var(--serif);color:#fff;margin:0}
+.t-feature h3 em{color:var(--blush)}
+.t-feature .status{color:var(--blush)}
+.t-feature p{color:#D6EDE8;font-size:16px}
+.t-feature .tag{background:rgba(255,255,255,.1);color:#E6F3F0}
+.t-feature a.go{justify-self:start;margin-top:8px;background:var(--blush);color:var(--pine);text-decoration:none;font:600 15px/1 var(--sans);padding:13px 20px;border-radius:99px}
+.t-feature a.go:hover{background:#fff}
+.t-feature figure{aspect-ratio:1.48;height:100%}
+.t-feature figure img{object-position:center}
 .t-note{grid-column:span 2;background:var(--forest);border-color:transparent;color:var(--on-dark);justify-content:space-between;padding:24px}
 .t-note p{font:italic 400 clamp(24px,2.3vw,30px)/1.15 var(--serif);margin:0;color:var(--on-dark)}
 .t-note small{font:400 12px/1.5 var(--mono);color:var(--blush)}
@@ -195,7 +208,8 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
   .intro,.about{grid-template-columns:1fr}
   .services{grid-template-columns:repeat(2,1fr)}
   .mosaic{grid-template-columns:repeat(2,1fr)}
-  .t-lead,.t-side,.t-third,.t-note,.t-wide,.t-duo{grid-column:span 2}
+  .t-lead,.t-side,.t-third,.t-note,.t-wide,.t-duo,.t-feature{grid-column:span 2}
+  .t-feature{grid-template-columns:1fr}.t-feature figure{order:-1;height:auto}
   .t-duo .figs{flex-direction:column}.t-duo .body{grid-template-columns:1fr}
   .next{grid-template-columns:repeat(2,1fr)}
   .about .ph{max-width:420px}
@@ -234,6 +248,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
       <div class="nav-right">
       <ul>
         <li><a href="#work">Work</a></li>
+        <li><a href="season-pulse/">Season’s Pulse</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -287,6 +302,17 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
         <p>Studies on real Sentinel-1 and Sentinel-2 imagery and public parcel registers. Click any figure to open it full size.</p>
       </div>
       <div class="mosaic">
+        <article class="tile t-feature">
+          <div class="body">
+            <span class="status">New · interactive · Danube plain, Bulgaria</span>
+            <div class="sp-brand"><svg class="sp-logo" aria-hidden="true" viewBox="6 3 52 52"><path d="M9 44 H13 L15 40 L17 47 L19 44 C24 44 28 40 32 32 C36 40 40 44 45 44 H55" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 32 L32 16.900000000000002" stroke="#FFFFFF" stroke-width="1.32" stroke-linecap="round"/><path d="M0 0 Q2.5 -3.5 0 -7.0 Q-2.5 -3.5 0 0Z" fill="#FFFFFF" transform="translate(31.10 29.80) rotate(-30)"/><path d="M0 0 Q2.5 -3.5 0 -7.0 Q-2.5 -3.5 0 0Z" fill="#FFFFFF" transform="translate(32.90 29.80) rotate(30)"/><path d="M0 0 Q2.3499999999999996 -3.29 0 -6.58 Q-2.3499999999999996 -3.29 0 0Z" fill="#FFFFFF" transform="translate(31.10 25.50) rotate(-30)"/><path d="M0 0 Q2.3499999999999996 -3.29 0 -6.58 Q-2.3499999999999996 -3.29 0 0Z" fill="#FFFFFF" transform="translate(32.90 25.50) rotate(30)"/><path d="M0 0 Q2.2 -3.08 0 -6.16 Q-2.2 -3.08 0 0Z" fill="#FFFFFF" transform="translate(31.10 21.20) rotate(-30)"/><path d="M0 0 Q2.2 -3.08 0 -6.16 Q-2.2 -3.08 0 0Z" fill="#FFFFFF" transform="translate(32.90 21.20) rotate(30)"/><path d="M0 0 Q2.0500000000000003 -2.87 0 -5.74 Q-2.0500000000000003 -2.87 0 0Z" fill="#FFFFFF" transform="translate(31.10 16.90) rotate(-30)"/><path d="M0 0 Q2.0500000000000003 -2.87 0 -5.74 Q-2.0500000000000003 -2.87 0 0Z" fill="#FFFFFF" transform="translate(32.90 16.90) rotate(30)"/><path d="M0 0 Q1.9500000000000002 -2.8000000000000003 0 -5.6000000000000005 Q-1.9500000000000002 -2.8000000000000003 0 0Z" fill="#FFFFFF" transform="translate(32.00 16.10) rotate(0)"/></svg><h3>Season’s <em>Pulse</em></h3></div>
+            <p>Every field's season, dekad by dekad. Follow 7,567 fields through the 2026 season: which crop is likely growing, how it is doing against the region and against its own past, and when something looks off.</p>
+            <p>Built on Sentinel-1 and Sentinel-2, with six years of parcel history behind every field.</p>
+            <div class="tags"><span class="tag">Sentinel-2</span><span class="tag">Sentinel-1</span><span class="tag">In-season crop ID</span><span class="tag">Phenology</span><span class="tag">Parcel register 2020–2025</span></div>
+            <a class="go" href="season-pulse/">Open Season’s Pulse →</a>
+          </div>
+          <figure><a href="season-pulse/" aria-label="Open Season’s Pulse"><img src="assets/season_pulse_map.jpg" alt="Map of fields near Valchedram coloured by the crop likely growing in late June 2026, with flagged fields outlined" loading="lazy"></a></figure>
+        </article>
         <article class="tile t-lead">
           <figure class="fig"><a class="zoom" href="assets/clock_multiyear.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Seven years, ring by ring"><img src="assets/clock_multiyear.jpg" alt="Ring charts of monthly greenness for three fields from 2020 to 2026" loading="lazy"></a></figure>
           <div class="body">

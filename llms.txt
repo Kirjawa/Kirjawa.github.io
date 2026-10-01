@@ -11,6 +11,10 @@ Every study states its method, how it was checked against imagery or independent
 - [Southern Niger: are farmers' fields getting woodier?](https://kirjawa.github.io/farmland-trees.html): Forty years of dry-season Landsat over farmland in Maradi and Zinder, separating rain from farmer-managed regrowth.
 - [Maritsa Iztok: do the emissions seen from space match the reports?](https://kirjawa.github.io/maritsa-emissions.html): Sentinel-5P SO2 and NOx over Bulgaria's largest lignite complex, 2019 to 2024, against the EU emissions register.
 
+## Interactive
+
+- [Season's Pulse: every field's season, dekad by dekad](https://kirjawa.github.io/season-pulse/): An interactive replay of the 2026 season for 7,567 fields on Bulgaria's Danube plain: likely crop, growth against the region and the field's own past, and flagged events, from Sentinel-1 and Sentinel-2.
+
 ## Contact
 
 - [Portfolio and contact](https://kirjawa.github.io/#contact)
