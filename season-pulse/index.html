@@ -51,18 +51,21 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:5px 6px;b
 th{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase}
 .legend span{display:inline-flex;align-items:center;gap:5px;margin-right:10px;font-size:12.5px}
 .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.fieldhead{display:flex;align-items:center;gap:14px;margin:6px 0 4px}
+.cropicon{width:64px;height:64px;flex:none;border-radius:16px;border:1.5px solid;display:grid;place-items:center}
+.cropicon svg{width:48px;height:48px}
 .flagnote{background:var(--wash);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:13.5px}
 @media (max-width:760px){main{flex-direction:column}.mapwrap{height:52vh;flex:none}#maplegend{bottom:24px;max-width:200px;padding:6px 8px}#maplegend .legend span{font-size:11px}header.brand h1{font-size:28px}aside{width:auto;max-width:none;border-left:0;border-top:1px solid var(--hair)}
 .replay .d{min-width:110px;font-size:12px}}
 </style>
 <!-- seo --><link rel="canonical" href="https://kirjawa.github.io/season-pulse/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Season's Pulse: every field's season, dekad by dekad", "description": "An interactive replay of the 2026 season for 7,567 fields on Bulgaria's Danube plain: likely crop, growth against the region and the field's own past, and flagged events, from Sentinel-1 and Sentinel-2.", "url": "https://kirjawa.github.io/season-pulse/", "image": "https://kirjawa.github.io/assets/season_pulse_map.jpg", "datePublished": "2026-10-01", "inLanguage": "en", "keywords": ["crop monitoring", "in-season crop identification", "phenology", "Sentinel-2", "Sentinel-1", "Bulgaria"], "applicationCategory": "Map", "operatingSystem": "Any web browser", "isAccessibleForFree": true, "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Season's Pulse: every field's season, dekad by dekad", "description": "An interactive replay from February 2025 to September 2026 for 7,567 fields on Bulgaria's Danube plain: crop, growth against the region and the field's own past, and field events, from Sentinel-2, Landsat and Sentinel-1.", "url": "https://kirjawa.github.io/season-pulse/", "image": "https://kirjawa.github.io/assets/season_pulse_map.jpg", "datePublished": "2026-10-01", "inLanguage": "en", "keywords": ["crop monitoring", "in-season crop identification", "phenology", "Sentinel-2", "Sentinel-1", "Bulgaria"], "applicationCategory": "Map", "operatingSystem": "Any web browser", "isAccessibleForFree": true, "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
 </head>
 <body>
 <div class="topline"><a href="../">← Ana Silva · portfolio</a></div>
 <header class="brand">
   <div class="brand-row"><svg class="logo" aria-hidden="true" viewBox="6 3 52 52"><path d="M9 44 H13 L15 40 L17 47 L19 44 C24 44 28 40 32 32 C36 40 40 44 45 44 H55" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 32 L32 16.900000000000002" stroke="#FFFFFF" stroke-width="1.32" stroke-linecap="round"/><path d="M0 0 Q2.5 -3.5 0 -7.0 Q-2.5 -3.5 0 0Z" fill="#FFFFFF" transform="translate(31.10 29.80) rotate(-30)"/><path d="M0 0 Q2.5 -3.5 0 -7.0 Q-2.5 -3.5 0 0Z" fill="#FFFFFF" transform="translate(32.90 29.80) rotate(30)"/><path d="M0 0 Q2.3499999999999996 -3.29 0 -6.58 Q-2.3499999999999996 -3.29 0 0Z" fill="#FFFFFF" transform="translate(31.10 25.50) rotate(-30)"/><path d="M0 0 Q2.3499999999999996 -3.29 0 -6.58 Q-2.3499999999999996 -3.29 0 0Z" fill="#FFFFFF" transform="translate(32.90 25.50) rotate(30)"/><path d="M0 0 Q2.2 -3.08 0 -6.16 Q-2.2 -3.08 0 0Z" fill="#FFFFFF" transform="translate(31.10 21.20) rotate(-30)"/><path d="M0 0 Q2.2 -3.08 0 -6.16 Q-2.2 -3.08 0 0Z" fill="#FFFFFF" transform="translate(32.90 21.20) rotate(30)"/><path d="M0 0 Q2.0500000000000003 -2.87 0 -5.74 Q-2.0500000000000003 -2.87 0 0Z" fill="#FFFFFF" transform="translate(31.10 16.90) rotate(-30)"/><path d="M0 0 Q2.0500000000000003 -2.87 0 -5.74 Q-2.0500000000000003 -2.87 0 0Z" fill="#FFFFFF" transform="translate(32.90 16.90) rotate(30)"/><path d="M0 0 Q1.9500000000000002 -2.8000000000000003 0 -5.6000000000000005 Q-1.9500000000000002 -2.8000000000000003 0 0Z" fill="#FFFFFF" transform="translate(32.00 16.10) rotate(0)"/></svg><h1>Season’s <em>Pulse</em></h1></div>
-  <p>Every field's season, dekad by dekad. Valchedram–Kozloduy, Danube plain, 2026 season replay.</p>
+  <p>Every field's season, dekad by dekad. Valchedram–Kozloduy, Danube plain, replayed from February 2025 to September 2026.</p>
 </header>
 <main>
   <div class="mapwrap"><div id="map"></div>
@@ -72,7 +75,8 @@ th{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase}
         <label><input type="radio" name="fc" value="anom"> Greenness vs same crop</label>
         <label><input type="radio" name="fc" value="flood"> Flood susceptibility</label>
         <label><input type="radio" name="fc" value="none"> Outlines only</label>
-        <label><input type="checkbox" id="showflags" checked> Flags</label>
+        <label><input type="checkbox" id="showevents" checked> Field events</label>
+        <label><input type="checkbox" id="showflags" checked> Flags (need a look)</label>
       </fieldset>
       <fieldset><legend>Satellite this dekad</legend>
         <label><input type="radio" name="img" value="none" checked> None</label>
@@ -90,16 +94,35 @@ th{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase}
 </main>
 <div class="replay">
   <button id="play">▶ Play</button>
-  <input id="dk" type="range" min="0" max="35" value="26" aria-label="Dekad of the season">
+  <input id="dk" type="range" min="0" max="59" value="50" aria-label="Dekad, February 2025 to September 2026">
   <span class="d" id="dklabel"></span>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
 <script>
-const CROP = {W:["Winter cereals","#C9A66B"],R:["Rapeseed","#E2C744"],S:["Sunflower","#E08A3C"],M:["Maize","#4F7A4A"],O:["Other","#B9B4C6"],"-":["Not known yet","#E8E2DA"]};
+const CROP = {W:["Winter cereals","#C9A66B"],R:["Rapeseed","#E2C744"],S:["Sunflower","#E08A3C"],M:["Maize","#4F7A4A"],O:["Other","#B9B4C6"],
+  "?":["Green, crop not clear yet","#B5CDB0"],"_":["Not active (bare or low cover)","#EFE8DD"],"-":["No clear view lately","#FFFFFF"]};
+const EVENT = {h:["Harvest or dry-down","#8C6B4A"],m:["Cut or mowed","#7E6FA8"],t:["Tillage before sowing","#C08A3E"],w:["Winter (frost, snow or fog)","#6E9CC4"]};
+let showEvents = true;
+// the replay runs on one timeline: index 0 = 1-10 Feb 2025 ... 59 = 21-30 Sep 2026 (meta.json)
+function SK(t){ const e = META.timeline[t]; return {S:e.season, k:e.dk}; }
+function lbl(t){ return META.timeline[t].label; }
+function lblSK(S,k){ const y = k<9 ? S-1 : S, mo = (9+Math.floor(k/3))%12, p = k%3, d = new Date(Date.UTC(y,mo,1));
+  const end = new Date(Date.UTC(y,mo+1,0)).getUTCDate(); return `${["1–10","11–20","21–"+end][p]} ${d.toLocaleDateString("en-GB",{month:"short",year:"numeric",timeZone:"UTC"})}`; }
+// crop icons for the field panel
+const ICON = {
+  W:`<svg viewBox="0 0 48 48"><path d="M24 44V14" stroke="#8C6B4A" stroke-width="2" stroke-linecap="round"/>${[0,1,2,3].map(i=>{const y=34-i*6,c="#C9A66B";return `<path d="M0 0Q3.2-4.5 0-9Q-3.2-4.5 0 0Z" fill="${c}" transform="translate(22.6 ${y}) rotate(-30)"/><path d="M0 0Q3.2-4.5 0-9Q-3.2-4.5 0 0Z" fill="${c}" transform="translate(25.4 ${y}) rotate(30)"/>`}).join("")}<path d="M0 0Q2.8-4 0-8Q-2.8-4 0 0Z" fill="#C9A66B" transform="translate(24 13)"/></svg>`,
+  R:`<svg viewBox="0 0 48 48"><path d="M24 44V20M24 32l-7-6M24 28l7-5" stroke="#4F7A4A" stroke-width="2" stroke-linecap="round" fill="none"/>${[[24,13],[15,21],[33,18],[19,10],[30,9]].map(([x,y])=>`<g transform="translate(${x} ${y})">${[0,90,180,270].map(a=>`<ellipse cx="0" cy="-3.2" rx="2.3" ry="3.2" fill="#E2C744" transform="rotate(${a})"/>`).join("")}<circle r="1.4" fill="#B8962A"/></g>`).join("")}</svg>`,
+  S:`<svg viewBox="0 0 48 48"><path d="M24 46V34" stroke="#4F7A4A" stroke-width="2.4" stroke-linecap="round"/>${Array.from({length:14},(_,i)=>`<ellipse cx="0" cy="-12" rx="3.2" ry="6" fill="${i%2?"#E8B23A":"#E08A3C"}" transform="translate(24 21) rotate(${i*360/14})"/>`).join("")}<circle cx="24" cy="21" r="8" fill="#6B4A2E"/><circle cx="24" cy="21" r="8" fill="none" stroke="#4A3220" stroke-width="1" stroke-dasharray="1.5 2"/></svg>`,
+  M:`<svg viewBox="0 0 48 48"><path d="M24 44C14 36 12 24 16 12C18 22 21 30 24 34" fill="#4F7A4A"/><path d="M24 44C34 36 36 24 32 12C30 22 27 30 24 34" fill="#6E9A62"/><ellipse cx="24" cy="22" rx="6.5" ry="13" fill="#E8C64A"/>${[0,1,2,3,4,5,6].map(i=>`<path d="M18.5 ${12+i*3.2}H29.5" stroke="#C9A33A" stroke-width=".9"/>`).join("")}<path d="M24 9V35M20.5 11V33M27.5 11V33" stroke="#C9A33A" stroke-width=".9"/></svg>`,
+  O:`<svg viewBox="0 0 48 48"><path d="M14 44C14 30 10 22 6 16M24 44C24 28 24 18 22 8M34 44C34 32 38 24 42 18" stroke="#6E9A62" stroke-width="3" stroke-linecap="round" fill="none"/><circle cx="31" cy="20" r="5" fill="#B9B4C6"/><circle cx="31" cy="20" r="2" fill="#8E86A8"/></svg>`,
+  "?":`<svg viewBox="0 0 48 48"><path d="M24 44V26" stroke="#4F7A4A" stroke-width="2.4" stroke-linecap="round"/><path d="M24 28C24 20 18 16 10 16C10 24 16 28 24 28Z" fill="#8FBF86"/><path d="M24 26C24 17 30 12 38 12C38 21 32 26 24 26Z" fill="#B5CDB0"/><path d="M10 44H38" stroke="#B49A7A" stroke-width="2.4" stroke-linecap="round"/></svg>`,
+  "_":`<svg viewBox="0 0 48 48">${[0,1,2,3,4].map(i=>`<path d="M4 ${16+i*7}C14 ${12+i*7} 34 ${20+i*7} 44 ${15+i*7}" stroke="${i%2?"#B49A7A":"#8C6B4A"}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`).join("")}</svg>`,
+  "-":`<svg viewBox="0 0 48 48"><path d="M14 34H35A8 8 0 0 0 34 18A11 11 0 0 0 13 21A7 7 0 0 0 14 34Z" fill="#E4E8EA" stroke="#A9B4B8" stroke-width="1.6"/></svg>`};
+function iconBlock(code){ const bg = (CROP[code]||CROP["-"])[1]; return `<div class="cropicon" style="background:${bg}2E;border-color:${bg}">${ICON[code]||ICON["-"]}</div>`; }
 const NAME2CODE = {"Winter cereals":"W","Rapeseed":"R","Sunflower":"S","Maize":"M","Other":"O"};
-const FLAG = {s:["Slower than usual","#A94C73"],d:["Unexplained drop","#C8645A"],h:["Likely harvest or dry-down","#8C7B6B"],m:["Likely cut or mowed","#8C7B6B"],t:["Likely tillage before sowing","#8C7B6B"],w:["Winter (frost, snow or fog)","#8FB3D1"]};
+const FLAG = {s:["Slower than usual","#A94C73"],e:["Early dry-down (heat or drought?)","#C47A1E"],d:["Unexplained drop","#C8645A"],h:["Likely harvest or dry-down","#8C7B6B"],m:["Likely cut or mowed","#8C7B6B"],t:["Likely tillage before sowing","#8C7B6B"],w:["Winter (frost, snow or fog)","#8FB3D1"]};
 const SOURCES = `<h3>Sources</h3><ul class="muted" style="padding-left:16px;margin:0;line-height:1.5">
   <li>Copernicus Sentinel-2 and Sentinel-1 data (European Union, ESA), processed by Ana Silva. Map imagery streamed from Microsoft Planetary Computer.</li>
   <li>Field boundaries and declared crops 2020–2025: Bulgarian public parcel register (open data).</li>
@@ -111,7 +134,7 @@ let showFlood = false; const propsCache = {};
 const ANOM = ["#A94C73","#A94C73","#DB8FAB","#F1D5DE","#EEEAE4","#EEEAE4","#D3EAE5","#8FCFC4","#15A19A","#0B6152"];
 const AOI = [23.22,43.53,23.82,43.83], PC = "https://planetarycomputer.microsoft.com/api";
 let fc = "crop", img = "none", showFlags = true, imgTimer = null; const searchCache = {};
-const META_P = fetch("meta.json").then(r=>r.json()); let META, dk = 26, selected = null, fieldCache = {};
+const META_P = fetch("meta.json").then(r=>r.json()); let META, dk = 50, selected = null, fieldCache = {};
 const panel = document.getElementById("panel"), slider = document.getElementById("dk"), dkl = document.getElementById("dklabel");
 
 const map = new maplibregl.Map({container:"map", style:"https://tiles.openfreemap.org/styles/positron",
@@ -133,12 +156,14 @@ function styleFields(){
   else map.setPaintProperty("fields","fill-color",["match",cropExpr(),...Object.entries(CROP).flatMap(([k,v])=>[k,v[1]]),"#E8E2DA"]);
   map.setPaintProperty("fields","fill-opacity", fc==="none" ? 0 : (img==="none" ? 0.82 : 0.5));
   map.setPaintProperty("edges","line-color", img==="none" ? "#FFFFFF" : "rgba(255,255,255,0.75)");
-  map.setPaintProperty("flags","line-color",["match",flagExpr(),"s",FLAG.s[1],"d",FLAG.d[1],"rgba(0,0,0,0)"]);
-  map.setPaintProperty("flags","line-width",showFlags ? ["match",flagExpr(),"s",2.4,"d",2.4,0] : 0);
+  map.setPaintProperty("events","line-color",["match",flagExpr(),...Object.entries(EVENT).flatMap(([k,v])=>[k,v[1]]),"rgba(0,0,0,0)"]);
+  map.setPaintProperty("events","line-width",showEvents ? ["match",flagExpr(),"h",1.3,"m",1.3,"t",1.3,"w",1.3,0] : 0);
+  map.setPaintProperty("flags","line-color",["match",flagExpr(),"s",FLAG.s[1],"e",FLAG.e[1],"d",FLAG.d[1],"rgba(0,0,0,0)"]);
+  map.setPaintProperty("flags","line-width",showFlags ? ["match",flagExpr(),"s",2.4,"e",2.4,"d",2.4,0] : 0);
   document.getElementById("maplegend").innerHTML = legend();
 }
 // --- satellite imagery for the dekad, streamed from Microsoft Planetary Computer (Copernicus Sentinel data) ---
-function dkRange(k){ const y = k<9 ? 2025 : 2026, mo = (9 + Math.floor(k/3)) % 12, p = k % 3;
+function dkRange(t){ const {S,k} = SK(t); const y = k<9 ? S-1 : S, mo = (9 + Math.floor(k/3)) % 12, p = k % 3;
   const a = new Date(Date.UTC(y, mo, 1 + 10*p)), b = p<2 ? new Date(Date.UTC(y, mo, 10 + 10*p, 23, 59, 59)) : new Date(Date.UTC(y, mo+1, 0, 23, 59, 59));
   return [a.toISOString().slice(0,19)+"Z", b.toISOString().slice(0,19)+"Z"]; }
 function cql(kind, k){ const [a,b] = dkRange(k), args = [
@@ -184,42 +209,45 @@ document.getElementById("showflood").addEventListener("change",async e=>{ showFl
     map.addSource("flood",{type:"image",url:"flood.png",coordinates:fj.coordinates});
     map.addLayer({id:"flood",type:"raster",source:"flood",paint:{"raster-opacity":0.85,"raster-resampling":"nearest"}},"edges"); }
   if(map.getLayer("flood")) map.setLayoutProperty("flood","visibility",showFlood?"visible":"none"); setAttribution(); styleFields(); if(!selected) summary(); });
+document.getElementById("showevents").addEventListener("change",e=>{ showEvents=e.target.checked; styleFields(); if(!selected) summary(); });
 document.getElementById("showflags").addEventListener("change",e=>{ showFlags=e.target.checked; styleFields(); if(!selected) summary(); });
 map.on("load", async () => {
   META = await META_P;
   map.addSource("f",{type:"geojson",data:"fields_2026.geojson",promoteId:"field_id"});
   map.addLayer({id:"fields",type:"fill",source:"f",paint:{"fill-opacity":0.82}});
   map.addLayer({id:"edges",type:"line",source:"f",paint:{"line-color":"#FFFFFF","line-width":["interpolate",["linear"],["zoom"],10,0.1,14,0.8]}});
+  map.addLayer({id:"events",type:"line",source:"f",paint:{}});
   map.addLayer({id:"flags",type:"line",source:"f",paint:{}});
   map.addLayer({id:"sel",type:"line",source:"f",paint:{"line-color":"#0A2F2B","line-width":3},filter:["==",["get","field_id"],""]});
   if(showFlood) document.getElementById("showflood").dispatchEvent(new Event("change"));
-  setDk(dk); if(window.innerWidth > 760) document.getElementById("layers").open = true;
+  setDk(dk); if(window.innerWidth > 760 && new URLSearchParams(location.search).get("layers") !== "0") document.getElementById("layers").open = true;
   map.on("click","fields",e=>{ const p=e.features[0].properties; propsCache[p.field_id]=p; select(p.field_id); });
   map.on("mouseenter","fields",()=>map.getCanvas().style.cursor="pointer");
   map.on("mouseleave","fields",()=>map.getCanvas().style.cursor="");
   map.on("moveend",()=>{ if(!selected) summary(); });
   map.once("idle",()=>{ const q=new URLSearchParams(location.search); if(q.get("dk")) setDk(+q.get("dk")); if(q.get("field")) select(q.get("field")); else if(!selected) summary(); });
 });
-function setDk(v){ dk=+v; slider.value=dk; dkl.textContent=META?META.dekads[dk]:""; if(map.getLayer("fields")) styleFields(); scheduleImagery();
-  if(selected) renderField(fieldCache[selected]); else if(map.loaded()) summary(); }
+function setDk(v){ dk=+v; slider.value=dk; dkl.textContent=META?lbl(dk):""; if(map.getLayer("fields")) styleFields(); scheduleImagery();
+  if(selected) renderField(fieldCache[selected]); else summary(); }
 slider.addEventListener("input",e=>setDk(e.target.value));
 let timer=null; document.getElementById("play").onclick=e=>{ if(timer){clearInterval(timer);timer=null;e.target.textContent="▶ Play";return;}
-  e.target.textContent="❚❚ Pause"; timer=setInterval(()=>setDk(dk>=35?0:dk+1),700); };
+  e.target.textContent="❚❚ Pause"; timer=setInterval(()=>setDk(dk>=59?0:dk+1),600); };
 
 function legend(){
-  const fl = showFlags ? `<span><i style="border:2px solid ${FLAG.s[1]}"></i>${FLAG.s[0]}</span><span><i style="border:2px solid ${FLAG.d[1]}"></i>${FLAG.d[0]}</span>` : "";
-  if(fc==="anom") return `<b>Greenness vs same crop, this dekad</b><div class="legend"><span><i style="background:${ANOM[0]}"></i>lowest 20%</span><span><i style="background:${ANOM[2]}"></i>20–30%</span><span><i style="background:${ANOM[4]}"></i>middle</span><span><i style="background:${ANOM[7]}"></i>70–80%</span><span><i style="background:${ANOM[9]}"></i>top 20%</span><span><i style="background:#E8E2DA"></i>no reading</span>${fl}</div>${fd}`;
+  const fl = (showEvents ? Object.values(EVENT).map(([n,c])=>`<span><i style="border:1.5px solid ${c}"></i>${n}</span>`).join("") : "")
+    + (showFlags ? ["s","e","d"].map(c=>`<span><i style="border:2.5px solid ${FLAG[c][1]}"></i>${FLAG[c][0]}</span>`).join("") : "");
   const fd = showFlood ? `<b style="margin-top:6px">Flood susceptibility (GFSM)</b><div class="legend"><span><i style="background:#D3EAE5"></i>low</span><span><i style="background:#8FCFC4"></i>moderate</span><span><i style="background:#15A19A"></i>high</span><span><i style="background:#0B6152"></i>very high</span></div><div class="muted" style="font-size:11px">Source: <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">Waleed, M. (2026), GFSM v1, Zenodo</a>, CC BY 4.0</div>` : "";
+  if(fc==="anom") return `<b>Greenness vs same crop, this dekad</b><div class="legend"><span><i style="background:${ANOM[0]}"></i>lowest 20%</span><span><i style="background:${ANOM[2]}"></i>20–30%</span><span><i style="background:${ANOM[4]}"></i>middle</span><span><i style="background:${ANOM[7]}"></i>70–80%</span><span><i style="background:${ANOM[9]}"></i>top 20%</span><span><i style="background:#E8E2DA"></i>no reading</span>${fl}</div>${fd}`;
   if(fc==="flood") return `<b>Share of field with high or very high flood susceptibility</b><div class="legend"><span><i style="background:${FLOODC[0]}"></i>under 10%</span><span><i style="background:${FLOODC[1]}"></i>10–25%</span><span><i style="background:${FLOODC[2]}"></i>25–50%</span><span><i style="background:${FLOODC[3]}"></i>50–75%</span><span><i style="background:${FLOODC[4]}"></i>over 75%</span>${fl}</div><div class="muted" style="font-size:11px">Source: <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">Waleed, M. (2026), GFSM v1, Zenodo</a>, CC BY 4.0</div>${fd}`;
-  if(fc==="none") return (fl ? `<b>Flags</b><div class="legend">${fl}</div>` : "") + fd;
-  return `<b>Crop this dekad</b><div class="legend">${Object.values(CROP).map(([n,c])=>`<span><i style="background:${c}"></i>${n}</span>`).join("")}${fl}</div>${fd}`; }
+  if(fc==="none") return (fl ? `<b>Events and flags</b><div class="legend">${fl}</div>` : "") + fd;
+  return `<b>Field this dekad</b><div class="legend">${Object.values(CROP).map(([n,c])=>`<span><i style="background:${c};${c==="#FFFFFF"?"border:1px solid #D8CFC4":""}"></i>${n}</span>`).join("")}</div>${fl?`<b style="margin-top:6px">Events and flags</b><div class="legend">${fl}</div>`:""}${fd}`; }
 function summary(){
   if(!META || !map.getLayer("fields")) return;
   const fs = map.queryRenderedFeatures({layers:["fields"]}); const seen=new Map(); fs.forEach(f=>seen.set(f.properties.field_id,f.properties));
   const n=seen.size, crops={}, flags={};
   seen.forEach(p=>{ const c=p.c[dk]; crops[c]=(crops[c]||0)+1; const f=p.f[dk]; if(f!=".") flags[f]=(flags[f]||0)+1; });
-  panel.innerHTML = `<h2>${n.toLocaleString()} fields in view</h2><div class="muted">${META.dekads[dk]} · crops inferred from Sentinel-1/2 (2026 declarations are not public yet)</div>
-   <h3>Crops in view</h3>${Object.entries(crops).sort((a,b)=>b[1]-a[1]).map(([c,k])=>`<span class="chip" style="background:${CROP[c][1]}33">${CROP[c][0]} ${Math.round(k/n*100)}%</span>`).join("")}
+  panel.innerHTML = `<h2>${n.toLocaleString()} fields in view</h2><div class="muted">${lbl(dk)} · ${SK(dk).S===2025 ? "crops as declared in the 2025 parcel register" : "crops inferred from Sentinel-2, Landsat and Sentinel-1 (2026 declarations are not public yet)"}</div>
+   <h3>Fields in view, this dekad</h3>${Object.entries(crops).sort((a,b)=>b[1]-a[1]).map(([c,k])=>`<span class="chip" style="background:${CROP[c][1]}33">${CROP[c][0]} ${Math.round(k/n*100)}%</span>`).join("")}
    <h3>This dekad</h3>${Object.keys(flags).length?Object.entries(flags).map(([f,k])=>`<span class="chip">${FLAG[f][0]}: ${k}</span>`).join(""):'<span class="muted">No flags in view.</span>'}
    <h3>Legend</h3>${legend()}<p class="muted" style="margin-top:18px">Click a field to see its season. Fields under 1 ha are left out.</p>${SOURCES}`;
 }
@@ -230,24 +258,35 @@ async function select(id){
 }
 function pctText(p){ return p==null?"—":`greener than ${Math.round(p)}% of the same crop today`; }
 function renderField(F){
-  const s=F.season_2026, crop=s.crop[dk], conf=s.conf[dk], code=NAME2CODE[crop];
-  const guess = !crop ? "Too early to tell" : (conf<0.6 ? `Possibly ${crop.toLowerCase()} (${Math.round(conf*100)}%)` : `Likely ${crop.toLowerCase()} · ${Math.round(conf*100)}%`);
-  const g=s.growth_z[dk], gtxt = g==null?"—":(g>1?"growing faster than usual for this crop at this stage":g<-1?"growing slower than usual for this crop at this stage":"growing as usual for this crop at this stage");
-  const past = F.history.filter(h=>NAME2CODE[h.declared]===code && h.curve);
-  let own="—"; if(past.length>=2 && s.ndvi_now[dk]!=null){ const vals=past.map(h=>h.curve[dk]).filter(v=>v!=null); if(vals.length>=2){ const below=vals.filter(v=>v<s.ndvi_now[dk]).length; own=`greener than ${below} of ${vals.length} past ${crop.toLowerCase()} seasons on this field at this time`; } }
-  const fl=s.flag[dk];
+  const {S,k} = SK(dk), s = F.seasons[String(S)];
+  if(!s){ panel.innerHTML = `<button onclick="selected=null;map.setFilter('sel',['==',['get','field_id'],'']);summary()" class="chip" style="border:0;cursor:pointer">← fields in view</button><p>No data for this field in ${S}.</p>`; return; }
+  const crop=s.crop[k], conf=s.conf[k], code=NAME2CODE[crop];
+  const st = (getProps(F.id)||{}).c?.[dk] || "-";
+  const pc = conf==null || S===2025 ? "" : ` (${Math.round(conf*100)}%)`, word = S===2025 ? "declared" : "expected";
+  const title = !crop ? "Too early to tell"
+    : st==="_" ? `Not active <span class="muted" style="font:400 15px var(--sans)">· ${word} ${crop.toLowerCase()}${pc}</span>`
+    : st==="?" ? `Green, crop not clear yet <span class="muted" style="font:400 15px var(--sans)">· ${word} ${crop.toLowerCase()}${pc}</span>`
+    : st==="-" ? `Nothing seen lately <span class="muted" style="font:400 15px var(--sans)">· ${word} ${crop.toLowerCase()}${pc}</span>`
+    : S===2025 ? crop : (conf<0.6 ? `Possibly ${crop.toLowerCase()}${pc}` : `${crop} <span class="muted" style="font:400 15px var(--sans)">· likely, ${Math.round(conf*100)}%</span>`);
+  const src = s.src[k], srcTxt = src==="o" ? "clear view this dekad" : src==="r" ? "no clear view: estimated from radar (Sentinel-1) and the last clear view" : src==="c" ? "no clear view: last clear view carried (winter)" : "no reading";
+  const g=s.growth_z[k], gtxt = g==null?"—":(g>1?"growing faster than usual for this crop at this stage":g<-1?"growing slower than usual for this crop at this stage":"growing as usual for this crop at this stage");
+  const past = F.history.filter(h=>h.season<S && NAME2CODE[h.declared]===code && h.curve);
+  let own="—"; if(past.length>=2 && s.ndvi_now[k]!=null){ const vals=past.map(h=>h.curve[k]).filter(v=>v!=null); if(vals.length>=2){ const below=vals.filter(v=>v<s.ndvi_now[k]).length; own=`greener than ${below} of ${vals.length} past ${crop.toLowerCase()} seasons on this field at this time`; } }
+  const fl=s.flag[k];
   const events=[]; if(s.emergence) events.push(`Emerged around ${s.emergence}`);
-  s.flag.slice(0,dk+1).forEach((f,i)=>{ if(f&&s.flag[i-1]!==f) events.push(`${META.dekads[i]}: ${f}`); });
+  s.flag.slice(0,k+1).forEach((f,i)=>{ if(f&&s.flag[i-1]!==f) events.push(`${lblSK(S,i)}: ${f}`); });
   panel.innerHTML = `<button onclick="selected=null;map.setFilter('sel',['==',['get','field_id'],'']);summary()" class="chip" style="border:0;cursor:pointer">← fields in view</button>
-   <h2>${guess}</h2><div class="muted">Field ${F.id} · ${F.area_ha} ha · ${META.dekads[dk]} · inferred from Sentinel-1/2</div>
+   <div class="fieldhead">${iconBlock(st)}<h2 style="margin:0">${title}</h2></div>
+   <div class="muted">Field ${F.id.replace("2026_","")} · ${F.area_ha} ha · ${lbl(dk)} · ${S===2025 ? "crop declared in the parcel register" : "crop inferred from Sentinel-2, Landsat and Sentinel-1"}</div>
    ${fl?`<div class="flagnote"><b>${fl}</b></div>`:""}
    <h3>Readings this dekad</h3>
+   <div class="reading"><b>Seen</b><span>${srcTxt}</span></div>
    <div class="reading"><b>Growth</b><span>${gtxt}</span></div>
-   <div class="reading"><b>Region</b><span>${pctText(s.region_pct[dk])}</span></div>
+   <div class="reading"><b>Region</b><span>${pctText(s.region_pct[k])}</span></div>
    <div class="reading"><b>Own past</b><span>${own}</span></div>
    ${floodLine(F.id)}
-   <h3>Season so far</h3><div id="curve"></div>
-   <div class="muted">Line: this field, as knowable at each dekad. Band: 10–90% of fields with the same crop guess this season. Grey: this field's past seasons of that crop.</div>
+   <h3>Season ${S-1}–${String(S).slice(2)} so far</h3><div id="curve"></div>
+   <div class="muted">Line: this field, as knowable at each dekad (dots: estimated through clouds from radar). Band: 10–90% of fields with the same crop this season. Grey: this field's past seasons of that crop.</div>
    <h3>Phenological clock, 2020–2026</h3><div id="clock"></div><div class="muted">One ring per season, inner 2020 to outer 2026, starting in October at the top. Darker green = greener.</div>
    <h3>Events</h3>${events.length?events.map(e=>`<div>${e}</div>`).join(""):'<span class="muted">None so far.</span>'}
    <h3>History</h3><table><tr><th>Season</th><th>Declared</th><th>Behaved like</th><th>Emerged</th></tr>
@@ -255,30 +294,36 @@ function renderField(F){
    <p class="muted">"Behaved like" = the phenological clock check: does the season look like the crop that was declared? (d) = emergence days later (+) or earlier (−) than that crop's median that season.</p>`;
   drawCurve(F); drawClock(F);
 }
+function getProps(id){
+  if(!propsCache[id]){ const q = map.querySourceFeatures("f",{filter:["==",["get","field_id"],id]}); if(q.length) propsCache[id] = q[0].properties; }
+  return propsCache[id]; }
 function floodLine(id){
-  let p = propsCache[id]; if(!p){ const q = map.querySourceFeatures("f",{filter:["==",["get","field_id"],id]}); if(q.length) p = propsCache[id] = q[0].properties; }
+  const p = getProps(id);
   if(!p || p.fh==null) return "";
   const lvl = ["very low","low","moderate","high","very high"][Math.max(0,Math.min(4,Math.round(p.fm)-1))];
   return `<div class="reading"><b>Flood</b><span>${Math.round(p.fh*100)}% of the field has high or very high flood susceptibility (average: ${lvl}). A terrain-based screening map, not observed floods. Source: <a href="https://doi.org/10.5281/zenodo.20568218" target="_blank" rel="noopener">Waleed, M. (2026), GFSM v1, Zenodo</a>, CC BY 4.0.</span></div>`; }
 function drawCurve(F){
-  const s=F.season_2026, x=d3.range(36), pts=[];
-  x.forEach(i=>{ if(i<=dk && s.ndvi_now[i]!=null) pts.push({i,v:s.ndvi_now[i],k:"this field"}); });
-  const band=F.band?x.map(i=>({i,lo:F.band[0][i],md:F.band[1][i],hi:F.band[2][i]})).filter(d=>d.lo!=null):[];
-  const code=NAME2CODE[s.crop[dk]]; const past=[]; F.history.filter(h=>NAME2CODE[h.declared]===code&&h.curve).forEach(h=>h.curve.forEach((v,i)=>past.push({i,v,season:h.season})));
+  const {S,k} = SK(dk), s=F.seasons[String(S)], x=d3.range(36), pts=[], est=[];
+  x.forEach(i=>{ if(i>k) return; if(s.ndvi_now[i]!=null) pts.push({i,v:s.ndvi_now[i]}); else if(s.src[i]==="r" && s.fill[i]!=null) est.push({i,v:s.fill[i]}); });
+  const band=s.band?x.map(i=>({i,lo:s.band[0][i],md:s.band[1][i],hi:s.band[2][i]})).filter(d=>d.lo!=null):[];
+  const code=NAME2CODE[s.crop[k]]; const past=[]; F.history.filter(h=>h.season<S&&NAME2CODE[h.declared]===code&&h.curve).forEach(h=>h.curve.forEach((v,i)=>past.push({i,v,season:h.season})));
+  const col = CROP[code||"-"][1]==="#FFFFFF" ? "#6F8783" : CROP[code||"-"][1];
   const el=document.getElementById("curve"); el.innerHTML="";
   el.append(Plot.plot({width:Math.min(400,el.clientWidth||400),height:200,marginLeft:36,
     x:{domain:[0,35],ticks:[0,9,18,27],tickFormat:i=>["Oct","Jan","Apr","Jul"][i/9],label:null},y:{domain:[0,1],label:"NDVI"},
     marks:[Plot.areaY(band,{x:"i",y1:"lo",y2:"hi",fill:"#DB8FAB",fillOpacity:0.18}),Plot.lineY(band,{x:"i",y:"md",stroke:"#DB8FAB",strokeDasharray:"3,3"}),
       Plot.lineY(past,{x:"i",y:"v",z:"season",stroke:"#B8C2BF",strokeWidth:1}),
-      Plot.lineY(pts,{x:"i",y:"v",stroke:CROP[code||"-"][1],strokeWidth:2.5}),Plot.ruleX([dk],{stroke:"#0A2F2B",strokeOpacity:0.3})]}));
+      Plot.lineY(pts,{x:"i",y:"v",stroke:col,strokeWidth:2.5}),Plot.dot(est,{x:"i",y:"v",r:3,stroke:col,fill:"white",strokeWidth:1.5}),
+      Plot.ruleX([k],{stroke:"#0A2F2B",strokeOpacity:0.3})]}));
 }
 function drawClock(F){
   const el=document.getElementById("clock"); el.innerHTML=""; const W=Math.min(380,el.clientWidth||380), R0=34, ring=(W/2-30-R0)/7;
   const svg=d3.select(el).append("svg").attr("width",W).attr("height",W).append("g").attr("transform",`translate(${W/2},${W/2})`);
   const col=d3.scaleLinear().domain([0.05,0.4,0.85]).range(["#EFE3C8","#9CCB8F","#0B4F43"]).clamp(true);
   const arc=d3.arc(), seasons=[2020,2021,2022,2023,2024,2025,2026];
-  seasons.forEach((S,j)=>{ const h=F.history.find(x=>x.season===S); const curve=S===2026?F.season_2026.ndvi_now:(h?h.curve:null); if(!curve) return;
-    curve.forEach((v,i)=>{ if(v==null||(S===2026&&i>dk)) return;
+  const now = SK(dk);
+  seasons.forEach((S,j)=>{ if(S>now.S) return; const h=F.history.find(x=>x.season===S); const curve=S===2026?(F.seasons["2026"]||{}).fill:(h?h.curve:null); if(!curve) return;
+    curve.forEach((v,i)=>{ if(v==null||(S===now.S&&i>now.k)) return;
       svg.append("path").attr("d",arc({innerRadius:R0+j*ring,outerRadius:R0+(j+1)*ring-1,startAngle:i/36*2*Math.PI,endAngle:(i+1)/36*2*Math.PI-0.01})).attr("fill",col(v)); });
     svg.append("text").attr("x",3).attr("y",-(R0+j*ring+ring/2)).attr("font-size",9).attr("font-family","IBM Plex Mono").attr("fill","#3E5B56").attr("dominant-baseline","middle").text(S);
   });

@@ -13,7 +13,7 @@ Every study states its method, how it was checked against imagery or independent
 
 ## Interactive
 
-- [Season's Pulse: every field's season, dekad by dekad](https://kirjawa.github.io/season-pulse/): An interactive replay of the 2026 season for 7,567 fields on Bulgaria's Danube plain: likely crop, growth against the region and the field's own past, and flagged events, from Sentinel-1 and Sentinel-2.
+- [Season's Pulse: every field's season, dekad by dekad](https://kirjawa.github.io/season-pulse/): An interactive replay from February 2025 to September 2026 for 7,567 fields on Bulgaria's Danube plain: crop, growth against the region and the field's own past, and field events, from Sentinel-2, Landsat and Sentinel-1.
 
 ## Contact
 
