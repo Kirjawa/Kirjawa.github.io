@@ -1,0 +1,17 @@
+# Ana Silva · GIS & remote sensing
+
+> Portfolio of Ana Silva, an independent GIS and remote sensing specialist based in Sofia, Bulgaria. Satellite analytics, large geospatial datasets and machine learning for environment and agriculture, built on open data (Sentinel-1, Sentinel-2, Sentinel-5P, Landsat, public parcel registers). Languages: English, Portuguese, Bulgarian, Spanish.
+
+Every study states its method, how it was checked against imagery or independent data, and its limits.
+
+## Studies
+
+- [Palm oil mills: where does the fruit come from?](https://kirjawa.github.io/palm-oil.html): Road-based sourcing areas and forest clearing since the EUDR cutoff for 361 palm oil mills in West Kalimantan and Riau.
+- [Dobrudja: how long does the soil lie bare?](https://kirjawa.github.io/soil-cover.html): Field-by-field soil cover in Bulgaria's grain belt, 2019 to 2025, and whether the 2023 soil-cover rule changed it.
+- [Southern Niger: are farmers' fields getting woodier?](https://kirjawa.github.io/farmland-trees.html): Forty years of dry-season Landsat over farmland in Maradi and Zinder, separating rain from farmer-managed regrowth.
+- [Maritsa Iztok: do the emissions seen from space match the reports?](https://kirjawa.github.io/maritsa-emissions.html): Sentinel-5P SO2 and NOx over Bulgaria's largest lignite complex, 2019 to 2024, against the EU emissions register.
+
+## Contact
+
+- [Portfolio and contact](https://kirjawa.github.io/#contact)
+- [LinkedIn](https://www.linkedin.com/in/ana-luisa-silva/)
