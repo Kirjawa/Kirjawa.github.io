@@ -132,7 +132,8 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
     <tr><td>Same fields after 2023, bare days over the whole year</td><td class="n">−5 ± 24 days</td></tr>
     <tr><td>Bare days a year, wheat and barley</td><td class="n">about 60 to 90</td></tr>
     <tr><td>Bare days a year, sunflower and maize</td><td class="n">about 160 to 200</td></tr>
-    <tr><td>Winter days with no living cover before sunflower and maize (of 120)</td><td class="n">103 to 115</td></tr>
+    <tr><td>Winter days with no living cover before sunflower and maize (of 120)</td><td class="n">97 to 117</td></tr>
+    <tr><td>Of those, stubble where the soil was dry enough to tell</td><td class="n">5 to 27%</td></tr>
     <tr><td>Sunflower and maize land green over winter, 2019 to 2024</td><td class="n">1 to 4%</td></tr>
     <tr><td>Same, 2025</td><td class="n">15%</td></tr>
     <tr><td>Farmland with standing water after rain, any year</td><td class="n">under 1%</td></tr>
@@ -145,7 +146,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   <p>Wheat and barley are harvested in July and their stubble counts as cover, so they have about 60 to 90 bare days a year. Sunflower and maize leave the soil open from autumn to late spring, about 160 to 200 days. Between areas the differences are smaller. The two areas by the Danube are the least bare and one central area is the barest, but there is no clean pattern from the Danube to the coast.</p>
 
   <h3>Winter is the gap</h3>
-  <p>Since August 2024 the Bulgarian rule covers summer only. Winter is when the soil is most exposed: before sunflower and maize there is no living cover on 103 to 115 of the 120 days from November to February. In the winter I checked on the images, it was tilled soil rather than stubble.</p>
+  <p>Since August 2024 the Bulgarian rule covers summer only. Winter is when the soil is most exposed: before sunflower and maize there is no living cover on most of the 120 days from November to February. Telling stubble from bare soil in winter is harder, because wet soil makes bare ground look like stubble. So I only made that call on days when the topsoil was dry. On those days it was mostly bare soil: stubble made up only 5 to 27% of them, depending on the year.</p>
 
   <h3>2025 was greener in winter, but mostly not from cover crops</h3>
   <p>In winter 2024 to 2025, 15% of the land waiting for sunflower or maize was green for most of the winter, against 1 to 4% in every earlier year. It followed by far the wettest late summer of the period. On the images, a few of these fields look sown, as a cover crop would be, but most look like weeds and cereal regrowth. The register only records the main crop, so satellite data alone can't prove a cover crop.</p>
@@ -155,7 +156,9 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   <h2>How I checked it</h2>
   <ul>
     <li><b>A random spot-check.</b> In the pilot area I drew 15 random field dates and judged each one on the image. About 11 to 13 of 15 were right, and the misses were borderline cases.</li>
-    <li><b>The two winter signals, on the images.</b> 12 random fields for each. The green winter of 2025 held up, although much of it is patchy. The 2019 "stubble" did not: all 12 were dark, wet, tilled soil. So winter results now count stubble and bare soil together.</li>
+    <li><b>200 views, labelled blind.</b> I drew 200 random field views across all areas and years and labelled each image by eye without seeing what the method had called it. Of the views that were clear enough to judge, living plants were right 89% of the time, while stubble and bare soil were right about 65 to 70% of the time. They get confused with each other in both directions, by about the same amount, so the yearly shares stay fair, but a single field on a single day is less certain. On the views taken on wet soil that the method no longer calls, 15 of 16 were bare soil, which supports leaving them out.</li>
+    <li><b>The two winter signals, on the images.</b> 12 random fields for each. The green winter of 2025 held up, although much of it is patchy. The 2019 "stubble" did not: all 12 were dark, wet, tilled soil.</li>
+    <li><b>Wet soil, measured.</b> Published work warns that the stubble index is thrown off by soil moisture. With daily topsoil moisture from ERA5-Land, the effect is clear here too: on sunflower and maize land in winter and at sowing, 1 to 6% of views read as stubble when the topsoil is dry, but 44 to 69% when it is very wet. So in winter, stubble and bare soil are only told apart on dry days, and the rest is shown as "too wet to tell". The odd 2019 winter falls back in line.</li>
     <li><b>Floods.</b> Dark radar after rain also comes from wheat in ear, not only from water. Fields flagged in wheat during heading were dropped, and so were faulty radar scenes from 2017 to 2018. What remains is under 1% of the farmland in any year.</li>
     <li><b>Distance to water, tested and dropped.</b> Fields near rivers and lakes first looked barer. Inside each area the effect changed direction from one area to the next, so it came from where the areas are, not from the water.</li>
   </ul>
@@ -169,7 +172,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   <div class="note"><p>This measures how long the soil lies bare, field by field. It can't say whether a farm meets the rule: the rule applies to 80% of each holding, and the public register doesn't say which fields belong to the same farm. No farm is named or can be identified here.</p></div>
   <ul>
     <li>These are sample estimates from 8 areas, weighted to the region. Patterns between areas are described, not tested.</li>
-    <li>In winter, stubble and wet bare soil look the same, so they are counted together as "no living cover".</li>
+    <li>In winter the soil is often too wet to tell stubble from bare soil. Those days are shown separately, not guessed.</li>
     <li>The register records the main crop only, so green land between crops may be a cover crop, weeds or regrowth.</li>
     <li>The rule changed in August 2024, so 2024 is a transition year.</li>
     <li>Weather data is about 9 km across. It describes the local climate, not each field.</li>
