@@ -4,6 +4,14 @@
 
 Every study states its method, how it was checked against imagery or independent data, and its limits.
 
+## Services
+
+- Habitat pre-mapping and monitoring: Desk-based habitat maps from Sentinel-1, Sentinel-2 and LiDAR before the field survey, with a parcel table for the ecologist, and repeat imagery between monitoring visits.
+- Site screening for sensitive locations: Sites screened on open data against protected areas, critical habitat, water risk and land cover, shaped for IFC PS6, EBRD PR6 and the TNFD Locate phase.
+- AI-assisted GIS workflows: Guidance and training for GIS teams on using AI assistants safely: what to hand over, what to check, and how to keep client data at home.
+
+Desk work delivered as GIS layers, tables and methods notes that drop into the client's own report; scope, price and turnaround agreed up front for each project.
+
 ## Freelance work
 
 - [Agentic AI for GIS teams: faster production without leaking client data](https://kirjawa.github.io/ai-gis-guide.html): Three playbooks done with an AI agent on real open data (schema-only setup, CAD to GIS, QGIS Atlas), ten real failures from geospatial pipelines, the checks that catch them, and training formats for GIS teams.
@@ -23,4 +31,6 @@ Every study states its method, how it was checked against imagery or independent
 ## Contact
 
 - [Portfolio and contact](https://kirjawa.github.io/#contact)
+- Email: ana@timebooster.ai
 - [LinkedIn](https://www.linkedin.com/in/ana-luisa-silva/)
+- [GitHub](https://github.com/Kirjawa)
