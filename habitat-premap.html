@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Habitat pre-map for biodiversity net gain · Ana Silva</title>
+<meta name="description" content="A desk-based habitat pre-map of the Fenwick Solar Farm site from open satellite data and LiDAR, checked against the published biodiversity net gain survey, with the site's history, floods and weather.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--blush:#F8D3DA;--rose:#DB8FAB;--rose-ink:#A94C73;--teal:#15A19A;--forest:#0B6152;--pine:#073B35;
+--ground:#FDF6F7;--surface:#FFFFFF;--wash:#E6F2EC;--ink:#0A2F2B;--ink-2:#3E5B56;--muted:#6F8783;--hair:#DCE7E1;
+--serif:"Instrument Serif",Georgia,"Times New Roman",serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,40px)}
+.wrap{max-width:820px;margin:0 auto;padding-block:28px 72px}
+a{color:var(--rose-ink);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+.back{font:500 13px var(--mono);text-decoration:none}
+.eyebrow{display:block;margin-top:34px;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink)}
+h1{font:400 clamp(38px,5.5vw,64px)/1.02 var(--serif);margin:14px 0 18px;text-wrap:balance}
+h2{font:400 clamp(28px,3.4vw,38px)/1.1 var(--serif);margin:52px 0 12px;text-wrap:balance}
+h2{display:flex;align-items:baseline}
+h2 .n{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
+@media (max-width:1000px){h2 .n{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
+p,li{color:var(--ink-2)}
+.lede{font-size:19.5px;color:var(--ink)}
+ol,ul{padding-left:22px}
+li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:15.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+th{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td:first-child{color:var(--ink)}
+.tbl{overflow-x:auto}
+.prep{border:1.5px dashed var(--rose);border-radius:14px;padding:16px 20px;margin:24px 0;background:var(--surface)}
+.prep p{margin:0}
+.prep .demo{margin-top:8px;font:500 12.5px/1.5 var(--mono);color:var(--muted)}
+.note{background:var(--wash);border-radius:12px;padding:16px 20px;margin:24px 0}
+.note p{margin:0}
+.todo{color:var(--muted);font-style:italic}
+footer{border-top:1px solid var(--hair);margin-top:56px;padding-top:18px;font:400 13px var(--mono);color:var(--muted)}
+.find{list-style:none;padding:0;margin:18px 0;display:grid;gap:10px}
+.find li{background:var(--surface);border:1px solid var(--hair);border-left:4px solid var(--forest);border-radius:10px;padding:12px 16px;margin:0}
+.find b{color:var(--ink)}
+a.fig{display:block;margin:18px 0 6px;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
+a.fig img{display:block;width:100%;height:auto}
+.fig-note{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:0 0 18px}
+.steps li{margin:9px 0}
+.steps b{color:var(--ink)}
+.dl{display:grid;gap:10px;margin:16px 0}
+.dl a{display:flex;justify-content:space-between;gap:12px;align-items:baseline;text-decoration:none;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:12px 16px;color:var(--ink)}
+.dl a:hover{border-color:var(--forest)}
+.dl span{font:400 12.5px var(--mono);color:var(--muted)}
+.ai{background:var(--surface);border:1.5px dashed var(--rose);border-radius:14px;padding:16px 20px;margin:18px 0}
+.ai p{margin:6px 0}
+</style>
+<!-- seo --><link rel="canonical" href="https://kirjawa.github.io/habitat-premap.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Desk-based habitat pre-map and monitoring for biodiversity net gain", "description": "A pre-map of the Fenwick Solar Farm site from open Sentinel-2, Sentinel-1 and LiDAR data, checked against its published biodiversity net gain survey, with the site's record since 2017, ten winters of flooding and a table for the statutory metric.", "url": "https://kirjawa.github.io/habitat-premap.html", "image": "https://kirjawa.github.io/assets/s1_premap_check.jpg", "datePublished": "2026-10-22", "inLanguage": "en", "keywords": ["biodiversity net gain", "habitat mapping", "UKHab", "statutory metric", "Sentinel-2", "LiDAR", "England"], "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./#work">← Ana Silva · portfolio</a>
+  <span class="eyebrow">Sample · United Kingdom · biodiversity net gain</span>
+  <h1>Desk-based habitat pre-map and monitoring for biodiversity net gain</h1>
+  <div class="prep">
+    <p><b>Demonstration on open data.</b> Not a field survey and not signed off by an ecologist. A satellite pre-map is an input for the ecologist, never a survey result.</p>
+  </div>
+
+  <p class="lede">Fenwick Solar Farm, north of Doncaster, was consented in February 2026. Before the application, ecologists surveyed it from February 2023 to August 2024 for its biodiversity net gain assessment, and published the baseline: about 71% cropland and 26% grassland, with 28 km of hedgerows.</p>
+  <p>How much of that could open satellite data and LiDAR have anticipated before anyone went on site? And what can the record of past years, floods and weather add that a single survey can't?</p>
+
+  <a class="fig" href="assets/s1_premap_check.jpg"><img src="assets/s1_premap_check.jpg" alt="Map of the Fenwick solar site with cropland, grassland, hedgerows and unclear areas, and a chart comparing the pre-map's habitat shares with the published survey" loading="lazy"></a>
+  <p class="fig-note">The pre-map against the published survey. Select the image to open it full size.</p>
+
+  <ul class="find">
+    <li><b>Broad habitats:</b> 75% cropland and 20% grassland, against 71% and 26% in the survey. Another 3.5% is marked unclear, for the walkover to look at first.</li>
+    <li><b>A second opinion:</b> the Crop Map of England gives the same answer, cropland or grassland, on 93.3% of the area.</li>
+    <li><b>Hedgerows from LiDAR:</b> 17 km inside the site and 29 km with the boundary hedges, against 28 km in the survey.</li>
+    <li><b>The past:</b> about 19 ha that had been grass for at least three years were ploughed in September 2023, inside the survey period. The Crop Map of England shows grass there in 2021, 2022 and 2023, and cereals in 2024. Under the metric, land degraded after 30 January 2020 takes its earlier habitat as the baseline, so these are the first fields to check.</li>
+    <li><b>Water:</b> ten winters of radar, checked against Sentinel-2, put open water on about 5 ha inside the site in at least three winters, mostly along the River Went, and the amount follows winter rainfall.</li>
+    <li><b>Ready for the metric:</b> 142 parcels in the order of the statutory metric's baseline inputs, with areas that add up exactly to the site.</li>
+  </ul>
+
+  <h2><span class="n">1</span>The question</h2>
+  <p>A biodiversity net gain baseline starts with a habitat map, and for a large site it takes weeks of survey. A desk-based pre-map can show the ecologist where the common habitats are, where to look first, and what has changed on the land before the survey date, which matters: where habitat was degraded after 30 January 2020, the baseline has to be the habitat before the change.</p>
+  <p>Fenwick was chosen because its baseline is published, recent and made with the statutory metric. Biodiversity net gain becomes mandatory for nationally significant infrastructure projects on 2 November 2026.</p>
+
+  <h2><span class="n">2</span>Data</h2>
+  <div class="tbl"><table>
+    <tr><th>Source</th><th>Used for</th><th>Licence</th></tr>
+    <tr><td>Sentinel-2, 2017 to 2026 (54 views for the survey period)</td><td>The pre-map and the yearly record</td><td>Copernicus free and open</td></tr>
+    <tr><td>Sentinel-1, every winter pass 2016 to 2026</td><td>Open water through cloud</td><td>Copernicus free and open</td></tr>
+    <tr><td>LiDAR Composite, 1 m (Environment Agency)</td><td>Hedgerows, trees, woodland, roofs</td><td>Open Government Licence</td></tr>
+    <tr><td>Recorded Flood Outlines (Environment Agency)</td><td>Checking the radar flood maps</td><td>Open Government Licence</td></tr>
+    <tr><td>Rain gauges at South Elmsall, Nutwell and Dirtness (Environment Agency)</td><td>Rainfall, wet and dry seasons</td><td>Open Government Licence</td></tr>
+    <tr><td>ERA5-Land (Copernicus Climate Change Service)</td><td>Temperature, snow and frost at the time of each radar pass</td><td>Copernicus licence</td></tr>
+    <tr><td>Crop Map of England 2020 to 2024 (Rural Payments Agency)</td><td>Second opinion on cropland and grassland</td><td>Open Government Licence</td></tr>
+    <tr><td>Order limits (Planning Data platform)</td><td>The site boundary</td><td>Open Government Licence</td></tr>
+    <tr><td>Fenwick Solar Farm BNG Assessment (AECOM, 2024), Table F1</td><td>The surveyed baseline, for comparison</td><td>Published planning document, cited and not reproduced</td></tr>
+  </table></div>
+
+  <h2><span class="n">3</span>Method in brief</h2>
+  <ol class="steps">
+    <li><b>Site.</b> The solar site, which the survey covered in full, is the main block of the published Order limits: 406.6 ha, against about 407 ha in the assessment.</li>
+    <li><b>Pre-map.</b> Fields are found as areas of similar seasonal greenness, with LiDAR hedgerows as breaks. Each field is classed from its own record over the survey period: cropland when it shows bare soil in at least two months, grassland when it stays green, woodland where LiDAR finds tall vegetation in blocks, otherwise unclear. The rules were written before the comparison and not tuned to it.</li>
+    <li><b>Hedgerows and trees.</b> From LiDAR: woody vegetation more than 0.8 m tall that is not a roof, narrower than about 20 m, measured along its centre line in runs of at least 20 m.</li>
+    <li><b>History.</b> The same rules, farming year by farming year from 2017/18, with drought summers taken into account: in a summer much drier than usual, browned grass can look like bare soil.</li>
+    <li><b>Water.</b> Every winter radar pass: open water where both radar polarisations are much darker than that orbit's usual winter. Passes with frost or snow are skipped, since both darken radar just as water does. Where Sentinel-2 had a clear view within two days, it acts as the referee: radar water that looks like bare soil or green cover there is removed.</li>
+    <li><b>Table.</b> Parcels cut along the hedgerows, laid out in the order of the metric's baseline inputs: broad habitat and area filled in, habitat type suggested, condition left to the survey.</li>
+  </ol>
+
+  <h2><span class="n">4</span>Checks and accuracy</h2>
+  <p>Accuracy is reported for this site only. Without the survey's own map, which is not open, the comparison is with its published totals, plus an independent second opinion field by field.</p>
+  <div class="tbl"><table>
+    <tr><th>Check</th><th>Result</th></tr>
+    <tr><td>Broad habitats against the survey's totals</td><td>Cropland 75.2% (survey 70.6%), grassland 19.8% (26.1%), unclear 3.5%</td></tr>
+    <tr><td>Crop Map of England 2023 and 2024</td><td>Same answer, cropland or grassland, on 93.3% of 390 ha</td></tr>
+    <tr><td>Hedgerows and tree lines</td><td>17.4 km inside the site, 29.1 km with the boundary hedges; survey 28.04 km (site and cable corridor)</td></tr>
+    <tr><td>Woodland</td><td>0.4 ha of woodland blocks; survey 1.0 ha of woodland and scrub</td></tr>
+    <tr><td>Floods of November 2019</td><td>80% of the open water radar saw on 13 November lies inside the EA's outlines from aerial photography</td></tr>
+    <tr><td>Winter water record against Sentinel-2 (clear views within two days)</td><td>82% of the radar's water confirmed as water. The first version: 9%, because it took green crops and grass for water</td></tr>
+    <tr><td>Storm Christoph, January 2021</td><td>Half of the EA's outlines seen as water on 22 January. Radar also shows the River Went's floodplain flooded, as in 2019, where the EA drew no outline for this storm</td></tr>
+    <tr><td>The yearly record against the Crop Map of England, 2020 to 2024</td><td>Same answer by area: 88% (2020), 96% (2021), 86% (2022), 88% (2023), 89% (2024)</td></tr>
+  </table></div>
+  <p>Where the pre-map and the survey differ, the survey has more grassland. The Crop Map of England shows fields left fallow or sown to temporary grass in 2024, which a summer survey can record as grassland, and grass margins narrower than 10 m are missed by the pre-map.</p>
+  <a class="fig" href="assets/s1_history.jpg"><img src="assets/s1_history.jpg" alt="Nine small maps of the site, one per farming year from 2017/18 to 2025/26, showing cropland, grassland and an area of grassland ploughed in 2023, with a chart of the shares per year" loading="lazy"></a>
+  <p class="fig-note">The record, farming year by farming year. Select the image to open it full size.</p>
+  <a class="fig" href="assets/s1_flood_2019.jpg"><img src="assets/s1_flood_2019.jpg" alt="Radar map of open water on 13 November 2019 with the Environment Agency's flood outlines, and a chart of water per radar pass" loading="lazy"></a>
+  <p class="fig-note">The first flood check: November 2019. Select the image to open it full size.</p>
+  <a class="fig" href="assets/s1_water.jpg"><img src="assets/s1_water.jpg" alt="Map of how many winters each part of the site held open water, highest along the River Went, with charts of open water per winter against winter rainfall" loading="lazy"></a>
+  <p class="fig-note">Ten winters of radar, with Sentinel-2 as the referee. Select the image to open it full size.</p>
+
+  <h2><span class="n">5</span>What satellite data can't tell here</h2>
+  <ul>
+    <li><b>Condition.</b> It needs the field survey and the condition criteria. The pre-map gives broad type only.</li>
+    <li><b>Finer types.</b> Other neutral grassland and modified grassland look alike from space; so do cereals and some other crops at this level.</li>
+    <li><b>Small and narrow habitats.</b> Ditches, tracks, yards and grass margins under 10 m wide: in the survey they add up to about 3% of the site.</li>
+    <li><b>Species,</b> and anything that depends on them.</li>
+    <li><b>The date of the LiDAR.</b> The composite mixes survey years, so a hedge planted or removed since then is not reflected.</li>
+    <li><b>Water under crops or trees,</b> and flooding that drained between two radar passes.</li>
+  </ul>
+
+  <h2><span class="n">6</span>How AI was used</h2>
+  <a class="fig" href="assets/s1_workflow.png"><img src="assets/s1_workflow.png" alt="Workflow: open data sources, then scripts written by an AI agent, then what they were checked against, then the results, with a dashed path back showing what the checks caught" loading="lazy"></a>
+  <div class="ai">
+    <p>An agent (Claude Code) wrote the scripts: downloads from the open services, the pre-map and parcels, the LiDAR measurements, the flood checks, the figures and the table. Every result on this page was checked against something independent: the published survey totals, the Crop Map of England, and the Environment Agency's flood outlines.</p>
+    <p><b>What it got wrong, and what caught it:</b> the first hedgerow measurement treated the trees in the hedges as woodland and found 8 km; the survey's 28 km showed something was missing. The first winter water record didn't follow the weather: the dry winter 2018/19 came out wettest. Sentinel-2 views taken within two days of the radar showed that 83% of what radar called water was green crops and grass. With both radar polarisations and Sentinel-2 as the referee, 82% of the radar's water is now confirmed as water. And the first crop map download covered only part of the site, until a gap in the history check showed it.</p>
+  </div>
+
+  <h2><span class="n">7</span>Downloads</h2>
+  <div class="dl">
+    <a href="downloads/S1_habitat_premap_demo_v1_2026-11.pdf">Demonstration report, in the order of a BNG baseline section <span>PDF · 8 pages · 2.2 MB</span></a>
+    <a href="downloads/S1_fenwick_premap_demo_v1.zip">Pre-map, parcels, hedgerows and baseline table (GeoPackage, CSV, GeoTIFF) <span>ZIP · 0.24 MB</span></a>
+  </div>
+  <p>Own outputs and open data only, with every source and licence named inside. Nothing from the survey's plan is included.</p>
+
+  <h2><span class="n">8</span>Sources</h2>
+  <ul>
+    <li><a href="https://nsip-documents.planninginspectorate.gov.uk/published-documents/EN010152-000063-7.11%20Biodiversity%20Net%20Gain%20Assessment.pdf">Fenwick Solar Farm, Biodiversity Net Gain Assessment</a> (AECOM, October 2024), Table F1</li>
+    <li><a href="https://www.gov.uk/government/publications/statutory-biodiversity-metric-tools-and-guides">Statutory biodiversity metric tools and guides</a></li>
+    <li><a href="https://www.gov.uk/guidance/what-to-include-in-biodiversity-net-gain-baselines-for-nsips">What to include in biodiversity net gain baselines for NSIPs</a></li>
+    <li><a href="https://www.planning.data.gov.uk/dataset/infrastructure-project">Planning Data: infrastructure projects</a> (Order limits)</li>
+    <li><a href="https://ckan.publishing.service.gov.uk/dataset/crop-map-of-england-crome-2024">Crop Map of England (CROME)</a>, Rural Payments Agency</li>
+    <li>Environment Agency: LiDAR Composite (1 m), Recorded Flood Outlines, Hydrology rain gauges</li>
+    <li>Muñoz Sabater, J. et al. (2021). ERA5-Land: a state-of-the-art global reanalysis dataset for land applications. Earth System Science Data 13.</li>
+    <li>Twele, A. et al. (2016). Sentinel-1-based flood mapping: a fully automated processing chain. International Journal of Remote Sensing 37.</li>
+  </ul>
+  <footer>© Ana Silva · Demonstration on open data, never client work</footer>
+</div>
+<!-- analytics --><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "804d5b1726c6476db1c04a238d7c114f"}'></script><!-- End Cloudflare Web Analytics --><!-- /analytics -->
+</body>
+</html>

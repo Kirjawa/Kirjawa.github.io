@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agentic AI for GIS teams · Ana Silva</title>
+<meta name="description" content="A practical guide for GIS teams working with AI agents: three playbooks on real open data (schema-only setup, CAD to GIS, QGIS Atlas), ten real failures, the checks that catch them, and training for every team size.">
+<meta property="og:title" content="Agentic AI for GIS teams: faster production without leaking client data">
+<meta property="og:description" content="Three playbooks on real open data, ten real failures from geospatial pipelines, the checks that catch them, and training for teams of every size.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--blush:#F8D3DA;--rose:#DB8FAB;--rose-ink:#A94C73;--teal:#15A19A;--forest:#0B6152;--pine:#073B35;
+--ground:#FDF6F7;--surface:#FFFFFF;--wash:#E6F2EC;--ink:#0A2F2B;--ink-2:#3E5B56;--muted:#6F8783;--hair:#DCE7E1;
+--serif:"Instrument Serif",Georgia,"Times New Roman",serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,40px)}
+.wrap{max-width:820px;margin:0 auto;padding-block:28px 72px}
+a{color:var(--rose-ink);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+.back{font:500 13px var(--mono);text-decoration:none}
+.eyebrow{display:block;margin-top:34px;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink)}
+h1{font:400 clamp(38px,5.5vw,64px)/1.02 var(--serif);margin:14px 0 18px;text-wrap:balance}
+h2{font:400 clamp(28px,3.4vw,38px)/1.1 var(--serif);margin:52px 0 12px;text-wrap:balance}
+h2{display:flex;align-items:baseline}
+h2 .n{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
+@media (max-width:1000px){h2 .n{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
+p,li{color:var(--ink-2)}
+.lede{font-size:19.5px;color:var(--ink)}
+ol,ul{padding-left:22px}
+li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:15.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+th{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td:first-child{color:var(--ink)}
+.tbl{overflow-x:auto}
+.prep{border:1.5px dashed var(--rose);border-radius:14px;padding:16px 20px;margin:24px 0;background:var(--surface)}
+.prep p{margin:0}
+.prep .demo{margin-top:8px;font:500 12.5px/1.5 var(--mono);color:var(--muted)}
+.note{background:var(--wash);border-radius:12px;padding:16px 20px;margin:24px 0}
+.note p{margin:0}
+.todo{color:var(--muted);font-style:italic}
+footer{border-top:1px solid var(--hair);margin-top:56px;padding-top:18px;font:400 13px var(--mono);color:var(--muted)}
+.lede2{font-size:17.5px}
+.who{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:16px 20px;margin:26px 0}
+.who b{color:var(--ink)}
+.who p{margin:0;font-size:15.5px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.three div{background:var(--surface);border:1px solid var(--hair);border-top:4px solid var(--forest);border-radius:12px;padding:14px 16px}
+.three div:nth-child(2){border-top-color:var(--teal)}
+.three div:nth-child(3){border-top-color:var(--rose-ink)}
+.three h3{font:600 15.5px/1.3 var(--sans);margin:0 0 6px;color:var(--ink)}
+.three ul{margin:0;padding-left:18px;font-size:14.5px}
+.three li{margin:4px 0}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.case{background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:15px 17px}
+.case .k{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--rose-ink)}
+.case h3{font:600 16px/1.3 var(--sans);margin:6px 0 6px;color:var(--ink)}
+.case p{margin:0 0 6px;font-size:14.5px;line-height:1.5}
+.case p.fix{margin:0;padding-top:6px;border-top:1px dashed var(--hair);color:var(--ink)}
+.case p.fix b{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--forest)}
+.checks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.checks div{background:var(--wash);border-radius:12px;padding:14px 16px}
+.checks h3{font:500 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--forest);margin:2px 0 8px}
+.checks ul{margin:0;padding-left:18px;font-size:14.5px}
+.checks li{margin:4px 0}
+details.try{border:1.5px dashed var(--rose);border-radius:12px;padding:12px 16px;margin:20px 0;background:var(--surface)}
+details.try summary{cursor:pointer;font-weight:600;color:var(--ink)}
+details.try p{margin:10px 0 0}
+.mods{list-style:none;padding:0;margin:18px 0;counter-reset:m}
+.mods li{counter-increment:m;position:relative;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:14px 16px 14px 62px;margin:10px 0}
+.mods li::before{content:counter(m);position:absolute;left:16px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--forest);color:#fff;font:500 15px/32px var(--mono);text-align:center}
+.mods b{display:block;color:var(--ink);font-size:16.5px}
+.mods span{display:block;font-size:14.5px;margin-top:3px}
+.mods i{display:block;font:400 12.5px/1.5 var(--mono);color:var(--muted);font-style:normal;margin-top:5px}
+.formats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.fmt{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:16px 18px}
+.fmt .k{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.fmt h3{font:400 24px/1.1 var(--serif);margin:6px 0 8px;color:var(--ink)}
+.fmt p{margin:0 0 6px;font-size:14.5px}
+.fmt p.inc{color:var(--muted);font-size:13.5px;margin:0}
+.cta{background:var(--forest);color:#fff;border-radius:14px;padding:18px 22px;margin:28px 0}
+.cta p{color:#E6F3EF;margin:0}
+.cta a{color:#fff;font-weight:600}
+.pb-index{list-style:none;padding:0;margin:14px 0 6px;display:grid;gap:6px}
+.pb-index a{display:flex;gap:12px;align-items:baseline;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:10px 14px;font-size:16px}
+.pb-index a:hover{border-color:var(--forest)}
+.pb-index b{font:500 13px var(--mono);color:var(--rose-ink)}
+.pb{background:var(--surface);border:1px solid var(--hair);border-radius:16px;padding:22px 24px;margin:22px 0;scroll-margin-top:16px}
+.pb>.k{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.pb h3{font:400 clamp(25px,2.9vw,31px)/1.12 var(--serif);margin:8px 0 8px;color:var(--ink)}
+.pb .meta{font:400 13px/1.6 var(--mono);color:var(--muted);margin:0 0 14px}
+.steps{padding-left:22px}
+.steps li{margin:9px 0}
+.steps b{color:var(--ink)}
+.pb code{font:400 13px/1.5 var(--mono);background:var(--ground);padding:1px 5px;border-radius:5px}
+.pb pre{font:400 12.5px/1.55 var(--mono);background:var(--ground);border:1px solid var(--hair);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre;margin:10px 0 4px}
+.pb pre code{background:none;padding:0;font-size:inherit}
+a.fig{display:block;margin:16px 0;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
+a.fig img{display:block;width:100%;height:auto}
+.fig-note{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:-8px 0 14px}
+.traps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 16px}
+.traps div{background:var(--ground);border-radius:12px;padding:12px 14px}
+.traps h4{font:600 15px/1.3 var(--sans);margin:0 0 6px;color:var(--ink)}
+.traps p{margin:0;font-size:14px;line-height:1.5}
+.case.warn{border-left:4px solid var(--rose-ink);margin:16px 0 4px}
+.cleaner{background:var(--ground);border:1.5px dashed var(--rose);border-radius:14px;padding:16px 18px;margin:18px 0 4px}
+.cl-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.cl-head b{color:var(--ink)}
+.cl-head span{font:400 12.5px var(--mono);color:var(--muted)}
+.cl-ex{font-size:14px;margin:10px 0 8px;color:var(--ink-2)}
+.cleaner button{font:500 13px var(--sans);border:1px solid var(--hair);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 12px;cursor:pointer;margin:2px 4px 2px 0}
+.cleaner button:hover{border-color:var(--forest)}
+.cleaner label{display:block;font-size:14px;color:var(--ink-2)}
+.cleaner textarea{width:100%;margin-top:6px;font:400 12.5px/1.45 var(--mono);border:1px solid var(--hair);border-radius:10px;padding:10px 12px;background:var(--surface);color:var(--ink);resize:vertical}
+.cl-opt{display:flex;gap:16px;flex-wrap:wrap;margin:8px 0 10px}
+.cl-opt label{display:flex;gap:6px;align-items:center;font-size:13.5px}
+.cleaner .cl-go{background:var(--forest);border-color:var(--forest);color:#fff;padding:8px 16px}
+.cleaner .cl-go:hover{background:var(--pine)}
+#cl-out{margin:12px 0 0;background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:10px 12px;font:400 12.5px/1.45 var(--mono);white-space:pre-wrap;max-height:380px;overflow:auto}
+#cl-out:empty{display:none}
+.cl-log{font-size:14px;margin:8px 0 0}
+@media (max-width:760px){.three,.cases,.checks,.formats,.traps{grid-template-columns:1fr}.pb{padding:18px 16px}}
+</style>
+<!-- seo --><link rel="canonical" href="https://kirjawa.github.io/ai-gis-guide.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Agentic AI for GIS teams: faster production without leaking client data", "description": "Three playbooks done with an AI agent on real open data (schema-only setup, CAD to GIS, QGIS Atlas), ten real failures from geospatial pipelines, the checks that catch them, and training formats for GIS teams.", "url": "https://kirjawa.github.io/ai-gis-guide.html", "image": "https://kirjawa.github.io/assets/og_card.jpg", "datePublished": "2026-10-22", "inLanguage": "en", "keywords": ["AI-assisted GIS", "agentic AI", "client data", "DXF to GIS", "QGIS Atlas", "validation", "training", "Claude Code"], "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./#services">← Ana Silva · portfolio</a>
+  <span class="eyebrow">Guide · AI-assisted GIS workflows</span>
+  <h1>Agentic AI for GIS teams: faster production without leaking client data</h1>
+  <p class="lede">AI agents can now take on real production work in GIS: converting drawings, building map books, writing the scripts in between. They are fast, patient and often right. When they are wrong, the result usually still looks plausible: a map that renders, a table with a number in every row. This guide shows three jobs done with an agent on real open data, how to keep client data out of the prompt, and the checks that catch plausible errors before a client does.</p>
+  <p>It's written for GIS analysts and teams starting to work with agents and assistants such as Claude Code, Antigravity, Copilot or ChatGPT, and for the people who sign off their outputs. The principles don't depend on the tool.</p>
+
+  <div class="who"><p><b>Where this comes from.</b> Every failure below happened in the pipelines behind this portfolio, written with an AI assistant and checked by hand. None comes from client work. The training is built on the same cases and designed with a trainer's method: FPIF certified trainer since 2018, classes at Universidade Júnior, and daily work with Claude Code, Antigravity and n8n.</p></div>
+
+  <h2><span class="n">1</span>What to delegate, what to check, what to keep</h2>
+  <p>A simple sort, done once with the whole team, settles most arguments about where AI belongs in a GIS workflow.</p>
+  <div class="three">
+    <div><h3>Delegate</h3><ul>
+      <li>Project setup and boilerplate</li>
+      <li>Download scripts for open catalogues and APIs</li>
+      <li>First drafts of plots and map layouts</li>
+      <li>Refactoring, documentation, format conversions</li></ul></div>
+    <div><h3>Delegate, then check</h3><ul>
+      <li>Reprojection, spatial joins, overlays</li>
+      <li>Raster mosaics, resampling, zonal statistics</li>
+      <li>Time series processing and model training</li>
+      <li>Anything that produces a number for a report</li></ul></div>
+    <div><h3>Keep</h3><ul>
+      <li>The method and its assumptions</li>
+      <li>Data and licence choices</li>
+      <li>Interpretation, and what goes to the client</li>
+      <li>Sign-off</li></ul></div>
+  </div>
+  <p>Some things never go into a prompt: client data that isn't cleared for it, personal data, and credentials such as API keys. Playbook A shows how to work without them.</p>
+
+  <h2 id="playbooks"><span class="n">2</span>Three playbooks</h2>
+  <p>Three jobs GIS teams do every week, each done with an agent (Claude Code) on real open data and checked against an independent answer. The times are the agent's working time in one session, from the first command to the last check. Reviewing the result comes on top.</p>
+  <p>Playbooks B and C use the cadastral survey of a small Swiss municipality, because Canton Solothurn publishes the same survey both as a CAD drawing and as GIS data, so every result can be checked against the canton's own version.</p>
+  <ol class="pb-index">
+    <li><a href="#pb-a"><b>A</b> Schema only: the agent writes the script, the data stays home</a></li>
+    <li><a href="#pb-b"><b>B</b> From a CAD drawing to a checked GIS package</a></li>
+    <li><a href="#pb-c"><b>C</b> A QGIS Atlas with its tables, without writing code</a></li>
+  </ol>
+
+  <section class="pb" id="pb-a">
+    <span class="k">Playbook A · client data</span>
+    <h3>Schema only: the agent writes the script, the data stays home</h3>
+    <p class="meta">For teams whose contracts keep client data off AI services. Tools: ogrinfo or gdalinfo, and any agent.</p>
+    <ol class="steps">
+      <li><b>Keep the data out of the agent's reach.</b> Store client data outside the agent's project folder. In Claude Code, a deny rule such as <code>"Read(./client_data/**)"</code> stops its file tools and commands like <code>cat</code>, but not a Python script that opens the file itself, and agents do most GIS work through Python. So either run the scripts yourself, or turn on Claude Code's sandbox, which blocks every process from that folder.</li>
+      <li><b>Describe the data yourself.</b> Run <code>ogrinfo -so</code> or <code>gdalinfo</code> on your own machine.</li>
+      <li><b>Clean the description before sharing it.</b> It gives away more than the structure: the extent and corner coordinates show where the site is, file names often carry client or place names, and a national coordinate system names the country. The cleaner below takes out the first two and shortens the third.</li>
+      <li><b>Ask for the script.</b> Give the agent the cleaned schema and the task, and ask for code you will run yourself.</li>
+      <li><b>Run it on open data with the same structure first, then on the client data.</b> If it fails, share the error message, not the data, and read the message first: errors can quote coordinates and attribute values too.</li>
+    </ol>
+    <div class="cleaner" id="cleaner">
+      <div class="cl-head"><b>Schema cleaner</b><span>Runs in your browser. Nothing you paste leaves this page.</span></div>
+      <div class="cl-ex">Real examples: <button type="button" data-ex="ogr">ogrinfo of a parcel layer</button><button type="button" data-ex="gdal">gdalinfo of an elevation tile</button></div>
+      <label for="cl-in">Paste the output of <code>ogrinfo -so</code> or <code>gdalinfo</code></label>
+      <textarea id="cl-in" rows="9" spellcheck="false" autocomplete="off"></textarea>
+      <div class="cl-opt"><label><input type="checkbox" id="cl-epsg" checked> Coordinate system as its EPSG code only</label><label><input type="checkbox" id="cl-count" checked> Hide feature counts</label></div>
+      <button type="button" class="cl-go" id="cl-go">Clean it</button>
+      <pre id="cl-out" aria-live="polite"></pre>
+      <p class="cl-log" id="cl-log"></p>
+    </div>
+  </section>
+
+  <section class="pb" id="pb-b">
+    <span class="k">Playbook B · CAD to GIS</span>
+    <h3>From a CAD drawing to a checked GIS package</h3>
+    <p class="meta">Data: the cadastral survey of Aeschi (SO), Canton Solothurn, as a DXF drawing (free use). Answer key: the canton's own GIS version of the same survey. Agent working time: about 6 minutes.</p>
+    <p>The task, in plain words: turn the drawing into a GeoPackage with one layer per theme, readable class names and the right coordinate system, then check it against the canton's version.</p>
+    <a class="fig" href="assets/guide_cad_to_gis.jpg"><img src="assets/guide_cad_to_gis.jpg" alt="Three maps of Aeschi: the CAD drawing with its numbered layers, the naive reading with overlapping polygons in pink, and the cleaned land cover" loading="lazy"></a>
+    <p class="fig-note">Select the image to open it full size.</p>
+    <p>The drawing had three traps, each typical of CAD deliveries:</p>
+    <div class="traps">
+      <div><h4>It wouldn't open</h4><p>The file starts with its symbol definitions and has no header, and GDAL, which QGIS uses to read DXF, didn't recognise it. An empty header added to a copy fixed it.</p></div>
+      <div><h4>Holes counted twice</h4><p>In CAD, a garden around a house is two closed lines. Read naively, the inner line becomes a second polygon: 643 ha of land cover in a 548 ha municipality. Lines inside a line of the same layer now become holes.</p></div>
+      <div><h4>Curves too coarse</h4><p>Curved boundaries are stored as arcs. Read in the default 4° steps, parcel areas moved by up to 22 m². With 0.25° steps every parcel is within about 1 m² of the official geometry.</p></div>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Checked against the canton's version</th><th>Result</th></tr>
+      <tr><td>Land cover area</td><td>547.68 ha against 547.67 ha</td></tr>
+      <tr><td>Buildings</td><td>729 of 729, same total area</td></tr>
+      <tr><td>Parcels</td><td>827 of 827, each within about 1 m²</td></tr>
+      <tr><td>Parcel numbers</td><td>823 matched; 4 left for a person, mostly where a small parcel's label sits in its neighbour</td></tr>
+      <tr><td>Coordinate system</td><td>None in the file. The coordinates were checked to sit in the Swiss LV95 range before EPSG:2056 was set</td></tr>
+      <tr><td>Layer codes</td><td>59 numbered CAD layers named from the canton's list; 3 codes not on the list kept apart and reported</td></tr>
+    </table></div>
+  </section>
+
+  <section class="pb" id="pb-c">
+    <span class="k">Playbook C · report figures</span>
+    <h3>A QGIS Atlas with its tables, without writing code</h3>
+    <p class="meta">Data: the package from playbook B. Output: six A4 map sheets at 1:10,000, each with its own land-cover table, and the QGIS project to edit them. Agent working time: about 3 minutes.</p>
+    <a class="fig" href="assets/guide_atlas_sheets.jpg"><img src="assets/guide_atlas_sheets.jpg" alt="Two A4 atlas pages of Aeschi at 1:10,000, each with a map, a land-cover table in hectares, a legend and a scale bar" loading="lazy"></a>
+    <p class="fig-note">Select the image to open it full size.</p>
+    <ol class="steps">
+      <li><b>Describe the page in plain words.</b> One map sheet per page at 1:10,000, a table of the land cover on that sheet in hectares, a legend showing only what's on the sheet, a scale bar, a north arrow and the source.</li>
+      <li><b>Let the agent write the expression for the table,</b> and paste it into a text box in the layout. For one class it reads:
+        <pre><code>aggregate(layer:='Land cover', aggregate:='sum',
+  expression:=area(intersection($geometry, @atlas_geometry)),
+  filter:="class_en" = 'Garden' AND intersects($geometry, @atlas_geometry))</code></pre></li>
+      <li><b>Check one sheet by hand</b> before trusting all of them.</li>
+      <li><b>Export the Atlas</b> from the Atlas toolbar, or with the export script the agent writes for when the data changes.</li>
+    </ol>
+    <div class="case warn"><span class="k">The failure that looked finished</span>
+      <p>The first version looped over all the classes in a single expression. The table looked complete, with a number on every row, and every row said 0.63 ha: QGIS keeps an aggregate's answer by its expression text, and the loop changed only a variable. An independent calculation of the same areas caught it, and one expression per class fixed it. All 58 printed values now match within 0.01 ha, and the six sheets add up to the municipality.</p></div>
+  </section>
+
+  <h2><span class="n">3</span>Ten failures that looked fine</h2>
+  <p>Each one produced an output that ran without errors and looked reasonable. Each one is the reason for a check that now runs every time.</p>
+  <div class="cases">
+    <div class="case"><span class="k">Projections</span><h3>Every field 23% too big</h3>
+      <p>A national map of 1.1 million declared parcels added up to 4.74 million ha instead of 3.86 million. The reprojection had read latitude and longitude in the wrong order, which moves and distorts every polygon.</p>
+      <p class="fix"><b>Check</b> · Assert the CRS and axis order when data is read, and compare one total against an official figure.</p></div>
+    <div class="case"><span class="k">Mosaics</span><h3>Real pixels hidden by a neighbour's edge</h3>
+      <p>Merging satellite scenes from the same day let one scene's empty edge, flagged with a fill value, overwrite the other scene's real data. The map showed gaps where the images had none, and a question about "this gap of data" found it.</p>
+      <p class="fix"><b>Check</b> · Mask fill values explicitly, merge scene by scene, and count valid pixels before and after.</p></div>
+    <div class="case"><span class="k">Units</span><h3>A factor of a thousand in a column name</h3>
+      <p>Yearly emissions estimated from space were compared with a register that used another unit: kilograms against kilotonnes.</p>
+      <p class="fix"><b>Check</b> · Units in every column name, and one known value tested for every output.</p></div>
+    <div class="case"><span class="k">Data versions</span><h3>A trend made by a software upgrade</h3>
+      <p>Satellite products from two processing versions sat in one time series. The upgrade itself looked like a change in the data.</p>
+      <p class="fix"><b>Check</b> · Record the product version of every input, use consistently reprocessed archives for trends, and compare the same days in both versions.</p></div>
+    <div class="case"><span class="k">Plausible fixes</span><h3>A fix that ran cleanly and lost 94% of a month</h3>
+      <p>Some Landsat files arrived without their grid description. The first fix borrowed the grid from another file of the same tile. No errors, but one month's usable views fell from about 5,800 to 371. Comparing counts with the previous run caught it.</p>
+      <p class="fix"><b>Check</b> · Reconcile counts between runs, month by month. Read metadata from the source; never infer it.</p></div>
+    <div class="case"><span class="k">Cleaning</span><h3>A filter that removed the signal</h3>
+      <p>A filter for short dips in greenness, meant to remove clouds, also removed the real dips when rapeseed and sunflower flower. Accuracy on the held-out year fell from 0.93 to 0.90, and rapeseed from 0.83 to as low as 0.68.</p>
+      <p class="fix"><b>Check</b> · A fixed held-out test, re-run after every change, broken down by class.</p></div>
+    <div class="case"><span class="k">Masks</span><h3>Clouds the cloud mask called clear</h3>
+      <p>About 1,300 fields a month were flagged with an unexplained drop. A blind look at a random sample on the images showed that 30% of those drops were clouds or haze the satellite's own mask had marked clear, and a third were ordinary harvests and cuts.</p>
+      <p class="fix"><b>Check</b> · A blind visual check of a random sample on the images before any flag reaches a map.</p></div>
+    <div class="case"><span class="k">Statistics</span><h3>One drought year taken as the rule</h3>
+      <p>Confidence scores were calibrated on a single held-out year, a drought summer. The next year then looked far less certain than it really was.</p>
+      <p class="fix"><b>Check</b> · Calibrate and test on several held-out years, never one.</p></div>
+    <div class="case"><span class="k">Artefacts</span><h3>A change that followed the satellite's path</h3>
+      <p>A change map showed a patch with straight edges. It followed one satellite track, not the land, and was spotted by eye.</p>
+      <p class="fix"><b>Check</b> · Inspect composites for scene and track seams before reading change, and compare like with like.</p></div>
+    <div class="case"><span class="k">Inputs</span><h3>Convincing figures from made-up data</h3>
+      <p>A first version of one study filled missing inputs with simulated values. The figures looked convincing, and the study was dropped.</p>
+      <p class="fix"><b>Check</b> · Real data only. Anything generated is labelled as such and kept out of results.</p></div>
+  </div>
+
+  <details class="try"><summary>Try one: your parcel areas come out 23% larger than the official register. What do you check first?</summary>
+    <p>The coordinate order and the CRS at the moment the data was read and reprojected. Swapped latitude and longitude move and distort every polygon, and the size of the error depends on where the data sits, so it isn't one constant factor to divide out. Then compare one total against an official figure before going further. Exercises like this, built from real cases, are the core of module 3.</p></details>
+
+  <h2><span class="n">4</span>The checks that catch them</h2>
+  <p>None of these need special software. They fit in a short validation file that runs with every pipeline.</p>
+  <div class="checks">
+    <div><h3>Before running</h3><ul>
+      <li>CRS and axis order asserted on read</li>
+      <li>Units in every column name</li>
+      <li>Source, version and licence of each input recorded</li>
+      <li>No generated stand-in data</li></ul></div>
+    <div><h3>While running</h3><ul>
+      <li>Counts reconciled with the previous run</li>
+      <li>Valid pixels counted before and after merges</li>
+      <li>Values tested against plausible ranges</li></ul></div>
+    <div><h3>Before sharing</h3><ul>
+      <li>One known value tested per output</li>
+      <li>Held-out test re-run, by class</li>
+      <li>Blind visual check of a random sample</li>
+      <li>A short note on how AI was used</li></ul></div>
+  </div>
+
+  <h2><span class="n">5</span>Training</h2>
+  <p>The training follows the order of this guide and works on your own data and code wherever possible. Each module has a clear outcome, a hands-on exercise, and a short check at the end that the outcome was reached.</p>
+  <ol class="mods">
+    <li><b>Where AI helps, and where it doesn't</b><span>Sort your team's tasks into delegate, check and keep, and agree what never goes into a prompt.</span><i>Exercise: map one of your own workflows</i></li>
+    <li><b>Setting up the assistant for spatial work</b><span>Write a project instruction file with your CRS conventions, units, data sources, licences and red lines, and set up the schema-only way of working from playbook A.</span><i>Exercise: a starter instruction file for your project</i></li>
+    <li><b>The spatial failures that look fine</b><span>Recognise axis-order, projection, fill-value, unit and version errors in AI-written code.</span><i>Exercise: find the bug in real cases from this guide</i></li>
+    <li><b>Validation that scales</b><span>Add assertions, known-value tests, count reconciliation and held-out checks to a pipeline.</span><i>Exercise: a validation template applied to your code</i></li>
+    <li><b>Working with an agent, step by step</b><span>Work in small steps, review every change, keep logs and data versions, and automate the repeat tasks, as in playbooks B and C.</span><i>Exercise: rebuild one step of your workflow with an agent</i></li>
+    <li><b>Results you can sign</b><span>Document what the assistant did, state the limits and licences, and hand over for review.</span><i>Exercise: the "how AI was used" note for your project</i></li>
+  </ol>
+
+  <h3>Formats for different team sizes</h3>
+  <div class="formats">
+    <div class="fmt"><span class="k">Any team · 60 to 90 minutes</span><h3>Talk</h3>
+      <p>An introduction to the guide with live examples, modules 1 and 3 in short. A good way to decide whether to go further.</p>
+      <p class="inc">Online or in person</p></div>
+    <div class="fmt"><span class="k">One person</span><h3>Review and coaching</h3>
+      <p>A written review of your workflow and code, then two 90-minute sessions on your own project, with the modules that fit.</p>
+      <p class="inc">Includes the checklist and a starter instruction file</p></div>
+    <div class="fmt"><span class="k">Small team · 2 to 8 people</span><h3>Workshop</h3>
+      <p>Two half-days, hands-on with your data, covering all six modules in a compact form.</p>
+      <p class="inc">Includes an instruction file and a validation template tailored to the team</p></div>
+    <div class="fmt"><span class="k">Larger team · 8 or more</span><h3>Short course</h3>
+      <p>Four 2-hour sessions over two weeks, exercises between sessions, a review of each participant's work, and a follow-up session a month later. Optionally, one person in the team is prepared to carry it on.</p>
+      <p class="inc">Includes all materials, tailored to your tools and data</p></div>
+  </div>
+  <p>Delivered online, or in person in Sofia, in English or Portuguese. Every team leaves with the checklist, an instruction file for its assistant, a validation template and exercises to reuse.</p>
+  <div class="cta"><p>Each format is scoped and quoted for the team. To talk it through: <a href="mailto:ana@timebooster.ai?subject=AI-assisted%20GIS%20training">ana@timebooster.ai</a></p></div>
+
+  <footer>© Ana Silva · Every case in this guide comes from real pipelines; none comes from client work</footer>
+</div>
+<script>
+(function () {
+  var EX = { ogr: "INFO: Open of `data/so_out/2511_survey.gpkg'\n      using driver `GPKG' successful.\n\nLayer name: parcels\nGeometry: 3D Polygon\nFeature Count: 833\nExtent: (2615721.015000, 1222429.040000) - (2619880.004000, 1226198.335668)\nLayer SRS WKT:\nPROJCRS[\"CH1903+ / LV95\",\n    BASEGEOGCRS[\"CH1903+\",\n        DATUM[\"CH1903+\",\n            ELLIPSOID[\"Bessel 1841\",6377397.155,299.1528128,\n                LENGTHUNIT[\"metre\",1]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        ID[\"EPSG\",4150]],\n    CONVERSION[\"Swiss Oblique Mercator 1995\",\n        METHOD[\"Hotine Oblique Mercator (variant B)\",\n            ID[\"EPSG\",9815]],\n        PARAMETER[\"Latitude of projection centre\",46.9524055555556,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8811]],\n        PARAMETER[\"Longitude of projection centre\",7.43958333333333,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8812]],\n        PARAMETER[\"Azimuth at projection centre\",90,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8813]],\n        PARAMETER[\"Angle from Rectified to Skew Grid\",90,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8814]],\n        PARAMETER[\"Scale factor at projection centre\",1,\n            SCALEUNIT[\"unity\",1],\n            ID[\"EPSG\",8815]],\n        PARAMETER[\"Easting at projection centre\",2600000,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8816]],\n        PARAMETER[\"Northing at projection centre\",1200000,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8817]]],\n    CS[Cartesian,2],\n        AXIS[\"(E)\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1]],\n        AXIS[\"(N)\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1]],\n    USAGE[\n        SCOPE[\"Cadastre, engineering survey, topographic mapping (large and medium scale).\"],\n        AREA[\"Liechtenstein; Switzerland.\"],\n        BBOX[45.81,5.95,47.81,10.5]],\n    ID[\"EPSG\",2056]]\nData axis to CRS axis mapping: 1,2\nFID Column = fid\nGeometry Column = geom\ncode: String (0.0)\ndescription: String (0.0)\narea_m2: Real (0.0)\nnumber: String (0.0)", gdal: "Driver: GTiff/GeoTIFF\nFiles: /vsicurl/https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N47_00_E007_00_DEM/Copernicus_DSM_COG_10_N47_00_E007_00_DEM.tif\nSize is 3600, 3600\nCoordinate System is:\nGEOGCRS[\"WGS 84\",\n    ENSEMBLE[\"World Geodetic System 1984 ensemble\",\n        MEMBER[\"World Geodetic System 1984 (Transit)\"],\n        MEMBER[\"World Geodetic System 1984 (G730)\"],\n        MEMBER[\"World Geodetic System 1984 (G873)\"],\n        MEMBER[\"World Geodetic System 1984 (G1150)\"],\n        MEMBER[\"World Geodetic System 1984 (G1674)\"],\n        MEMBER[\"World Geodetic System 1984 (G1762)\"],\n        MEMBER[\"World Geodetic System 1984 (G2139)\"],\n        MEMBER[\"World Geodetic System 1984 (G2296)\"],\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]],\n        ENSEMBLEACCURACY[2.0]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    USAGE[\n        SCOPE[\"Horizontal component of 3D system.\"],\n        AREA[\"World.\"],\n        BBOX[-90,-180,90,180]],\n    ID[\"EPSG\",4326]]\nData axis to CRS axis mapping: 2,1\nOrigin = (6.999861111111112,48.000138888888891)\nPixel Size = (0.000277777777778,-0.000277777777778)\nMetadata:\n  AREA_OR_POINT=Point\nImage Structure Metadata:\n  LAYOUT=COG\n  COMPRESSION=DEFLATE\n  INTERLEAVE=BAND\n  PREDICTOR=3\nCorner Coordinates:\nUpper Left  (   6.9998611,  48.0001389) (  6d59'59.50\"E, 48d 0' 0.50\"N)\nLower Left  (   6.9998611,  47.0001389) (  6d59'59.50\"E, 47d 0' 0.50\"N)\nUpper Right (   7.9998611,  48.0001389) (  7d59'59.50\"E, 48d 0' 0.50\"N)\nLower Right (   7.9998611,  47.0001389) (  7d59'59.50\"E, 47d 0' 0.50\"N)\nCenter      (   7.4998611,  47.5001389) (  7d29'59.50\"E, 47d30' 0.50\"N)\nBand 1 Block=1024x1024 Type=Float32, ColorInterp=Gray\n  Overviews: 1800x1800, 900x900, 450x450" };
+  var $ = function (id) { return document.getElementById(id); };
+  function clean(text, epsgOnly, hideCount) {
+    var lines = text.replace(/\r/g, '').split('\n'), out = [], log = {}, i = 0;
+    function note(k) { log[k] = (log[k] || 0) + 1; }
+    while (i < lines.length) {
+      var L = lines[i];
+      if (/^(Layer SRS WKT:|Coordinate System is:)\s*$/.test(L)) {
+        var j = i + 1, depth = 0, block = [];
+        do { var t = lines[j] || ''; block.push(t); depth += (t.match(/\[/g) || []).length - (t.match(/\]/g) || []).length; j++; } while (j < lines.length && depth > 0);
+        var ids = block.join('\n').match(/ID\["EPSG",\s*(\d+)\]/g) || [];
+        var code = ids.length ? ids[ids.length - 1].match(/(\d+)/)[1] : null;
+        if (epsgOnly) { out.push('Coordinate system: ' + (code ? 'EPSG:' + code : 'no EPSG code found, describe it in words')); note('coordinate system shortened to its EPSG code'); }
+        else { out.push(L); block.forEach(function (b) { if (/^\s*(AREA|BBOX|SCOPE)\[/.test(b)) note('area-of-use lines'); else out.push(b); }); }
+        i = j; continue;
+      }
+      if (/^INFO: Open of/.test(L)) { note('file path'); i++; continue; }
+      if (/^\s+using driver/.test(L)) { i++; continue; }
+      if (/^Files:/.test(L)) { note('file path'); i++; while (i < lines.length && /^\s{6,}\S/.test(lines[i])) i++; continue; }
+      if (/^Extent:/.test(L)) { note('extent'); i++; continue; }
+      if (/^Origin\s*=/.test(L)) { note('origin'); i++; continue; }
+      if (/^GeoTransform\s*=/.test(L)) { note('origin'); i++; while (i < lines.length && /^\s+[-\d.]/.test(lines[i])) i++; continue; }
+      if (/^Corner Coordinates:/.test(L)) { note('corner coordinates'); i++; while (i < lines.length && /^(Upper|Lower|Center)/.test(lines[i])) i++; continue; }
+      if (/^Feature Count:/.test(L) && hideCount) { note('feature count'); i++; continue; }
+      if (/^OGRFeature\(/.test(L)) { note('feature values'); i++; while (i < lines.length && /^\s+\S/.test(lines[i])) i++; continue; }
+      if (/^\s*(MULTI)?(POINT|LINESTRING|POLYGON)\b|^\s*GEOMETRYCOLLECTION\b/i.test(L)) { note('geometry'); i++; continue; }
+      if (/^\s*(STATISTICS_\w+|TIFFTAG_\w+|DESCRIPTION|AUTHOR|COPYRIGHT|DOCUMENTNAME|DATETIME|HOSTCOMPUTER|ARTIST)\s*=/i.test(L)) { note('metadata'); i++; continue; }
+      if (/^\s*(Minimum=|Min=)/.test(L)) { note('value statistics'); i++; continue; }
+      if (/^Pixel Size/.test(L)) { out.push(L); i++; continue; }
+      out.push(L.replace(/\(\s*-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?\s*\)/g, function () { note('coordinates'); return '(...)'; }));
+      i++;
+    }
+    return { text: out.join('\n').replace(/\n{3,}/g, '\n\n').trim(), log: log };
+  }
+  function run() {
+    var r = clean($('cl-in').value, $('cl-epsg').checked, $('cl-count').checked);
+    $('cl-out').textContent = r.text;
+    var parts = Object.keys(r.log).map(function (k) { return k + (r.log[k] > 1 ? ' (' + r.log[k] + ')' : ''); });
+    $('cl-log').textContent = (parts.length ? 'Taken out: ' + parts.join(', ') + '. ' : 'Nothing to take out. ') +
+      'Still read it once yourself: layer and field names can carry client or place names, and an EPSG code can name the country.';
+  }
+  document.querySelectorAll('.cl-ex button').forEach(function (b) { b.addEventListener('click', function () { $('cl-in').value = EX[b.dataset.ex]; run(); }); });
+  $('cl-go').addEventListener('click', run);
+  $('cl-in').value = EX.ogr; run();
+})();
+</script>
+
+<!-- analytics --><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "804d5b1726c6476db1c04a238d7c114f"}'></script><!-- End Cloudflare Web Analytics --><!-- /analytics -->
+</body>
+</html>

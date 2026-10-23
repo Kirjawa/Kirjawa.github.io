@@ -1,18 +1,22 @@
 # Ana Silva · GIS & remote sensing
 
-> Portfolio of Ana Silva, an independent GIS and remote sensing specialist based in Sofia, Bulgaria. Satellite analytics, large geospatial datasets and machine learning for environment and agriculture, built on open data (Sentinel-1, Sentinel-2, Sentinel-5P, Landsat, public parcel registers). Languages: English, Portuguese, Bulgarian, Spanish.
+> Freelance GIS automation, regulatory GIS and satellite monitoring from Sofia, Bulgaria, for environmental, infrastructure and nature-risk teams: habitat pre-mapping and monitoring, site screening for sensitive locations, and AI-assisted GIS workflows. Built on open data. Freelance work is contracted through Timebooster. Agriculture work is taken on through Atlastico. Languages: Portuguese, English, Bulgarian, Spanish (comprehension).
 
 Every study states its method, how it was checked against imagery or independent data, and its limits.
 
-## Studies
+## Freelance work
 
+- [Agentic AI for GIS teams: faster production without leaking client data](https://kirjawa.github.io/ai-gis-guide.html): Three playbooks done with an AI agent on real open data (schema-only setup, CAD to GIS, QGIS Atlas), ten real failures from geospatial pipelines, the checks that catch them, and training formats for GIS teams.
+- [Desk-based habitat pre-map and monitoring for biodiversity net gain](https://kirjawa.github.io/habitat-premap.html): A pre-map of the Fenwick Solar Farm site from open Sentinel-2, Sentinel-1 and LiDAR data, checked against its published biodiversity net gain survey, with the site's record since 2017, ten winters of flooding and a table for the statutory metric.
+- [Site screening for lender standards and nature disclosures](https://kirjawa.github.io/site-screening.html): 1,237 solar parks and wind farms in Bulgaria and Portugal screened on open data against Natura 2000, critical habitat, ecosystem integrity and water risk, in the shape of the TNFD Locate phase and IFC PS6 and EBRD PR6, with a drawing of daily monitoring.
+- [Maritsa Iztok: do the emissions seen from space match the reports?](https://kirjawa.github.io/maritsa-emissions.html): Sentinel-5P SO2 and NOx over Bulgaria's largest lignite complex, 2019 to 2024, against the EU emissions register.
+
+## Agriculture, with Atlastico
+
+- [Agriculture, with Atlastico](https://kirjawa.github.io/agriculture.html): Crop, field and supply-chain studies, taken on through Atlastico.
 - [Palm oil mills: where does the fruit come from?](https://kirjawa.github.io/palm-oil.html): Road-based sourcing areas and forest clearing since the EUDR cutoff for 361 palm oil mills in West Kalimantan and Riau.
 - [Dobrudja: how long does the soil lie bare?](https://kirjawa.github.io/soil-cover.html): Field-by-field soil cover in Bulgaria's grain belt, 2019 to 2025, and whether the 2023 soil-cover rule changed it.
 - [Southern Niger: are farmers' fields getting woodier?](https://kirjawa.github.io/farmland-trees.html): Forty years of dry-season Landsat over farmland in Maradi and Zinder, separating rain from farmer-managed regrowth.
-- [Maritsa Iztok: do the emissions seen from space match the reports?](https://kirjawa.github.io/maritsa-emissions.html): Sentinel-5P SO2 and NOx over Bulgaria's largest lignite complex, 2019 to 2024, against the EU emissions register.
-
-## Interactive
-
 - [Season's Pulse: every field's season, dekad by dekad](https://kirjawa.github.io/season-pulse/): An interactive replay from February 2025 to September 2026 for 7,567 fields on Bulgaria's Danube plain: crop, growth against the region and the field's own past, and field events, from Sentinel-2, Landsat and Sentinel-1.
 
 ## Contact

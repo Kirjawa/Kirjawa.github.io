@@ -72,7 +72,7 @@ body.clean #maplegend,body.clean #layers,body.clean .maplibregl-ctrl{display:non
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Season's Pulse: every field's season, dekad by dekad", "description": "An interactive replay from February 2025 to September 2026 for 7,567 fields on Bulgaria's Danube plain: crop, growth against the region and the field's own past, and field events, from Sentinel-2, Landsat and Sentinel-1.", "url": "https://kirjawa.github.io/season-pulse/", "image": "https://kirjawa.github.io/assets/season_pulse_map.jpg", "datePublished": "2026-10-01", "inLanguage": "en", "keywords": ["crop monitoring", "in-season crop identification", "phenology", "Sentinel-2", "Sentinel-1", "Bulgaria"], "applicationCategory": "Map", "operatingSystem": "Any web browser", "isAccessibleForFree": true, "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
 </head>
 <body>
-<div class="topline"><a href="../">← Ana Silva · portfolio</a></div>
+<div class="topline"><a href="../agriculture.html">← Agriculture, with Atlastico</a></div>
 <header class="brand">
   <div class="brand-row"><svg class="logo" aria-hidden="true" viewBox="6 3 52 52"><path d="M9 44 H13 L15 40 L17 47 L19 44 C24 44 28 40 32 32 C36 40 40 44 45 44 H55" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 32 L32 16.900000000000002" stroke="#FFFFFF" stroke-width="1.32" stroke-linecap="round"/><path d="M0 0 Q2.5 -3.5 0 -7.0 Q-2.5 -3.5 0 0Z" fill="#FFFFFF" transform="translate(31.10 29.80) rotate(-30)"/><path d="M0 0 Q2.5 -3.5 0 -7.0 Q-2.5 -3.5 0 0Z" fill="#FFFFFF" transform="translate(32.90 29.80) rotate(30)"/><path d="M0 0 Q2.3499999999999996 -3.29 0 -6.58 Q-2.3499999999999996 -3.29 0 0Z" fill="#FFFFFF" transform="translate(31.10 25.50) rotate(-30)"/><path d="M0 0 Q2.3499999999999996 -3.29 0 -6.58 Q-2.3499999999999996 -3.29 0 0Z" fill="#FFFFFF" transform="translate(32.90 25.50) rotate(30)"/><path d="M0 0 Q2.2 -3.08 0 -6.16 Q-2.2 -3.08 0 0Z" fill="#FFFFFF" transform="translate(31.10 21.20) rotate(-30)"/><path d="M0 0 Q2.2 -3.08 0 -6.16 Q-2.2 -3.08 0 0Z" fill="#FFFFFF" transform="translate(32.90 21.20) rotate(30)"/><path d="M0 0 Q2.0500000000000003 -2.87 0 -5.74 Q-2.0500000000000003 -2.87 0 0Z" fill="#FFFFFF" transform="translate(31.10 16.90) rotate(-30)"/><path d="M0 0 Q2.0500000000000003 -2.87 0 -5.74 Q-2.0500000000000003 -2.87 0 0Z" fill="#FFFFFF" transform="translate(32.90 16.90) rotate(30)"/><path d="M0 0 Q1.9500000000000002 -2.8000000000000003 0 -5.6000000000000005 Q-1.9500000000000002 -2.8000000000000003 0 0Z" fill="#FFFFFF" transform="translate(32.00 16.10) rotate(0)"/></svg><h1>Season’s <em>Pulse</em></h1></div>
   <p>Every field's season, dekad by dekad. Valchedram–Kozloduy, Danube plain, replayed from February 2025 to September 2026.</p>
@@ -267,7 +267,7 @@ async function select(id){
   if(!fieldCache[id]) fieldCache[id]=await (await fetch(`fields/${id}.json`)).json();
   renderField(fieldCache[id]);
 }
-function pctText(p){ return p==null?"—":`greener than ${Math.round(p)}% of the same crop today`; }
+function pctText(p){ return p==null?"no reading this dekad":`greener than ${Math.round(p)}% of the same crop today`; }
 function renderField(F){
   const {S,k} = SK(dk), s = F.seasons[String(S)];
   if(!s){ panel.innerHTML = `<button onclick="selected=null;map.setFilter('sel',['==',['get','field_id'],'']);summary()" class="chip" style="border:0;cursor:pointer">← fields in view</button><p>No data for this field in ${S}.</p>`; return; }
@@ -280,9 +280,9 @@ function renderField(F){
     : st==="-" ? `Nothing seen lately <span class="muted" style="font:400 15px var(--sans)">· ${word} ${crop.toLowerCase()}${pc}</span>`
     : S===2025 ? crop : (conf<0.6 ? `Possibly ${crop.toLowerCase()}${pc}` : `${crop} <span class="muted" style="font:400 15px var(--sans)">· likely, ${Math.round(conf*100)}%</span>`);
   const src = s.src[k], srcTxt = src==="o" ? "clear view this dekad" : src==="r" ? "no clear view: estimated from radar (Sentinel-1) and the last clear view" : src==="c" ? "no clear view: last clear view carried (winter)" : "no reading";
-  const g=s.growth_z[k], gtxt = g==null?"—":(g>1?"growing faster than usual for this crop at this stage":g<-1?"growing slower than usual for this crop at this stage":"growing as usual for this crop at this stage");
+  const g=s.growth_z[k], gtxt = g==null?"no reading this dekad":(g>1?"growing faster than usual for this crop at this stage":g<-1?"growing slower than usual for this crop at this stage":"growing as usual for this crop at this stage");
   const past = F.history.filter(h=>h.season<S && NAME2CODE[h.declared]===code && h.curve);
-  let own="—"; if(past.length>=2 && s.ndvi_now[k]!=null){ const vals=past.map(h=>h.curve[k]).filter(v=>v!=null); if(vals.length>=2){ const below=vals.filter(v=>v<s.ndvi_now[k]).length; own=`greener than ${below} of ${vals.length} past ${crop.toLowerCase()} seasons on this field at this time`; } }
+  let own="not enough past seasons of this crop"; if(past.length>=2 && s.ndvi_now[k]!=null){ const vals=past.map(h=>h.curve[k]).filter(v=>v!=null); if(vals.length>=2){ const below=vals.filter(v=>v<s.ndvi_now[k]).length; own=`greener than ${below} of ${vals.length} past ${crop.toLowerCase()} seasons on this field at this time`; } }
   const fl=s.flag[k];
   const events=[]; if(s.emergence) events.push(`Emerged around ${s.emergence}`);
   s.flag.slice(0,k+1).forEach((f,i)=>{ if(f&&s.flag[i-1]!==f) events.push(`${lblSK(S,i)}: ${f}`); });
@@ -301,7 +301,7 @@ function renderField(F){
    <h3>Phenological clock, 2020–2026</h3><div id="clock"></div><div class="muted">One ring per season, inner 2020 to outer 2026, starting in October at the top. Darker green = greener.</div>
    <h3>Events</h3>${events.length?events.map(e=>`<div>${e}</div>`).join(""):'<span class="muted">None so far.</span>'}
    <h3>History</h3><table><tr><th>Season</th><th>Declared</th><th>Behaved like</th><th>Emerged</th></tr>
-   ${F.history.map(h=>`<tr><td>${h.season}</td><td>${h.declared}</td><td>${h.consistent?"✓ as declared":(h.behaves_like||"—")}</td><td>${h.emergence||"—"}${h.late_days&&Math.abs(h.late_days)>=20?` <span class="muted">(${h.late_days>0?"+":""}${h.late_days} d)</span>`:""}</td></tr>`).join("")}</table>
+   ${F.history.map(h=>`<tr><td>${h.season}</td><td>${h.declared}</td><td>${h.consistent?"✓ as declared":(h.behaves_like||"unclear")}</td><td>${h.emergence||"not detected"}${h.late_days&&Math.abs(h.late_days)>=20?` <span class="muted">(${h.late_days>0?"+":""}${h.late_days} d)</span>`:""}</td></tr>`).join("")}</table>
    <p class="muted">"Behaved like" = the phenological clock check: does the season look like the crop that was declared? (d) = emergence days later (+) or earlier (−) than that crop's median that season.</p>`;
   drawCurve(F); drawClock(F);
 }
