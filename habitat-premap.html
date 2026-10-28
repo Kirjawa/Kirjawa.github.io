@@ -58,9 +58,11 @@ a.fig img{display:block;width:100%;height:auto}
 .dl span{font:400 12.5px var(--mono);color:var(--muted)}
 .ai{background:var(--surface);border:1.5px dashed var(--rose);border-radius:14px;padding:16px 20px;margin:18px 0}
 .ai p{margin:6px 0}
+/* related */.related{margin:56px 0 0}.related h2{display:block;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink);margin:0 0 14px}.related .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.related a{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;color:var(--ink)}.related a:hover{border-color:var(--forest)}.related .ey{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.related .t{display:block;font:400 21px/1.2 var(--serif);color:var(--ink);text-wrap:balance}/* /related */
 </style>
 <!-- seo --><link rel="canonical" href="https://kirjawa.github.io/habitat-premap.html">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Desk-based habitat pre-map and monitoring for biodiversity net gain", "description": "A pre-map of the Fenwick Solar Farm site from open Sentinel-2, Sentinel-1 and LiDAR data, checked against its published biodiversity net gain survey, with the site's record since 2017, ten winters of flooding and a table for the statutory metric.", "url": "https://kirjawa.github.io/habitat-premap.html", "image": "https://kirjawa.github.io/assets/s1_premap_check.jpg", "datePublished": "2026-10-22", "inLanguage": "en", "keywords": ["biodiversity net gain", "habitat mapping", "UKHab", "statutory metric", "Sentinel-2", "LiDAR", "England"], "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/", "https://github.com/Kirjawa"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
+<!-- umami --><script defer src="https://cloud.umami.is/script.js" data-website-id="c0b6a590-ee99-4b51-9488-d54e5709d080" data-domains="kirjawa.github.io"></script><!-- /umami -->
 </head>
 <body>
 <div class="wrap">
@@ -155,8 +157,8 @@ a.fig img{display:block;width:100%;height:auto}
 
   <h2><span class="n">7</span>Downloads</h2>
   <div class="dl">
-    <a href="downloads/S1_habitat_premap_demo_v1.pdf">Demonstration report, in the order of a BNG baseline section <span>PDF · 8 pages · 2.2 MB</span></a>
-    <a href="downloads/S1_fenwick_premap_demo_v1.zip">Pre-map, parcels, hedgerows and baseline table (GeoPackage, CSV, GeoTIFF) <span>ZIP · 0.24 MB</span></a>
+    <a href="downloads/S1_habitat_premap_demo_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S1_habitat_premap_demo_v1.pdf">Demonstration report, in the order of a BNG baseline section <span>PDF · 8 pages · 2.2 MB</span></a>
+    <a href="downloads/S1_fenwick_premap_demo_v1.zip" data-umami-event="Demo download" data-umami-event-file="S1_fenwick_premap_demo_v1.zip">Pre-map, parcels, hedgerows and baseline table (GeoPackage, CSV, GeoTIFF) <span>ZIP · 0.24 MB</span></a>
   </div>
   <p>Own outputs and open data only, with every source and licence named inside. Nothing from the survey's plan is included.</p>
 
@@ -171,7 +173,16 @@ a.fig img{display:block;width:100%;height:auto}
     <li>Muñoz Sabater, J. et al. (2021). ERA5-Land: a state-of-the-art global reanalysis dataset for land applications. Earth System Science Data 13.</li>
     <li>Twele, A. et al. (2016). Sentinel-1-based flood mapping: a fully automated processing chain. International Journal of Remote Sensing 37.</li>
   </ul>
-  <div class="cta"><p>If you have an upcoming site where a pre-map, a 2020 cut-off check, or a statutory metric baseline table would save your field team time, email me at <a href="mailto:ana@timebooster.ai?subject=Habitat%20pre-map%20enquiry">ana@timebooster.ai</a>.</p></div>
+  <div class="cta"><p>If you have an upcoming site where a pre-map, a 2020 cut-off check, or a statutory metric baseline table would save your field team time, email me at <a href="mailto:ana@timebooster.ai?subject=Habitat%20pre-map%20enquiry" data-umami-event="Email click">ana@timebooster.ai</a>.</p></div>
+
+  <!-- related --><section class="related" aria-labelledby="related-h">
+    <h2 id="related-h">Related work</h2>
+    <div class="cards">
+      <a href="solar-monitoring.html" data-umami-event="Related work click" data-umami-event-to="solar-monitoring"><span class="ey">United Kingdom · monitoring</span><span class="t">Monitoring a solar park between survey visits</span></a>
+      <a href="site-screening.html" data-umami-event="Related work click" data-umami-event-to="site-screening"><span class="ey">Bulgaria and Portugal</span><span class="t">Site screening for lender standards and nature disclosures</span></a>
+      <a href="ai-gis-guide.html" data-umami-event="Related work click" data-umami-event-to="ai-gis-guide"><span class="ey">Guide · AI-assisted GIS workflows</span><span class="t">Agentic AI for GIS teams: faster production without leaking client data</span></a>
+    </div>
+  </section><!-- /related -->
 
   <footer>© Ana Silva · Demonstration on open data, never client work</footer>
 </div>
