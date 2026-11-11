@@ -183,6 +183,11 @@ section{padding-block:clamp(56px,8vw,104px)}
 .btn-c:hover{background:rgba(248,211,218,.14)}
 .btn-c.primary{background:var(--rose);border-color:var(--rose);color:var(--pine)}
 .btn-c.primary:hover{background:var(--blush)}
+.hero-btns{margin-top:28px}
+.hero-copy{padding-bottom:calc(17.3vw + 24px)}   /* keeps the copy clear of the terrain: the Pyrenees peak reaches 17.3vw */
+.hero .btn-c{font-weight:600}
+.hero .btn-c:not(.primary){border-color:rgba(255,255,255,.75);background:rgba(7,59,53,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hero .btn-c:not(.primary):hover{background:rgba(7,59,53,.75)}
 .atl{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid rgba(248,211,218,.22)}
 .atl img{width:200px;height:auto;display:block}
 .atl p{margin:0;max-width:34ch;font-size:15px;color:var(--on-dark)}

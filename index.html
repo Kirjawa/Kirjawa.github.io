@@ -188,6 +188,11 @@ section{padding-block:clamp(56px,8vw,104px)}
 .btn-c:hover{background:rgba(248,211,218,.14)}
 .btn-c.primary{background:var(--rose);border-color:var(--rose);color:var(--pine)}
 .btn-c.primary:hover{background:var(--blush)}
+.hero-btns{margin-top:28px}
+.hero-copy{padding-bottom:calc(17.3vw + 24px)}   /* keeps the copy clear of the terrain: the Pyrenees peak reaches 17.3vw */
+.hero .btn-c{font-weight:600}
+.hero .btn-c:not(.primary){border-color:rgba(255,255,255,.75);background:rgba(7,59,53,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hero .btn-c:not(.primary):hover{background:rgba(7,59,53,.75)}
 .atl{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid rgba(248,211,218,.22)}
 .atl img{width:200px;height:auto;display:block}
 .atl p{margin:0;max-width:34ch;font-size:15px;color:var(--on-dark)}
@@ -312,6 +317,10 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
       <span class="eyebrow">GIS automation · regulatory GIS · satellite monitoring</span>
       <h1>From pixels to <em>the full picture</em>.</h1>
       <p class="lede">For environmental, infrastructure and nature-risk teams: habitat pre-maps before the field survey, site screening for sensitive locations, and AI-assisted GIS workflows.</p>
+      <div class="btns hero-btns">
+        <a class="btn-c primary" href="#work" data-umami-event="Hero samples click">See the samples</a>
+        <a class="btn-c" href="mailto:ana@timebooster.ai?subject=Hello%20from%20your%20portfolio" data-umami-event="Email click">Email me</a>
+      </div>
     </div>
   </div>
   <span class="photo-note">Belogradchik Rocks, NW Bulgaria<br>43.62° N · 22.68° E</span>
