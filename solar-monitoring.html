@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{--blush:#F8D3DA;--rose:#DB8FAB;--rose-ink:#A94C73;--teal:#15A19A;--forest:#0B6152;--pine:#073B35;
---ground:#FDF6F7;--surface:#FFFFFF;--wash:#E6F2EC;--ink:#0A2F2B;--ink-2:#3E5B56;--muted:#6F8783;--hair:#DCE7E1;
+--ground:#FDF6F7;--surface:#FFFFFF;--wash:#E6F2EC;--ink:#0A2F2B;--ink-2:#3E5B56;--muted:#566F6B;--hair:#DCE7E1;
 --serif:"Instrument Serif",Georgia,"Times New Roman",serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
@@ -64,12 +64,25 @@ a.fig img{display:block;width:100%;height:auto}
 /* related */.related{margin:56px 0 0}.related h2{display:block;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink);margin:0 0 14px}.related .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.related a{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;color:var(--ink)}.related a:hover{border-color:var(--forest)}.related .ey{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.related .t{display:block;font:400 21px/1.2 var(--serif);color:var(--ink);text-wrap:balance}/* /related */
 </style>
 <!-- seo --><link rel="canonical" href="https://kirjawa.github.io/solar-monitoring.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monitoring a solar park between survey visits">
+<meta property="og:description" content="Cleve Hill Solar Park in Kent from open Sentinel-2 and Sentinel-1 data: construction dated against the published milestones, and its habitat management area for wintering birds followed year by year, with what to check on the next ecologist visit.">
+<meta property="og:url" content="https://kirjawa.github.io/solar-monitoring.html">
+<meta property="og:image" content="https://kirjawa.github.io/assets/og_solar-monitoring.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kirjawa.github.io/assets/og_solar-monitoring.jpg">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Monitoring a solar park between survey visits", "description": "Cleve Hill Solar Park in Kent from open Sentinel-2 and Sentinel-1 data: construction dated against the published milestones, and its habitat management area for wintering birds followed year by year, with what to check on the next ecologist visit.", "url": "https://kirjawa.github.io/solar-monitoring.html", "image": "https://kirjawa.github.io/assets/s3_hook.jpg", "datePublished": "2026-10-23", "inLanguage": "en", "keywords": ["solar park monitoring", "habitat management", "biodiversity net gain", "Sentinel-1", "Sentinel-2", "England"], "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/", "https://github.com/Kirjawa"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
+<!-- chrome --><style>.topbar{position:sticky;top:0;z-index:5;margin-inline:calc(-1*clamp(16px,4vw,40px));padding:9px clamp(16px,4vw,40px);background:rgba(253,246,247,.93);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}.topbar div{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px}.topbar .who{font:500 13.5px/1.3 var(--mono);text-decoration:none;color:var(--rose-ink)}.topbar .who b{font-weight:500;color:var(--ink)}.topbar .mail,.actions a{display:inline-block;text-decoration:none;font:600 14.5px/1 var(--sans);padding:11px 18px;border-radius:99px;background:var(--forest);color:#fff;border:1px solid var(--forest);white-space:nowrap}.topbar .mail:hover,.actions a:hover{background:var(--pine)}.actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:22px 0 8px}.actions a.alt{background:var(--surface);color:var(--pine);border-color:var(--rose)}.actions a.alt:hover{background:var(--wash)}.actions a span{font:400 12.5px var(--mono);opacity:.85;margin-left:6px}.actions a.all{background:none;border:0;padding:6px 2px;color:var(--rose-ink);font:500 13.5px var(--mono);text-decoration:underline}.actions a.all:hover{background:none}h2[id]{scroll-margin-top:72px}@media (max-width:480px){.topbar .role{display:none}}</style><!-- /chrome -->
 <!-- umami --><script defer src="https://cloud.umami.is/script.js" data-website-id="c0b6a590-ee99-4b51-9488-d54e5709d080" data-domains="kirjawa.github.io"></script><!-- /umami -->
 </head>
 <body>
+<!-- topbar --><nav class="topbar" aria-label="Site"><div><a class="who" href="./#work">← <b>Ana Silva</b><span class="role"> · GIS and remote sensing</span></a><a class="mail" href="mailto:ana@timebooster.ai?subject=Monitoring%20between%20visits%20enquiry" data-umami-event="Email click">Email me</a></div></nav><!-- /topbar -->
 <div class="wrap">
-  <a class="back" href="./#work">← Ana Silva · portfolio</a>
   <span class="eyebrow">Sample · United Kingdom · monitoring between visits</span>
   <h1>Monitoring a solar park between survey visits</h1>
   <div class="prep">
@@ -79,7 +92,7 @@ a.fig img{display:block;width:100%;height:auto}
   <p class="lede">Cleve Hill Solar Park, on the Graveney Marshes in Kent, was built from April 2023 and has run since 1 July 2025: 373 MW and more than 550,000 modules. Its consent came with a habitat management area of about 56 ha for the brent geese, lapwing and golden plover of The Swale next door, and with ecologists' visits each May and late summer.</p>
   <p>Between those visits, what can open satellite data show?</p>
 
-  <a class="fig" href="assets/s3_hook.jpg"><img src="assets/s3_hook.jpg" alt="Two Sentinel-2 views of Cleve Hill: arable fields in summer 2022, and in 2025 and 2026 the solar arrays with the habitat management area outlined to the east, next to The Swale" loading="lazy"></a>
+  <a class="fig" href="assets/s3_hook.jpg"><img src="assets/s3_hook.jpg" alt="Two Sentinel-2 views of Cleve Hill: arable fields in summer 2022, and in 2025 and 2026 the solar arrays with the habitat management area outlined to the east, next to The Swale" width="2210" height="866" fetchpriority="high"></a>
   <p class="fig-note">Before and after, with the mapped arrays and the habitat management area. Select the image to open it full size.</p>
 
   <ul class="find">
@@ -90,6 +103,7 @@ a.fig img{display:block;width:100%;height:auto}
     <li><b>Water:</b> no standing water seen on the habitat area in the two winters since the wetland works, by radar or by Sentinel-2.</li>
     <li><b>For the next visit:</b> four things to check, below, including the sward height before winter, which satellite data can't measure.</li>
   </ul>
+  <!-- actions --><div class="actions"><a href="downloads/S3_monitoring_note_cleve_hill_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S3_monitoring_note_cleve_hill_v1.pdf">Download the monitoring note <span>PDF · 4 pages</span></a><a class="alt" href="mailto:ana@timebooster.ai?subject=Monitoring%20between%20visits%20enquiry" data-umami-event="Email click">Email me</a><a class="all" href="#downloads">All downloads</a></div><!-- /actions -->
 
   <h2><span class="n">1</span>The question</h2>
   <p>Solar parks and habitat banks now come with long monitoring duties. At Cleve Hill, the outline Landscape and Biodiversity Management Plan asks for an ecologist's visit in May and in August or September in years 1, 2, 3, 5, 10 and 20, and winter bird counts twice a month. Between visits, the steering group of Natural England, Kent Wildlife Trust, the RSPB and the Environment Agency relies on reports.</p>
@@ -118,12 +132,12 @@ a.fig img{display:block;width:100%;height:auto}
   </ol>
 
   <h2><span class="n">4</span>Construction, dated</h2>
-  <a class="fig" href="assets/s3_construction.jpg"><img src="assets/s3_construction.jpg" alt="Map of the arrays coloured by the two months in which modules first appeared, from May 2024 to June 2025, and a chart of the share of the arrays with steel and with modules over time, with the newsletter's figures for 8 June 2024" loading="lazy"></a>
+  <a class="fig" href="assets/s3_construction.jpg"><img src="assets/s3_construction.jpg" alt="Map of the arrays coloured by the two months in which modules first appeared, from May 2024 to June 2025, and a chart of the share of the arrays with steel and with modules over time, with the newsletter's figures for 8 June 2024" loading="lazy" width="2210" height="986"></a>
   <p class="fig-note">When modules appeared on each part of the arrays, and the share with steel and modules over time. Select the image to open it full size.</p>
   <p>The radar record has two steps: the steel frames raise it, then the modules, like mirrors, send the signal away, 4 to 5 dB below the level before construction. Modules followed the steel by a median of 137 days. 95% of the arrays had modules by February 2025, three months before commissioning in May.</p>
 
   <h2><span class="n">5</span>The habitat management area</h2>
-  <a class="fig" href="assets/s3_habitat.jpg"><img src="assets/s3_habitat.jpg" alt="Chart of the habitat area's greenness and bare soil from 2017 to 2026, arable until 2023 and grassland since; a chart of open water each winter, never more than half a hectare; and a map of the area with bare patches in 2024 and 2026" loading="lazy"></a>
+  <a class="fig" href="assets/s3_habitat.jpg"><img src="assets/s3_habitat.jpg" alt="Chart of the habitat area's greenness and bare soil from 2017 to 2026, arable until 2023 and grassland since; a chart of open water each winter, never more than half a hectare; and a map of the area with bare patches in 2024 and 2026" loading="lazy" width="2210" height="1393"></a>
   <p class="fig-note">The habitat area year by year, and where to look on the next visit. Select the image to open it full size.</p>
   <ul>
     <li><b>From arable to grassland.</b> The last crop came off in July 2023. Bare soil from August to mid-September, then green from late October. Every winter before showed bare soil; none since.</li>
@@ -163,13 +177,13 @@ a.fig img{display:block;width:100%;height:auto}
   </ul>
 
   <h2><span class="n">9</span>How AI was used</h2>
-  <a class="fig" href="assets/s3_workflow.png"><img src="assets/s3_workflow.png" alt="Workflow: open data sources, then scripts written by an AI agent, then what they were checked against, then the results, with a dashed path back showing what the checks caught" loading="lazy"></a>
+  <a class="fig" href="assets/s3_workflow.png"><img src="assets/s3_workflow.png" alt="Workflow: open data sources, then scripts written by an AI agent, then what they were checked against, then the results, with a dashed path back showing what the checks caught" loading="lazy" width="2560" height="670"></a>
   <div class="ai">
     <p>An agent (Claude Code) wrote the scripts: the downloads, the array map, the construction dates, the habitat area's record, the figures and the note. Every result was checked against something independent: OpenStreetMap's panel blocks, the project's published progress and dates, the Crop Map of England and the plan's figures.</p>
     <p><b>What it got wrong, and what caught it:</b> it expected the radar to brighten over the arrays; once the modules are on, it darkens, and the record showed it. Dated pixel by pixel, the radar put the modules months late, because single pixels are too noisy; 100 m cells fixed the steel dates, and Sentinel-2 dates the modules. Its first habitat area took all the unfenced land in the east, 93 ha, until the crop map narrowed it to the arable that was reverted, 56 ha, as the plan says. And it counted the snow of February 2018 as water.</p>
   </div>
 
-  <h2><span class="n">10</span>Downloads</h2>
+  <h2 id="downloads"><span class="n">10</span>Downloads</h2>
   <div class="dl">
     <a href="downloads/S3_monitoring_note_cleve_hill_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S3_monitoring_note_cleve_hill_v1.pdf">Monitoring note, in the shape of a note to the steering group <span>PDF · 4 pages · 1.19 MB</span></a>
     <a href="downloads/S3_cleve_hill_monitoring_demo_v1.zip" data-umami-event="Demo download" data-umami-event-file="S3_cleve_hill_monitoring_demo_v1.zip">Arrays, construction dates, the habitat area and its record (GeoPackage, GeoTIFF, CSV) <span>ZIP · 0.06 MB</span></a>

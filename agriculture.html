@@ -12,15 +12,18 @@
 <meta property="og:image" content="https://kirjawa.github.io/assets/season_pulse_map.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://kirjawa.github.io/agriculture.html">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
   /* palette: oleander blush → rose → teal → deep green → pine */
-  --blush:#F8D3DA; --rose:#DB8FAB; --rose-ink:#A94C73; --teal:#15A19A; --forest:#0B6152; --pine:#073B35;
+  --blush:#F8D3DA; --rose:#DB8FAB; --rose-ink:#A94C73; --teal:#15A19A; --teal-ink:#0C7771; --forest:#0B6152; --pine:#073B35;
   --ground:#FDF6F7; --surface:#FFFFFF; --wash:#E6F2EC;
-  --ink:#0A2F2B; --ink-2:#3E5B56; --muted:#6F8783; --hair:#DCE7E1;
+  --ink:#0A2F2B; --ink-2:#3E5B56; --muted:#566F6B; --hair:#DCE7E1;
   --on-dark:#FDF1F4;
   --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -29,7 +32,7 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
+img{display:block;max-width:100%;height:auto}
 a{color:var(--rose-ink);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
@@ -53,7 +56,7 @@ nav.top ul a:hover{text-decoration:underline}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;
   background:linear-gradient(180deg,rgba(7,59,53,.55) 0%,rgba(7,59,53,.12) 38%,rgba(219,143,171,.18) 70%,rgba(248,211,218,.0) 100%)}
 .hero-copy{position:relative;padding-top:clamp(120px,18vh,190px);color:#fff;max-width:780px}
-.hero-copy .eyebrow{color:var(--blush)}
+.hero-copy .eyebrow{color:var(--blush);line-height:1.5;text-shadow:0 1px 10px rgba(7,59,53,.7)}
 .hero h1{font:400 clamp(46px,7.4vw,96px)/.98 var(--serif);letter-spacing:-.01em;margin-top:18px;text-shadow:0 2px 30px rgba(7,59,53,.35)}
 .hero h1 em{color:var(--blush)}
 .hero p.lede{font-size:clamp(17px,1.6vw,20px);max-width:560px;margin:22px 0 0;color:#fff;text-shadow:0 1px 14px rgba(7,59,53,.55)}
@@ -101,7 +104,7 @@ section{padding-block:clamp(56px,8vw,104px)}
 .tile p{margin:0;color:var(--ink-2);font-size:15px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .tag{font:400 11.5px/1 var(--mono);padding:6px 9px;border-radius:99px;background:var(--wash);color:var(--ink-2)}
-.status{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.status{font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--teal-ink)}
 .status.wip{color:var(--rose-ink)}
 .tile figure.fig{background:#FDF6F7;border-bottom:1px solid var(--hair)}
 .tile figure.fig img{object-fit:contain}
@@ -138,15 +141,20 @@ section{padding-block:clamp(56px,8vw,104px)}
 .t-note{grid-column:span 2;background:var(--forest);border-color:transparent;color:var(--on-dark);justify-content:space-between;padding:24px}
 .t-note p{font:italic 400 clamp(24px,2.3vw,30px)/1.15 var(--serif);margin:0;color:var(--on-dark)}
 .t-note small{font:400 12px/1.5 var(--mono);color:var(--blush)}
-.more{display:inline-block;margin-right:18px;font:500 12px/1 var(--mono);color:var(--rose-ink);text-decoration:none;margin-top:2px}
+.more{display:inline-block;margin-right:18px;font:500 13.5px/1 var(--mono);color:var(--rose-ink);text-decoration:none;margin-top:2px;padding-block:6px}
 .more:hover{text-decoration:underline}
+/* .linked: the whole card opens its page */
+.tile.linked{position:relative;transition:box-shadow .2s}
+.tile.linked .more::after{content:"";position:absolute;inset:0}
+.tile.linked:hover{box-shadow:0 12px 32px rgba(7,59,53,.28)}
+.tile.linked:hover .more{text-decoration:underline}
 
 /* ---------- services ---------- */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px)}
 .svc{border-top:1.5px solid var(--rose);padding-top:18px}
 .svc h3{font:400 25px/1.1 var(--serif);margin-bottom:10px}
 .svc p{margin:0;color:var(--ink-2);font-size:15px}
-.svc .for{display:block;margin-top:12px;font:400 12px/1.5 var(--mono);color:var(--muted)}
+.svc .for{display:block;margin-top:12px;font:400 13px/1.5 var(--mono);color:var(--muted)}
 
 /* ---------- about ---------- */
 .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:center}
@@ -155,7 +163,7 @@ section{padding-block:clamp(56px,8vw,104px)}
 .about h2{font:400 clamp(34px,4.2vw,52px)/1.05 var(--serif);margin-bottom:18px}
 .about p{color:var(--ink-2);max-width:60ch;margin:0 0 14px}
 .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hair)}
-.facts dt{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.facts dt{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .facts dd{margin:0;font-size:15px}
 .facts .clients{grid-column:1/-1}
 .facts .clients dd{color:var(--ink-2);line-height:1.6}
@@ -246,7 +254,12 @@ nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-colo
   .about .ph{max-width:420px}
 }
 @media (max-width:640px){
-  nav.top ul{display:none}
+  /* phone menu: the links sit in a second row under the name */
+  nav.top .wrap{flex-wrap:wrap;row-gap:6px;padding-block:16px 0}
+  .nav-right{display:contents}
+  nav.top ul{order:3;flex:0 0 100%;justify-content:space-between;gap:6px}
+  nav.top ul a{display:block;font-size:14.5px;padding:9px 0}
+  .hero-copy{padding-top:max(140px,18vh)}
   .services,.facts{grid-template-columns:1fr}
   .terrain .lab,.terrain .num,.terrain .lead{display:none}
   .photo-note{display:none}
@@ -318,10 +331,10 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
             <div class="tags"><span class="tag">Sentinel-2</span><span class="tag">Landsat 8/9</span><span class="tag">Sentinel-1</span><span class="tag">In-season crop ID</span><span class="tag">Phenology</span><span class="tag">Parcel register 2020–2025</span></div>
             <a class="go" href="season-pulse/">Open Season’s Pulse →</a>
           </div>
-          <figure><a href="season-pulse/" aria-label="Open Season’s Pulse"><img src="assets/season_pulse_map.jpg" alt="Map of fields near Valchedram in early July 2026: active crops coloured, bare fields pale, and harvested and mown fields outlined" loading="lazy"></a></figure>
+          <figure><a href="season-pulse/" aria-label="Open Season’s Pulse"><img src="assets/season_pulse_map.jpg" alt="Map of fields near Valchedram in early July 2026: active crops coloured, bare fields pale, and harvested and mown fields outlined" loading="lazy" width="1260" height="853"></a></figure>
         </article>
         <article class="tile t-lead">
-          <figure class="fig"><a class="zoom" href="assets/clock_multiyear.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Seven years, ring by ring"><img src="assets/clock_multiyear.jpg" alt="Ring charts of monthly greenness for three fields from 2020 to 2026" loading="lazy"></a></figure>
+          <figure class="fig"><a class="zoom" href="assets/clock_multiyear.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Seven years, ring by ring"><img src="assets/clock_multiyear.jpg" alt="Ring charts of monthly greenness for three fields from 2020 to 2026" loading="lazy" width="2000" height="1178"></a></figure>
           <div class="body">
             <span class="status">Complete</span>
             <h3>Seven years, ring by ring</h3>
@@ -331,7 +344,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
           </div>
         </article>
         <article class="tile t-side">
-          <figure class="fig"><a class="zoom" href="assets/clock_hero.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Phenological clock"><img src="assets/clock_hero.jpg" alt="Two circular charts showing a year of greenness, moisture, bare soil and radar for a wheat field and a sunflower field" loading="lazy"></a></figure>
+          <figure class="fig"><a class="zoom" href="assets/clock_hero.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Phenological clock"><img src="assets/clock_hero.jpg" alt="Two circular charts showing a year of greenness, moisture, bare soil and radar for a wheat field and a sunflower field" loading="lazy" width="2000" height="1075"></a></figure>
           <div class="body">
             <span class="status">Complete</span>
             <h3>Phenological clock</h3>
@@ -341,7 +354,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
           </div>
         </article>
         <article class="tile t-lead">
-          <figure class="fig"><a class="zoom" href="assets/palm_spotcheck.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Not all clearing near palm oil mills is palm"><img src="assets/palm_spotcheck.jpg" alt="Sentinel-2 before and after images of two sites in West Kalimantan: forest turned into a new oil palm plantation, and forest turned into open-pit mining" loading="lazy"></a></figure>
+          <figure class="fig"><a class="zoom" href="assets/palm_spotcheck.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Not all clearing near palm oil mills is palm"><img src="assets/palm_spotcheck.jpg" alt="Sentinel-2 before and after images of two sites in West Kalimantan: forest turned into a new oil palm plantation, and forest turned into open-pit mining" loading="lazy" width="1950" height="1378"></a></figure>
           <div class="body">
             <span class="status">Complete · West Kalimantan and Riau</span>
             <h3>Palm oil mills: where does the fruit come from?</h3>
@@ -353,7 +366,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
           </div>
         </article>
         <article class="tile t-side">
-          <figure class="fig"><a class="zoom" href="assets/palm_mill_risk.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Which mills sit on an active agricultural clearing front?"><img src="assets/palm_mill_risk.jpg" alt="Map of palm oil mills in West Kalimantan coloured by agricultural clearing in their sourcing landscape, with a ranked table" loading="lazy"></a></figure>
+          <figure class="fig"><a class="zoom" href="assets/palm_mill_risk.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Which mills sit on an active agricultural clearing front?"><img src="assets/palm_mill_risk.jpg" alt="Map of palm oil mills in West Kalimantan coloured by agricultural clearing in their sourcing landscape, with a ranked table" loading="lazy" width="2000" height="1250"></a></figure>
           <div class="body">
             <span class="status">Complete</span>
             <h3>Mills on the clearing front</h3>
@@ -362,8 +375,8 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
         </article>
         <article class="tile t-duo">
           <div class="figs">
-            <figure class="fig"><a class="zoom" href="assets/soil_results.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Fewer Dobrudja fields left bare all summer since 2021"><img src="assets/soil_results.jpg" alt="Results for 8 sample areas in Dobrudja: a Sentinel-2 map, bare days per crop, the share of land bare all summer by year and winter cover" loading="lazy"></a></figure>
-            <figure class="fig"><a class="zoom" href="assets/soil_winter_check.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Checking the two winter signals on the images"><img src="assets/soil_winter_check.jpg" alt="Sentinel-2 winter images of 12 fields, each with what the image shows: dense green, patchy green or tilled soil" loading="lazy"></a></figure>
+            <figure class="fig"><a class="zoom" href="assets/soil_results.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Fewer Dobrudja fields left bare all summer since 2021"><img src="assets/soil_results.jpg" alt="Results for 8 sample areas in Dobrudja: a Sentinel-2 map, bare days per crop, the share of land bare all summer by year and winter cover" loading="lazy" width="2400" height="1500"></a></figure>
+            <figure class="fig"><a class="zoom" href="assets/soil_winter_check.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Checking the two winter signals on the images"><img src="assets/soil_winter_check.jpg" alt="Sentinel-2 winter images of 12 fields, each with what the image shows: dense green, patchy green or tilled soil" loading="lazy" width="2520" height="1148"></a></figure>
           </div>
           <div class="body">
             <span class="status">Complete · Dobrudja, Bulgaria</span>
@@ -378,8 +391,8 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
         </article>
         <article class="tile t-duo">
           <div class="figs">
-            <figure class="fig" style="flex:1.45 1 0;aspect-ratio:1.45"><a class="zoom" href="assets/niger_results.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Southern Niger's farmland holds more shrubs and trees than in the late 1980s"><img src="assets/niger_results.jpg" alt="Map of southern Niger farmland on 1 km hexagons coloured by dry-season greening since the late 1980s, with charts of rain, woody cover today and a bare-land check" loading="lazy"></a></figure>
-            <figure class="fig" style="flex:1.23 1 0;aspect-ratio:1.23"><a class="zoom" href="assets/niger_image_check.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Three places on the map, checked on the images"><img src="assets/niger_image_check.jpg" alt="Three places shown in 1990 and 2025 Landsat images, a 2025 Sentinel-2 image and a 1 m tree map" loading="lazy"></a></figure>
+            <figure class="fig" style="flex:1.45 1 0;aspect-ratio:1.45"><a class="zoom" href="assets/niger_results.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Southern Niger's farmland holds more shrubs and trees than in the late 1980s"><img src="assets/niger_results.jpg" alt="Map of southern Niger farmland on 1 km hexagons coloured by dry-season greening since the late 1980s, with charts of rain, woody cover today and a bare-land check" loading="lazy" width="2400" height="1650"></a></figure>
+            <figure class="fig" style="flex:1.23 1 0;aspect-ratio:1.23"><a class="zoom" href="assets/niger_image_check.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Three places on the map, checked on the images"><img src="assets/niger_image_check.jpg" alt="Three places shown in 1990 and 2025 Landsat images, a 2025 Sentinel-2 image and a 1 m tree map" loading="lazy" width="1760" height="1430"></a></figure>
           </div>
           <div class="body">
             <span class="status">Complete · Maradi and Zinder, Niger</span>
@@ -393,7 +406,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
           </div>
         </article>
         <article class="tile t-third">
-          <figure class="fig"><a class="zoom" href="assets/national_fields.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: A country, field by field"><img src="assets/national_fields.jpg" alt="Map of Bulgaria made of 1.1 million farm parcels coloured by declared crop" loading="lazy"></a></figure>
+          <figure class="fig"><a class="zoom" href="assets/national_fields.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: A country, field by field"><img src="assets/national_fields.jpg" alt="Map of Bulgaria made of 1.1 million farm parcels coloured by declared crop" loading="lazy" width="2000" height="1400"></a></figure>
           <div class="body">
             <span class="status">Complete</span>
             <h3>A country, field by field</h3>
@@ -402,7 +415,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
           </div>
         </article>
         <article class="tile t-third">
-          <figure class="fig"><a class="zoom" href="assets/drought_2020.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Drought from space"><img src="assets/drought_2020.jpg" alt="Map of 2020 greenness anomaly over farmland in south-east Romania" loading="lazy"></a></figure>
+          <figure class="fig"><a class="zoom" href="assets/drought_2020.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Drought from space"><img src="assets/drought_2020.jpg" alt="Map of 2020 greenness anomaly over farmland in south-east Romania" loading="lazy" width="1690" height="1344"></a></figure>
           <div class="body">
             <span class="status">Complete</span>
             <h3>Drought from space</h3>
@@ -411,7 +424,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
           </div>
         </article>
         <article class="tile t-third">
-          <figure class="fig"><a class="zoom" href="assets/cap_map.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Do declarations match the satellite?"><img src="assets/cap_map.jpg" alt="Map of farm parcels coloured by agreement between declared crop and satellite observations" loading="lazy"></a></figure>
+          <figure class="fig"><a class="zoom" href="assets/cap_map.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Do declarations match the satellite?"><img src="assets/cap_map.jpg" alt="Map of farm parcels coloured by agreement between declared crop and satellite observations" loading="lazy" width="1950" height="1380"></a></figure>
           <div class="body">
             <span class="status">Complete</span>
             <h3>Do declarations match the satellite?</h3>
@@ -424,7 +437,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
           <small>Sentinel-1 · Sentinel-2 · Copernicus DEM · ESA WorldCereal · parcel registers · OpenStreetMap</small>
         </article>
         <article class="tile t-wide">
-          <figure class="fig"><a class="zoom" href="assets/three_sensors.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: One landscape, three sensors"><img src="assets/three_sensors.jpg" alt="The same farmland seen by an aerial orthophoto, Sentinel-2 and Sentinel-1 radar" loading="lazy"></a></figure>
+          <figure class="fig"><a class="zoom" href="assets/three_sensors.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: One landscape, three sensors"><img src="assets/three_sensors.jpg" alt="The same farmland seen by an aerial orthophoto, Sentinel-2 and Sentinel-1 radar" loading="lazy" width="2000" height="816"></a></figure>
           <div class="body">
             
             <h3>One landscape, three sensors</h3>
