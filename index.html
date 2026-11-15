@@ -205,6 +205,7 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
 
 /* ---------- samples in preparation ---------- */
 .t-half{grid-column:span 3}
+.t-half figure{aspect-ratio:1.6}
 .t-plan{border:1.5px dashed var(--rose);background:var(--surface)}
 .t-plan .body{padding:24px 26px 26px;gap:10px;align-content:start;height:100%}
 .t-plan h3{font:400 clamp(26px,2.6vw,32px)/1.08 var(--serif)}
@@ -361,7 +362,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
         <p>Demonstrations on open data, never client work.</p>
       </div>
       <div class="mosaic">
-        <article class="tile t-third linked">
+        <article class="tile t-half linked">
           <figure class="fig"><a href="habitat-premap.html" aria-label="Habitat pre-map for biodiversity net gain"><img src="assets/s1_tile.jpg" alt="Pre-map of the Fenwick solar site: cropland, grassland, hedgerows and areas to check on the walkover" loading="lazy" width="1000" height="625"></a></figure>
           <div class="body">
             <span class="status">Sample · United Kingdom</span>
@@ -375,21 +376,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
             <a class="more" href="habitat-premap.html">Read the sample →</a>
           </div>
         </article>
-        <article class="tile t-third linked">
-          <figure class="fig"><a href="site-screening.html" aria-label="Site screening for lender standards and nature disclosures"><img src="assets/s2_tile.jpg" alt="Sentinel-2 view of Cape Kaliakra in Bulgaria, with wind turbines coloured by screening result and the Birds Directive site outlined" loading="lazy" width="1000" height="625"></a></figure>
-          <div class="body">
-            <span class="status">Sample · Bulgaria and Portugal</span>
-            <h3>Site screening for lender standards and nature disclosures</h3>
-            <p>1,237 solar parks and wind farms screened on open data against Natura 2000, critical habitat, ecosystem integrity and water risk, in the shape of the TNFD Locate phase, with a drawing of how it would run every day.</p>
-            <ul>
-              <li>In or within 1 km of Natura 2000 or likely critical habitat: 47% of sites in Bulgaria, 32% in Portugal</li>
-              <li>276 sites where a critical habitat assessment is likely to be asked for</li>
-              <li>A screening memo per country and per-site results</li>
-            </ul>
-            <a class="more" href="site-screening.html">Read the sample →</a>
-          </div>
-        </article>
-        <article class="tile t-third linked">
+        <article class="tile t-half linked">
           <figure class="fig"><a href="solar-monitoring.html" aria-label="Monitoring a solar park between survey visits"><img src="assets/s3_tile.jpg" alt="Sentinel-2 view of Cleve Hill Solar Park in Kent, with the habitat management area outlined east of the arrays" loading="lazy" width="1000" height="625"></a></figure>
           <div class="body">
             <span class="status">Sample · United Kingdom · monitoring</span>
@@ -401,6 +388,64 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
               <li>A monitoring note for the habitat steering group</li>
             </ul>
             <a class="more" href="solar-monitoring.html">Read the sample →</a>
+          </div>
+        </article>
+        <article class="tile t-duo">
+          <div class="figs">
+            <figure class="fig" style="flex:1.70 1 0;aspect-ratio:1.70"><a class="zoom" href="assets/maritsa_results.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Maritsa Iztok from space: NOx matches the reports, SO₂ reads 3–4 times higher"><img src="assets/maritsa_results.jpg" alt="Yearly SO2 maps over Maritsa Iztok 2019 to 2024 and charts of SO2 and NOx estimated from space against reported emissions" loading="lazy" width="2400" height="1410"></a></figure>
+            <figure class="fig" style="flex:2.5 1 0;aspect-ratio:2.5"><a class="zoom" href="assets/maritsa_plume.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: The average plume, lined up with the wind"><img src="assets/maritsa_plume.jpg" alt="Average SO2 and NO2 plumes over Maritsa Iztok, rotated so the wind blows to the right" loading="lazy" width="2100" height="840"></a></figure>
+          </div>
+          <div class="body">
+            <span class="status">Complete · Maritsa Iztok, Bulgaria</span>
+            <h3>Maritsa Iztok: do the emissions seen from space match the reports?</h3>
+            <p>Sentinel-5P over Bulgaria's largest lignite complex, 2019 to 2024. The ups and downs match the plants' reports for both gases. NOx matches the reported amount too; SO₂ reads 3 to 4 times higher, as NASA's independent estimate also finds.</p>
+            <div>
+              <p>Standard plume fit, ESA's reprocessed archive, and a check against NASA's global SO₂ catalogue.</p>
+              <div class="tags" style="margin-top:10px"><span class="tag">Sentinel-5P</span><span class="tag">Copernicus Data Space</span><span class="tag">ERA5 wind</span><span class="tag">EU emissions register</span></div>
+              <a class="more" href="maritsa-emissions.html" style="display:inline-block;margin-top:10px">Read how I did it →</a>
+            </div>
+          </div>
+        </article>
+        <article class="tile t-third linked">
+          <figure class="fig"><a href="nature-disclosure-bulgaria.html" aria-label="Screening a portfolio for nature disclosures: Bulgaria"><img src="assets/s2_bg_tile.jpg" alt="Sentinel-2 view of solar parks at Malko Tarnovo inside the Strandzha Natura 2000 sites" loading="lazy" width="1000" height="625"></a></figure>
+          <div class="body">
+            <span class="status">Sample · Bulgaria · disclosures</span>
+            <h3>Screening a portfolio for nature disclosures: Bulgaria</h3>
+            <p>504 solar parks and wind farms screened on open data for the TNFD Locate phase, ESRS E4 and GRI 101-5, with the distance stated and the land around them year by year.</p>
+            <ul>
+              <li>In or within 1 km of Natura 2000 or likely critical habitat: 238 sites, 47%</li>
+              <li>77 of 112 wind farms within 5 km of a Birds Directive site</li>
+              <li>A screening memo and per-site results</li>
+            </ul>
+            <a class="more" href="nature-disclosure-bulgaria.html">Read the sample →</a>
+          </div>
+        </article>
+        <article class="tile t-third linked">
+          <figure class="fig"><a href="nature-disclosure-portugal.html" aria-label="Screening a portfolio for nature disclosures: Portugal"><img src="assets/s2_pt_tile.jpg" alt="Sentinel-2 view of wind farms in the Serra de Montemuro in Portugal, with turbines coloured by screening result and the Natura 2000 site outlined" loading="lazy" width="1000" height="625"></a></figure>
+          <div class="body">
+            <span class="status">Sample · Portugal · disclosures</span>
+            <h3>Screening a portfolio for nature disclosures: Portugal</h3>
+            <p>733 solar parks and wind farms in mainland Portugal screened on open data for the TNFD Locate phase, ESRS E4 and GRI 101-5, with the distance stated and the land around them year by year.</p>
+            <ul>
+              <li>In or within 1 km of Natura 2000 or likely critical habitat: 232 sites, 32%</li>
+              <li>Tree cover lost near the sites since 2017: 19%, mostly to fire</li>
+              <li>A screening memo and per-site results</li>
+            </ul>
+            <a class="more" href="nature-disclosure-portugal.html">Read the sample →</a>
+          </div>
+        </article>
+        <article class="tile t-third linked">
+          <figure class="fig"><a href="critical-habitat-screening.html" aria-label="Critical habitat pre-screening for a lender"><img src="assets/s2_tile.jpg" alt="Sentinel-2 view of Cape Kaliakra in Bulgaria, with wind turbines and the Birds Directive site outlined" loading="lazy" width="1000" height="625"></a></figure>
+          <div class="body">
+            <span class="status">In preparation · Bulgaria · lender standards</span>
+            <h3>Critical habitat pre-screening for a lender</h3>
+            <p>A wind farm on the Kaliakra coast, taken through the first questions of IFC PS6 and EBRD PR6 on open data: natural or modified habitat, what the protected sites are designated for, and the five critical habitat criteria one by one.</p>
+            <ul>
+              <li>Natural and modified habitat from Sentinel-2, before and after construction</li>
+              <li>The known case at Kaliakra, and what an overlay can't see</li>
+              <li>A criteria table that drops into the assessment</li>
+            </ul>
+            <a class="more" href="critical-habitat-screening.html">Read the sample →</a>
           </div>
         </article>
         <article class="tile t-guide linked">
@@ -418,22 +463,6 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
             <li><b>The checks</b> that catch them</li>
             <li><b>Training</b> for every team size</li>
           </ol>
-        </article>
-        <article class="tile t-duo">
-          <div class="figs">
-            <figure class="fig" style="flex:1.70 1 0;aspect-ratio:1.70"><a class="zoom" href="assets/maritsa_results.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Maritsa Iztok from space: NOx matches the reports, SO₂ reads 3–4 times higher"><img src="assets/maritsa_results.jpg" alt="Yearly SO2 maps over Maritsa Iztok 2019 to 2024 and charts of SO2 and NOx estimated from space against reported emissions" loading="lazy" width="2400" height="1410"></a></figure>
-            <figure class="fig" style="flex:2.5 1 0;aspect-ratio:2.5"><a class="zoom" href="assets/maritsa_plume.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: The average plume, lined up with the wind"><img src="assets/maritsa_plume.jpg" alt="Average SO2 and NO2 plumes over Maritsa Iztok, rotated so the wind blows to the right" loading="lazy" width="2100" height="840"></a></figure>
-          </div>
-          <div class="body">
-            <span class="status">Complete · Maritsa Iztok, Bulgaria</span>
-            <h3>Maritsa Iztok: do the emissions seen from space match the reports?</h3>
-            <p>Sentinel-5P over Bulgaria's largest lignite complex, 2019 to 2024. The ups and downs match the plants' reports for both gases. NOx matches the reported amount too; SO₂ reads 3 to 4 times higher, as NASA's independent estimate also finds.</p>
-            <div>
-              <p>Standard plume fit, ESA's reprocessed archive, and a check against NASA's global SO₂ catalogue.</p>
-              <div class="tags" style="margin-top:10px"><span class="tag">Sentinel-5P</span><span class="tag">Copernicus Data Space</span><span class="tag">ERA5 wind</span><span class="tag">EU emissions register</span></div>
-              <a class="more" href="maritsa-emissions.html" style="display:inline-block;margin-top:10px">Read how I did it →</a>
-            </div>
-          </div>
         </article>
         <article class="tile t-side">
           <figure class="fig"><a class="zoom" href="assets/lulc_change.jpg" target="_blank" rel="noopener" aria-label="Open full-size figure: Land-use change that lasts"><img src="assets/lulc_change.jpg" alt="Map of persistent land-use change on the edge of Sofia" loading="lazy" width="1950" height="1380"></a></figure>
@@ -469,7 +498,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
       <div class="services">
         <div class="svc">
           <h3>Habitat pre-mapping and monitoring</h3>
-          <p>Desk-based habitat maps from Sentinel-1 and Sentinel-2 before the field survey, in UK or EU habitat types, with a parcel table for the ecologist to check on site. Then repeat imagery between monitoring surveys, on the same parcels.</p>
+          <p>Desk-based habitat maps from Sentinel-1, Sentinel-2 and LiDAR before the field survey, in UK or EU broad habitat types, with a parcel table for the ecologist to check on site. Then repeat imagery between monitoring surveys, on the same parcels.</p>
           <span class="for">For: ecological consultancies, habitat bank operators</span>
         </div>
         <div class="svc">

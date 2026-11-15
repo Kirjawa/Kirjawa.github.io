@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Screening a portfolio for nature disclosures: Bulgaria · Ana Silva</title>
+<meta name="description" content="504 solar parks and wind farms in Bulgaria screened on open data for the TNFD Locate phase, ESRS E4 and GRI 101-5: sites in or near sensitive locations, with the distance stated, and the land around them year by year.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--blush:#F8D3DA;--rose:#DB8FAB;--rose-ink:#A94C73;--teal:#15A19A;--forest:#0B6152;--pine:#073B35;
+--ground:#FDF6F7;--surface:#FFFFFF;--wash:#E6F2EC;--ink:#0A2F2B;--ink-2:#3E5B56;--muted:#566F6B;--hair:#DCE7E1;
+--serif:"Instrument Serif",Georgia,"Times New Roman",serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,40px)}
+.wrap{max-width:820px;margin:0 auto;padding-block:28px 72px}
+a{color:var(--rose-ink);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+.back{font:500 13px var(--mono);text-decoration:none}
+.eyebrow{display:block;margin-top:34px;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink)}
+h1{font:400 clamp(38px,5.5vw,64px)/1.02 var(--serif);margin:14px 0 18px;text-wrap:balance}
+h2{font:400 clamp(28px,3.4vw,38px)/1.1 var(--serif);margin:52px 0 12px;text-wrap:balance}
+h2{display:flex;align-items:baseline}
+h2 .n{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
+@media (max-width:1000px){h2 .n{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
+p,li{color:var(--ink-2)}
+.lede{font-size:19.5px;color:var(--ink)}
+ol,ul{padding-left:22px}
+li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:15.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+th{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td:first-child{color:var(--ink)}
+td.num,th.num{text-align:right;white-space:nowrap}
+.tbl{overflow-x:auto}
+.prep{border:1.5px dashed var(--rose);border-radius:14px;padding:16px 20px;margin:24px 0;background:var(--surface)}
+.prep p{margin:0}
+.note{background:var(--wash);border-radius:12px;padding:16px 20px;margin:24px 0}
+.note p{margin:0}
+.cta{background:var(--forest);color:#fff;border-radius:14px;padding:18px 22px;margin:28px 0}
+.cta p{color:#E6F3EF;margin:0}
+.cta a{color:#fff;font-weight:600}
+footer{border-top:1px solid var(--hair);margin-top:56px;padding-top:18px;font:400 13px var(--mono);color:var(--muted)}
+.find{list-style:none;padding:0;margin:18px 0;display:grid;gap:10px}
+.find li{background:var(--surface);border:1px solid var(--hair);border-left:4px solid var(--forest);border-radius:10px;padding:12px 16px;margin:0}
+.find b{color:var(--ink)}
+a.fig{display:block;margin:18px 0 6px;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
+a.fig img{display:block;width:100%;height:auto}
+.fig-note{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:0 0 18px}
+.steps li{margin:9px 0}
+.steps b{color:var(--ink)}
+.dl{display:grid;gap:10px;margin:16px 0}
+.dl a{display:flex;justify-content:space-between;gap:12px;align-items:baseline;text-decoration:none;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:12px 16px;color:var(--ink)}
+.dl a:hover{border-color:var(--forest)}
+.dl span{font:400 12.5px var(--mono);color:var(--muted)}
+.ai{background:var(--surface);border:1.5px dashed var(--rose);border-radius:14px;padding:16px 20px;margin:18px 0}
+.ai p{margin:6px 0}
+/* related */.related{margin:56px 0 0}.related h2{display:block;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink);margin:0 0 14px}.related .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.related a{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;color:var(--ink)}.related a:hover{border-color:var(--forest)}.related .ey{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.related .t{display:block;font:400 21px/1.2 var(--serif);color:var(--ink);text-wrap:balance}/* /related */
+/* plan: step-2 markers for the preview, removed before going live */.plan{border:1.5px dashed var(--teal);background:#F1FAF7;border-radius:12px;padding:12px 18px 14px;margin:16px 0}.plan .tag{display:inline-block;font:500 11.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin:2px 0 4px}.plan p{margin:6px 0;font-size:15.5px}tr.planned td{color:var(--muted);background:#F1FAF7}/* /plan */
+</style>
+<!-- seo --><link rel="canonical" href="https://kirjawa.github.io/nature-disclosure-bulgaria.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Screening a portfolio for nature disclosures: Bulgaria">
+<meta property="og:description" content="504 solar parks and wind farms in Bulgaria screened on open data for the TNFD Locate phase, ESRS E4 and GRI 101-5: sites in or near sensitive locations, with the distance stated, and the land around them year by year.">
+<meta property="og:url" content="https://kirjawa.github.io/nature-disclosure-bulgaria.html">
+<meta property="og:image" content="https://kirjawa.github.io/assets/og_nature-disclosure-bulgaria.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kirjawa.github.io/assets/og_nature-disclosure-bulgaria.jpg">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Screening a portfolio for nature disclosures: Bulgaria", "description": "504 solar parks and wind farms in Bulgaria screened on open data for the TNFD Locate phase, ESRS E4 and GRI 101-5: sites in or near sensitive locations, with the distance stated, and the land around them year by year.", "url": "https://kirjawa.github.io/nature-disclosure-bulgaria.html", "image": "https://kirjawa.github.io/assets/s2_country_bg.jpg", "datePublished": "2026-11-15", "inLanguage": "en", "keywords": ["nature disclosure", "TNFD", "LEAP", "ESRS E4", "GRI 101", "Natura 2000", "solar", "wind", "Bulgaria"], "author": {"@type": "Person", "@id": "https://kirjawa.github.io/#ana", "name": "Ana Silva", "url": "https://kirjawa.github.io/", "sameAs": ["https://www.linkedin.com/in/ana-luisa-silva/", "https://github.com/Kirjawa"]}, "isPartOf": {"@id": "https://kirjawa.github.io/#site"}}</script><!-- /seo -->
+<!-- chrome --><style>.topbar{position:sticky;top:0;z-index:5;margin-inline:calc(-1*clamp(16px,4vw,40px));padding:9px clamp(16px,4vw,40px);background:rgba(253,246,247,.93);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}.topbar div{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px}.topbar .who{font:500 13.5px/1.3 var(--mono);text-decoration:none;color:var(--rose-ink)}.topbar .who b{font-weight:500;color:var(--ink)}.topbar .mail,.actions a{display:inline-block;text-decoration:none;font:600 14.5px/1 var(--sans);padding:11px 18px;border-radius:99px;background:var(--forest);color:#fff;border:1px solid var(--forest);white-space:nowrap}.topbar .mail:hover,.actions a:hover{background:var(--pine)}.actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:22px 0 8px}.actions a.alt{background:var(--surface);color:var(--pine);border-color:var(--rose)}.actions a.alt:hover{background:var(--wash)}.actions a span{font:400 12.5px var(--mono);opacity:.85;margin-left:6px}.actions a.all{background:none;border:0;padding:6px 2px;color:var(--rose-ink);font:500 13.5px var(--mono);text-decoration:underline}.actions a.all:hover{background:none}.author{display:flex;gap:18px;align-items:flex-start;margin:44px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--hair);border-radius:14px}.author img{flex:none;width:76px;height:76px;border-radius:50%;object-fit:cover}.author .by{display:block;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink);margin:2px 0 8px}.author p{margin:0 0 6px;font-size:16px;line-height:1.55}.author .nm{color:var(--ink);font-size:17px}.author .nm b{font-weight:600}.author .lk{display:flex;flex-wrap:wrap;gap:4px 18px;margin:10px 0 0;font:500 13.5px/1.4 var(--mono)}.author .lk a{padding-block:4px}.author+.cta{margin-top:14px}@media (max-width:480px){.author{display:grid;grid-template-columns:56px 1fr;gap:0 14px;padding:18px}.author>div{display:contents}.author img{width:56px;height:56px;grid-row:1/3;align-self:center}.author .by{margin:0 0 6px;align-self:end}.author .nm{margin:0;align-self:start}.author p:not(.nm){grid-column:1/-1}.author .nm+p{margin-top:12px}}h2[id]{scroll-margin-top:72px}@media (max-width:480px){.topbar .role{display:none}}</style><!-- /chrome -->
+<!-- umami --><script defer src="https://cloud.umami.is/script.js" data-website-id="c0b6a590-ee99-4b51-9488-d54e5709d080" data-domains="kirjawa.github.io"></script><!-- /umami -->
+</head>
+<body>
+<!-- topbar --><nav class="topbar" aria-label="Site"><div><a class="who" href="./#work">← <b>Ana Silva</b><span class="role"> · GIS and remote sensing</span></a><a class="mail" href="mailto:ana@timebooster.ai?subject=Nature%20disclosure%20screening%20enquiry" data-umami-event="Email click">Email me</a></div></nav><!-- /topbar -->
+<div class="wrap">
+  <span class="eyebrow">Sample · Bulgaria · TNFD, ESRS E4 and GRI 101</span>
+  <h1>Screening a portfolio for nature disclosures: Bulgaria</h1>
+  <div class="prep">
+    <p><b>Demonstration on open data.</b> Screening, not assessment, and not client work. A site counted here is "in or near a sensitive location" by the stated rule and distance, never a finding about the site.</p>
+  </div>
+
+  <p class="lede">Take the solar parks and wind farms mapped in OpenStreetMap in Bulgaria: 504 sites of 1 ha or more, 392 solar parks and 112 wind farms. How many sit in or near a sensitive location for nature, how does the answer move with the distance, and is the land around them changing?</p>
+  <p>This is the desk exercise behind the Locate phase of the TNFD's LEAP approach, and behind the metric that ESRS E4, GRI 101-5 and TNFD all ask for: sites in or near protected areas or areas of high biodiversity importance, with the distance stated. The same screening, with the same rules, is shown for <a href="nature-disclosure-portugal.html">Portugal</a>. For a single project going to a lender, see the <a href="critical-habitat-screening.html">critical habitat pre-screening at Kaliakra</a>.</p>
+
+  <a class="fig" href="assets/s2_country_bg.jpg"><img src="assets/s2_country_bg.jpg" alt="Sentinel-2 view of solar parks at Malko Tarnovo inside the Strandzha Natura 2000 sites, a map of Bulgaria's sites by screening result, and charts of results by type" width="2210" height="1258" fetchpriority="high"></a>
+  <p class="fig-note">Solar parks at Malko Tarnovo, inside both Strandzha Natura 2000 sites, and every screened site in Bulgaria. Select the image to open it full size.</p>
+
+  <ul class="find">
+    <li><b>The headline metric:</b> 238 of 504 sites (47%) are in or within 1 km of a Natura 2000 site or likely critical habitat.</li>
+    <li><b>The distance matters:</b> 20% of the sites are inside Natura 2000, 47% within 1 km and 90% within 5 km. Natura 2000 covers a large share of the country, so "near" is common. Every number here comes with its distance.</li>
+    <li><b>Wind and birds:</b> 77 of the 112 wind farms are within 5 km of a Birds Directive site, most of them in the north-east around Kaliakra.</li>
+    <li><b>Water:</b> 101 sites (20%) are in catchments with high or extremely high physical water risk. Solar and wind use little water, but the criterion is about the place, not the plant.</li>
+    <li><b>Year by year:</b> little tree cover near the sites, and little lost: 0.3% of the land within 1 km since 2017, against 0.7% in the countryside, mostly forestry. Natural cover around the sites barely changed overall.</li>
+  </ul>
+  <!-- actions --><div class="actions"><a href="downloads/S2_screening_memo_bulgaria_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S2_screening_memo_bulgaria_v1.pdf">Download the Bulgaria memo <span>PDF · 4 pages</span></a><a class="alt" href="mailto:ana@timebooster.ai?subject=Nature%20disclosure%20screening%20enquiry" data-umami-event="Email click">Email me</a><a class="all" href="#downloads">All downloads</a></div><!-- /actions -->
+
+  <h2><span class="n">1</span>The question</h2>
+  <p>Companies reporting under ESRS E4, GRI 101 or TNFD count their sites in or near sensitive locations for nature. The count is only as good as two things: the site list, and the rule for "near". TNFD doesn't fix a distance and GRI 101-5 asks for it to be stated, so the screening shows how the count moves with it.</p>
+  <p>Bulgaria is adding solar fast, and Natura 2000 covers about a third of its land. Between 2022 and 2024, solar capacity grew from 1,737 to 4,560 MW (Eurostat).</p>
+
+  <h2><span class="n">2</span>Data</h2>
+  <div class="tbl"><table>
+    <tr><th>Source</th><th>Used for</th><th>Licence</th></tr>
+    <tr><td>OpenStreetMap: solar and wind plants, wind turbines (data of 22 October 2026)</td><td>The sites</td><td>ODbL</td></tr>
+    <tr><td>Natura 2000, end-2024 release (European Environment Agency)</td><td>Birds Directive and Habitats Directive sites</td><td>CC BY 4.0</td></tr>
+    <tr><td>Critical Habitat screening layer, basic version (UNEP-WCMC and The Biodiversity Consultancy, 2025)</td><td>Likely critical habitat</td><td>CC BY 4.0</td></tr>
+    <tr><td>Aqueduct 4.0 (World Resources Institute)</td><td>Physical water risk</td><td>CC BY 4.0</td></tr>
+    <tr><td>Biodiversity Intactness Index, 2017 to 2020 (Impact Observatory and Vizzuality)</td><td>Ecosystem integrity and its decline</td><td>CC BY 4.0</td></tr>
+    <tr><td>ESA WorldCover 2021</td><td>Land cover on and around each site</td><td>CC BY 4.0</td></tr>
+    <tr><td>Global Forest Change 2025 v1.13 (Hansen/UMD)</td><td>Tree cover lost each year, 2017 to 2025</td><td>CC BY 4.0</td></tr>
+    <tr><td>Drivers of tree cover loss v1.13 (WRI and Google DeepMind)</td><td>The main cause of each loss</td><td>CC BY 4.0</td></tr>
+    <tr><td>10 m annual land use land cover v2, 2017 to 2023 (Impact Observatory)</td><td>Natural cover, year by year</td><td>CC BY 4.0</td></tr>
+    <tr><td>Sentinel-2, 2017 to 2025</td><td>The view of Malko Tarnovo</td><td>Copernicus free and open</td></tr>
+    <tr><td>Eurostat, electricity capacity from renewables (nrg_inf_epcrw)</td><td>Context for the site list</td><td>CC BY 4.0</td></tr>
+    <tr><td>Natural Earth</td><td>Country outline on the map</td><td>Public domain</td></tr>
+  </table></div>
+  <p>Not used: WDPA and key biodiversity area data, whose terms don't allow commercial use or redistribution without permission, and the non-commercial "drill-down" version of the critical habitat layer.</p>
+
+  <h2><span class="n">3</span>Method in brief</h2>
+  <ol class="steps">
+    <li><b>Sites.</b> Solar parks and wind farms mapped as power plants in OpenStreetMap, plus the wind turbines outside them, grouped into a farm when they stand within 800 m of each other. That is the distance used for the global wind and solar farm datasets of Dunnett et al. (2020). A farm's footprint is the outline of its turbines plus 150 m. Sites under 1 ha are left out.</li>
+    <li><b>Distances.</b> Inside, and within 1 km for "near": close enough for construction, access roads and edge effects to reach a protected site. Wind farms are also checked within 5 km of Birds Directive sites, since birds range well beyond the sites that protect them.</li>
+    <li><b>TNFD sensitive locations.</b> Open data covers four of the five criteria. <i>Important for biodiversity</i>: Natura 2000 or likely critical habitat, inside or within 1 km. <i>High ecosystem integrity</i>: Biodiversity Intactness around the site in the country's top quarter. <i>Rapid decline in integrity</i>: a fall around the site from 2017 to 2020 steeper than on 95% of the country's land. <i>High physical water risk</i>: Aqueduct's physical risk, for water quantity or quality, high or extremely high. Baseline water stress, which ESRS E3 and GRI 303 use, is in the download too. The fifth, ecosystem services for Indigenous Peoples and local communities, needs local knowledge.</li>
+    <li><b>Year by year.</b> Within 1 km of each site, against land elsewhere in the country: tree cover lost each year, with its main cause, and changes between natural cover (trees, rangeland, wetland vegetation) and crops or built-up land. A change in the land cover maps counts only if it held: the same in 2017 and 2018, different in 2022 and 2023. A site's surroundings show a notable loss when at least 5% of that land lost natural or tree cover.</li>
+  </ol>
+  <p>The rules and distances were written down before the results and not tuned to them.</p>
+
+  <h2><span class="n">4</span>The sites</h2>
+  <p>Most of the 504 sites are small solar parks: 392, half of them under 4.4 ha, spread across the lowlands. The 112 wind farms are concentrated in the north-east, around Kaliakra and Kavarna. 47% of the sites are in or within 1 km of Natura 2000 or likely critical habitat, 26% of the solar parks are in catchments with high physical water risk, and 317 sites meet at least one of the four TNFD criteria covered here.</p>
+
+  <h2><span class="n">5</span>Is the site list complete?</h2>
+  <p>The count is only as good as the list. OpenStreetMap shows what volunteers have mapped, and few solar parks carry their capacity there, so the list can't be checked against the official statistics. The list has 392 solar parks over 4,415 ha, against 4,560 MW of solar in Eurostat for 2024, rooftops included. Wind farms come to about 930 MW from their turbines' own tags and the median size for the rest, against 706 MW in Eurostat. Most turbines carry no capacity tag, so that is an estimate, and being above the official figure doesn't show that no wind farm is missing.</p>
+
+<h2><span class="n">6</span>Year by year around the sites</h2>
+  <p>Is the land around the sites losing natural cover? Two yearly records answer it for the land within 1 km of every site, counted once where sites are close together: tree cover lost each year from 2017 to 2025 with its main cause, and natural cover against crops and built-up land from 2017 to 2023.</p>
+  <a class="fig" href="assets/s2_yearly.jpg"><img src="assets/s2_yearly.jpg" alt="Charts for Bulgaria and Portugal: tree cover lost each year from 2017 to 2025 near the sites, by cause, against the countryside; and natural cover changes that lasted, 2019 to 2022" loading="lazy" width="2210" height="1393"></a>
+  <p class="fig-note">Near the sites against the countryside, year by year: Bulgaria is the left column. Select the image to open it full size.</p>
+  <ul class="find">
+    <li><b>Tree cover:</b> little near the sites, and little lost: 0.3% of the land within 1 km from 2017 to 2025, against 0.7% in the countryside, mostly forestry.</li>
+    <li><b>Natural cover:</b> scarcer near the sites, 26% of the land against 57% in the countryside, and it swaps with crops more often, but the net change from 2019 to 2022 was small: -0.09% of the land, against +0.14% in the countryside.</li>
+    <li><b>Site by site:</b> 26 sites lost natural or tree cover over at least 5% of the land around them. The figures for every site, with the cause, are in the download.</li>
+  </ul>
+  <p>A change near a site isn't necessarily caused by the site. These records show where the land is changing, which is what TNFD's "rapid decline in ecosystem integrity" asks about, and where a monitoring visit or a closer look would start.</p>
+
+  <h2><span class="n">7</span>Checks</h2>
+  <div class="tbl"><table>
+    <tr><th>Check</th><th>Result</th></tr>
+    <tr><td>How much the distance changes the answer</td><td>Sites inside or near Natura 2000: 20% inside, 36% within 500 m, 47% within 1 km, 63% within 2 km, 90% within 5 km.</td></tr>
+    <tr><td>What each biodiversity layer adds</td><td>Of the sites inside Natura 2000 or on likely critical habitat (121), 23 are on likely critical habitat only, outside Natura 2000; 45 are inside Natura 2000 only; 53 are both.</td></tr>
+  </table></div>
+  <p>Screening is not assessment. A count says where to look closer.</p>
+  <p><b>Run as a service,</b> the same screening keeps up with a portfolio: a new or changed site triggers it, the reference layers are refreshed once a year, and satellite data watch each site and its surroundings. <a href="assets/s2_architecture.png">How it would run, in one drawing</a>.</p>
+
+  <h2><span class="n">8</span>What open data can't tell here</h2>
+  <ul>
+    <li><b>Key biodiversity areas and species records,</b> which sit behind licences that don't allow this use. The critical habitat layer stands in for them, at about 1 km resolution.</li>
+    <li><b>Ecosystem services</b> for Indigenous Peoples and local communities, the fifth TNFD criterion.</li>
+    <li><b>Exact site boundaries.</b> Grouping turbines can join or split wind farms, and an outline drawn around turbines is not the leased area. A client's own site register replaces all of this.</li>
+    <li><b>Recent change.</b> Each layer has a date: Natura 2000 end 2024, Biodiversity Intactness up to 2020, WorldCover 2021, the annual land cover maps up to 2023.</li>
+    <li><b>Whether a change near a site was caused by it.</b> And tree cover loss includes plantation harvests, which grow back.</li>
+  </ul>
+
+  <h2><span class="n">9</span>What the checks caught</h2>
+  <div class="ai">
+    <p>Grouping turbines within 1.5 km joined the wind farms around Kavarna into one 6,000 ha site, so turbines 8 km from the bird area were counted with it. The map showed it, and the published 800 m replaced it. The first decline in integrity included each site's own footprint, so a park built between 2017 and 2020 showed its own construction as decline; now only the surroundings count. The first try at dating each park's construction from the annual land cover maps failed, because they read panels as rangeland or crops: the largest park, 622 ha, never showed as built.</p>
+    <p>The scripts were written with an AI agent and checked as described here; <a href="ai-gis-guide.html">how I work with AI on GIS</a>.</p>
+  </div>
+
+  <h2 id="downloads"><span class="n">10</span>Downloads</h2>
+  <div class="dl">
+    <a href="downloads/S2_screening_memo_bulgaria_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S2_screening_memo_bulgaria_v1.pdf">Screening memo, Bulgaria, in the order of the TNFD Locate phase <span>PDF · 4 pages · 0.70 MB</span></a>
+    <a href="downloads/S2_site_screening_demo_v1.zip" data-umami-event="Demo download" data-umami-event-file="S2_site_screening_demo_v1.zip">Per-site results for both countries, with footprints and the year-by-year figures (CSV, GeoPackage) <span>ZIP · 0.89 MB</span></a>
+  </div>
+  <p>Own outputs and open data only, with every source and licence named inside. The site list is derived from OpenStreetMap and shared under the ODbL.</p>
+
+  <h2><span class="n">11</span>Sources</h2>
+  <ul>
+    <li><a href="https://tnfd.global/knowledge-bank/tnfds-additional-sector-guidance/">TNFD LEAP guidance and sector guidance</a></li>
+    <li><a href="https://www.wbcsd.org/metrics/number-of-sites-in-or-near-pa-kba-proximity-to-pa-or-kba">WBCSD metric: number of sites in or near protected or key biodiversity areas</a> (aligned with ESRS E4, GRI 101-5 and TNFD)</li>
+    <li>Dunnett, S. et al. (2025). An update to the global Critical Habitat screening layer. Scientific Data 12, 1812. <a href="https://zenodo.org/records/17120213">Data and code</a></li>
+    <li>Dunnett, S. et al. (2020). Harmonised global datasets of wind and solar farm locations and power. Scientific Data 7, 130.</li>
+    <li>Kuzma, S. et al. (2023). Aqueduct 4.0: updated decision-relevant global water risk indicators. World Resources Institute.</li>
+    <li>European Environment Agency: Natura 2000, end-2024 release. Impact Observatory and Vizzuality: Biodiversity Intactness Index, via Microsoft Planetary Computer. Zanaga, D. et al. (2022). ESA WorldCover 10 m 2021 v200.</li>
+    <li>Hansen, M. C. et al. (2013). High-resolution global maps of 21st-century forest cover change. Science 342. Global Forest Change 2025 v1.13.</li>
+    <li>Sims, M. J. et al. (2025). Global drivers of forest loss at 1 km resolution. Environmental Research Letters 20, 074027.</li>
+    <li>Impact Observatory: 10 m annual land use land cover, version 2, 2017 to 2023, via Microsoft Planetary Computer.</li>
+    <li>Eurostat, Electricity production capacities for renewables and wastes (nrg_inf_epcrw).</li>
+  </ul>
+  <!-- author --><aside class="author" aria-label="About the author"><img src="assets/ana_small.jpg" alt="Ana Silva" width="192" height="192" loading="lazy"><div><span class="by">Who made this</span><p class="nm"><b>Ana Silva</b> · GIS and remote sensing specialist, Sofia</p><p>I came to satellite analytics from cartography, cadastre and environmental assessment, with Natura 2000 habitat mapping and River Habitat Survey reporting. As a freelancer I support ecologists and consultants with remote sensing, and train GIS teams starting with AI tools.</p><p class="lk"><a href="./#about">About me</a><a href="./#services">Services</a><a href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener" data-umami-event="LinkedIn click">LinkedIn</a></p></div></aside><!-- /author -->
+  <div class="cta"><p>If you report under TNFD, ESRS E4 or GRI 101 and have a list of sites to screen, email me at <a href="mailto:ana@timebooster.ai?subject=Nature%20disclosure%20screening%20enquiry" data-umami-event="Email click">ana@timebooster.ai</a>.</p></div>
+
+  <!-- related --><section class="related" aria-labelledby="related-h">
+    <h2 id="related-h">Related work</h2>
+    <div class="cards">
+      <a href="nature-disclosure-portugal.html" data-umami-event="Related work click" data-umami-event-to="nature-disclosure-portugal"><span class="ey">Portugal · disclosures</span><span class="t">Screening a portfolio for nature disclosures: Portugal</span></a>
+      <a href="critical-habitat-screening.html" data-umami-event="Related work click" data-umami-event-to="critical-habitat-screening"><span class="ey">Bulgaria · lender standards</span><span class="t">Critical habitat pre-screening for a lender</span></a>
+      <a href="maritsa-emissions.html" data-umami-event="Related work click" data-umami-event-to="maritsa-emissions"><span class="ey">Maritsa Iztok, Bulgaria</span><span class="t">Maritsa Iztok: do the emissions seen from space match the reports?</span></a>
+    </div>
+  </section><!-- /related -->
+
+  <footer>© Ana Silva · Demonstration on open data, never client work</footer>
+</div>
+<!-- analytics --><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "804d5b1726c6476db1c04a238d7c114f"}'></script><!-- End Cloudflare Web Analytics --><!-- /analytics -->
+</body>
+</html>

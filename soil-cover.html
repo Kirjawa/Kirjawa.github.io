@@ -87,7 +87,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   <a class="back" href="agriculture.html">← Agriculture, with Atlastico</a>
   <span class="eyebrow">Study · Dobrudja, north-east Bulgaria</span>
   <h1>Dobrudja: how long does the soil lie bare?</h1>
-  <p class="lede">Bare soil loses carbon, dries out and blows away. Since 2023, EU farm payments come with a soil-cover rule, and in Bulgaria it asks farmers to keep at least 80% of their arable land covered from 1 June to 30 September. Stubble counts as cover. So I asked: how many days a year does each field actually lie bare, and did anything change after the rule?</p>
+  <p class="lede">Bare soil loses carbon, dries out and blows away. Since 2023, EU farm payments come with a soil-cover rule. In Bulgaria, since August 2024, it asks farmers to keep at least 80% of their arable land covered from 1 June to 30 September. Stubble counts as cover. So I asked: how many days a year does each field actually lie bare, and did anything change after the rule?</p>
   <p>I looked at Dobrudja, Bulgaria's grain belt, where wheat, sunflower and maize cover almost 500,000 ha. This page explains how I measured it, what I found, and where the method stops.</p>
 </div>
 
@@ -109,7 +109,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
     <div class="arrow" aria-hidden="true">↓</div>
     <div class="row"><div class="step"><b>4 · One row per field and year</b><p>Bare days, summer window, winter without living cover, standing water, rain and warmth.</p><span class="tools">pandas · Open-Meteo API · Sentinel-1 via Planetary Computer</span></div><div class="chk"><i>Check</i><p>Standing water only counts after real rain, and not in wheat during heading.</p></div></div>
     <div class="arrow" aria-hidden="true">↓</div>
-    <div class="row"><div class="step"><b>5 · From fields to the region</b><p>Weighted to the region's crop mix. Each field compared with itself before and after 2023.</p><span class="tools">pandas · NumPy least squares · bootstrap</span></div><div class="chk"><i>Check</i><p>Uncertainty from 7 yearly values and from leaving areas out, not from 70,000 fields.</p></div></div>
+    <div class="row"><div class="step"><b>5 · From fields to the region</b><p>Weighted to the region's crop mix. Each field compared with itself before and after 2023.</p><span class="tools">pandas · NumPy least squares · bootstrap</span></div><div class="chk"><i>Check</i><p>Uncertainty from 7 yearly values and from leaving areas out, not from 70,000 field-years.</p></div></div>
     <div class="arrow" aria-hidden="true">↓</div>
     <p class="lbl">Results out</p>
     <div class="outs"><span>Bare, stubble and green days for every field and year</span><span>Regional estimates with honest ranges</span><span>Figures and image checks</span></div>
@@ -122,7 +122,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
     <li><b>A state for every day.</b> Each day, every field is one of: living plants, stubble or crop residue, bare soil, snow, or unknown when the nearest clear image is more than 20 days away. The states come from greenness (NDVI), near infrared and a tillage index that picks up dry plant residue (NDTI).</li>
     <li><b>Thresholds set on cases where the answer is known.</b> There are no field visits, so I used the crop calendar: rapeseed is green all winter, spring seedbeds are bare in April, wheat stubble lies on the field right after harvest, and wet soil after rain or snow is bare. The thresholds that separate these groups best are 89% accurate for living plants and 97% for stubble against bare soil.</li>
     <li><b>Weather and water.</b> Daily temperature and rain for each field (ERA5-Land and ERA5), and Sentinel-1 radar for standing water after heavy rain.</li>
-    <li><b>Testing the rule.</b> Each field is compared with itself before and after 2023, taking out the crop, the previous crop and spring rain. The uncertainty comes from the 7 yearly values, not from 70,000 fields, so it stays honest.</li>
+    <li><b>Testing the rule.</b> Each field is compared with itself before and after 2023, taking out the crop, the previous crop and spring rain. The uncertainty comes from the 7 yearly values, not from 70,000 field-years, so it isn't overstated.</li>
   </ol>
 
   <h2>What I found</h2>
