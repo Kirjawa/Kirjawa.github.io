@@ -109,6 +109,10 @@ a.fig img{display:block;width:100%;height:auto}
   <p class="fig-note">Near the sites against the countryside, year by year: Portugal is the right column. Select the image to open it full size.</p>
   <a class="fig" href="assets/s2_yearly_example.jpg"><img src="assets/s2_yearly_example.jpg" alt="Four Sentinel-2 views of four wind farms in central Portugal: before the 2017 fires, burned in 2018, recovering in 2021, and green again with new clearings in 2025" loading="lazy" width="2210" height="731"></a>
   <p class="fig-note">Before, after and since: four wind farms in central Portugal whose surroundings burned in 2017. Select the image to open it full size.</p>
+  <h3 class="res">Solar parks the map is missing, found from Sentinel-2</h3>
+  <p class="res-note">The method, shown on one 40 × 40 km area of Ribatejo, north-east of Lisbon: the four largest finds that OpenStreetMap doesn't have, 45 to 136 ha, are all solar arrays on the imagery.</p>
+  <a class="fig" href="assets/s2_solar_example_pt.jpg"><img src="assets/s2_solar_example_pt.jpg" alt="Sentinel-2 map of an area of Ribatejo with solar parks found from satellite only, in both sources and in OpenStreetMap only, and close-ups of four large solar arrays not in OpenStreetMap" loading="lazy" width="2210" height="1122"></a>
+  <p class="fig-note">Ribatejo, summer 2025: found from Sentinel-2 only (amber), in both (teal), in OpenStreetMap only (pink), and the four largest finds up close. Select the image to open it full size.</p>
 
   <p class="part">How it was made: the question, data, method, checks and limits</p>
 
@@ -131,6 +135,7 @@ a.fig img{display:block;width:100%;height:auto}
     <tr><td>Drivers of tree cover loss v1.13 (WRI and Google DeepMind)</td><td>The main cause of each loss</td><td>CC BY 4.0</td></tr>
     <tr><td>10 m annual land use land cover v2, 2017 to 2023 (Impact Observatory)</td><td>Natural cover, year by year</td><td>CC BY 4.0</td></tr>
     <tr><td>Sentinel-2, 2017 to 2025</td><td>The views of Serra de Montemuro and central Portugal</td><td>Copernicus free and open</td></tr>
+    <tr><td>Sentinel-2 L2A, March to October 2025 (Earth Search)</td><td>Solar parks found from their signature, in one area of Ribatejo</td><td>Copernicus free and open</td></tr>
     <tr><td>Eurostat, electricity capacity from renewables (nrg_inf_epcrw)</td><td>Context for the site list</td><td>CC BY 4.0</td></tr>
     <tr><td>Natural Earth</td><td>Country outline on the map</td><td>Public domain</td></tr>
   </table></div>
@@ -150,6 +155,14 @@ a.fig img{display:block;width:100%;height:auto}
 
   <h2><span class="n">5</span>Is the site list complete?</h2>
   <p>The count is only as good as the list. OpenStreetMap shows what volunteers have mapped, and few solar parks carry their capacity there, so the list can't be checked against the official statistics. The list has 359 solar parks over 5,232 ha, against 5,639 MW of solar in Eurostat for 2024, rooftops included. Wind farms come to about 6,600 MW from their turbines' own tags and the median size for the rest, against 5,600 MW in Eurostat. Most turbines carry no capacity tag, so that is an estimate, and being above the official figure doesn't show that no wind farm is missing.</p>
+  <p><b>Checking the list from satellite, on one area.</b> Solar panels have a signature in Sentinel-2: dark in near infrared and brighter in shortwave infrared, so their moisture index (NDMI) is strongly negative, and unlike crops they look the same all season. The figure at the top runs it on one area of Ribatejo:</p>
+  <ol class="steps">
+    <li><b>Composites.</b> Every clear Sentinel-2 view of 2025, with cloud and shadow masked: the summer median of six bands at 20 m, and through the season the low, middle and high points of greenness (NDVI) and of the moisture index.</li>
+    <li><b>Learn the signature.</b> A random forest trained on mapped solar parks in two other areas, Yambol in Bulgaria and Setúbal in Portugal, against land more than 300 m from any park, drawn evenly across land cover types so that forest, water and roofs are learned as &quot;not solar&quot;.</li>
+    <li><b>Patches.</b> Pixels the model calls solar (probability 0.6 or more, and a moisture index below 0 through the season), grouped into patches of 2 ha or more; thin strips such as roads are dropped.</li>
+    <li><b>Compare, then look.</b> Each patch against OpenStreetMap, as found in both, satellite only or map only; then a look on the 10 m imagery before a find counts.</li>
+  </ol>
+  <p>It runs in Python (pystac-client, odc-stac, dask, scikit-learn, rasterio, geopandas) in under an hour per area on a laptop, and the same steps run for any area. Small patches are where it errs: dark fields, scrub and roofs can look like panels, which is why every find gets a look on the imagery. The patches are in the downloads.</p>
 
 <h2><span class="n">6</span>Year by year around the sites</h2>
   <p>Is the land around the sites losing natural cover? Two yearly records answer it for the land within 1 km of every site, counted once where sites are close together: tree cover lost each year from 2017 to 2025 with its main cause, and natural cover against crops and built-up land from 2017 to 2023 (the figure at the top).</p>
@@ -166,6 +179,7 @@ a.fig img{display:block;width:100%;height:auto}
     <tr><th>Check</th><th>Result</th></tr>
     <tr><td>How much the distance changes the answer</td><td>Sites inside or near Natura 2000: 17% inside, 23% within 500 m, 26% within 1 km, 34% within 2 km, 56% within 5 km.</td></tr>
     <tr><td>What each biodiversity layer adds</td><td>Of the sites inside Natura 2000 or on likely critical habitat (155), 34 are on likely critical habitat only, outside Natura 2000; 110 are inside Natura 2000 only; 11 are both.</td></tr>
+    <tr><td>Solar parks from Sentinel-2, Ribatejo</td><td>10 of the 25 mapped parks found. Of the 15 missed, 8 are small parks under 6 ha, 4 showed no panels yet in summer 2025 (mapped before they were built) and 3 were under cloud. The four largest finds not in OpenStreetMap are arrays on the imagery.</td></tr>
   </table></div>
   <p>Screening is not assessment. A count says where to look closer.</p>
   <p><b>Run as a service,</b> the same screening keeps up with a portfolio: a new or changed site triggers it, the reference layers are refreshed once a year, and satellite data watch each site and its surroundings. <a href="assets/s2_architecture.png">How it would run, in one drawing</a>.</p>
@@ -189,6 +203,7 @@ a.fig img{display:block;width:100%;height:auto}
   <div class="dl">
     <a href="downloads/S2_screening_memo_portugal_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S2_screening_memo_portugal_v1.pdf">Screening memo, Portugal, with a summary in Portuguese <span>PDF · 4 pages · 0.65 MB</span></a>
     <a href="downloads/S2_site_screening_demo_v1.zip" data-umami-event="Demo download" data-umami-event-file="S2_site_screening_demo_v1.zip">Per-site results for both countries, with footprints and the year-by-year figures (CSV, GeoPackage) <span>ZIP · 0.89 MB</span></a>
+    <a href="downloads/S2_solar_from_sentinel2_ribatejo_v1.gpkg" data-umami-event="Demo download" data-umami-event-file="S2_solar_from_sentinel2_ribatejo_v1.gpkg">Solar parks found from Sentinel-2 in Ribatejo, with whether OpenStreetMap has them (GeoPackage) <span>GPKG · 0.44 MB</span></a>
   </div>
   <p>Own outputs and open data only, with every source and licence named inside. The site list is derived from OpenStreetMap and shared under the ODbL.</p>
 
