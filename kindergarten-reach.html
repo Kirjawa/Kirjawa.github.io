@@ -78,13 +78,13 @@ nav.topbar>div{max-width:none}
 
 /* ---------- the map and its panel: the first thing on the page ---------- */
 .app{display:grid;grid-template-columns:minmax(350px,420px) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);height:calc(100vh - 57px);min-height:640px;max-height:940px;margin-inline:calc(-1*var(--gut));background:var(--surface);border-bottom:1px solid var(--hair)}
-.ptop{grid-column:1;grid-row:1;padding:20px 22px 12px;border-right:1px solid var(--hair)}
-.plist{grid-column:1;grid-row:2;overflow-y:auto;padding:0 18px 18px;border-right:1px solid var(--hair);overscroll-behavior:contain}
+.ptop{grid-column:1;grid-row:1;padding:16px 22px 10px;border-right:1px solid var(--hair)}
+.plist{grid-column:1;grid-row:2;overflow-y:auto;min-height:150px;padding:0 18px 18px;border-right:1px solid var(--hair);overscroll-behavior:contain}
 .mapwrap{grid-column:2;grid-row:1/3;position:relative;min-width:0}
 #map{position:absolute;inset:0}
-h1{font:400 clamp(31px,2.7vw,40px)/1.03 var(--serif);margin:10px 0 16px;text-wrap:balance}
+h1{font:400 clamp(29px,2.5vw,38px)/1.03 var(--serif);margin:8px 0 13px;text-wrap:balance}
 .lbl{display:block;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
-.pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:14px}
+.pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:11px}
 .kg{display:flex;align-items:center;gap:5px;min-width:0;padding:5px 6px 5px 4px;border:1px solid var(--hair);border-radius:12px;background:var(--surface);font:500 12.5px/1.15 var(--sans);color:var(--ink);cursor:pointer;text-align:left}
 .kg svg{flex:none}
 .kg span{min-width:0}
@@ -95,7 +95,20 @@ h1{font:400 clamp(31px,2.7vw,40px)/1.03 var(--serif);margin:10px 0 16px;text-wra
 .tab:first-child{border-left:0}
 .tab:hover{background:var(--ground)}
 .tab[aria-pressed="true"]{background:var(--forest);color:#fff}
-.lead{font-size:14.5px;line-height:1.45;color:var(--ink-2);margin:14px 0 0}
+.lead{font-size:14.5px;line-height:1.45;color:var(--ink-2);margin:10px 4px 10px}
+.reach{margin-top:12px;padding:10px 12px 11px;border:1px solid var(--hair);border-radius:12px;background:var(--ground)}
+.rush{display:flex;gap:7px;align-items:center;margin:0 0 10px;padding-bottom:9px;border-bottom:1px solid var(--hair);font:400 13.5px/1.3 var(--sans);color:var(--pine)}
+.rush svg{flex:none;color:var(--rose-ink)}
+.rush b{font-weight:600}
+.tt{display:flex;justify-content:space-between;align-items:baseline;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tt output{font:400 23px/1 var(--serif);letter-spacing:0;text-transform:none;color:var(--forest);font-variant-numeric:tabular-nums}
+#tt{display:block;width:100%;margin:8px 0 3px;accent-color:var(--forest);cursor:pointer}
+.tt-ends{display:flex;justify-content:space-between;font:400 10.5px/1 var(--mono);color:var(--muted)}
+.tt-note{margin:8px 0 0;font-size:13px;line-height:1.35;color:var(--ink-2)}
+.nb{display:flex;align-items:center;gap:7px;width:100%;margin-top:11px;padding:8px 12px;border:1px solid var(--rose);border-radius:99px;background:var(--surface);color:var(--pine);font:600 13px/1.25 var(--sans);cursor:pointer;text-align:left}
+.nb:hover{background:var(--wash)}
+.nb svg{flex:none}
+.nb em{margin-left:auto;font:400 11.5px/1 var(--mono);font-style:normal;color:var(--muted)}
 .spots{list-style:none;margin:0;padding:0}
 .spots li{margin:0}
 .grp{font:500 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--rose-ink);padding:16px 4px 8px;border-top:1px solid var(--hair)}
@@ -147,6 +160,24 @@ h1{font:400 clamp(31px,2.7vw,40px)/1.03 var(--serif);margin:10px 0 16px;text-wra
   .legend .r{grid-template-columns:26px 1fr;gap:6px}
 }
 @media (max-width:480px){.kg{font-size:12px;gap:4px;padding:5px 4px 5px 3px}.kg svg{width:24px;height:24px}}
+/* shown when the data can't be read (the page opened as a file, or the network failed) */
+.fail{position:absolute;inset:50% 24px auto 24px;transform:translateY(-50%);max-width:520px;margin-inline:auto;z-index:7;background:var(--surface);border:1.5px solid var(--rose);border-radius:14px;padding:18px 20px;font-size:15.5px;line-height:1.5;color:var(--ink-2);box-shadow:0 10px 30px rgba(7,59,53,.14)}
+.fail b{display:block;color:var(--ink);font-weight:600;margin-bottom:6px}
+.fail span{display:block}
+.ptop.off .lbl,.ptop.off .pick,.ptop.off .tabs,.ptop.off .reach{display:none}
+/* a short window (small laptop): the top of the panel tightens so the ranked list keeps room */
+@media (min-width:861px) and (max-height:840px){
+  .ptop{padding-top:12px}
+  .ptop .lbl{display:none}
+  h1{font-size:27px;margin:6px 0 10px}
+  .pick{margin-bottom:8px}
+  .tab{padding:6px 4px 5px}
+  .reach{margin-top:9px;padding:8px 12px 9px}
+  .rush{margin-bottom:8px;padding-bottom:7px}
+  .tt-ends{display:none}
+  .tt-note{margin-top:5px}
+  .nb{margin-top:8px;padding:7px 12px}
+}
 /* ---------- below the map ---------- */
 .cover{display:block;width:100%;height:auto;margin:16px 0 6px;background:var(--surface);border:1px solid var(--hair);border-radius:12px}
 .kgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:12px;margin:18px 0 6px}
@@ -213,9 +244,16 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     <div class="pick" role="group" aria-labelledby="pick-l" id="pick"></div>
     <span class="lbl" id="tabs-l">Where the families are</span>
     <div class="tabs" role="group" aria-labelledby="tabs-l" id="tabs"></div>
-    <p class="lead" id="lead" aria-live="polite"></p>
+    <div class="reach">
+      <p class="rush" id="rush"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span><b>Weekday morning rush hour</b>, 07:00 to 09:00</span></p>
+      <label class="tt" for="tt"><span id="tt-l">Reach by car</span><output id="tt-o" for="tt">15 min</output></label>
+      <input type="range" id="tt" min="15" max="60" step="5" value="15" aria-describedby="rush">
+      <div class="tt-ends" aria-hidden="true"><span>15 min</span><span>30</span><span>45</span><span>1 h</span></div>
+      <p class="tt-note" id="tt-note">door to door, at rush-hour speeds</p>
+      <button type="button" class="nb" id="nb"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v10M8 10.5l4 4 4-4M5 19.5h14"/></svg><span id="nb-n">Neighbourhoods within reach</span><em>CSV</em></button>
+    </div>
   </div>
-  <div class="plist"><ol class="spots" id="spots"></ol></div>
+  <div class="plist"><p class="lead" id="lead" aria-live="polite"></p><ol class="spots" id="spots"></ol></div>
   <div class="mapwrap">
     <div id="map" role="application" aria-label="Map of Sofia: the five kindergartens and the ranked spots"></div>
     <div class="lang" role="group" aria-label="Script of the map's place names"><button type="button" data-l="en" aria-pressed="true">Latin</button><button type="button" data-l="bg" aria-pressed="false">Кирилица</button></div>
@@ -224,11 +262,11 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
 </section>
 
 <div class="wrap">
-  <p class="sub">Five Svetlina kindergartens in Sofia, and the junctions, stops and everyday places where a poster or a leaflet reaches the families who could realistically enrol: by car, by public transport and on foot.</p>
+  <p class="sub">Five Svetlina kindergartens in Sofia, and the junctions, stops and everyday places where a poster or a leaflet reaches the families who could realistically enrol: by car, by public transport and on foot. Every travel time is for the weekday morning rush hour, 07:00 to 09:00.</p>
   <p class="disc">Built on open data. Routes and timetables are modelled, not counted traffic. A spot here is where families pass or live nearby; whether a billboard or a notice board can be had there is checked on the street.</p>
 
   <div class="stats">
-    <div><b>118,700</b><span>children under 15 live within a 15-minute morning drive of at least one of the five (2021 census)</span></div>
+    <div><b>118,800</b><span>children under 15 live within a 15-minute morning drive of at least one of the five (2021 census)</span></div>
     <div><b>54 to 97%</b><span>of a catchment's families pass one of its first three junctions</span></div>
     <div><b>11</b><span>junctions carry at least 5% of two kindergartens' catchments at once</span></div>
     <div><b>2 of 16</b><span>lines and stations in the kindergartens' own directions don't match the current timetable</span></div>
@@ -245,16 +283,16 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
 
   <h3 class="res">How far three spots go</h3>
   <p class="res-note">Each bar is the share of a kindergarten's families reached as spots are added, best first. By car, a few junctions go a long way, because every route funnels into the same roads. Stops and everyday places each reach a smaller slice, so they work as a set.</p>
-  <svg class="cover" viewBox="0 0 800 492" role="img" aria-label="Share of each kindergarten's families reached as spots are added, by channel"><style>.cv text{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;fill:#566F6B}.cv .kg{font-family:"Instrument Serif",Georgia,serif;font-size:20px;fill:#0A2F2B}.cv .v{fill:#0A2F2B;font-size:12px}</style><g class="cv"><rect x="232" y="14" width="22" height="11" rx="2" fill="#3E5B56" opacity="1"/><text x="260" y="24">1st spot</text><rect x="346" y="14" width="22" height="11" rx="2" fill="#3E5B56" opacity="0.66"/><text x="374" y="24">2nd</text><rect x="420" y="14" width="22" height="11" rx="2" fill="#3E5B56" opacity="0.4"/><text x="448" y="24">3rd</text><rect x="494" y="14" width="22" height="11" rx="2" fill="#3E5B56" opacity="0.16"/><text x="522" y="24">4th to 8th</text><path d="M232.0 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="232.0" y="41" text-anchor="middle">0%</text><path d="M362.5 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="362.5" y="41" text-anchor="middle">25%</text><path d="M493.0 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="493.0" y="41" text-anchor="middle">50%</text><path d="M623.5 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="623.5" y="41" text-anchor="middle">75%</text><path d="M754.0 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="754.0" y="41" text-anchor="middle">100%</text><text class="kg" x="14" y="80">Lozenets</text><rect x="232.0" y="60" width="273.5" height="15" fill="#0B6152" opacity="1"/><rect x="506.5" y="60" width="134.5" height="15" fill="#0B6152" opacity="0.66"/><rect x="642.0" y="60" width="36.0" height="15" fill="#0B6152" opacity="0.4"/><text x="224" y="71.5" text-anchor="end">car</text><text class="v" x="685.0" y="71.5">86%</text><rect x="232.0" y="80" width="103.2" height="15" fill="#0C7771" opacity="1"/><rect x="336.2" y="80" width="69.8" height="15" fill="#0C7771" opacity="0.66"/><rect x="407.0" y="80" width="45.5" height="15" fill="#0C7771" opacity="0.4"/><rect x="453.5" y="80" width="24.3" height="15" fill="#0C7771" opacity="0.16"/><rect x="477.8" y="80" width="18.7" height="15" fill="#0C7771" opacity="0.16"/><rect x="496.5" y="80" width="13.8" height="15" fill="#0C7771" opacity="0.16"/><rect x="510.3" y="80" width="12.7" height="15" fill="#0C7771" opacity="0.16"/><rect x="523.1" y="80" width="12.1" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="91.5" text-anchor="end">transit</text><text class="v" x="541.2" y="91.5">42%</text><rect x="232.0" y="100" width="30.9" height="15" fill="#A94C73" opacity="1"/><rect x="263.9" y="100" width="27.8" height="15" fill="#A94C73" opacity="0.66"/><rect x="292.7" y="100" width="22.9" height="15" fill="#A94C73" opacity="0.4"/><rect x="316.6" y="100" width="22.0" height="15" fill="#A94C73" opacity="0.16"/><rect x="338.5" y="100" width="20.4" height="15" fill="#A94C73" opacity="0.16"/><rect x="358.9" y="100" width="18.9" height="15" fill="#A94C73" opacity="0.16"/><rect x="377.8" y="100" width="16.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="393.9" y="100" width="15.4" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="111.5" text-anchor="end">places</text><text class="v" x="415.3" y="111.5">16%</text><text class="kg" x="14" y="166">Simeonovsko Shose</text><rect x="232.0" y="146" width="229.0" height="15" fill="#0B6152" opacity="1"/><rect x="462.0" y="146" width="175.7" height="15" fill="#0B6152" opacity="0.66"/><rect x="638.8" y="146" width="100.4" height="15" fill="#0B6152" opacity="0.4"/><text x="224" y="157.5" text-anchor="end">car</text><text class="v" x="746.2" y="157.5">97%</text><rect x="232.0" y="166" width="27.7" height="15" fill="#0C7771" opacity="1"/><rect x="260.7" y="166" width="27.0" height="15" fill="#0C7771" opacity="0.66"/><rect x="288.7" y="166" width="26.9" height="15" fill="#0C7771" opacity="0.4"/><rect x="316.6" y="166" width="23.7" height="15" fill="#0C7771" opacity="0.16"/><rect x="340.3" y="166" width="23.1" height="15" fill="#0C7771" opacity="0.16"/><rect x="363.4" y="166" width="22.3" height="15" fill="#0C7771" opacity="0.16"/><rect x="385.7" y="166" width="20.9" height="15" fill="#0C7771" opacity="0.16"/><rect x="406.6" y="166" width="20.7" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="177.5" text-anchor="end">transit</text><text class="v" x="433.3" y="177.5">16%</text><rect x="232.0" y="186" width="35.7" height="15" fill="#A94C73" opacity="1"/><rect x="268.7" y="186" width="31.5" height="15" fill="#A94C73" opacity="0.66"/><rect x="301.2" y="186" width="29.3" height="15" fill="#A94C73" opacity="0.4"/><rect x="331.5" y="186" width="19.9" height="15" fill="#A94C73" opacity="0.16"/><rect x="351.4" y="186" width="17.5" height="15" fill="#A94C73" opacity="0.16"/><rect x="368.9" y="186" width="17.4" height="15" fill="#A94C73" opacity="0.16"/><rect x="386.4" y="186" width="16.6" height="15" fill="#A94C73" opacity="0.16"/><rect x="403.0" y="186" width="16.3" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="197.5" text-anchor="end">places</text><text class="v" x="425.2" y="197.5">19%</text><text class="kg" x="14" y="252">Boyana</text><rect x="232.0" y="232" width="308.1" height="15" fill="#0B6152" opacity="1"/><rect x="541.1" y="232" width="77.7" height="15" fill="#0B6152" opacity="0.66"/><rect x="619.8" y="232" width="69.4" height="15" fill="#0B6152" opacity="0.4"/><rect x="690.3" y="232" width="12.8" height="15" fill="#0B6152" opacity="0.16"/><text x="224" y="243.5" text-anchor="end">car</text><text class="v" x="709.1" y="243.5">88%</text><rect x="232.0" y="252" width="63.3" height="15" fill="#0C7771" opacity="1"/><rect x="296.3" y="252" width="45.1" height="15" fill="#0C7771" opacity="0.66"/><rect x="342.5" y="252" width="30.2" height="15" fill="#0C7771" opacity="0.4"/><rect x="373.6" y="252" width="27.2" height="15" fill="#0C7771" opacity="0.16"/><rect x="400.9" y="252" width="22.3" height="15" fill="#0C7771" opacity="0.16"/><rect x="423.2" y="252" width="19.5" height="15" fill="#0C7771" opacity="0.16"/><rect x="442.6" y="252" width="17.9" height="15" fill="#0C7771" opacity="0.16"/><rect x="460.5" y="252" width="17.7" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="263.5" text-anchor="end">transit</text><text class="v" x="484.2" y="263.5">27%</text><rect x="232.0" y="272" width="45.0" height="15" fill="#A94C73" opacity="1"/><rect x="278.0" y="272" width="38.3" height="15" fill="#A94C73" opacity="0.66"/><rect x="317.3" y="272" width="34.9" height="15" fill="#A94C73" opacity="0.4"/><rect x="353.2" y="272" width="26.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="379.3" y="272" width="22.2" height="15" fill="#A94C73" opacity="0.16"/><rect x="401.5" y="272" width="21.2" height="15" fill="#A94C73" opacity="0.16"/><rect x="422.8" y="272" width="18.7" height="15" fill="#A94C73" opacity="0.16"/><rect x="441.5" y="272" width="14.3" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="283.5" text-anchor="end">places</text><text class="v" x="461.8" y="283.5">23%</text><text class="kg" x="14" y="338">Ovcha Kupel</text><rect x="232.0" y="318" width="137.4" height="15" fill="#0B6152" opacity="1"/><rect x="370.4" y="318" width="94.3" height="15" fill="#0B6152" opacity="0.66"/><rect x="465.7" y="318" width="92.6" height="15" fill="#0B6152" opacity="0.4"/><rect x="559.3" y="318" width="53.1" height="15" fill="#0B6152" opacity="0.16"/><rect x="612.5" y="318" width="51.3" height="15" fill="#0B6152" opacity="0.16"/><rect x="663.8" y="318" width="33.3" height="15" fill="#0B6152" opacity="0.16"/><text x="224" y="329.5" text-anchor="end">car</text><text class="v" x="703.0" y="329.5">63%</text><rect x="232.0" y="338" width="35.4" height="15" fill="#0C7771" opacity="1"/><rect x="268.4" y="338" width="32.6" height="15" fill="#0C7771" opacity="0.66"/><rect x="302.1" y="338" width="23.2" height="15" fill="#0C7771" opacity="0.4"/><rect x="326.3" y="338" width="21.7" height="15" fill="#0C7771" opacity="0.16"/><rect x="348.0" y="338" width="20.9" height="15" fill="#0C7771" opacity="0.16"/><rect x="368.9" y="338" width="18.9" height="15" fill="#0C7771" opacity="0.16"/><rect x="387.8" y="338" width="17.3" height="15" fill="#0C7771" opacity="0.16"/><rect x="405.0" y="338" width="15.6" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="349.5" text-anchor="end">transit</text><text class="v" x="426.6" y="349.5">18%</text><rect x="232.0" y="358" width="35.3" height="15" fill="#A94C73" opacity="1"/><rect x="268.3" y="358" width="34.0" height="15" fill="#A94C73" opacity="0.66"/><rect x="303.3" y="358" width="32.8" height="15" fill="#A94C73" opacity="0.4"/><rect x="337.1" y="358" width="30.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="367.1" y="358" width="26.2" height="15" fill="#A94C73" opacity="0.16"/><rect x="393.3" y="358" width="22.4" height="15" fill="#A94C73" opacity="0.16"/><rect x="415.7" y="358" width="16.7" height="15" fill="#A94C73" opacity="0.16"/><rect x="432.4" y="358" width="16.3" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="369.5" text-anchor="end">places</text><text class="v" x="454.7" y="369.5">20%</text><text class="kg" x="14" y="424">Lyulin</text><rect x="232.0" y="404" width="138.3" height="15" fill="#0B6152" opacity="1"/><rect x="371.3" y="404" width="74.9" height="15" fill="#0B6152" opacity="0.66"/><rect x="447.2" y="404" width="63.9" height="15" fill="#0B6152" opacity="0.4"/><rect x="512.2" y="404" width="54.5" height="15" fill="#0B6152" opacity="0.16"/><rect x="566.7" y="404" width="46.0" height="15" fill="#0B6152" opacity="0.16"/><rect x="612.7" y="404" width="20.8" height="15" fill="#0B6152" opacity="0.16"/><rect x="633.5" y="404" width="16.5" height="15" fill="#0B6152" opacity="0.16"/><rect x="650.0" y="404" width="14.4" height="15" fill="#0B6152" opacity="0.16"/><text x="224" y="415.5" text-anchor="end">car</text><text class="v" x="670.3" y="415.5">54%</text><rect x="232.0" y="424" width="77.4" height="15" fill="#0C7771" opacity="1"/><rect x="310.4" y="424" width="49.0" height="15" fill="#0C7771" opacity="0.66"/><rect x="360.3" y="424" width="37.4" height="15" fill="#0C7771" opacity="0.4"/><rect x="398.7" y="424" width="31.1" height="15" fill="#0C7771" opacity="0.16"/><rect x="429.8" y="424" width="21.4" height="15" fill="#0C7771" opacity="0.16"/><rect x="451.2" y="424" width="18.4" height="15" fill="#0C7771" opacity="0.16"/><rect x="469.6" y="424" width="18.1" height="15" fill="#0C7771" opacity="0.16"/><rect x="487.7" y="424" width="16.1" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="435.5" text-anchor="end">transit</text><text class="v" x="509.8" y="435.5">32%</text><rect x="232.0" y="444" width="44.0" height="15" fill="#A94C73" opacity="1"/><rect x="277.0" y="444" width="42.6" height="15" fill="#A94C73" opacity="0.66"/><rect x="320.6" y="444" width="35.5" height="15" fill="#A94C73" opacity="0.4"/><rect x="357.2" y="444" width="27.4" height="15" fill="#A94C73" opacity="0.16"/><rect x="384.6" y="444" width="24.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="408.7" y="444" width="23.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="431.8" y="444" width="23.0" height="15" fill="#A94C73" opacity="0.16"/><rect x="454.8" y="444" width="18.8" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="455.5" text-anchor="end">places</text><text class="v" x="479.6" y="455.5">24%</text><text x="788" y="490" text-anchor="end" style="font-size:10.5px">figure at the bar's end: the first three spots together</text></g></svg>
+  <svg class="cover" viewBox="0 0 800 492" role="img" aria-label="Share of each kindergarten's families reached as spots are added, by channel"><style>.cv text{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;fill:#566F6B}.cv .kg{font-family:"Instrument Serif",Georgia,serif;font-size:20px;fill:#0A2F2B}.cv .v{fill:#0A2F2B;font-size:12px}</style><g class="cv"><rect x="232" y="14" width="22" height="11" rx="2" fill="#3E5B56" opacity="1"/><text x="260" y="24">1st spot</text><rect x="346" y="14" width="22" height="11" rx="2" fill="#3E5B56" opacity="0.66"/><text x="374" y="24">2nd</text><rect x="420" y="14" width="22" height="11" rx="2" fill="#3E5B56" opacity="0.4"/><text x="448" y="24">3rd</text><rect x="494" y="14" width="22" height="11" rx="2" fill="#3E5B56" opacity="0.16"/><text x="522" y="24">4th to 8th</text><path d="M232.0 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="232.0" y="41" text-anchor="middle">0%</text><path d="M362.5 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="362.5" y="41" text-anchor="middle">25%</text><path d="M493.0 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="493.0" y="41" text-anchor="middle">50%</text><path d="M623.5 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="623.5" y="41" text-anchor="middle">75%</text><path d="M754.0 46V482" stroke="#DCE7E1" stroke-width="1"/><text x="754.0" y="41" text-anchor="middle">100%</text><text class="kg" x="14" y="80">Lozenets</text><rect x="232.0" y="60" width="273.1" height="15" fill="#0B6152" opacity="1"/><rect x="506.1" y="60" width="134.9" height="15" fill="#0B6152" opacity="0.66"/><rect x="642.0" y="60" width="36.1" height="15" fill="#0B6152" opacity="0.4"/><text x="224" y="71.5" text-anchor="end">car</text><text class="v" x="685.1" y="71.5">86%</text><rect x="232.0" y="80" width="103.2" height="15" fill="#0C7771" opacity="1"/><rect x="336.2" y="80" width="69.8" height="15" fill="#0C7771" opacity="0.66"/><rect x="407.0" y="80" width="45.5" height="15" fill="#0C7771" opacity="0.4"/><rect x="453.5" y="80" width="24.3" height="15" fill="#0C7771" opacity="0.16"/><rect x="477.8" y="80" width="18.7" height="15" fill="#0C7771" opacity="0.16"/><rect x="496.5" y="80" width="13.8" height="15" fill="#0C7771" opacity="0.16"/><rect x="510.3" y="80" width="12.7" height="15" fill="#0C7771" opacity="0.16"/><rect x="523.1" y="80" width="12.1" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="91.5" text-anchor="end">transit</text><text class="v" x="541.2" y="91.5">42%</text><rect x="232.0" y="100" width="30.8" height="15" fill="#A94C73" opacity="1"/><rect x="263.8" y="100" width="27.7" height="15" fill="#A94C73" opacity="0.66"/><rect x="292.6" y="100" width="22.9" height="15" fill="#A94C73" opacity="0.4"/><rect x="316.5" y="100" width="21.9" height="15" fill="#A94C73" opacity="0.16"/><rect x="338.4" y="100" width="20.3" height="15" fill="#A94C73" opacity="0.16"/><rect x="358.7" y="100" width="19.0" height="15" fill="#A94C73" opacity="0.16"/><rect x="377.7" y="100" width="16.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="393.8" y="100" width="15.5" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="111.5" text-anchor="end">places</text><text class="v" x="415.2" y="111.5">16%</text><text class="kg" x="14" y="166">Simeonovsko Shose</text><rect x="232.0" y="146" width="229.4" height="15" fill="#0B6152" opacity="1"/><rect x="462.4" y="146" width="175.5" height="15" fill="#0B6152" opacity="0.66"/><rect x="638.9" y="146" width="100.1" height="15" fill="#0B6152" opacity="0.4"/><text x="224" y="157.5" text-anchor="end">car</text><text class="v" x="746.0" y="157.5">97%</text><rect x="232.0" y="166" width="27.7" height="15" fill="#0C7771" opacity="1"/><rect x="260.7" y="166" width="27.0" height="15" fill="#0C7771" opacity="0.66"/><rect x="288.7" y="166" width="26.9" height="15" fill="#0C7771" opacity="0.4"/><rect x="316.6" y="166" width="23.7" height="15" fill="#0C7771" opacity="0.16"/><rect x="340.3" y="166" width="23.1" height="15" fill="#0C7771" opacity="0.16"/><rect x="363.4" y="166" width="22.3" height="15" fill="#0C7771" opacity="0.16"/><rect x="385.7" y="166" width="20.9" height="15" fill="#0C7771" opacity="0.16"/><rect x="406.6" y="166" width="20.7" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="177.5" text-anchor="end">transit</text><text class="v" x="433.3" y="177.5">16%</text><rect x="232.0" y="186" width="35.6" height="15" fill="#A94C73" opacity="1"/><rect x="268.6" y="186" width="31.7" height="15" fill="#A94C73" opacity="0.66"/><rect x="301.3" y="186" width="29.3" height="15" fill="#A94C73" opacity="0.4"/><rect x="331.6" y="186" width="19.8" height="15" fill="#A94C73" opacity="0.16"/><rect x="351.4" y="186" width="17.7" height="15" fill="#A94C73" opacity="0.16"/><rect x="369.1" y="186" width="17.4" height="15" fill="#A94C73" opacity="0.16"/><rect x="386.6" y="186" width="16.6" height="15" fill="#A94C73" opacity="0.16"/><rect x="403.2" y="186" width="16.3" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="197.5" text-anchor="end">places</text><text class="v" x="425.5" y="197.5">19%</text><text class="kg" x="14" y="252">Boyana</text><rect x="232.0" y="232" width="309.1" height="15" fill="#0B6152" opacity="1"/><rect x="542.1" y="232" width="76.3" height="15" fill="#0B6152" opacity="0.66"/><rect x="619.3" y="232" width="69.8" height="15" fill="#0B6152" opacity="0.4"/><rect x="690.2" y="232" width="12.8" height="15" fill="#0B6152" opacity="0.16"/><text x="224" y="243.5" text-anchor="end">car</text><text class="v" x="709.0" y="243.5">88%</text><rect x="232.0" y="252" width="63.3" height="15" fill="#0C7771" opacity="1"/><rect x="296.3" y="252" width="45.1" height="15" fill="#0C7771" opacity="0.66"/><rect x="342.5" y="252" width="30.2" height="15" fill="#0C7771" opacity="0.4"/><rect x="373.6" y="252" width="27.2" height="15" fill="#0C7771" opacity="0.16"/><rect x="400.9" y="252" width="22.3" height="15" fill="#0C7771" opacity="0.16"/><rect x="423.2" y="252" width="19.5" height="15" fill="#0C7771" opacity="0.16"/><rect x="442.6" y="252" width="17.9" height="15" fill="#0C7771" opacity="0.16"/><rect x="460.5" y="252" width="17.7" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="263.5" text-anchor="end">transit</text><text class="v" x="484.2" y="263.5">27%</text><rect x="232.0" y="272" width="45.1" height="15" fill="#A94C73" opacity="1"/><rect x="278.1" y="272" width="38.3" height="15" fill="#A94C73" opacity="0.66"/><rect x="317.3" y="272" width="35.0" height="15" fill="#A94C73" opacity="0.4"/><rect x="353.3" y="272" width="26.2" height="15" fill="#A94C73" opacity="0.16"/><rect x="379.5" y="272" width="22.2" height="15" fill="#A94C73" opacity="0.16"/><rect x="401.7" y="272" width="21.2" height="15" fill="#A94C73" opacity="0.16"/><rect x="422.9" y="272" width="18.7" height="15" fill="#A94C73" opacity="0.16"/><rect x="441.7" y="272" width="14.4" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="283.5" text-anchor="end">places</text><text class="v" x="462.0" y="283.5">23%</text><text class="kg" x="14" y="338">Ovcha Kupel</text><rect x="232.0" y="318" width="136.2" height="15" fill="#0B6152" opacity="1"/><rect x="369.2" y="318" width="95.2" height="15" fill="#0B6152" opacity="0.66"/><rect x="465.3" y="318" width="93.1" height="15" fill="#0B6152" opacity="0.4"/><rect x="559.4" y="318" width="53.2" height="15" fill="#0B6152" opacity="0.16"/><rect x="612.6" y="318" width="51.0" height="15" fill="#0B6152" opacity="0.16"/><rect x="663.6" y="318" width="33.3" height="15" fill="#0B6152" opacity="0.16"/><text x="224" y="329.5" text-anchor="end">car</text><text class="v" x="702.9" y="329.5">63%</text><rect x="232.0" y="338" width="35.4" height="15" fill="#0C7771" opacity="1"/><rect x="268.4" y="338" width="32.6" height="15" fill="#0C7771" opacity="0.66"/><rect x="302.1" y="338" width="23.2" height="15" fill="#0C7771" opacity="0.4"/><rect x="326.3" y="338" width="21.7" height="15" fill="#0C7771" opacity="0.16"/><rect x="348.0" y="338" width="20.9" height="15" fill="#0C7771" opacity="0.16"/><rect x="368.9" y="338" width="18.9" height="15" fill="#0C7771" opacity="0.16"/><rect x="387.8" y="338" width="17.3" height="15" fill="#0C7771" opacity="0.16"/><rect x="405.0" y="338" width="15.6" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="349.5" text-anchor="end">transit</text><text class="v" x="426.6" y="349.5">18%</text><rect x="232.0" y="358" width="35.4" height="15" fill="#A94C73" opacity="1"/><rect x="268.4" y="358" width="34.0" height="15" fill="#A94C73" opacity="0.66"/><rect x="303.5" y="358" width="32.9" height="15" fill="#A94C73" opacity="0.4"/><rect x="337.3" y="358" width="30.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="367.5" y="358" width="26.2" height="15" fill="#A94C73" opacity="0.16"/><rect x="393.6" y="358" width="22.6" height="15" fill="#A94C73" opacity="0.16"/><rect x="416.2" y="358" width="16.3" height="15" fill="#A94C73" opacity="0.16"/><rect x="432.4" y="358" width="16.3" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="369.5" text-anchor="end">places</text><text class="v" x="454.7" y="369.5">20%</text><text class="kg" x="14" y="424">Lyulin</text><rect x="232.0" y="404" width="138.2" height="15" fill="#0B6152" opacity="1"/><rect x="371.2" y="404" width="75.1" height="15" fill="#0B6152" opacity="0.66"/><rect x="447.3" y="404" width="63.9" height="15" fill="#0B6152" opacity="0.4"/><rect x="512.2" y="404" width="54.5" height="15" fill="#0B6152" opacity="0.16"/><rect x="566.7" y="404" width="46.2" height="15" fill="#0B6152" opacity="0.16"/><rect x="612.9" y="404" width="20.8" height="15" fill="#0B6152" opacity="0.16"/><rect x="633.7" y="404" width="16.7" height="15" fill="#0B6152" opacity="0.16"/><rect x="650.3" y="404" width="14.3" height="15" fill="#0B6152" opacity="0.16"/><text x="224" y="415.5" text-anchor="end">car</text><text class="v" x="670.6" y="415.5">54%</text><rect x="232.0" y="424" width="77.4" height="15" fill="#0C7771" opacity="1"/><rect x="310.4" y="424" width="49.0" height="15" fill="#0C7771" opacity="0.66"/><rect x="360.3" y="424" width="37.4" height="15" fill="#0C7771" opacity="0.4"/><rect x="398.7" y="424" width="31.1" height="15" fill="#0C7771" opacity="0.16"/><rect x="429.8" y="424" width="21.4" height="15" fill="#0C7771" opacity="0.16"/><rect x="451.2" y="424" width="18.4" height="15" fill="#0C7771" opacity="0.16"/><rect x="469.6" y="424" width="18.1" height="15" fill="#0C7771" opacity="0.16"/><rect x="487.7" y="424" width="16.1" height="15" fill="#0C7771" opacity="0.16"/><text x="224" y="435.5" text-anchor="end">transit</text><text class="v" x="509.8" y="435.5">32%</text><rect x="232.0" y="444" width="44.0" height="15" fill="#A94C73" opacity="1"/><rect x="277.0" y="444" width="42.6" height="15" fill="#A94C73" opacity="0.66"/><rect x="320.6" y="444" width="35.5" height="15" fill="#A94C73" opacity="0.4"/><rect x="357.1" y="444" width="27.4" height="15" fill="#A94C73" opacity="0.16"/><rect x="384.5" y="444" width="24.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="408.6" y="444" width="23.1" height="15" fill="#A94C73" opacity="0.16"/><rect x="431.7" y="444" width="22.9" height="15" fill="#A94C73" opacity="0.16"/><rect x="454.6" y="444" width="18.8" height="15" fill="#A94C73" opacity="0.16"/><text x="224" y="455.5" text-anchor="end">places</text><text class="v" x="479.5" y="455.5">24%</text><text x="788" y="490" text-anchor="end" style="font-size:10.5px">figure at the bar's end: the first three spots together</text></g></svg>
   <p class="fig-note">Car: families passing the junction on the way in. Public transport: families boarding at the stop or living beside it. Places: children living within a 10-minute walk. Shares are of each kindergarten's own catchment.</p>
 
   <h3 class="res">One sheet per kindergarten</h3>
   <p class="res-note">The first spot of each kind, and what the timetable says about the directions each kindergarten gives.</p>
   <div class="kgs">
-    <article class="kgc"><header><svg width="40" height="40" aria-hidden="true"><use href="#house"/></svg><div><h4>Svetlina Lozenets</h4><p>23 Sveti Sedmochislenitsi St · Lozenets</p></div></header><div><span class="big">50,600</span><span>children under 15 within a 15-minute morning drive</span></div><ul><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0B6152" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="2"/><path d="M8.5 15.5V20M15.5 15.5V20"/></svg><span><b>53%</b> pass Cherni vrah Blvd. × Sveti Naum Blvd.</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0C7771" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 11.5h14M8.5 18v2M15.5 18v2M8.6 14.8h.01M15.4 14.8h.01"/></svg><span><b>20%</b> live beside James Bourchier metro station</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A94C73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/></svg><span><b>6.1%</b> live within a 10-minute walk of Playground, James Bourchier Blvd.</span></li></ul><p class="tt">Timetable check: all 3 listed lines and stations found.</p><button type="button" data-site="lozenets">Show on the map ↑</button></article>
-    <article class="kgc"><header><svg width="40" height="40" aria-hidden="true"><use href="#house"/></svg><div><h4>Svetlina Simeonovsko Shose</h4><p>59 Simeonovsko Shose Blvd · Studentski</p></div></header><div><span class="big">30,700</span><span>children under 15 within a 15-minute morning drive</span></div><ul><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0B6152" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="2"/><path d="M8.5 15.5V20M15.5 15.5V20"/></svg><span><b>44%</b> pass Simeonovsko shose Blvd. × Arh. Boris Dalchev</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0C7771" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 11.5h14M8.5 18v2M15.5 18v2M8.6 14.8h.01M15.4 14.8h.01"/></svg><span><b>5.5%</b> live beside Mosta kv. Vitosha</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A94C73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/></svg><span><b>7.0%</b> live within a 10-minute walk of Playground, Prof. Kiril Popov</span></li></ul><p class="tt">Timetable check: all 6 listed lines and stations found.</p><button type="button" data-site="simeonovsko">Show on the map ↑</button></article>
+    <article class="kgc"><header><svg width="40" height="40" aria-hidden="true"><use href="#house"/></svg><div><h4>Svetlina Lozenets</h4><p>23 Sveti Sedmochislenitsi St · Lozenets</p></div></header><div><span class="big">50,600</span><span>children under 15 within a 15-minute morning drive</span></div><ul><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0B6152" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="2"/><path d="M8.5 15.5V20M15.5 15.5V20"/></svg><span><b>53%</b> pass Cherni vrah Blvd. × Sv. Naum</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0C7771" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 11.5h14M8.5 18v2M15.5 18v2M8.6 14.8h.01M15.4 14.8h.01"/></svg><span><b>20%</b> live beside James Bourchier metro station</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A94C73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/></svg><span><b>6.1%</b> live within a 10-minute walk of Playground, James Bourchier Blvd.</span></li></ul><p class="tt">Timetable check: all 3 listed lines and stations found.</p><button type="button" data-site="lozenets">Show on the map ↑</button></article>
+    <article class="kgc"><header><svg width="40" height="40" aria-hidden="true"><use href="#house"/></svg><div><h4>Svetlina Simeonovsko Shose</h4><p>59 Simeonovsko Shose Blvd · Studentski</p></div></header><div><span class="big">30,800</span><span>children under 15 within a 15-minute morning drive</span></div><ul><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0B6152" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="2"/><path d="M8.5 15.5V20M15.5 15.5V20"/></svg><span><b>44%</b> pass Simeonovsko shose Blvd. × Arch. Boris Dalchev</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0C7771" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 11.5h14M8.5 18v2M15.5 18v2M8.6 14.8h.01M15.4 14.8h.01"/></svg><span><b>5.5%</b> live beside Mosta kv. Vitosha</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A94C73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/></svg><span><b>7.0%</b> live within a 10-minute walk of Playground, Prof. Kiril Popov</span></li></ul><p class="tt">Timetable check: all 6 listed lines and stations found.</p><button type="button" data-site="simeonovsko">Show on the map ↑</button></article>
     <article class="kgc"><header><svg width="40" height="40" aria-hidden="true"><use href="#house"/></svg><div><h4>Svetlina Boyana</h4><p>4 Mayska Roza St · Vitosha</p></div></header><div><span class="big">34,900</span><span>children under 15 within a 15-minute morning drive</span></div><ul><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0B6152" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="2"/><path d="M8.5 15.5V20M15.5 15.5V20"/></svg><span><b>59%</b> pass Ring Road × Bratya Buxton Blvd.</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0C7771" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 11.5h14M8.5 18v2M15.5 18v2M8.6 14.8h.01M15.4 14.8h.01"/></svg><span><b>12%</b> board at kv. Pavlovo</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A94C73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/></svg><span><b>8.8%</b> live within a 10-minute walk of Children&#x27;s shop, Bulgaria Blvd.</span></li></ul><p class="tt warn">Timetable check: bus 107 not found as listed.</p><button type="button" data-site="boyana">Show on the map ↑</button></article>
-    <article class="kgc"><header><svg width="40" height="40" aria-hidden="true"><use href="#house"/></svg><div><h4>Svetlina Ovcha Kupel</h4><p>12 &quot;693-ta&quot; St · Ovcha Kupel</p></div></header><div><span class="big">35,500</span><span>children under 15 within a 15-minute morning drive</span></div><ul><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0B6152" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="2"/><path d="M8.5 15.5V20M15.5 15.5V20"/></svg><span><b>27%</b> pass Ovcha kupel Blvd. × President Lincoln Blvd.</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0C7771" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 11.5h14M8.5 18v2M15.5 18v2M8.6 14.8h.01M15.4 14.8h.01"/></svg><span><b>7.0%</b> board at bl. 527 zh.k. Ovcha Kupel-1</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A94C73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/></svg><span><b>7.0%</b> live within a 10-minute walk of Playground, Proleten den</span></li></ul><p class="tt warn">Timetable check: bus 45 not found as listed.</p><p class="tt warn">Position estimated from the neighbouring house numbers; to confirm.</p><button type="button" data-site="ovcha">Show on the map ↑</button></article>
+    <article class="kgc"><header><svg width="40" height="40" aria-hidden="true"><use href="#house"/></svg><div><h4>Svetlina Ovcha Kupel</h4><p>12 &quot;693-ta&quot; St · Ovcha Kupel</p></div></header><div><span class="big">35,200</span><span>children under 15 within a 15-minute morning drive</span></div><ul><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0B6152" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="2"/><path d="M8.5 15.5V20M15.5 15.5V20"/></svg><span><b>26%</b> pass Ovcha kupel Blvd. × President Lincoln Blvd.</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0C7771" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 11.5h14M8.5 18v2M15.5 18v2M8.6 14.8h.01M15.4 14.8h.01"/></svg><span><b>7.0%</b> board at bl. 527 zh.k. Ovcha Kupel-1</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A94C73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/></svg><span><b>7.0%</b> live within a 10-minute walk of Playground, Proleten den</span></li></ul><p class="tt warn">Timetable check: bus 45 not found as listed.</p><p class="tt warn">Position estimated from the neighbouring house numbers; to confirm.</p><button type="button" data-site="ovcha">Show on the map ↑</button></article>
     <article class="kgc"><header><svg width="40" height="40" aria-hidden="true"><use href="#house"/></svg><div><h4>Svetlina Lyulin</h4><p>21 Gen. Asen Nikolov St, Lyulin 9 · Lyulin</p></div></header><div><span class="big">35,800</span><span>children under 15 within a 15-minute morning drive</span></div><ul><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0B6152" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11" rx="2"/><path d="M8.5 15.5V20M15.5 15.5V20"/></svg><span><b>27%</b> pass Tsaritsa Yoanna Blvd. × Jawaharlal Nehru Blvd.</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0C7771" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="14" rx="3"/><path d="M5 11.5h14M8.5 18v2M15.5 18v2M8.6 14.8h.01M15.4 14.8h.01"/></svg><span><b>15%</b> live beside Lyulin metro station</span></li><li><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#A94C73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/></svg><span><b>8.6%</b> live within a 10-minute walk of Lidl</span></li></ul><p class="tt">Timetable check: all 1 listed lines and stations found.</p><button type="button" data-site="lyulin">Show on the map ↑</button></article>
   </div>
 
@@ -268,8 +306,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   <h2><span class="n">2</span>Data</h2>
   <div class="tbl"><table>
     <tr><th>Source</th><th>Used for</th><th>Licence</th></tr>
-    <tr><td>OpenStreetMap, road network (data of 24 July 2026)</td><td>Routes by car, traffic signals, street names</td><td>ODbL</td></tr>
-    <tr><td>OpenStreetMap, Bulgaria extract by Geofabrik (data of 15 November 2026)</td><td>The kindergartens' addresses, 2,864 everyday places, 331 other kindergartens</td><td>ODbL</td></tr>
+    <tr><td>OpenStreetMap, Bulgaria extract by Geofabrik (data of 15 November 2026)</td><td>The road network within an hour's drive, traffic signals, the kindergartens' addresses, 2,864 everyday places, 331 other kindergartens, place names</td><td>ODbL</td></tr>
     <tr><td>Sofia Urban Mobility Centre, timetable feed (GTFS, version of 16 November 2026)</td><td>Lines, stops, frequencies and travel times on a weekday morning</td><td>CC BY 4.0 (Sofia Municipality's terms for mobility data, 2025)</td></tr>
     <tr><td>Eurostat and the National Statistical Institute of Bulgaria, 2021 census grid, 1 km cells</td><td>Residents under 15</td><td>No conditions on access and use (dataset metadata)</td></tr>
     <tr><td>GHS-POP 2020, 100 m (Joint Research Centre)</td><td>Spreading each cell's children over its buildings</td><td>CC BY 4.0</td></tr>
@@ -282,20 +319,21 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   <ol class="steps">
     <li><b>Where children live.</b> The 2021 census gives residents under 15 for each square kilometre. Each cell's children are spread over 100 m pixels in proportion to the residents the Joint Research Centre's population grid puts there. Under 15 is the youngest group the census grid publishes; it stands in for families with children of kindergarten age.</li>
     <li><b>How close is close.</b> A family counts in full when the kindergarten is up to 5 minutes away by car, and less and less up to 20 minutes, where it counts for nothing. By public transport the same runs from 10 to 30 minutes, door to door. These are assumptions, written down before the results; one answer from the kindergartens about where their families live would replace them.</li>
-    <li><b>By car.</b> Morning speeds are set at 55% of each road's limit, with 20 seconds lost at every traffic signal. Each pixel's fastest route to the kindergarten is added up on the road segments it uses, in the direction of travel. Signals within 60 m of each other are one junction. Junctions are then picked one at a time: each next one is the junction that adds the most families not already passing an earlier pick. Junctions within 300 m of the door are left to the kindergarten's own sign.</li>
+    <li><b>By car.</b> For the morning rush hour, speeds are set at 55% of each road's limit, with 20 seconds lost at every traffic signal. Each pixel's fastest route to the kindergarten is added up on the road segments it uses, in the direction of travel. Signals within 60 m of each other are one junction. Junctions are then picked one at a time: each next one is the junction that adds the most families not already passing an earlier pick. Junctions within 300 m of the door are left to the kindergarten's own sign.</li>
     <li><b>By public transport.</b> From the timetable of Wednesday 18 November 2026, 07:00 to 09:00: the time from every stop to the door, with the wait (half the interval between vehicles), the ride, at most one change, and the walk from the last stop. Each family takes the stop that gets it there fastest, within 600 m of home. Where walking all the way is faster, the family is counted at its local metro station or stop, because that is where it would see a poster.</li>
     <li><b>Where parents already go.</b> Seven kinds of place from OpenStreetMap: medical centres, pharmacies, playgrounds, children's shops, sports, dance, music and language schools, supermarkets and shopping centres. A place's reach is the children living within a 10-minute walk of it, weighted by how close they are to the kindergarten. Places are picked like junctions, each adding the most children not already near an earlier pick, and no more than two of a kind.</li>
     <li><b>Shared spots.</b> A junction, stop or place is shared when it reaches at least 5%, 1.5% or 3% of the catchments of two or more kindergartens.</li>
+    <li><b>Reach, and the neighbourhoods inside it.</b> The slider draws the area within 15 minutes to an hour of each kindergarten. By car, that is along the road network at rush-hour speeds. By public transport, the time is split in two: 10 minutes on foot to a stop (550 m in a straight line), and the rest from that stop to the door, which covers the wait, the ride, one change at most and the walk at the other end. So at 20 minutes the map highlights the stops within 10 minutes of the door and shades everything within a 10-minute walk of them. The list to download holds every district, neighbourhood and village named in OpenStreetMap whose centre falls inside. The ranked spots don't move with the slider: they keep the reach of step 2.</li>
   </ol>
 
   <h2><span class="n">4</span>By car</h2>
   <p>For every kindergarten the families' routes funnel into a few roads before they reach the door, so the first junctions on those roads are passed by a large share of the catchment. At Lozenets, Simeonovsko Shose and Boyana three junctions are passed by 86% or more. At Ovcha Kupel and Lyulin families arrive from more directions, and the same three reach 63% and 54%: more junctions, or the other two channels, do the rest. 11 junctions are on the way to two kindergartens; the "All five" view lists the best of them.</p>
   <div class="tbl"><table>
     <tr><th>Kindergarten</th><th>First junction</th><th class="num">Pass here</th><th class="num">First three</th></tr>
-    <tr><td>Lozenets</td><td>Cherni vrah Blvd. × Sveti Naum Blvd., traffic arriving from the north-west</td><td class="num">53%</td><td class="num">86%</td></tr>
-    <tr><td>Simeonovsko Shose</td><td>Simeonovsko shose Blvd. × Arh. Boris Dalchev, traffic arriving from the north</td><td class="num">44%</td><td class="num">97%</td></tr>
+    <tr><td>Lozenets</td><td>Cherni vrah Blvd. × Sv. Naum, traffic arriving from the north-west</td><td class="num">53%</td><td class="num">86%</td></tr>
+    <tr><td>Simeonovsko Shose</td><td>Simeonovsko shose Blvd. × Arch. Boris Dalchev, traffic arriving from the north</td><td class="num">44%</td><td class="num">97%</td></tr>
     <tr><td>Boyana</td><td>Ring Road × Bratya Buxton Blvd., traffic arriving from the south-east</td><td class="num">59%</td><td class="num">88%</td></tr>
-    <tr><td>Ovcha Kupel</td><td>Ovcha kupel Blvd. × President Lincoln Blvd., traffic arriving from the north-east</td><td class="num">27%</td><td class="num">63%</td></tr>
+    <tr><td>Ovcha Kupel</td><td>Ovcha kupel Blvd. × President Lincoln Blvd., traffic arriving from the north-east</td><td class="num">26%</td><td class="num">63%</td></tr>
     <tr><td>Lyulin</td><td>Tsaritsa Yoanna Blvd. × Jawaharlal Nehru Blvd., traffic arriving from the south-east</td><td class="num">27%</td><td class="num">54%</td></tr>
   </table></div>
   <p>Each junction comes with the direction most of the traffic arrives from, which is the side a poster should face in the morning. In the evening the same families pass the other way.</p>
@@ -328,8 +366,9 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     <tr><td>The kindergartens&#x27; directions, against the timetable of 18 November 2026</td><td>14 of 16 lines and stations found within reach of the door. Bus 107 still runs but no longer stops within 900 m of Boyana (line 65 does). There is no bus 45 in the timetable for Ovcha Kupel (lines 59 and 60 stop nearby).</td></tr>
     <tr><td>The five addresses</td><td>Four are address points in OpenStreetMap; the Lozenets kindergarten is also mapped there by name, 3 m from its address point. The Ovcha Kupel address isn&#x27;t mapped: it is placed from the house numbers either side of it, good to about 30 m, and is to be confirmed.</td></tr>
     <tr><td>Children, before and after spreading them over 100 m pixels</td><td>201,400 in the census cells around Sofia and the same after. 343 children in cells where the population grid shows no residents were kept at the cell centre.</td></tr>
-    <tr><td>Children attached to the road network</td><td>95.9% live within 400 m of a street in the network. The rest, in scattered settlements at the edge of the area, are left out of the car routes.</td></tr>
+    <tr><td>Children attached to the road network</td><td>99.9% live within 400 m of a street in the network.</td></tr>
     <tr><td>The two assumptions, moved one at a time: morning speed at 45% and 65% of the limit, and the reach cut at 15 and 25 minutes</td><td>The first junction stays the same for 4 or 5 of the 5 kindergartens in every variant. Of the 15 first-three junctions, 11 to 14 stay in the first three.</td></tr>
+    <tr><td>The road network, first taken from a server whose data stopped in July, then rebuilt from the November extract over a wider area</td><td>Five of the five first junctions are the same, and 15 of the 15 first-three. No first junction&#x27;s share moved by more than 0.2 percentage points.</td></tr>
   </table></div>
   <p>There is no count to check the routes against: Sofia publishes no traffic counts by street and no passengers by stop. The ranking shows where the catchment's families are likely to pass, in order. It is not a measured audience.</p>
 
@@ -343,17 +382,20 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     <li><b>Children of kindergarten age,</b> as opposed to all under 15, and anything that changed since the 2021 census, such as new housing.</li>
     <li><b>Small businesses missing from OpenStreetMap.</b> Pharmacies and supermarkets are well mapped; private clinics and children's activity centres less so.</li>
     <li><b>Visibility:</b> trees, parked lorries, which side of the junction has a free wall.</li>
+    <li><b>Neighbourhood boundaries.</b> OpenStreetMap has a point for most neighbourhoods in Sofia, not an outline, so a neighbourhood is in or out of the reach by its centre.</li>
+    <li><b>Trips with two changes,</b> which the public transport reach leaves out.</li>
   </ul>
 
   <h2><span class="n">9</span>What the checks caught</h2>
   <div class="ai">
-    <p>The first ranking of junctions put three in a row on the same boulevard at the top: the same families, counted three times. Picking each next junction for the families it adds fixed that. The first public-transport ranking left each kindergarten's own metro station with no families at all, because everyone living near it walks; they are now counted at the station they live beside. One junction came out as the ring road crossing itself, because the ring road carries two names in the south-west. And the road network came from a server that turned out to be four months behind, which only the file's own date showed; that date is in the data table.</p>
+    <p>The first ranking of junctions put three in a row on the same boulevard at the top: the same families, counted three times. Picking each next junction for the families it adds fixed that. The first public-transport ranking left each kindergarten's own metro station with no families at all, because everyone living near it walks; they are now counted at the station they live beside. One junction came out as the ring road crossing itself, because the ring road carries two names in the south-west. And the road network first came from a server that turned out to be four months behind, which only the file's own date showed; it was rebuilt from the November extract, and the picks stayed the same.</p>
     <p>The scripts were written with an AI agent and checked as described here; <a href="ai-gis-guide.html">how I work with AI on GIS</a>.</p>
   </div>
 
   <h2 id="downloads"><span class="n">10</span>Downloads</h2>
+  <p>The neighbourhoods within reach come from the map itself: choose a kindergarten, car or public transport, and a travel time, then use the button under the slider.</p>
   <div class="dl">
-    <a href="downloads/kindergarten_reach_sheets_v1.pdf" data-umami-event="Demo download" data-umami-event-file="kindergarten_reach_sheets_v1.pdf">One sheet per kindergarten, the shared spots, method and limits <span>PDF · 9 pages · 5.0 MB</span></a>
+    <a href="downloads/kindergarten_reach_sheets_v1.pdf" data-umami-event="Demo download" data-umami-event-file="kindergarten_reach_sheets_v1.pdf">One sheet per kindergarten, the shared spots, method and limits <span>PDF · 9 pages · 4.9 MB</span></a>
     <a href="downloads/kindergarten_reach_shortlist.csv" download data-umami-event="Demo download" data-umami-event-file="kindergarten_reach_shortlist.csv">The ranked spots for each kindergarten and channel, with coordinates <span>CSV · 104 rows</span></a>
   </div>
   <p>Own outputs and open data only, with every source named above. The lists are derived from OpenStreetMap and shared under the ODbL.</p>
@@ -387,7 +429,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
 (async function () {
   'use strict';
   const $ = (s) => document.querySelector(s);
-  const V = '?v=1794843767';
+  const V = '?v=1794848127';
   const DATA = 'kindergarten-reach/';   // 'data/' beside the page, or the page's own folder on the site
   const Q = new URLSearchParams(location.search);
   const PRINT = Q.has('print');          // the map alone, at the window's size, for the PDF sheets
@@ -415,7 +457,9 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     supermarket: '<path d="M4 9.5h16L18.4 19H5.6ZM8 9.5l3-5M16 9.5l-3-5"/>',
     mall: '<path d="M6 8.5h12L19 20H5ZM9 8.5V7a3 3 0 0 1 6 0v1.5"/>',
     leaflet: '<path d="M6.5 3.5h8l4 4v13h-12ZM14.5 3.5v4h4M9.5 12h6M9.5 15.5h6"/>',
-    star: '<path d="m12 4 2.4 5 5.4.7-4 3.8 1 5.4L12 16.3 7.2 18.9l1-5.4-4-3.8L9.6 9Z"/>'
+    star: '<path d="m12 4 2.4 5 5.4.7-4 3.8 1 5.4L12 16.3 7.2 18.9l1-5.4-4-3.8L9.6 9Z"/>',
+    clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    download: '<path d="M12 4v10M8 10.5l4 4 4-4M5 19.5h14"/>'
   };
   const glyph = (k, size = 18, color = 'currentColor', sw = 1.8) =>
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="${color}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GLYPH[k] || GLYPH.star}</svg>`;
@@ -444,21 +488,62 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   const pct = (v) => (v >= 0.0995 ? Math.round(v * 100) : (Math.round(v * 1000) / 10).toFixed(1)) + '%';
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  const [D, catchments] = await Promise.all([fetch(DATA + 'study.json' + V).then((r) => r.json()), fetch(DATA + 'catchments.geojson' + V).then((r) => r.json())]);
+  const get = (f) => fetch(DATA + f + V).then((r) => { if (!r.ok) throw new Error(f + ': ' + r.status); return r.json(); });
+  let D, isoCar, isoPt, NB;
+  try {
+    [D, isoCar, isoPt, NB] = await Promise.all([get('study.json'), get('iso_car.geojson'), get('iso_transit.geojson'), get('neighbourhoods.json')]);
+  } catch (err) {
+    // never a blank page: say what happened. A page opened as a file (file://) can't read its data in any browser.
+    const asFile = location.protocol === 'file:';
+    const box = document.createElement('div');
+    box.className = 'fail';
+    box.setAttribute('role', 'alert');
+    box.innerHTML = asFile
+      ? '<b>This page was opened as a file, so the browser won\u2019t let it read the map\u2019s data.</b><span>Open it through a web address instead: the local preview at <a href="http://localhost:8767/">localhost:8767</a>, or the published page.</span>'
+      : '<b>The map\u2019s data didn\u2019t load.</b><span>Reload the page to try again.</span>';
+    document.querySelector('.mapwrap').appendChild(box);
+    document.querySelector('.ptop').classList.add('off');
+    return;
+  }
+  const ISO = { car: isoCar.features, pt: isoPt.features };
   const SITES = D.sites, byId = Object.fromEntries(SITES.map((s) => [s.id, s]));
-  const state = { site: (PRINT && Q.get('site')) || 'all', ch: (PRINT && Q.get('ch')) || 'car', lang: 'en', others: false, sel: -1 };
+  const state = { site: (PRINT && Q.get('site')) || 'all', ch: (PRINT && Q.get('ch')) || 'car', lang: 'en', others: false, sel: -1, t: 15 };
+  if (PRINT) state.t = +(Q.get('t')) || (state.ch === 'transit' ? 30 : 15);
+  const bufMode = () => (state.ch === 'transit' ? 'pt' : 'car');     // the buffer follows the tab: public transport there, the car elsewhere
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ---------- bounds ----------
-  const bounds = {};
-  let all = [[180, 90], [-180, -90]];
-  catchments.features.forEach((f) => {
+  // ---------- the reach: buffers, their bounds, and the places inside ----------
+  const BB = {};
+  const eachRing = (g, fn) => (g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates]).forEach((poly) => fn(poly[0]));
+  Object.entries(ISO).forEach(([mode, feats]) => feats.forEach((f) => {
     let b = [[180, 90], [-180, -90]];
-    f.geometry.coordinates[0].forEach(([x, y]) => { b = [[Math.min(b[0][0], x), Math.min(b[0][1], y)], [Math.max(b[1][0], x), Math.max(b[1][1], y)]]; });
-    bounds[f.properties.site] = b;
-    all = [[Math.min(all[0][0], b[0][0]), Math.min(all[0][1], b[0][1])], [Math.max(all[1][0], b[1][0]), Math.max(all[1][1], b[1][1])]];
-  });
-  bounds.all = all;
+    eachRing(f.geometry, (ring) => ring.forEach(([x, y]) => { b = [[Math.min(b[0][0], x), Math.min(b[0][1], y)], [Math.max(b[1][0], x), Math.max(b[1][1], y)]]; }));
+    BB[mode + '|' + f.properties.site + '|' + f.properties.min] = b;
+  }));
+  const reachSites = () => (state.site === 'all' ? SITES.map((s) => s.id) : [state.site]);
+  const reachFeatures = () => ISO[bufMode()].filter((f) => f.properties.min === state.t && reachSites().includes(f.properties.site));
+  function reachBounds() {
+    let b = null;
+    reachSites().forEach((id) => {
+      const q = BB[bufMode() + '|' + id + '|' + state.t];
+      if (q) b = b ? [[Math.min(b[0][0], q[0][0]), Math.min(b[0][1], q[0][1])], [Math.max(b[1][0], q[1][0]), Math.max(b[1][1], q[1][1])]] : q;
+    });
+    SITES.filter((s) => reachSites().includes(s.id)).forEach((s) => {      // always keep the kindergartens themselves in view
+      b = b ? [[Math.min(b[0][0], s.lon - 0.01), Math.min(b[0][1], s.lat - 0.007)], [Math.max(b[1][0], s.lon + 0.01), Math.max(b[1][1], s.lat + 0.007)]] : [[s.lon - 0.01, s.lat - 0.007], [s.lon + 0.01, s.lat + 0.007]];
+    });
+    return b;
+  }
+  // named places whose centre is within the chosen time: [kindergarten, name, name in Bulgarian, kind, minutes, lon, lat]
+  function reachPlaces() {
+    const k = bufMode() === 'pt' ? 6 : 5, rows = [];
+    reachSites().forEach((id) => {
+      const i = NB.sites.indexOf(id);
+      NB.items.forEach((it) => { const m = it[k][i]; if (m != null && m <= state.t) rows.push([byId[id].name, it[0], it[1], it[2], m, it[3], it[4]]); });
+    });
+    return rows.sort((a, b) => (a[0] === b[0] ? a[4] - b[4] : SITES.findIndex((s) => s.name === a[0]) - SITES.findIndex((s) => s.name === b[0])));
+  }
+  const tLabel = (t) => (t === 60 ? '1 h' : t + ' min');
+  const WALK = 10;      // minutes on foot to a stop, in the public transport reach
 
   // ---------- controls ----------
   if (window.matchMedia('(max-width: 860px)').matches) $('#legendBox').removeAttribute('open');   // on a phone the legend starts folded
@@ -500,8 +585,8 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
 
   const UNDER = 'lbl-water';   // study layers sit under the basemap's labels, so street and district names stay readable
   const src = (id, data) => map.addSource(id, { type: 'geojson', data });
-  src('catch', catchments); src('metro', DATA + 'metro.geojson' + V); src('cor', DATA + 'car_corridors.geojson' + V);
-  src('tl', DATA + 'transit_lines.geojson' + V); src('tp', DATA + 'transit_places.geojson' + V); src('pl', DATA + 'places.geojson' + V); src('kg', DATA + 'kindergartens.geojson' + V);
+  src('catch', { type: 'FeatureCollection', features: [] }); src('metro', DATA + 'metro.geojson' + V); src('cor', DATA + 'car_corridors.geojson' + V);
+  src('tl', DATA + 'transit_lines.geojson' + V); src('tp', DATA + 'transit_places.geojson' + V); src('pl', DATA + 'places.geojson' + V); src('kg', DATA + 'kindergartens.geojson' + V); src('ts', DATA + 'transit_stops.geojson' + V);
   map.addLayer({ id: 'catch-fill', type: 'fill', source: 'catch', paint: { 'fill-color': P.rose, 'fill-opacity': 0.06 } }, UNDER);
   map.addLayer({ id: 'catch-line', type: 'line', source: 'catch', paint: { 'line-color': P.roseInk, 'line-width': 1.5, 'line-dasharray': [3, 2.5], 'line-opacity': 0.8 } }, UNDER);
   map.addLayer({ id: 'metro-line', type: 'line', source: 'metro', filter: ['==', ['get', 'kind'], 'line'], layout: { 'line-cap': 'round', 'line-join': 'round' },
@@ -512,6 +597,8 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     paint: { 'line-color': '#3FB3AC', 'line-width': ['interpolate', ['linear'], ['get', 'share'], 0.004, 1.3, 0.05, 4, 0.2, 8, 0.5, 12] } }, UNDER);
   map.addLayer({ id: 'pl', type: 'circle', source: 'pl', paint: { 'circle-color': P.roseInk, 'circle-opacity': 0.42, 'circle-stroke-color': '#fff', 'circle-stroke-width': 0.8 } });
   map.addLayer({ id: 'tp', type: 'circle', source: 'tp', paint: { 'circle-color': P.teal, 'circle-opacity': 0.75, 'circle-stroke-color': '#fff', 'circle-stroke-width': 1.2 } });
+  map.addLayer({ id: 'ts', type: 'circle', source: 'ts', layout: { visibility: 'none' }, paint: { 'circle-color': P.tealInk, 'circle-stroke-color': '#fff', 'circle-stroke-width': 1.3,
+    'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, ['case', ['get', 'metro'], 3, 2], 14, ['case', ['get', 'metro'], 6.5, 4.5]] } });
   map.addLayer({ id: 'kg', type: 'symbol', source: 'kg', minzoom: 11.5, layout: { 'icon-image': ['case', ['get', 'private'], 'kg-private', 'kg-public'], 'icon-allow-overlap': true,
     'icon-size': ['interpolate', ['linear'], ['zoom'], 11.5, 0.6, 15, 1], 'symbol-sort-key': ['case', ['get', 'private'], 1, 0], visibility: 'none' } });
   map.addLayer({ id: 'metro-st', type: 'symbol', source: 'metro', filter: ['==', ['get', 'kind'], 'station'], minzoom: 10.8,
@@ -630,9 +717,10 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     const dot = (c, r) => `<svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="${r}" fill="${c}" opacity=".65" stroke="#fff"/></svg>`;
     const row = (a, b) => `<div class="r"><span>${a}</span><span>${b}</span></div>`;
     let h = row(house(26), 'Svetlina kindergarten') +
-      row(`<svg width="28" height="14" aria-hidden="true"><path d="M2 7h24" stroke="${P.roseInk}" stroke-width="1.6" stroke-dasharray="4 3"/></svg>`, '15 minutes by car on a weekday morning, modelled');
+      row(`<svg width="28" height="14" aria-hidden="true"><path d="M2 7h24" stroke="${bufMode() === 'pt' ? P.tealInk : P.roseInk}" stroke-width="1.6" stroke-dasharray="4 3"/></svg>`,
+        `${tLabel(state.t)} ${bufMode() === 'pt' ? `by public transport: ${WALK} min on foot to a stop, ${state.t - WALK} from the stop` : 'by car'}, in the weekday morning rush hour (modelled)`);
     if (ch === 'car') h += row(line('#1B7263', 7), 'Road, by the share of the catchment’s families on it') + row(pin({ ch: 'car', n: 1 }, 26), 'Junction with signals, in order of pick');
-    if (ch === 'transit') h += row(line('#3FB3AC', 5), 'Line, by the share of families riding it') + row(dot(P.teal, 6), 'Stop, by families boarding or living beside') + row(pin({ ch: 'transit', n: 1, kind: 'metro' }, 26), 'Stop to consider, best first');
+    if (ch === 'transit') h += row(`<svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="4.5" fill="${P.tealInk}" stroke="#fff" stroke-width="1.3"/></svg>`, `Stop within ${state.t - WALK} min of the door`) + row(line('#3FB3AC', 5), 'Line, by the share of families riding it') + row(dot(P.teal, 6), 'Stop, by families boarding or living beside') + row(pin({ ch: 'transit', n: 1, kind: 'metro' }, 26), 'Stop to consider, best first');
     if (ch === 'places') h += row(dot(P.roseInk, 6), 'Everyday place, by children within a 10-minute walk') + row(pin({ ch: 'places', n: 1, kind: 'playground' }, 26), 'Place to leave leaflets or a poster');
     if (ch === 'shortlist') h += row(pin({ ch: 'car', n: 1 }, 24), 'Junction') + row(pin({ ch: 'transit', n: 1, kind: 'bus' }, 24), 'Stop') + row(pin({ ch: 'places', n: 1, kind: 'pharmacy' }, 24), 'Everyday place');
     h += `<label><input type="checkbox" id="others" ${state.others ? 'checked' : ''}><span>Other kindergartens in OpenStreetMap (${D.other_kindergartens}); pink are private</span></label>`;
@@ -640,15 +728,47 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     $('#others').addEventListener('change', (e) => { state.others = e.target.checked; if (ready) map.setLayoutProperty('kg', 'visibility', state.others ? 'visible' : 'none'); });
   }
 
+  // the buffer on the map, the read-out beside the slider and the count on the download button
+  function applyReach() {
+    const pt = bufMode() === 'pt', allv = state.site === 'all';
+    $('#tt-l').textContent = pt ? 'Reach by public transport' : 'Reach by car';
+    $('#tt-o').textContent = tLabel(state.t);
+    $('#tt-note').textContent = pt ? `${WALK} min on foot to a stop, then ${state.t - WALK} min from that stop to the door` : 'door to door, at rush-hour speeds';
+    const places = new Set(reachPlaces().map((r) => r[1] + '|' + r[5]));
+    $('#nb-n').textContent = places.size + (places.size === 1 ? ' neighbourhood or village' : ' neighbourhoods and villages') + ' within reach';
+    if (!ready) return;
+    map.getSource('catch').setData({ type: 'FeatureCollection', features: reachFeatures() });
+    // public transport: the stops within the slider's time less the 10-minute walk to them
+    const lim = state.t - WALK, ids = reachSites();
+    map.setFilter('ts', ['<=', ids.length === 1 ? ['coalesce', ['get', ids[0]], 999] : ['min', ...ids.map((id) => ['coalesce', ['get', id], 999])], lim]);
+    map.setLayoutProperty('ts', 'visibility', pt ? 'visible' : 'none');
+    map.setPaintProperty('catch-fill', 'fill-color', pt ? P.teal : P.rose);
+    map.setPaintProperty('catch-fill', 'fill-opacity', allv ? 0.05 : 0.08);
+    map.setPaintProperty('catch-line', 'line-color', pt ? P.tealInk : P.roseInk);
+    map.setPaintProperty('catch-line', 'line-opacity', allv ? 0.5 : 0.85);
+    map.setPaintProperty('catch-line', 'line-width', allv ? 1.1 : 1.6);
+  }
+  function downloadPlaces() {
+    const pt = bufMode() === 'pt', rows = reachPlaces();
+    const q = (v) => '"' + String(v).replace(/"/g, '""') + '"';
+    const head = ['kindergarten', 'neighbourhood', 'neighbourhood_bg', 'type', pt ? 'minutes_by_public_transport' : 'minutes_by_car', 'longitude', 'latitude'];
+    const body = rows.map((r) => [q(r[0]), q(r[1]), q(r[2]), r[3], Math.round(r[4]), r[5], r[6]].join(','));
+    const note = `# Named places in OpenStreetMap whose centre is within ${state.t} minutes ${pt ? `by public transport (a ${WALK}-minute walk to a stop, then the rest from that stop to the door, one change at most; the minutes column includes the ${WALK}-minute walk)` : 'by car'} in the weekday morning rush hour, 07:00 to 09:00. Modelled, not measured.`;
+    const blob = new Blob(['\ufeff' + [note, head.join(','), ...body].join('\r\n') + '\r\n'], { type: 'text/csv;charset=utf-8' });   // the mark at the start lets Excel read the Cyrillic
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `kindergartens_${state.site === 'all' ? 'all_five' : state.site}_${pt ? 'public_transport' : 'car'}_${state.t}min_neighbourhoods.csv`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+
   function applyMap() {
     const s = state.site, ch = state.ch, allv = s === 'all';
     const f = allv ? null : ['==', ['get', 'site'], s];
-    ['catch-fill', 'catch-line', 'cor', 'tl'].forEach((id) => map.setFilter(id, f));
+    ['cor', 'tl'].forEach((id) => map.setFilter(id, f));
+    applyReach();
     const vis = (id, on) => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
     vis('cor', ch === 'car'); vis('tl', ch === 'transit'); vis('tp', ch === 'transit'); vis('pl', ch === 'places');
-    map.setPaintProperty('catch-fill', 'fill-opacity', allv ? 0.045 : 0.08);
-    map.setPaintProperty('catch-line', 'line-opacity', allv ? 0.45 : 0.85);
-    map.setPaintProperty('catch-line', 'line-width', allv ? 1.1 : 1.6);
     const val = allv ? ['max', ...SITES.map((q) => ['get', q.id])] : ['get', s];
     map.setFilter('tp', ['>', val, 0.004]);
     map.setPaintProperty('tp', 'circle-radius', ['interpolate', ['linear'], ['sqrt', val], 0.06, 2.5, 0.45, 13]);
@@ -665,14 +785,14 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     if (popup) { popup.remove(); popup = null; }
     document.querySelectorAll('.kg').forEach((b) => b.setAttribute('aria-pressed', b.dataset.s === state.site));
     document.querySelectorAll('.tab').forEach((b) => b.setAttribute('aria-pressed', b.dataset.c === state.ch));
-    renderLead(); renderList(); renderLegend();
+    renderLead(); renderList(); renderLegend(); applyReach();
     if (!ready) return;
     applyMap(); renderMarkers();
     $('.plist').scrollTop = 0;
     if (PRINT && ready) { printFit(); return; }
     if (siteChanged && ready) {
       const o = { padding: state.site === 'all' ? 36 : 56, maxZoom: 14 };
-      map.fitBounds(bounds[state.site], reduce ? { ...o, animate: false } : { ...o, duration: 800 });
+      map.fitBounds(reachBounds(), reduce ? { ...o, animate: false } : { ...o, duration: 800 });
     }
   }
   window.__set = set;
@@ -682,7 +802,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     const pts = current().map((sp) => [sp.lon, sp.lat]);
     (state.site === 'all' ? SITES : [byId[state.site]]).forEach((s) => pts.push([s.lon, s.lat]));
     let b;
-    if (Q.get('fit') === 'catch' || pts.length < 2) b = bounds[state.site];
+    if (Q.get('fit') === 'catch' || pts.length < 2) b = reachBounds();
     else {
       const xs = pts.map((q) => q[0]), ys = pts.map((q) => q[1]);
       const cx = (Math.min(...xs) + Math.max(...xs)) / 2, cy = (Math.min(...ys) + Math.max(...ys)) / 2;
@@ -696,6 +816,11 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   }
 
   $('#pick').addEventListener('click', (e) => { const b = e.target.closest('.kg'); if (b) set({ site: b.dataset.s }); });
+  const slider = $('#tt');
+  slider.value = state.t;
+  slider.addEventListener('input', () => { state.t = +slider.value; applyReach(); renderLegend(); });      // while dragging: the buffer follows
+  slider.addEventListener('change', () => { state.t = +slider.value; set({ refit: true }); });            // on release: the map frames it
+  $('#nb').addEventListener('click', downloadPlaces);
   $('#tabs').addEventListener('click', (e) => { const b = e.target.closest('.tab'); if (b) set({ ch: b.dataset.c }); });
   document.querySelectorAll('.kgc button').forEach((b) => b.addEventListener('click', () => {
     set({ site: b.dataset.site, ch: 'shortlist' });
@@ -726,6 +851,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   const share = (p) => (state.site === 'all' ? Math.max(...SITES.map((q) => +p[q.id] || 0)) : +p[state.site] || 0);
   hover('pl', (p) => `<b>${nm(p)}</b>${KIND[p.kind]} · ${pct(share(p))} of the catchment's children within a 10-minute walk`);
   hover('tp', (p) => `<b>${nm(p)}</b>${p.metro ? 'Metro station' : 'Stop'}${p.lines ? ' · ' + esc(String(p.lines).split(';').slice(0, 8).join(', ')) : ''} · ${pct(share(p))} of public-transport families`);
+  hover('ts', (p) => `<b>${nm(p)}</b>${Math.round(state.site === 'all' ? Math.min(...SITES.map((q) => (p[q.id] == null ? 999 : +p[q.id]))) : +p[state.site])} min from this stop to the door${p.lines ? ' · ' + esc(String(p.lines).split(';').slice(0, 8).join(', ')) : ''}`);
   hover('kg', (p) => `<b>${nm(p)}</b>${p.private ? 'Private kindergarten' : 'Kindergarten'} (OpenStreetMap)`);
   hover('metro-st', (p) => `<b>${nm(p)}</b>Metro station`);
   map.on('click', (e) => { if (!e.originalEvent.target.closest('.mk')) select(-1); });
