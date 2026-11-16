@@ -124,6 +124,10 @@ section{padding-block:clamp(56px,8vw,104px)}
 .t-duo .figs figure:nth-child(2){flex:2.2 1 0;aspect-ratio:2.2}
 .t-duo .body{grid-template-columns:1.1fr 1fr;column-gap:32px;align-items:start}
 .t-duo .body>.status,.t-duo .body>h3{grid-column:1/-1}
+/* .t-split: a wide tile whose text sits in two columns, as in .t-duo */
+.t-split .body{grid-template-columns:1.1fr 1fr;column-gap:32px;align-items:start}
+.t-split .body>.status,.t-split .body>h3{grid-column:1/-1}
+.t-split ul{margin:0 0 6px;padding-left:18px;color:var(--ink-2);font-size:15px}
 /* .t-feature and .t-note: used on the Agriculture tab, which shares these styles */
 .t-feature{grid-column:span 6;background:var(--forest);border-color:transparent;color:#fff;display:grid;grid-template-columns:1fr 1.35fr}
 .t-feature .body{padding:clamp(22px,3vw,40px);align-content:center;gap:12px}
@@ -256,7 +260,7 @@ nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-colo
   .t-lead,.t-side,.t-third,.t-note,.t-wide,.t-duo,.t-feature,.t-half,.t-guide{grid-column:span 2}
   .t-guide{grid-template-columns:1fr}.t-guide ol{border-left:0;border-top:1px solid var(--hair)}
   .t-feature{grid-template-columns:1fr}.t-feature figure{order:-1;height:auto}
-  .t-duo .figs{flex-direction:column}.t-duo .body{grid-template-columns:1fr}
+  .t-duo .figs{flex-direction:column}.t-duo .body,.t-split .body{grid-template-columns:1fr}
   .about .ph{max-width:420px}
 }
 @media (max-width:640px){
