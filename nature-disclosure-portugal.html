@@ -57,6 +57,7 @@ a.fig img{display:block;width:100%;height:auto}
 .dl span{font:400 12.5px var(--mono);color:var(--muted)}
 .ai{background:var(--surface);border:1.5px dashed var(--rose);border-radius:14px;padding:16px 20px;margin:18px 0}
 .ai p{margin:6px 0}
+.sub{font-size:19.5px;line-height:1.55;color:var(--ink);margin:0 0 6px;text-wrap:pretty}.disc{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:0 0 16px}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:16px 0 4px}.stats div{background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;min-width:0}.stats b{display:block;font:400 42px/1 var(--serif);color:var(--forest);font-variant-numeric:tabular-nums}.stats span{display:block;margin-top:8px;font-size:14.5px;line-height:1.4;color:var(--ink-2)}h3.res{font:400 clamp(22px,2.6vw,27px)/1.2 var(--serif);margin:40px 0 4px;text-wrap:balance}.res-note{margin:0 0 4px;font-size:16px}.part{margin:60px 0 0;padding-top:16px;border-top:1px solid var(--hair);font:500 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink)}
 /* related */.related{margin:56px 0 0}.related h2{display:block;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink);margin:0 0 14px}.related .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.related a{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;color:var(--ink)}.related a:hover{border-color:var(--forest)}.related .ey{display:block;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.related .t{display:block;font:400 21px/1.2 var(--serif);color:var(--ink);text-wrap:balance}/* /related */
 /* plan: step-2 markers for the preview, removed before going live */.plan{border:1.5px dashed var(--teal);background:#F1FAF7;border-radius:12px;padding:12px 18px 14px;margin:16px 0}.plan .tag{display:inline-block;font:500 11.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin:2px 0 4px}.plan p{margin:6px 0;font-size:15.5px}tr.planned td{color:var(--muted);background:#F1FAF7}/* /plan */
 </style>
@@ -82,26 +83,38 @@ a.fig img{display:block;width:100%;height:auto}
 <div class="wrap">
   <span class="eyebrow">Sample · Portugal · TNFD, ESRS E4 and GRI 101</span>
   <h1>Screening a portfolio for nature disclosures: Portugal</h1>
-  <div class="prep">
-    <p><b>Demonstration on open data.</b> Screening, not assessment, and not client work. A site counted here is "in or near a sensitive location" by the stated rule and distance, never a finding about the site.</p>
-  </div>
 
-  <p class="lede">Take the solar parks and wind farms mapped in OpenStreetMap in mainland Portugal: 733 sites of 1 ha or more, 359 solar parks and 374 wind farms. How many sit in or near a sensitive location for nature, how does the answer move with the distance, and is the land around them changing?</p>
-  <p>This is the desk exercise behind the Locate phase of the TNFD's LEAP approach, and behind the metric that ESRS E4, GRI 101-5 and TNFD all ask for: sites in or near protected areas or areas of high biodiversity importance, with the distance stated. The same screening, with the same rules, is shown for <a href="nature-disclosure-bulgaria.html">Bulgaria</a>. For a single project going to a lender, see the <a href="critical-habitat-screening.html">critical habitat pre-screening</a>, shown for a wind farm in Bulgaria.</p>
+  <p class="sub">733 solar parks and wind farms in mainland Portugal, screened on open data for the metric ESRS E4, GRI 101-5 and TNFD all ask for: sites in or near sensitive locations for nature, with the distance stated.</p>
+  <p class="disc">Demonstration on open data. Screening, not assessment: a site counted here is "in or near a sensitive location" by the stated rule and distance, never a finding about the site.</p>
 
   <a class="fig" href="assets/s2_country_pt.jpg"><img src="assets/s2_country_pt.jpg" alt="Sentinel-2 view of wind farms in the Serra de Montemuro Natura 2000 site, a map of Portugal's sites by screening result, and charts of results by type" width="2210" height="1258" fetchpriority="high"></a>
   <p class="fig-note">Wind farms in the Serra de Montemuro, a Habitats Directive site, and every screened site in mainland Portugal. Select the image to open it full size.</p>
 
+  <div class="stats">
+    <div><b>32%</b><span>of the 733 sites (232) are in or within 1 km of Natura 2000 or likely critical habitat</span></div>
+    <div><b>88%</b><span>of the sites (645) are in catchments with high or extremely high physical water risk</span></div>
+    <div><b>59 of 374</b><span>wind farms within 5 km of a Birds Directive site</span></div>
+    <div><b>19%</b><span>of the land within 1 km lost tree cover since 2017, against 12% of the countryside, mostly to wildfire</span></div>
+  </div>
+
   <ul class="find">
-    <li><b>The headline metric:</b> 232 of 733 sites (32%) are in or within 1 km of a Natura 2000 site or likely critical habitat.</li>
     <li><b>The distance matters:</b> 17% of the sites are inside Natura 2000, 26% within 1 km and 56% within 5 km. Every number here comes with its distance.</li>
-    <li><b>Wind and birds:</b> 59 of the 374 wind farms are within 5 km of a Birds Directive site.</li>
-    <li><b>Water:</b> 645 sites (88%) are in catchments with high or extremely high physical water risk, 85% of the solar parks among them. Solar and wind use little water, but the criterion is about the place, not the plant.</li>
-    <li><b>Year by year:</b> 19% of the land within 1 km of the sites lost tree cover from 2017 to 2025, against 12% of the countryside, mostly to the fires of 2017 and 2025.</li>
+    <li><b>Water:</b> 85% of the solar parks are in catchments with high physical water risk. Solar and wind use little water, but the criterion is about the place, not the plant.</li>
   </ul>
   <!-- actions --><div class="actions"><a href="downloads/S2_screening_memo_portugal_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S2_screening_memo_portugal_v1.pdf">Download the Portugal memo <span>PDF · 4 pages</span></a><a class="alt" href="mailto:ana@timebooster.ai?subject=Nature%20disclosure%20screening%20enquiry" data-umami-event="Email click">Email me</a><a class="all" href="#downloads">All downloads</a></div><!-- /actions -->
 
+  <h3 class="res">Year by year: more tree cover lost around the sites than in the countryside, mostly to fire</h3>
+  <p class="res-note">19.1% of the land within 1 km lost tree cover from 2017 to 2025, against 12.0% of the countryside; wildfire alone took 14.0%, against 7.6%.</p>
+  <a class="fig" href="assets/s2_yearly.jpg"><img src="assets/s2_yearly.jpg" alt="Charts for Bulgaria and Portugal: tree cover lost each year from 2017 to 2025 near the sites, by cause, against the countryside; and natural cover changes that lasted, 2019 to 2022" loading="lazy" width="2210" height="1393"></a>
+  <p class="fig-note">Near the sites against the countryside, year by year: Portugal is the right column. Select the image to open it full size.</p>
+  <a class="fig" href="assets/s2_yearly_example.jpg"><img src="assets/s2_yearly_example.jpg" alt="Four Sentinel-2 views of four wind farms in central Portugal: before the 2017 fires, burned in 2018, recovering in 2021, and green again with new clearings in 2025" loading="lazy" width="2210" height="731"></a>
+  <p class="fig-note">Before, after and since: four wind farms in central Portugal whose surroundings burned in 2017. Select the image to open it full size.</p>
+
+  <p class="part">How it was made: the question, data, method, checks and limits</p>
+
   <h2><span class="n">1</span>The question</h2>
+  <p>Take the solar parks and wind farms mapped in OpenStreetMap in mainland Portugal: 733 sites of 1 ha or more, 359 solar parks and 374 wind farms. How many sit in or near a sensitive location for nature, how does the answer move with the distance, and is the land around them changing?</p>
+  <p>This is the desk exercise behind the Locate phase of the TNFD's LEAP approach, and behind the metric that ESRS E4, GRI 101-5 and TNFD all ask for: sites in or near protected areas or areas of high biodiversity importance, with the distance stated. The same screening, with the same rules, is shown for <a href="nature-disclosure-bulgaria.html">Bulgaria</a>. For a single project going to a lender, see the <a href="critical-habitat-screening.html">critical habitat pre-screening</a>, shown for a wind farm in Bulgaria.</p>
   <p>Companies reporting under ESRS E4, GRI 101 or TNFD count their sites in or near sensitive locations for nature. The count is only as good as two things: the site list, and the rule for "near". TNFD doesn't fix a distance and GRI 101-5 asks for it to be stated, so the screening shows how the count moves with it.</p>
   <p>Portugal is adding solar fast, and its wind farms stand on the same hills as many of its Natura 2000 sites. Between 2022 and 2024, solar capacity grew from 2,646 to 5,639 MW (Eurostat).</p>
 
@@ -139,17 +152,13 @@ a.fig img{display:block;width:100%;height:auto}
   <p>The count is only as good as the list. OpenStreetMap shows what volunteers have mapped, and few solar parks carry their capacity there, so the list can't be checked against the official statistics. The list has 359 solar parks over 5,232 ha, against 5,639 MW of solar in Eurostat for 2024, rooftops included. Wind farms come to about 6,600 MW from their turbines' own tags and the median size for the rest, against 5,600 MW in Eurostat. Most turbines carry no capacity tag, so that is an estimate, and being above the official figure doesn't show that no wind farm is missing.</p>
 
 <h2><span class="n">6</span>Year by year around the sites</h2>
-  <p>Is the land around the sites losing natural cover? Two yearly records answer it for the land within 1 km of every site, counted once where sites are close together: tree cover lost each year from 2017 to 2025 with its main cause, and natural cover against crops and built-up land from 2017 to 2023.</p>
-  <a class="fig" href="assets/s2_yearly.jpg"><img src="assets/s2_yearly.jpg" alt="Charts for Bulgaria and Portugal: tree cover lost each year from 2017 to 2025 near the sites, by cause, against the countryside; and natural cover changes that lasted, 2019 to 2022" loading="lazy" width="2210" height="1393"></a>
-  <p class="fig-note">Near the sites against the countryside, year by year: Portugal is the right column. Select the image to open it full size.</p>
-  <ul class="find">
+  <p>Is the land around the sites losing natural cover? Two yearly records answer it for the land within 1 km of every site, counted once where sites are close together: tree cover lost each year from 2017 to 2025 with its main cause, and natural cover against crops and built-up land from 2017 to 2023 (the figure at the top).</p>
+  <ul>
     <li><b>Tree cover:</b> 19.1% of the land near the sites lost tree cover from 2017 to 2025, against 12.0% of the countryside. Most of it burned, in 2017 and 2025 above all: wildfire alone took 14.0%, against 7.6%. Forestry runs at about 0.5% a year, as in the countryside.</li>
     <li><b>Why:</b> most wind farms are in hill country of grass, shrub and forest, so fire is a risk the sites share with the land around them.</li>
     <li><b>Natural cover:</b> 79% of the land near the sites in 2017, against 75% in the countryside. The net change from 2019 to 2022 was -0.82% of the land near the sites, against -0.92% in the countryside.</li>
     <li><b>Site by site:</b> 514 sites lost natural or tree cover over at least 5% of the land around them, and wildfire is the main cause for 252 of them. The figures for every site, with the cause, are in the download.</li>
   </ul>
-  <a class="fig" href="assets/s2_yearly_example.jpg"><img src="assets/s2_yearly_example.jpg" alt="Four Sentinel-2 views of four wind farms in central Portugal: before the 2017 fires, burned in 2018, recovering in 2021, and green again with new clearings in 2025" loading="lazy" width="2210" height="731"></a>
-  <p class="fig-note">Before, after and since: four wind farms in central Portugal whose surroundings burned in 2017. Select the image to open it full size.</p>
   <p>A change near a site isn't necessarily caused by the site. These records show where the land is changing, which is what TNFD's "rapid decline in ecosystem integrity" asks about, and where a monitoring visit or a closer look would start.</p>
 
   <h2><span class="n">7</span>Checks</h2>

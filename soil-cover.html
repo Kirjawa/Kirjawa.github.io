@@ -48,6 +48,7 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .src td:first-child{white-space:nowrap;color:var(--ink)}
 footer{border-top:1px solid var(--hair);margin-top:56px;padding-top:18px;font:400 13px var(--mono);color:var(--muted)}
 @media (max-width:760px){.pair{grid-template-columns:1fr}}
+.sub{font-size:19.5px;line-height:1.55;color:var(--ink);margin:0 0 6px;text-wrap:pretty}.disc{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:0 0 16px}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:0 0 4px}.stats div{background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;min-width:0}.stats b{display:block;font:400 42px/1 var(--serif);color:var(--forest);font-variant-numeric:tabular-nums}.stats span{display:block;margin-top:8px;font-size:14.5px;line-height:1.4;color:var(--ink-2)}h3.res{font:400 clamp(22px,2.6vw,27px)/1.2 var(--serif);margin:40px 0 4px;text-wrap:balance}.part{margin:60px 0 0;padding-top:16px;border-top:1px solid var(--hair);font:500 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink)}.wrap:has(+.wide){padding-bottom:4px}.wide+.wrap{padding-top:4px}
 /* workflow */
 .flow{margin:26px 0 30px;border:1px solid var(--hair);border-radius:16px;background:var(--surface);padding:22px clamp(14px,3vw,26px)}
 .flow .lbl{font:500 11.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
@@ -87,8 +88,8 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   <a class="back" href="agriculture.html">← Agriculture, with Atlastico</a>
   <span class="eyebrow">Study · Dobrudja, north-east Bulgaria</span>
   <h1>Dobrudja: how long does the soil lie bare?</h1>
-  <p class="lede">Bare soil loses carbon, dries out and blows away. Since 2023, EU farm payments come with a soil-cover rule. In Bulgaria, since August 2024, it asks farmers to keep at least 80% of their arable land covered from 1 June to 30 September. Stubble counts as cover. So I asked: how many days a year does each field actually lie bare, and did anything change after the rule?</p>
-  <p>I looked at Dobrudja, Bulgaria's grain belt, where wheat, sunflower and maize cover almost 500,000 ha. This page explains how I measured it, what I found, and where the method stops.</p>
+  <p class="sub">Dobrudja, Bulgaria's grain belt: how many days a year does each field lie bare, 2019 to 2025, and did the EU soil-cover rule change it?</p>
+  <p class="disc">Fields measured, never farms judged: the rule applies to each holding, which the public register doesn't show. No farm is named or can be identified.</p>
 </div>
 
 <div class="wide">
@@ -96,6 +97,54 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
 </div>
 
 <div class="wrap">
+  <div class="stats">
+    <div><b>1.5–5%</b><span>of farmland bare for most of the summer since 2021, against 8% in 2019 and 20% in 2020</span></div>
+    <div><b>−2 ± 16</b><span>summer bare days on the same fields after the 2023 rule: no measurable change</span></div>
+    <div><b>160–200</b><span>bare days a year under sunflower and maize; 60 to 90 under wheat and barley</span></div>
+    <div><b>15%</b><span>of sunflower and maize land green over winter 2024–25, against 1 to 4% before</span></div>
+  </div>
+
+  <h3 class="res">Fewer fields sit bare all summer, but the change came before the rule</h3>
+  <p>In 2019, 8% of the farmland was bare for most of the summer, and in the dry year 2020 it was 20%. Almost all of it was wheat, barley and rapeseed after harvest: fields tilled soon after harvest and left open until autumn sowing, or stubble so thin after the drought that it reads as bare soil. From 2021 on it has stayed between 1.5% and 5%. That drop happened two years before the rule. When I compare the same fields with themselves and take out the weather, the years after 2023 are no different: −2 ± 16 days in summer. Weather moves these numbers far more than the rule does.</p>
+
+  <h3 class="res">The crop matters more than the place</h3>
+  <p>Wheat and barley are harvested in July and their stubble counts as cover, so they have about 60 to 90 bare days a year. Sunflower and maize leave the soil open from autumn to late spring, about 160 to 200 days. Between areas the differences are smaller. The two areas by the Danube are the least bare and one central area is the barest, but there is no clean pattern from the Danube to the coast.</p>
+
+  <h3 class="res">Winter is the gap</h3>
+  <p>Since August 2024 the Bulgarian rule covers summer only. Winter is when the soil is most exposed: before sunflower and maize there is no living cover on most of the 120 days from November to February. Telling stubble from bare soil in winter is harder, because wet soil makes bare ground look like stubble. So I only made that call on days when the topsoil was dry. On those days it was mostly bare soil: stubble made up only 5 to 27% of them, depending on the year.</p>
+
+  <h3 class="res">2025 was greener in winter, but mostly not from cover crops</h3>
+  <p>In winter 2024 to 2025, 15% of the land waiting for sunflower or maize was green for most of the winter, against 1 to 4% in every earlier year. It followed by far the wettest late summer of the period. On the images, a few of these fields look sown, as a cover crop would be, but most look like weeds and cereal regrowth. The register only records the main crop, so satellite data alone can't prove a cover crop.</p>
+</div>
+<div class="wide">
+  <figure><img src="assets/soil_winter_check.jpg" alt="Sentinel-2 winter images of 12 fields with a verdict for each: in 2024 to 2025 some are densely green, most patchy; in 2018 to 2019 all are dark tilled soil" data-caption="Checking the two winter signals on the images" width="2520" height="1148" loading="lazy"><figcaption>The two winter signals on the images: six of 12 random fields each, with what the image shows.</figcaption></figure>
+</div>
+
+<div class="wrap">
+  <h3 class="res">All the numbers</h3>
+  <div class="tbl"><table>
+    <tr><th></th><th>2019</th><th>2020</th><th>2021 to 2025</th></tr>
+    <tr><td>Farmland bare for most of 1 June to 30 September</td><td class="n">8%</td><td class="n">20%</td><td class="n">1.5 to 5%</td></tr>
+    <tr><td>Spring rain, March to July</td><td class="n">236 mm</td><td class="n">232 mm</td><td class="n">185 to 374 mm</td></tr>
+  </table></div>
+  <div class="tbl"><table>
+    <tr><th></th><th>Result</th></tr>
+    <tr><td>Same fields after 2023, summer bare days</td><td class="n">−2 ± 16 days</td></tr>
+    <tr><td>Same fields after 2023, bare days over the whole year</td><td class="n">−5 ± 24 days</td></tr>
+    <tr><td>Bare days a year, wheat and barley</td><td class="n">about 60 to 90</td></tr>
+    <tr><td>Bare days a year, sunflower and maize</td><td class="n">about 160 to 200</td></tr>
+    <tr><td>Winter days with no living cover before sunflower and maize (of 120)</td><td class="n">97 to 117</td></tr>
+    <tr><td>Of those, stubble where the soil was dry enough to tell</td><td class="n">5 to 27%</td></tr>
+    <tr><td>Sunflower and maize land green over winter, 2019 to 2024</td><td class="n">1 to 4%</td></tr>
+    <tr><td>Same, 2025</td><td class="n">15%</td></tr>
+    <tr><td>Farmland with standing water after rain, any year</td><td class="n">under 1%</td></tr>
+  </table></div>
+
+  <p class="part">How it was made: the question, method, checks and limits</p>
+
+  <h2>The question</h2>
+  <p>Bare soil loses carbon, dries out and blows away. Since 2023, EU farm payments come with a soil-cover rule. In Bulgaria, since August 2024, it asks farmers to keep at least 80% of their arable land covered from 1 June to 30 September. Stubble counts as cover. So I asked: how many days a year does each field actually lie bare, and did anything change after the rule? I looked at Dobrudja, Bulgaria's grain belt, where wheat, sunflower and maize cover almost 500,000 ha.</p>
+
   <h2>How I did it</h2>
   <div class="flow" role="figure" aria-label="Workflow of the study, from open data sources to results, with the checks at each step">
     <p class="lbl">Open data in</p>
@@ -125,39 +174,6 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
     <li><b>Testing the rule.</b> Each field is compared with itself before and after 2023, taking out the crop, the previous crop and spring rain. The uncertainty comes from the 7 yearly values, not from 70,000 field-years, so it isn't overstated.</li>
   </ol>
 
-  <h2>What I found</h2>
-  <div class="tbl"><table>
-    <tr><th></th><th>2019</th><th>2020</th><th>2021 to 2025</th></tr>
-    <tr><td>Farmland bare for most of 1 June to 30 September</td><td class="n">8%</td><td class="n">20%</td><td class="n">1.5 to 5%</td></tr>
-    <tr><td>Spring rain, March to July</td><td class="n">236 mm</td><td class="n">232 mm</td><td class="n">185 to 374 mm</td></tr>
-  </table></div>
-  <div class="tbl"><table>
-    <tr><th></th><th>Result</th></tr>
-    <tr><td>Same fields after 2023, summer bare days</td><td class="n">−2 ± 16 days</td></tr>
-    <tr><td>Same fields after 2023, bare days over the whole year</td><td class="n">−5 ± 24 days</td></tr>
-    <tr><td>Bare days a year, wheat and barley</td><td class="n">about 60 to 90</td></tr>
-    <tr><td>Bare days a year, sunflower and maize</td><td class="n">about 160 to 200</td></tr>
-    <tr><td>Winter days with no living cover before sunflower and maize (of 120)</td><td class="n">97 to 117</td></tr>
-    <tr><td>Of those, stubble where the soil was dry enough to tell</td><td class="n">5 to 27%</td></tr>
-    <tr><td>Sunflower and maize land green over winter, 2019 to 2024</td><td class="n">1 to 4%</td></tr>
-    <tr><td>Same, 2025</td><td class="n">15%</td></tr>
-    <tr><td>Farmland with standing water after rain, any year</td><td class="n">under 1%</td></tr>
-  </table></div>
-
-  <h3>Fewer fields sit bare all summer, but the change came before the rule</h3>
-  <p>In 2019, 8% of the farmland was bare for most of the summer, and in the dry year 2020 it was 20%. Almost all of it was wheat, barley and rapeseed after harvest: fields tilled soon after harvest and left open until autumn sowing, or stubble so thin after the drought that it reads as bare soil. From 2021 on it has stayed between 1.5% and 5%. That drop happened two years before the rule. When I compare the same fields with themselves and take out the weather, the years after 2023 are no different: −2 ± 16 days in summer. Weather moves these numbers far more than the rule does.</p>
-
-  <h3>The crop matters more than the place</h3>
-  <p>Wheat and barley are harvested in July and their stubble counts as cover, so they have about 60 to 90 bare days a year. Sunflower and maize leave the soil open from autumn to late spring, about 160 to 200 days. Between areas the differences are smaller. The two areas by the Danube are the least bare and one central area is the barest, but there is no clean pattern from the Danube to the coast.</p>
-
-  <h3>Winter is the gap</h3>
-  <p>Since August 2024 the Bulgarian rule covers summer only. Winter is when the soil is most exposed: before sunflower and maize there is no living cover on most of the 120 days from November to February. Telling stubble from bare soil in winter is harder, because wet soil makes bare ground look like stubble. So I only made that call on days when the topsoil was dry. On those days it was mostly bare soil: stubble made up only 5 to 27% of them, depending on the year.</p>
-
-  <h3>2025 was greener in winter, but mostly not from cover crops</h3>
-  <p>In winter 2024 to 2025, 15% of the land waiting for sunflower or maize was green for most of the winter, against 1 to 4% in every earlier year. It followed by far the wettest late summer of the period. On the images, a few of these fields look sown, as a cover crop would be, but most look like weeds and cereal regrowth. The register only records the main crop, so satellite data alone can't prove a cover crop.</p>
-</div>
-
-<div class="wrap">
   <h2>How I checked it</h2>
   <ul>
     <li><b>A random spot-check.</b> In the pilot area I drew 15 random field dates and judged each one on the image. About 11 to 13 of 15 were right, and the misses were borderline cases.</li>
@@ -167,12 +183,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
     <li><b>Floods.</b> Dark radar after rain also comes from wheat in ear, not only from water. Fields flagged in wheat during heading were dropped, and so were faulty radar scenes from 2017 to 2018. What remains is under 1% of the farmland in any year.</li>
     <li><b>Distance to water, tested and dropped.</b> Fields near rivers and lakes first looked barer. Inside each area the effect changed direction from one area to the next, so it came from where the areas are, not from the water.</li>
   </ul>
-</div>
-<div class="wide">
-  <figure><img src="assets/soil_winter_check.jpg" alt="Sentinel-2 winter images of 12 fields with a verdict for each: in 2024 to 2025 some are densely green, most patchy; in 2018 to 2019 all are dark tilled soil" data-caption="Checking the two winter signals on the images" width="2520" height="1148"><figcaption>Six of the 12 random fields for each winter signal, with what the image shows.</figcaption></figure>
-</div>
 
-<div class="wrap">
   <h2>What this can't tell you</h2>
   <div class="note"><p>This measures how long the soil lies bare, field by field. It can't say whether a farm meets the rule: the rule applies to 80% of each holding, and the public register doesn't say which fields belong to the same farm. No farm is named or can be identified here.</p></div>
   <ul>
