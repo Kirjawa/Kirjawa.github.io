@@ -28,7 +28,7 @@ Desk work delivered as GIS layers, tables and methods notes that drop into the c
 - [Palm oil mills: where does the fruit come from?](https://kirjawa.github.io/palm-oil.html): Road-based sourcing areas and forest clearing since the EUDR cutoff for 361 palm oil mills in West Kalimantan and Riau.
 - [Dobrudja: how long does the soil lie bare?](https://kirjawa.github.io/soil-cover.html): Field-by-field soil cover in Bulgaria's grain belt, 2019 to 2025, and whether the 2023 soil-cover rule changed it.
 - [Southern Niger: are farmers' fields getting woodier?](https://kirjawa.github.io/farmland-trees.html): Forty years of dry-season Landsat over farmland in Maradi and Zinder, separating rain from farmer-managed regrowth.
-- [Season's Pulse: every field's season, dekad by dekad](https://kirjawa.github.io/season-pulse/): An interactive replay from February 2025 to September 2026 for 7,567 fields on Bulgaria's Danube plain: crop, growth against the region and the field's own past, and field events, from Sentinel-2, Landsat and Sentinel-1.
+- [Season's Pulse: every field's season, dekad by dekad](https://kirjawa.github.io/season-pulse/): An interactive replay of 7,567 fields on Bulgaria's Danube plain, 2025 to 2026: the crop, its growth against the region and its own past, and field events.
 
 ## Maps
 

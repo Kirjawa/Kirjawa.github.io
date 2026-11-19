@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Screening a portfolio for nature disclosures: Bulgaria · Ana Silva</title>
-<meta name="description" content="504 solar parks and wind farms in Bulgaria screened on open data for the TNFD Locate phase, ESRS E4 and GRI 101-5: sites in or near sensitive locations, with the distance stated, and the land around them year by year.">
+<title>TNFD Locate screening: Bulgarian solar and wind · Ana Silva</title>
+<meta name="description" content="How many of Bulgaria&#x27;s 504 solar parks and wind farms sit in or near Natura 2000 or critical habitat? A TNFD Locate screening on open data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -48,6 +48,7 @@ footer{border-top:1px solid var(--hair);margin-top:56px;padding-top:18px;font:40
 .find b{color:var(--ink)}
 a.fig{display:block;margin:18px 0 6px;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
 a.fig img{display:block;width:100%;height:auto}
+a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:rgba(7,59,53,.82) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='5.5'/%3E%3Cpath d='M15 15l4.5 4.5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/18px no-repeat;opacity:0;transition:opacity .15s}a.fig:hover::after,a.fig:focus-visible::after{opacity:1}@media (hover:none){a.fig::after{opacity:.75}}
 .fig-note{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:0 0 18px}
 .steps li{margin:9px 0}
 .steps b{color:var(--ink)}
@@ -85,10 +86,9 @@ a.fig img{display:block;width:100%;height:auto}
   <h1>Screening a portfolio for nature disclosures: Bulgaria</h1>
 
   <p class="sub">504 solar parks and wind farms in Bulgaria, screened on open data for the metric ESRS E4, GRI 101-5 and TNFD all ask for: sites in or near sensitive locations for nature, with the distance stated.</p>
-  <p class="disc">Demonstration on open data. Screening, not assessment: a site counted here is "in or near a sensitive location" by the stated rule and distance, never a finding about the site.</p>
 
   <a class="fig" href="assets/s2_country_bg.jpg"><img src="assets/s2_country_bg.jpg" alt="Sentinel-2 view of solar parks at Malko Tarnovo inside the Strandzha Natura 2000 sites, a map of Bulgaria's sites by screening result, and charts of results by type" width="2210" height="1258" fetchpriority="high"></a>
-  <p class="fig-note">Solar parks at Malko Tarnovo, inside both Strandzha Natura 2000 sites, and every screened site in Bulgaria. Select the image to open it full size.</p>
+  <p class="fig-note">Solar parks at Malko Tarnovo, inside both Strandzha Natura 2000 sites, and every screened site in Bulgaria.</p>
 
   <div class="stats">
     <div><b>47%</b><span>of the 504 sites (238) are in or within 1 km of Natura 2000 or likely critical habitat</span></div>
@@ -106,7 +106,7 @@ a.fig img{display:block;width:100%;height:auto}
   <h3 class="res">Year by year: little tree cover near the sites, and little lost</h3>
   <p class="res-note">0.3% of the land within 1 km lost tree cover from 2017 to 2025, against 0.7% in the countryside, mostly forestry. Natural cover around the sites barely changed overall.</p>
   <a class="fig" href="assets/s2_yearly.jpg"><img src="assets/s2_yearly.jpg" alt="Charts for Bulgaria and Portugal: tree cover lost each year from 2017 to 2025 near the sites, by cause, against the countryside; and natural cover changes that lasted, 2019 to 2022" loading="lazy" width="2210" height="1393"></a>
-  <p class="fig-note">Near the sites against the countryside, year by year: Bulgaria is the left column. Select the image to open it full size.</p>
+  <p class="fig-note">Near the sites against the countryside, year by year: Bulgaria is the left column.</p>
 
   <p class="part">How it was made: the question, data, method, checks and limits</p>
 
@@ -169,6 +169,7 @@ a.fig img{display:block;width:100%;height:auto}
   <p><b>Run as a service,</b> the same screening keeps up with a portfolio: a new or changed site triggers it, the reference layers are refreshed once a year, and satellite data watch each site and its surroundings. <a href="assets/s2_architecture.png">How it would run, in one drawing</a>.</p>
 
   <h2><span class="n">8</span>What open data can't tell here</h2>
+  <p>A site counted here sits in or near a sensitive location by the stated rule and distance; what that means for the site is for the assessment to say.</p>
   <ul>
     <li><b>Key biodiversity areas and species records,</b> which sit behind licences that don't allow this use. The critical habitat layer stands in for them, at about 1 km resolution.</li>
     <li><b>Ecosystem services</b> for Indigenous Peoples and local communities, the fifth TNFD criterion.</li>

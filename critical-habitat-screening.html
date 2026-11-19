@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Critical habitat pre-screening for a lender · Ana Silva</title>
-<meta name="description" content="A wind farm on Bulgaria's Kaliakra coast pre-screened on open data for IFC Performance Standard 6 and EBRD Performance Requirement 6: natural or modified habitat from Sentinel-2, what the protected sites are designated for, and the five critical habitat criteria one by one.">
+<title>IFC PS6 critical habitat pre-screening, Kaliakra · Ana Silva</title>
+<meta name="description" content="Can open data pre-screen a wind farm for IFC PS6 critical habitat? A worked example at Kaliakra, Bulgaria, from habitat type to the five criteria.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -48,6 +48,7 @@ footer{border-top:1px solid var(--hair);margin-top:56px;padding-top:18px;font:40
 .find b{color:var(--ink)}
 a.fig{display:block;margin:18px 0 6px;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
 a.fig img{display:block;width:100%;height:auto}
+a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:rgba(7,59,53,.82) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='5.5'/%3E%3Cpath d='M15 15l4.5 4.5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/18px no-repeat;opacity:0;transition:opacity .15s}a.fig:hover::after,a.fig:focus-visible::after{opacity:1}@media (hover:none){a.fig::after{opacity:.75}}
 .fig-note{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:0 0 18px}
 .steps li{margin:9px 0}
 .steps b{color:var(--ink)}
@@ -72,14 +73,13 @@ a.fig img{display:block;width:100%;height:auto}
   <h1>Critical habitat pre-screening for a lender: a wind farm at Kaliakra</h1>
   <div class="prep">
     <p><b>In preparation.</b> This sample is being built: the dashed boxes describe what is coming. Check back soon.</p>
-    <p><b>Demonstration on open data.</b> A pre-screening, not a critical habitat assessment, and not client work. Whether a site is critical habitat is decided by the assessment, with species data and field survey.</p>
   </div>
 
   <p class="lede">A lender is asked to finance a wind farm on Bulgaria's Black Sea coast, near Cape Kaliakra. Before the critical habitat assessment, the first questions of IFC Performance Standard 6 and EBRD Performance Requirement 6 are: is the land natural or modified habitat, could it be critical habitat, and is it in a legally protected or internationally recognised area? What can open data answer, and where does it stop?</p>
   <p>Kaliakra is a known case. In 2016 the EU Court of Justice found that Bulgaria had left part of the Kaliakra important bird area out of the protected site and had approved wind farms in it. For many sites at once, see the portfolio screening for nature disclosures in <a href="nature-disclosure-bulgaria.html">Bulgaria</a> and <a href="nature-disclosure-portugal.html">Portugal</a>.</p>
 
   <a class="fig" href="assets/s2b_kaliakra.jpg"><img src="assets/s2b_kaliakra.jpg" alt="Sentinel-2 view of the Kaliakra coast in Bulgaria, with wind turbines coloured by their site's screening result and the Kaliakra, Belite skali and Shabla lakes Birds Directive sites outlined" width="1290" height="1047" fetchpriority="high"></a>
-  <p class="fig-note">The Kaliakra coast on Sentinel-2, 25 June 2025, with the wind turbines in OpenStreetMap and the Natura 2000 sites. Select the image to open it full size.</p>
+  <p class="fig-note">The Kaliakra coast on Sentinel-2, 25 June 2025, with the wind turbines in OpenStreetMap and the Natura 2000 sites.</p>
   <!-- plan --><div class="plan"><span class="tag">Step 2 · planned</span><p>The opening figure redrawn around the chosen wind farm: its turbines and area of influence, natural and modified habitat from Sentinel-2, and the protected sites around it.</p></div><!-- /plan -->
 
   <!-- plan --><div class="plan"><span class="tag">Step 2 · planned findings</span>
@@ -98,7 +98,7 @@ a.fig img{display:block;width:100%;height:auto}
   <p>The <a href="nature-disclosure-bulgaria.html">portfolio screening for Bulgaria</a> flags 19 of the 21 wind sites within 1 km of the Kaliakra Birds Directive site as "assessment likely", and the other 2 for a check. This can't serve as a check on the screening, because it can't fail: a site inside or next to the protected area is flagged by the rule itself.</p>
   <p>The court case was about something an overlay of protected areas can't see: the part of the important bird area left <i>outside</i> the protected site. Important bird areas are key biodiversity areas, and their boundaries sit behind a licence that doesn't allow this use. The critical habitat screening layer stands in for them at about 1 km, which is coarse beside a single wind farm.</p>
   <a class="fig" href="assets/s2_limits.jpg"><img src="assets/s2_limits.jpg" alt="Three panels: critical habitat layer pixels of about 0.7 by 0.9 km over a 43 ha solar park; wind turbines near Kavarna grouped at 1.5 km and at 800 m; and a timeline of the years each layer describes" loading="lazy" width="2210" height="1003"></a>
-  <p class="fig-note">A coarse layer, a boundary that depends on a rule, and layers of different ages. Select the image to open it full size.</p>
+  <p class="fig-note">A coarse layer, a boundary that depends on a rule, and layers of different ages.</p>
   <!-- plan --><div class="plan"><span class="tag">Step 2 · planned</span><p>An honest test instead of the circular one: the pre-screening's answer for the chosen wind farm compared with what its published environmental documents concluded about critical habitat and birds. Where they differ, the page says why.</p></div><!-- /plan -->
 
   <h2><span class="n">3</span>Natural or modified habitat</h2>
@@ -133,6 +133,7 @@ a.fig img{display:block;width:100%;height:auto}
   <p>Each row will give its sources and distances. The table is shaped to drop into the critical habitat section of an environmental and social assessment, as the starting point for the specialist.</p>
 
   <h2><span class="n">7</span>What open data can't tell here</h2>
+  <p>Whether the site is critical habitat is for the assessment to decide, with species data and field survey.</p>
   <ul>
     <li><b>Key biodiversity areas, important bird areas and species records,</b> which sit behind licences that don't allow this use. A client with an IBAT licence can add them without changing the rest.</li>
     <li><b>Whether the species that would make the site critical habitat are there,</b> how many, and when. That needs species data, bird surveys over the seasons and, for wind, collision risk modelling.</li>

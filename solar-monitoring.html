@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Monitoring a solar park between survey visits · Ana Silva</title>
-<meta name="description" content="Cleve Hill Solar Park in Kent, from open satellite data: construction dated against the published milestones, and its habitat management area for wintering birds followed year by year, with what to check on the next ecologist visit.">
+<title>Solar park monitoring between survey visits · Ana Silva</title>
+<meta name="description" content="Cleve Hill Solar Park from open satellite data: construction dated against the milestones, the wintering-bird habitat area year by year.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -49,6 +49,7 @@ footer{border-top:1px solid var(--hair);margin-top:56px;padding-top:18px;font:40
 .find b{color:var(--ink)}
 a.fig{display:block;margin:18px 0 6px;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
 a.fig img{display:block;width:100%;height:auto}
+a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:rgba(7,59,53,.82) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='5.5'/%3E%3Cpath d='M15 15l4.5 4.5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/18px no-repeat;opacity:0;transition:opacity .15s}a.fig:hover::after,a.fig:focus-visible::after{opacity:1}@media (hover:none){a.fig::after{opacity:.75}}
 .fig-note{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:0 0 18px}
 .steps li{margin:9px 0}
 .steps b{color:var(--ink)}
@@ -88,10 +89,9 @@ a.fig img{display:block;width:100%;height:auto}
   <h1>Monitoring a solar park between survey visits</h1>
 
   <p class="sub">Cleve Hill Solar Park, Kent: what open satellite data shows between the ecologists' visits, on the arrays and on the 56 ha habitat area for wintering birds.</p>
-  <p class="disc">Demonstration on open data. Not a site visit, a compliance assessment or client work: satellite data shows where and when something changed; the ecologists judge what it means.</p>
 
   <a class="fig" href="assets/s3_hook.jpg"><img src="assets/s3_hook.jpg" alt="Two Sentinel-2 views of Cleve Hill: arable fields in summer 2022, and in 2025 and 2026 the solar arrays with the habitat management area outlined to the east, next to The Swale" width="2210" height="866" fetchpriority="high"></a>
-  <p class="fig-note">Before and after, with the mapped arrays and the habitat management area. Select the image to open it full size.</p>
+  <p class="fig-note">Before and after, with the mapped arrays and the habitat management area.</p>
 
   <div class="stats">
     <div><b>202 ha</b><span>of arrays mapped from Sentinel-2, covering 96% of the panel blocks in OpenStreetMap</span></div>
@@ -109,12 +109,12 @@ a.fig img{display:block;width:100%;height:auto}
   <h3 class="res">Construction, dated: half the arrays had steel by June 2024 and modules by October 2024</h3>
   <p class="res-note">Modules followed the steel by a median of 137 days; 95% of the arrays had modules by February 2025, three months before commissioning.</p>
   <a class="fig" href="assets/s3_construction.jpg"><img src="assets/s3_construction.jpg" alt="Map of the arrays coloured by the two months in which modules first appeared, from May 2024 to June 2025, and a chart of the share of the arrays with steel and with modules over time, with the newsletter's figures for 8 June 2024" loading="lazy" width="2210" height="986"></a>
-  <p class="fig-note">When modules appeared on each part of the arrays, and the share with steel and modules over time. Select the image to open it full size.</p>
+  <p class="fig-note">When modules appeared on each part of the arrays, and the share with steel and modules over time.</p>
 
   <h3 class="res">The habitat area: from arable to grassland, with bare patches in 2024 and 2026</h3>
   <p class="res-note">Every winter before 2023 showed bare soil; none since. Never more than half a hectare of open water on any radar pass.</p>
   <a class="fig" href="assets/s3_habitat.jpg"><img src="assets/s3_habitat.jpg" alt="Chart of the habitat area's greenness and bare soil from 2017 to 2026, arable until 2023 and grassland since; a chart of open water each winter, never more than half a hectare; and a map of the area with bare patches in 2024 and 2026" loading="lazy" width="2210" height="1393"></a>
-  <p class="fig-note">The habitat area year by year, and where to look on the next visit. Select the image to open it full size.</p>
+  <p class="fig-note">The habitat area year by year, and where to look on the next visit.</p>
 
   <h3 class="res">What to check on the next visit</h3>
   <div class="checks"><ul>
@@ -177,6 +177,7 @@ a.fig img{display:block;width:100%;height:auto}
   </table></div>
 
   <h2><span class="n">6</span>What satellite data can't tell here</h2>
+  <p>Satellite data shows where and when something changed; the ecologists judge what it means.</p>
   <ul>
     <li><b>Sward height and structure,</b> the plan's main target for the wintering birds. Greenness is not height.</li>
     <li><b>Grazing</b> at a few sheep per hectare, which changes the sward too gradually to show as an event.</li>

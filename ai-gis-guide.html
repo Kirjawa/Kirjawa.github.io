@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Agentic AI for GIS teams · Ana Silva</title>
-<meta name="description" content="A practical guide for GIS teams working with AI agents: three playbooks on real open data (schema-only setup, CAD to GIS, QGIS Atlas), ten real failures, the checks that catch them, and training for every team size.">
+<title>AI agents for GIS teams: a practical guide · Ana Silva</title>
+<meta name="description" content="A practical guide to AI agents in GIS work: three playbooks on open data, ten failures that looked fine, the checks that caught them, and team training.">
 <meta property="og:title" content="Agentic AI for GIS teams: faster production without leaking client data">
 <meta property="og:description" content="Three playbooks on real open data, ten real failures from geospatial pipelines, the checks that catch them, and training for teams of every size.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,6 +100,7 @@ details.try p{margin:10px 0 0}
 .pb pre code{background:none;padding:0;font-size:inherit}
 a.fig{display:block;margin:16px 0;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
 a.fig img{display:block;width:100%;height:auto}
+a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:rgba(7,59,53,.82) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='5.5'/%3E%3Cpath d='M15 15l4.5 4.5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/18px no-repeat;opacity:0;transition:opacity .15s}a.fig:hover::after,a.fig:focus-visible::after{opacity:1}@media (hover:none){a.fig::after{opacity:.75}}
 .fig-note{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:-8px 0 14px}
 .traps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 16px}
 .traps div{background:var(--ground);border-radius:12px;padding:12px 14px}
@@ -211,7 +212,6 @@ a.fig img{display:block;width:100%;height:auto}
     <p class="meta">Data: the cadastral survey of Aeschi (SO), Canton Solothurn, as a DXF drawing (free use). Answer key: the canton's own GIS version of the same survey. Agent working time: about 6 minutes.</p>
     <p>The task, in plain words: turn the drawing into a GeoPackage with one layer per theme, readable class names and the right coordinate system, then check it against the canton's version.</p>
     <a class="fig" href="assets/guide_cad_to_gis.jpg"><img src="assets/guide_cad_to_gis.jpg" alt="Three maps of Aeschi: the CAD drawing with its numbered layers, the naive reading with overlapping polygons in pink, and the cleaned land cover" loading="lazy" width="2210" height="951"></a>
-    <p class="fig-note">Select the image to open it full size.</p>
     <p>The drawing had three traps, each typical of CAD deliveries:</p>
     <div class="traps">
       <div><h4>It wouldn't open</h4><p>The file starts with its symbol definitions and has no header, and GDAL, which QGIS uses to read DXF, didn't recognise it. An empty header added to a copy fixed it.</p></div>
@@ -234,7 +234,6 @@ a.fig img{display:block;width:100%;height:auto}
     <h3>A QGIS Atlas with its tables, without writing code</h3>
     <p class="meta">Data: the package from playbook B. Output: six A4 map sheets at 1:10,000, each with its own land-cover table, and the QGIS project to edit them. Agent working time: about 3 minutes.</p>
     <a class="fig" href="assets/guide_atlas_sheets.jpg"><img src="assets/guide_atlas_sheets.jpg" alt="Two A4 atlas pages of Aeschi at 1:10,000, each with a map, a land-cover table in hectares, a legend and a scale bar" loading="lazy" width="2596" height="909"></a>
-    <p class="fig-note">Select the image to open it full size.</p>
     <ol class="steps">
       <li><b>Describe the page in plain words.</b> One map sheet per page at 1:10,000, a table of the land cover on that sheet in hectares, a legend showing only what's on the sheet, a scale bar, a north arrow and the source.</li>
       <li><b>Let the agent write the expression for the table,</b> and paste it into a text box in the layout. For one class it reads:

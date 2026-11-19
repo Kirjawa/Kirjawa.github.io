@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Habitat pre-map for biodiversity net gain · Ana Silva</title>
-<meta name="description" content="A desk-based habitat pre-map of the Fenwick Solar Farm site from open satellite data and LiDAR, checked against the published biodiversity net gain survey, with the site's history, floods and weather.">
+<title>Biodiversity net gain habitat pre-map, Fenwick · Ana Silva</title>
+<meta name="description" content="A biodiversity net gain habitat pre-map of Fenwick Solar Farm from Sentinel-2 and LiDAR, made without a site visit and checked against the survey.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -49,6 +49,7 @@ footer{border-top:1px solid var(--hair);margin-top:56px;padding-top:18px;font:40
 .find b{color:var(--ink)}
 a.fig{display:block;margin:18px 0 6px;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
 a.fig img{display:block;width:100%;height:auto}
+a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:rgba(7,59,53,.82) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='5.5'/%3E%3Cpath d='M15 15l4.5 4.5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/18px no-repeat;opacity:0;transition:opacity .15s}a.fig:hover::after,a.fig:focus-visible::after{opacity:1}@media (hover:none){a.fig::after{opacity:.75}}
 .fig-note{font:400 12.5px/1.5 var(--mono);color:var(--muted);margin:0 0 18px}
 .steps li{margin:9px 0}
 .steps b{color:var(--ink)}
@@ -85,10 +86,9 @@ a.fig img{display:block;width:100%;height:auto}
   <h1>Desk-based habitat pre-map and monitoring for biodiversity net gain</h1>
 
   <p class="sub">Fenwick Solar Farm, near Doncaster: a habitat pre-map from open satellite data and LiDAR, made without a site visit and compared with the ecologists' published survey.</p>
-  <p class="disc">Demonstration on open data. Not a field survey: a pre-map is an input for the ecologist, never a survey result.</p>
 
   <a class="fig" href="assets/s1_premap_check.jpg"><img src="assets/s1_premap_check.jpg" alt="Map of the Fenwick solar site with cropland, grassland, hedgerows and unclear areas, and a chart comparing the pre-map's habitat shares with the published survey" width="2125" height="1258" fetchpriority="high"></a>
-  <p class="fig-note">The pre-map against the published survey. Select the image to open it full size.</p>
+  <p class="fig-note">The pre-map against the published survey.</p>
 
   <div class="stats">
     <div><b>75%</b><span>cropland in the pre-map; the survey found 71%</span></div>
@@ -107,17 +107,17 @@ a.fig img{display:block;width:100%;height:auto}
   <h3 class="res">The site's record since 2017: 19 ha of grass ploughed after the 2020 cut-off</h3>
   <p class="res-note">Under the metric, land degraded after 30 January 2020 takes its earlier habitat as the baseline. The Crop Map of England shows grass on these fields in 2021, 2022 and 2023, and cereals in 2024.</p>
   <a class="fig" href="assets/s1_history.jpg"><img src="assets/s1_history.jpg" alt="Nine small maps of the site, one per farming year from 2017/18 to 2025/26, showing cropland, grassland and an area of grassland ploughed in 2023, with a chart of the shares per year" loading="lazy" width="2125" height="1292"></a>
-  <p class="fig-note">The record, farming year by farming year. Select the image to open it full size.</p>
+  <p class="fig-note">The record, farming year by farming year.</p>
 
   <h3 class="res">Floods: radar against the Environment Agency's outlines, November 2019</h3>
   <p class="res-note">80% of the open water radar saw on 13 November lies inside the outlines drawn from aerial photography.</p>
   <a class="fig" href="assets/s1_flood_2019.jpg"><img src="assets/s1_flood_2019.jpg" alt="Radar map of open water on 13 November 2019 with the Environment Agency's flood outlines, and a chart of water per radar pass" loading="lazy" width="1980" height="1116"></a>
-  <p class="fig-note">The first flood check: November 2019. Select the image to open it full size.</p>
+  <p class="fig-note">The first flood check: November 2019.</p>
 
   <h3 class="res">Ten winters of open water, checked against Sentinel-2</h3>
   <p class="res-note">Most of it along the River Went, and wetter winters hold more: 82% of what radar calls water is confirmed as water on Sentinel-2 views taken within two days.</p>
   <a class="fig" href="assets/s1_water.jpg"><img src="assets/s1_water.jpg" alt="Map of how many winters each part of the site held open water, highest along the River Went, with charts of open water per winter against winter rainfall" loading="lazy" width="2125" height="1173"></a>
-  <p class="fig-note">Ten winters of radar, with Sentinel-2 as the referee. Select the image to open it full size.</p>
+  <p class="fig-note">Ten winters of radar, with Sentinel-2 as the referee.</p>
 
   <p class="part">How it was made: the question, data, method, checks and limits</p>
 
