@@ -21,8 +21,9 @@ a{color:var(--rose-ink);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:6px}
 .eyebrow{display:block;font:500 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink)}
 h2{font:400 clamp(28px,3.4vw,38px)/1.1 var(--serif);margin:52px 0 12px;text-wrap:balance;display:flex;align-items:baseline}
-h2 .n{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
-@media (max-width:1000px){h2 .n{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
+body{counter-reset:sec}h2.num::before{counter-increment:sec;content:counter(sec)}
+h2.num::before{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
+@media (max-width:1000px){h2.num::before{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
 h2[id]{scroll-margin-top:72px}
 p,li{color:var(--ink-2)}
 ol,ul{padding-left:22px}
@@ -235,7 +236,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
 </defs></svg>
 
 
-<!-- topbar --><nav class="topbar" aria-label="Site"><div><a class="who" href="./#work">← <b>Ana Silva</b><span class="role"> · GIS and remote sensing</span></a><a class="mail" href="mailto:ana@timebooster.ai?subject=Location%20analysis%20enquiry" data-umami-event="Email click">Email me</a></div></nav><!-- /topbar -->
+<!-- topbar --><nav class="topbar" aria-label="Site"><div><a class="who" href="./#work">← <b>Ana Silva</b><span class="role"> · Remote sensing and GIS</span></a><a class="mail" href="mailto:ana@timebooster.ai?subject=Location%20analysis%20enquiry" data-umami-event="Email click">Email me</a></div></nav><!-- /topbar -->
 <section class="app" aria-label="Map of the five kindergartens and where to advertise them">
   <div class="ptop">
     <span class="eyebrow">Study · Sofia · location analysis</span>
@@ -298,12 +299,12 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
 
   <p class="part">How it was made: the question, data, method, checks and limits</p>
 
-  <h2><span class="n">1</span>The question</h2>
+  <h2 class="num">The question</h2>
   <p>A kindergarten draws its children from a small area, and parents choose it for being near home or on the way. So an advertisement works where those parents already are every day: on the roads they drive, at the stop where they wait, at the pharmacy, the playground and the supermarket. The question is which of those places reach the most families who could realistically bring a child to each of the five.</p>
   <p>These are private kindergartens. Families travel further for them than for a municipal one, and more of them drive, so the roads matter as much as the metro. And an advertisement isn't always a billboard: a stack of leaflets at a children's clinic can reach the right parents for far less.</p>
   <p>Three kinds of spot are ranked for each kindergarten, and kept apart, because a billboard, a shelter poster and a leaflet are different purchases. A fourth list shows the spots that serve two or more kindergartens at once.</p>
 
-  <h2><span class="n">2</span>Data</h2>
+  <h2 class="num">Data</h2>
   <div class="tbl"><table>
     <tr><th>Source</th><th>Used for</th><th>Licence</th></tr>
     <tr><td>OpenStreetMap, Bulgaria extract by Geofabrik (data of 15 November 2026)</td><td>The road network within an hour's drive, traffic signals, the kindergartens' addresses, 2,864 everyday places, 331 other kindergartens, place names</td><td>ODbL</td></tr>
@@ -315,7 +316,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   </table></div>
   <p>Not available as open data for Sofia: traffic counts by street, passengers by metro station or stop, household income by neighbourhood, and a register of billboard sites. Section 8 says what that leaves out.</p>
 
-  <h2><span class="n">3</span>Method in brief</h2>
+  <h2 class="num">Method in brief</h2>
   <ol class="steps">
     <li><b>Where children live.</b> The 2021 census gives residents under 15 for each square kilometre. Each cell's children are spread over 100 m pixels in proportion to the residents the Joint Research Centre's population grid puts there. Under 15 is the youngest group the census grid publishes; it stands in for families with children of kindergarten age.</li>
     <li><b>How close is close.</b> A family counts in full when the kindergarten is up to 5 minutes away by car, and less and less up to 20 minutes, where it counts for nothing. By public transport the same runs from 10 to 30 minutes, door to door. These are assumptions, written down before the results; one answer from the kindergartens about where their families live would replace them.</li>
@@ -326,7 +327,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     <li><b>Reach, and the neighbourhoods inside it.</b> The slider draws the area within 15 minutes to an hour of each kindergarten. By car, that is along the road network at rush-hour speeds. By public transport, the time is split in two: 10 minutes on foot to a stop (550 m in a straight line), and the rest from that stop to the door, which covers the wait, the ride, one change at most and the walk at the other end. So at 20 minutes the map highlights the stops within 10 minutes of the door and shades everything within a 10-minute walk of them. The list to download holds every district, neighbourhood and village named in OpenStreetMap whose centre falls inside. The ranked spots don't move with the slider: they keep the reach of step 2.</li>
   </ol>
 
-  <h2><span class="n">4</span>By car</h2>
+  <h2 class="num">By car</h2>
   <p>For every kindergarten the families' routes funnel into a few roads before they reach the door, so the first junctions on those roads are passed by a large share of the catchment. At Lozenets, Simeonovsko Shose and Boyana three junctions are passed by 86% or more. At Ovcha Kupel and Lyulin families arrive from more directions, and the same three reach 63% and 54%: more junctions, or the other two channels, do the rest. 11 junctions are on the way to two kindergartens; the "All five" view lists the best of them.</p>
   <div class="tbl"><table>
     <tr><th>Kindergarten</th><th>First junction</th><th class="num">Pass here</th><th class="num">First three</th></tr>
@@ -338,7 +339,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   </table></div>
   <p>Each junction comes with the direction most of the traffic arrives from, which is the side a poster should face in the morning. In the evening the same families pass the other way.</p>
 
-  <h2><span class="n">5</span>By public transport</h2>
+  <h2 class="num">By public transport</h2>
   <p>At Lozenets and Lyulin the metro does the work. The kindergarten's own station comes first, because the families within walking distance live around it and pass it every day, and the next stations along the line follow. At Simeonovsko Shose, Boyana and Ovcha Kupel the first stop is a bus, tram or trolleybus stop, and the families are spread thinly: a few per cent at each stop. Here a poster inside the vehicles of one line would reach more than a poster at any one shelter.</p>
   <div class="tbl"><table>
     <tr><th>Kindergarten</th><th>First stop</th><th class="num">Families</th><th>How they get there</th></tr>
@@ -349,7 +350,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     <tr><td>Lyulin</td><td>Lyulin metro station</td><td class="num">15%</td><td>480 m from the door: families here would walk</td></tr>
   </table></div>
 
-  <h2><span class="n">6</span>Where parents already go</h2>
+  <h2 class="num">Where parents already go</h2>
   <p>2,864 places of seven kinds were ranked. No single one reaches many families: the best has 6.1% to 8.8% of a catchment's children within a 10-minute walk, so the lists are meant to be used whole, six or eight places each. Boyana's first place is 2.2 km from the door: few families live right around that kindergarten, and most of its catchment by car is in denser districts further off.</p>
   <div class="tbl"><table>
     <tr><th>Kindergarten</th><th>First place</th><th class="num">Children nearby</th><th>What to leave there</th></tr>
@@ -360,7 +361,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     <tr><td>Lyulin</td><td>Lidl (supermarket)</td><td class="num">8.6%</td><td>Notice board or leaflets at the entrance</td></tr>
   </table></div>
 
-  <h2><span class="n">7</span>Checks</h2>
+  <h2 class="num">Checks</h2>
   <div class="tbl"><table>
     <tr><th>Check</th><th>Result</th></tr>
     <tr><td>The kindergartens&#x27; directions, against the timetable of 18 November 2026</td><td>14 of 16 lines and stations found within reach of the door. Bus 107 still runs but no longer stops within 900 m of Boyana (line 65 does). There is no bus 45 in the timetable for Ovcha Kupel (lines 59 and 60 stop nearby).</td></tr>
@@ -372,7 +373,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   </table></div>
   <p>There is no count to check the routes against: Sofia publishes no traffic counts by street and no passengers by stop. The ranking shows where the catchment's families are likely to pass, in order. It is not a measured audience.</p>
 
-  <h2><span class="n">8</span>What open data can't tell here</h2>
+  <h2 class="num">What open data can't tell here</h2>
   <ul>
     <li><b>Whether a spot can be bought.</b> No public register lists billboard sites, shelter posters or notice boards. The lists say where to look; a media agency or a walk down the street says what is there.</li>
     <li><b>Where the kindergartens' families really come from,</b> and how they arrive. The catchment sizes are assumptions. The enrolment list, by neighbourhood, would replace them.</li>
@@ -386,13 +387,13 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     <li><b>Trips with two changes,</b> which the public transport reach leaves out.</li>
   </ul>
 
-  <h2><span class="n">9</span>What the checks caught</h2>
+  <h2 class="num">What the checks caught</h2>
   <div class="ai">
     <p>The first ranking of junctions put three in a row on the same boulevard at the top: the same families, counted three times. Picking each next junction for the families it adds fixed that. The first public-transport ranking left each kindergarten's own metro station with no families at all, because everyone living near it walks; they are now counted at the station they live beside. One junction came out as the ring road crossing itself, because the ring road carries two names in the south-west. And the road network first came from a server that turned out to be four months behind, which only the file's own date showed; it was rebuilt from the November extract, and the picks stayed the same.</p>
     <p>The scripts were written with an AI agent and checked as described here; <a href="ai-gis-guide.html">how I work with AI on GIS</a>.</p>
   </div>
 
-  <h2 id="downloads"><span class="n">10</span>Downloads</h2>
+  <h2 class="num" id="downloads">Downloads</h2>
   <p>The neighbourhoods within reach come from the map itself: choose a kindergarten, car or public transport, and a travel time, then use the button under the slider.</p>
   <div class="dl">
     <a href="downloads/kindergarten_reach_sheets_v1.pdf" data-umami-event="Demo download" data-umami-event-file="kindergarten_reach_sheets_v1.pdf">One sheet per kindergarten, the shared spots, method and limits <span>PDF · 9 pages · 4.9 MB</span></a>
@@ -400,7 +401,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
   </div>
   <p>Own outputs and open data only, with every source named above. The lists are derived from OpenStreetMap and shared under the ODbL.</p>
 
-  <h2><span class="n">11</span>Sources</h2>
+  <h2 class="num">Sources</h2>
   <ul>
     <li>OpenStreetMap contributors. <a href="https://download.geofabrik.de/europe/bulgaria.html">Bulgaria extract</a>, Geofabrik.</li>
     <li>Sofia Urban Mobility Centre. <a href="https://www.sofiatraffic.bg/bg/info-center/gtfs-danni">GTFS timetable feed</a>.</li>
@@ -409,7 +410,7 @@ html.print .mk-site .nm{font-size:11px;padding:2px 7px}
     <li>Church, R. and ReVelle, C. (1974). The maximal covering location problem. Papers of the Regional Science Association 32, 101 to 118. The rule behind "each next spot adds the most families not yet reached".</li>
     <li><a href="https://openfreemap.org/">OpenFreeMap</a> and <a href="https://openmaptiles.org/">OpenMapTiles</a>, for the basemap.</li>
   </ul>
-  <!-- author --><aside class="author" aria-label="About the author"><img src="assets/ana_small.jpg" alt="Ana Silva" width="192" height="192" loading="lazy"><div><span class="by">Who made this</span><p class="nm"><b>Ana Silva</b> · GIS and remote sensing specialist, Sofia</p><p>I came to satellite analytics from cartography, cadastre and environmental assessment, with Natura 2000 habitat mapping and River Habitat Survey reporting. As a freelancer I support ecologists and consultants with remote sensing, and train GIS teams starting with AI tools.</p><p class="lk"><a href="./#about">About me</a><a href="./#services">Services</a><a href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener" data-umami-event="LinkedIn click">LinkedIn</a></p></div></aside><!-- /author -->
+  <!-- author --><aside class="author" aria-label="About the author"><img src="assets/ana_small.jpg" alt="Ana Silva" width="192" height="192" loading="lazy"><div><span class="by">Who made this</span><p class="nm"><b>Ana Silva</b> · Remote sensing and GIS specialist, Sofia</p><p>I came to satellite analytics from cartography, cadastre and environmental assessment, with Natura 2000 habitat mapping and River Habitat Survey reporting. As a freelancer I support ecologists and consultants with remote sensing, and train GIS teams starting with AI tools.</p><p class="lk"><a href="./#about">About me</a><a href="./#services">Services</a><a href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener" data-umami-event="LinkedIn click">LinkedIn</a></p></div></aside><!-- /author -->
   <div class="cta"><p>If you have places of your own and want to know where the people they serve pass every day, email me at <a href="mailto:ana@timebooster.ai?subject=Location%20analysis%20enquiry" data-umami-event="Email click">ana@timebooster.ai</a>.</p></div>
 
   <!-- related --><section class="related" aria-labelledby="related-h">

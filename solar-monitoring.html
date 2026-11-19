@@ -23,8 +23,9 @@ a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6
 h1{font:400 clamp(38px,5.5vw,64px)/1.02 var(--serif);margin:14px 0 18px;text-wrap:balance}
 h2{font:400 clamp(28px,3.4vw,38px)/1.1 var(--serif);margin:52px 0 12px;text-wrap:balance}
 h2{display:flex;align-items:baseline}
-h2 .n{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
-@media (max-width:1000px){h2 .n{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
+body{counter-reset:sec}h2.num::before{counter-increment:sec;content:counter(sec)}
+h2.num::before{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
+@media (max-width:1000px){h2.num::before{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
 p,li{color:var(--ink-2)}
 .lede{font-size:19.5px;color:var(--ink)}
 ol,ul{padding-left:22px}
@@ -83,7 +84,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
 <!-- umami --><script defer src="https://cloud.umami.is/script.js" data-website-id="c0b6a590-ee99-4b51-9488-d54e5709d080" data-domains="kirjawa.github.io"></script><!-- /umami -->
 </head>
 <body>
-<!-- topbar --><nav class="topbar" aria-label="Site"><div><a class="who" href="./#work">← <b>Ana Silva</b><span class="role"> · GIS and remote sensing</span></a><a class="mail" href="mailto:ana@timebooster.ai?subject=Monitoring%20between%20visits%20enquiry" data-umami-event="Email click">Email me</a></div></nav><!-- /topbar -->
+<!-- topbar --><nav class="topbar" aria-label="Site"><div><a class="who" href="./#work">← <b>Ana Silva</b><span class="role"> · Remote sensing and GIS</span></a><a class="mail" href="mailto:ana@timebooster.ai?subject=Monitoring%20between%20visits%20enquiry" data-umami-event="Email click">Email me</a></div></nav><!-- /topbar -->
 <div class="wrap">
   <span class="eyebrow">Sample · United Kingdom · monitoring between visits</span>
   <h1>Monitoring a solar park between survey visits</h1>
@@ -127,12 +128,12 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
 
   <p class="part">How it was made: the question, data, method, checks and limits</p>
 
-  <h2><span class="n">1</span>The question</h2>
+  <h2 class="num">The question</h2>
   <p>Cleve Hill Solar Park, on the Graveney Marshes in Kent, was built from April 2023 and has run since 1 July 2025: 373 MW and more than 550,000 modules. Its consent came with a habitat management area of about 56 ha for the brent geese, lapwing and golden plover of The Swale next door, and with ecologists' visits each May and late summer. Between those visits, what can open satellite data show?</p>
   <p>Solar parks and habitat banks now come with long monitoring duties. At Cleve Hill, the outline Landscape and Biodiversity Management Plan asks for an ecologist's visit in May and in August or September in years 1, 2, 3, 5, 10 and 20, and winter bird counts twice a month. Between visits, the steering group of Natural England, Kent Wildlife Trust, the RSPB and the Environment Agency relies on reports.</p>
   <p>The plan's commitments for the habitat management area are specific: grassland sown in autumn before the first winter of construction, summer grazing or an early autumn cut so that the sward is under 100 mm before winter, raised water levels, and at least 50.1 ha of land more than 50 m from modules, transformers, the flood bank and roads. Several of these leave a trace in satellite data.</p>
 
-  <h2><span class="n">2</span>Data</h2>
+  <h2 class="num">Data</h2>
   <div class="tbl"><table>
     <tr><th>Source</th><th>Used for</th><th>Licence</th></tr>
     <tr><td>Sentinel-2, 2017 to 2026 (492 views at least 30% clear)</td><td>Arrays, modules, greenness, bare soil, water</td><td>Copernicus free and open</td></tr>
@@ -146,7 +147,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <tr><td>Outline Landscape and Biodiversity Management Plan, Rev E (2019); newsletter (June 2024); Quinbrook (1 July 2025)</td><td>Commitments and milestones</td><td>Published documents, cited and not reproduced</td></tr>
   </table></div>
 
-  <h2><span class="n">3</span>Method in brief</h2>
+  <h2 class="num">Method in brief</h2>
   <ol class="steps">
     <li><b>Arrays.</b> Modules are dark in near infrared and bright in shortwave infrared, so a moisture index (NDMI) turns strongly negative over them, about -0.62 against +0.05 for the grass around. Since operation began, pixels whose median stays below -0.30 are arrays.</li>
     <li><b>Construction dates.</b> Sentinel-2: the first clear view from which a pixel keeps the module signature. Sentinel-1: the steel frames raise the radar return by 3 to 5 dB before the modules send it away; the steel date is the first rise of 3 dB that lasts three passes, on 100 m cells so that radar speckle averages out.</li>
@@ -154,7 +155,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <li><b>Its record.</b> Every clear view since 2017: greenness (NDVI) and bare soil, strict enough that grass browned by drought doesn't count. Management signals: falls in NDVI of more than 0.2 between clear views on at least a quarter of the area, the rule of Kolecka et al. (2018). Winter water: very dark radar in both polarisations, with frost and snow passes skipped, and Sentinel-2 as the referee.</li>
   </ol>
 
-  <h2><span class="n">4</span>The results in detail</h2>
+  <h2 class="num">The results in detail</h2>
   <p><b>Construction.</b> The radar record has two steps: the steel frames raise it, then the modules, like mirrors, send the signal away, 4 to 5 dB below the level before construction. Modules followed the steel by a median of 137 days. 95% of the arrays had modules by February 2025, three months before commissioning in May.</p>
   <p><b>The habitat management area:</b></p>
   <ul>
@@ -165,7 +166,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <li><b>Water.</b> Never more than half a hectare of open water on any radar pass in any winter, and none that Sentinel-2 confirmed after the works. Seasonal flooding, if it happens, is in features too small or too brief to see, or not happening.</li>
   </ul>
 
-  <h2><span class="n">5</span>Checks</h2>
+  <h2 class="num">Checks</h2>
   <div class="tbl"><table>
     <tr><th>Check</th><th>Result</th></tr>
     <tr><td>Modules, against the newsletter (8 June 2024)</td><td>7.3% of the arrays with modules; the newsletter: 7.4% of modules installed</td></tr>
@@ -176,7 +177,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <tr><td>Radar water, against Sentinel-2</td><td>None of the few radar water pixels was water on a clear Sentinel-2 view within two days</td></tr>
   </table></div>
 
-  <h2><span class="n">6</span>What satellite data can't tell here</h2>
+  <h2 class="num">What satellite data can't tell here</h2>
   <p>Satellite data shows where and when something changed; the ecologists judge what it means.</p>
   <ul>
     <li><b>Sward height and structure,</b> the plan's main target for the wintering birds. Greenness is not height.</li>
@@ -186,21 +187,21 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <li><b>Small or short-lived water:</b> scrapes smaller than a few 10 m pixels, or flooding that drains between passes.</li>
   </ul>
 
-  <h2><span class="n">7</span>How AI was used</h2>
+  <h2 class="num">How AI was used</h2>
   <a class="fig" href="assets/s3_workflow.png"><img src="assets/s3_workflow.png" alt="Workflow: open data sources, then scripts written by an AI agent, then what they were checked against, then the results, with a dashed path back showing what the checks caught" loading="lazy" width="2560" height="670"></a>
   <div class="ai">
     <p>An agent (Claude Code) wrote the scripts: the downloads, the array map, the construction dates, the habitat area's record, the figures and the note. Every result was checked against something independent: OpenStreetMap's panel blocks, the project's published progress and dates, the Crop Map of England and the plan's figures.</p>
     <p><b>What it got wrong, and what caught it:</b> it expected the radar to brighten over the arrays; once the modules are on, it darkens, and the record showed it. Dated pixel by pixel, the radar put the modules months late, because single pixels are too noisy; 100 m cells fixed the steel dates, and Sentinel-2 dates the modules. Its first habitat area took all the unfenced land in the east, 93 ha, until the crop map narrowed it to the arable that was reverted, 56 ha, as the plan says. And it counted the snow of February 2018 as water.</p>
   </div>
 
-  <h2 id="downloads"><span class="n">8</span>Downloads</h2>
+  <h2 class="num" id="downloads">Downloads</h2>
   <div class="dl">
     <a href="downloads/S3_monitoring_note_cleve_hill_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S3_monitoring_note_cleve_hill_v1.pdf">Monitoring note, in the shape of a note to the steering group <span>PDF · 4 pages · 1.19 MB</span></a>
     <a href="downloads/S3_cleve_hill_monitoring_demo_v1.zip" data-umami-event="Demo download" data-umami-event-file="S3_cleve_hill_monitoring_demo_v1.zip">Arrays, construction dates, the habitat area and its record (GeoPackage, GeoTIFF, CSV) <span>ZIP · 0.06 MB</span></a>
   </div>
   <p>Own outputs and open data only, with every source and licence named inside.</p>
 
-  <h2><span class="n">9</span>Sources</h2>
+  <h2 class="num">Sources</h2>
   <ul>
     <li><a href="https://nsip-documents.planninginspectorate.gov.uk/published-documents/EN010085-001707-6.4.5.2%20LBMP_Rev%20E.pdf">Cleve Hill Solar Park, Outline Landscape and Biodiversity Management Plan, Rev E</a> (November 2019), sections 15 and 17</li>
     <li><a href="https://favershamtowncouncil.gov.uk/wp-content/uploads/2024/06/Cleve-Hill-Solar-Park-Community-Newsletter-June-2024.pdf">Cleve Hill Solar Park community newsletter</a> (June 2024)</li>
@@ -209,7 +210,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <li>Reinermann, S. et al. (2022). Detection of grassland mowing events for Germany by combining Sentinel-1 and Sentinel-2 time series. Remote Sensing 14, 1647.</li>
     <li>Planning Data platform (Order limits); Rural Payments Agency, Crop Map of England; Natural England, designated sites; Environment Agency, flood defences and rain gauges</li>
   </ul>
-  <!-- author --><aside class="author" aria-label="About the author"><img src="assets/ana_small.jpg" alt="Ana Silva" width="192" height="192" loading="lazy"><div><span class="by">Who made this</span><p class="nm"><b>Ana Silva</b> · GIS and remote sensing specialist, Sofia</p><p>I came to satellite analytics from cartography, cadastre and environmental assessment, with Natura 2000 habitat mapping and River Habitat Survey reporting. As a freelancer I support ecologists and consultants with remote sensing, and train GIS teams starting with AI tools.</p><p class="lk"><a href="./#about">About me</a><a href="./#services">Services</a><a href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener" data-umami-event="LinkedIn click">LinkedIn</a></p></div></aside><!-- /author -->
+  <!-- author --><aside class="author" aria-label="About the author"><img src="assets/ana_small.jpg" alt="Ana Silva" width="192" height="192" loading="lazy"><div><span class="by">Who made this</span><p class="nm"><b>Ana Silva</b> · Remote sensing and GIS specialist, Sofia</p><p>I came to satellite analytics from cartography, cadastre and environmental assessment, with Natura 2000 habitat mapping and River Habitat Survey reporting. As a freelancer I support ecologists and consultants with remote sensing, and train GIS teams starting with AI tools.</p><p class="lk"><a href="./#about">About me</a><a href="./#services">Services</a><a href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener" data-umami-event="LinkedIn click">LinkedIn</a></p></div></aside><!-- /author -->
   <div class="cta"><p>If you are tracking habitat management commitments between survey visits on a solar park or habitat bank, email me at <a href="mailto:ana@timebooster.ai?subject=Monitoring%20between%20visits%20enquiry" data-umami-event="Email click">ana@timebooster.ai</a>.</p></div>
 
   <!-- related --><section class="related" aria-labelledby="related-h">

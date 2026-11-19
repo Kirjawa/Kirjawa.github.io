@@ -23,8 +23,9 @@ a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6
 h1{font:400 clamp(38px,5.5vw,64px)/1.02 var(--serif);margin:14px 0 18px;text-wrap:balance}
 h2{font:400 clamp(28px,3.4vw,38px)/1.1 var(--serif);margin:52px 0 12px;text-wrap:balance}
 h2{display:flex;align-items:baseline}
-h2 .n{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
-@media (max-width:1000px){h2 .n{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
+body{counter-reset:sec}h2.num::before{counter-increment:sec;content:counter(sec)}
+h2.num::before{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
+@media (max-width:1000px){h2.num::before{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
 p,li{color:var(--ink-2)}
 .lede{font-size:19.5px;color:var(--ink)}
 ol,ul{padding-left:22px}
@@ -80,7 +81,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
 <!-- umami --><script defer src="https://cloud.umami.is/script.js" data-website-id="c0b6a590-ee99-4b51-9488-d54e5709d080" data-domains="kirjawa.github.io"></script><!-- /umami -->
 </head>
 <body>
-<!-- topbar --><nav class="topbar" aria-label="Site"><div><a class="who" href="./#work">← <b>Ana Silva</b><span class="role"> · GIS and remote sensing</span></a><a class="mail" href="mailto:ana@timebooster.ai?subject=Nature%20disclosure%20screening%20enquiry" data-umami-event="Email click">Email me</a></div></nav><!-- /topbar -->
+<!-- topbar --><nav class="topbar" aria-label="Site"><div><a class="who" href="./#work">← <b>Ana Silva</b><span class="role"> · Remote sensing and GIS</span></a><a class="mail" href="mailto:ana@timebooster.ai?subject=Nature%20disclosure%20screening%20enquiry" data-umami-event="Email click">Email me</a></div></nav><!-- /topbar -->
 <div class="wrap">
   <span class="eyebrow">Sample · Portugal · TNFD, ESRS E4 and GRI 101</span>
   <h1>Screening a portfolio for nature disclosures: Portugal</h1>
@@ -116,13 +117,13 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
 
   <p class="part">How it was made: the question, data, method, checks and limits</p>
 
-  <h2><span class="n">1</span>The question</h2>
+  <h2 class="num">The question</h2>
   <p>Take the solar parks and wind farms mapped in OpenStreetMap in mainland Portugal: 733 sites of 1 ha or more, 359 solar parks and 374 wind farms. How many sit in or near a sensitive location for nature, how does the answer move with the distance, and is the land around them changing?</p>
   <p>This is the desk exercise behind the Locate phase of the TNFD's LEAP approach, and behind the metric that ESRS E4, GRI 101-5 and TNFD all ask for: sites in or near protected areas or areas of high biodiversity importance, with the distance stated. The same screening, with the same rules, is shown for <a href="nature-disclosure-bulgaria.html">Bulgaria</a>. For a single project going to a lender, see the <a href="critical-habitat-screening.html">critical habitat pre-screening</a>, shown for a wind farm in Bulgaria.</p>
   <p>Companies reporting under ESRS E4, GRI 101 or TNFD count their sites in or near sensitive locations for nature. The count is only as good as two things: the site list, and the rule for "near". TNFD doesn't fix a distance and GRI 101-5 asks for it to be stated, so the screening shows how the count moves with it.</p>
   <p>Portugal is adding solar fast, and its wind farms stand on the same hills as many of its Natura 2000 sites. Between 2022 and 2024, solar capacity grew from 2,646 to 5,639 MW (Eurostat).</p>
 
-  <h2><span class="n">2</span>Data</h2>
+  <h2 class="num">Data</h2>
   <div class="tbl"><table>
     <tr><th>Source</th><th>Used for</th><th>Licence</th></tr>
     <tr><td>OpenStreetMap: solar and wind plants, wind turbines (data of 22 October 2026)</td><td>The sites</td><td>ODbL</td></tr>
@@ -141,7 +142,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
   </table></div>
   <p>Not used: WDPA and key biodiversity area data, whose terms don't allow commercial use or redistribution without permission, and the non-commercial "drill-down" version of the critical habitat layer.</p>
 
-  <h2><span class="n">3</span>Method in brief</h2>
+  <h2 class="num">Method in brief</h2>
   <ol class="steps">
     <li><b>Sites.</b> Solar parks and wind farms mapped as power plants in OpenStreetMap, plus the wind turbines outside them, grouped into a farm when they stand within 800 m of each other. That is the distance used for the global wind and solar farm datasets of Dunnett et al. (2020). A farm's footprint is the outline of its turbines plus 150 m. Sites under 1 ha are left out.</li>
     <li><b>Distances.</b> Inside, and within 1 km for "near": close enough for construction, access roads and edge effects to reach a protected site. Wind farms are also checked within 5 km of Birds Directive sites, since birds range well beyond the sites that protect them.</li>
@@ -150,10 +151,10 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
   </ol>
   <p>The rules and distances were written down before the results and not tuned to them.</p>
 
-  <h2><span class="n">4</span>The sites</h2>
+  <h2 class="num">The sites</h2>
   <p>The 733 sites split between solar parks (359) and wind farms (374). Wind farms stand mostly on the hills and ridges of the north and centre, and 112 of the 155 sites inside Natura 2000 or on likely critical habitat are wind farms. Solar parks are more spread out, and 85% of them are in catchments with high physical water risk. 670 sites meet at least one of the four TNFD criteria covered here, most of them through water risk.</p>
 
-  <h2><span class="n">5</span>Is the site list complete?</h2>
+  <h2 class="num">Is the site list complete?</h2>
   <p>The count is only as good as the list. OpenStreetMap shows what volunteers have mapped, and few solar parks carry their capacity there, so the list can't be checked against the official statistics. The list has 359 solar parks over 5,232 ha, against 5,639 MW of solar in Eurostat for 2024, rooftops included. Wind farms come to about 6,600 MW from their turbines' own tags and the median size for the rest, against 5,600 MW in Eurostat. Most turbines carry no capacity tag, so that is an estimate, and being above the official figure doesn't show that no wind farm is missing.</p>
   <p><b>Checking the list from satellite, on one area.</b> Solar panels have a signature in Sentinel-2: dark in near infrared and brighter in shortwave infrared, so their moisture index (NDMI) is strongly negative, and unlike crops they look the same all season. The figure at the top runs it on one area of Ribatejo:</p>
   <ol class="steps">
@@ -164,7 +165,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
   </ol>
   <p>It runs in Python (pystac-client, odc-stac, dask, scikit-learn, rasterio, geopandas) in under an hour per area on a laptop, and the same steps run for any area. Small patches are where it errs: dark fields, scrub and roofs can look like panels, which is why every find gets a look on the imagery. The patches are in the downloads.</p>
 
-<h2><span class="n">6</span>Year by year around the sites</h2>
+<h2 class="num">Year by year around the sites</h2>
   <p>Is the land around the sites losing natural cover? Two yearly records answer it for the land within 1 km of every site, counted once where sites are close together: tree cover lost each year from 2017 to 2025 with its main cause, and natural cover against crops and built-up land from 2017 to 2023 (the figure at the top).</p>
   <ul>
     <li><b>Tree cover:</b> 19.1% of the land near the sites lost tree cover from 2017 to 2025, against 12.0% of the countryside. Most of it burned, in 2017 and 2025 above all: wildfire alone took 14.0%, against 7.6%. Forestry runs at about 0.5% a year, as in the countryside.</li>
@@ -174,7 +175,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
   </ul>
   <p>A change near a site isn't necessarily caused by the site. These records show where the land is changing, which is what TNFD's "rapid decline in ecosystem integrity" asks about, and where a monitoring visit or a closer look would start.</p>
 
-  <h2><span class="n">7</span>Checks</h2>
+  <h2 class="num">Checks</h2>
   <div class="tbl"><table>
     <tr><th>Check</th><th>Result</th></tr>
     <tr><td>How much the distance changes the answer</td><td>Sites inside or near Natura 2000: 17% inside, 23% within 500 m, 26% within 1 km, 34% within 2 km, 56% within 5 km.</td></tr>
@@ -184,7 +185,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
   <p>Screening is not assessment. A count says where to look closer.</p>
   <p><b>Run as a service,</b> the same screening keeps up with a portfolio: a new or changed site triggers it, the reference layers are refreshed once a year, and satellite data watch each site and its surroundings. <a href="assets/s2_architecture.png">How it would run, in one drawing</a>.</p>
 
-  <h2><span class="n">8</span>What open data can't tell here</h2>
+  <h2 class="num">What open data can't tell here</h2>
   <p>A site counted here sits in or near a sensitive location by the stated rule and distance; what that means for the site is for the assessment to say.</p>
   <ul>
     <li><b>Key biodiversity areas and species records,</b> which sit behind licences that don't allow this use. The critical habitat layer stands in for them, at about 1 km resolution.</li>
@@ -194,13 +195,13 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <li><b>Whether a change near a site was caused by it.</b> And tree cover loss includes plantation harvests, which grow back.</li>
   </ul>
 
-  <h2><span class="n">9</span>What the checks caught</h2>
+  <h2 class="num">What the checks caught</h2>
   <div class="ai">
     <p>The first water criterion used Aqueduct's overall score, which also counts regulatory and reputational risk; TNFD asks about physical water risk, and with it 645 sites qualify instead of 130. The first decline in integrity included each site's own footprint, so a park built between 2017 and 2020 showed its own construction as decline; now only the surroundings count. The first site list included the Azores and Madeira; the screening covers mainland Portugal only.</p>
     <p>The scripts were written with an AI agent and checked as described here; <a href="ai-gis-guide.html">how I work with AI on GIS</a>.</p>
   </div>
 
-  <h2 id="downloads"><span class="n">10</span>Downloads</h2>
+  <h2 class="num" id="downloads">Downloads</h2>
   <div class="dl">
     <a href="downloads/S2_screening_memo_portugal_v1.pdf" data-umami-event="Demo download" data-umami-event-file="S2_screening_memo_portugal_v1.pdf">Screening memo, Portugal, with a summary in Portuguese <span>PDF · 4 pages · 0.65 MB</span></a>
     <a href="downloads/S2_site_screening_demo_v1.zip" data-umami-event="Demo download" data-umami-event-file="S2_site_screening_demo_v1.zip">Per-site results for both countries, with footprints and the year-by-year figures (CSV, GeoPackage) <span>ZIP · 0.89 MB</span></a>
@@ -208,7 +209,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
   </div>
   <p>Own outputs and open data only, with every source and licence named inside. The site list is derived from OpenStreetMap and shared under the ODbL.</p>
 
-  <h2><span class="n">11</span>Sources</h2>
+  <h2 class="num">Sources</h2>
   <ul>
     <li><a href="https://tnfd.global/knowledge-bank/tnfds-additional-sector-guidance/">TNFD LEAP guidance and sector guidance</a></li>
     <li><a href="https://www.wbcsd.org/metrics/number-of-sites-in-or-near-pa-kba-proximity-to-pa-or-kba">WBCSD metric: number of sites in or near protected or key biodiversity areas</a> (aligned with ESRS E4, GRI 101-5 and TNFD)</li>
@@ -221,7 +222,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <li>Impact Observatory: 10 m annual land use land cover, version 2, 2017 to 2023, via Microsoft Planetary Computer.</li>
     <li>Eurostat, Electricity production capacities for renewables and wastes (nrg_inf_epcrw).</li>
   </ul>
-  <!-- author --><aside class="author" aria-label="About the author"><img src="assets/ana_small.jpg" alt="Ana Silva" width="192" height="192" loading="lazy"><div><span class="by">Who made this</span><p class="nm"><b>Ana Silva</b> · GIS and remote sensing specialist, Sofia</p><p>I came to satellite analytics from cartography, cadastre and environmental assessment, with Natura 2000 habitat mapping and River Habitat Survey reporting. As a freelancer I support ecologists and consultants with remote sensing, and train GIS teams starting with AI tools.</p><p class="lk"><a href="./#about">About me</a><a href="./#services">Services</a><a href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener" data-umami-event="LinkedIn click">LinkedIn</a></p></div></aside><!-- /author -->
+  <!-- author --><aside class="author" aria-label="About the author"><img src="assets/ana_small.jpg" alt="Ana Silva" width="192" height="192" loading="lazy"><div><span class="by">Who made this</span><p class="nm"><b>Ana Silva</b> · Remote sensing and GIS specialist, Sofia</p><p>I came to satellite analytics from cartography, cadastre and environmental assessment, with Natura 2000 habitat mapping and River Habitat Survey reporting. As a freelancer I support ecologists and consultants with remote sensing, and train GIS teams starting with AI tools.</p><p class="lk"><a href="./#about">About me</a><a href="./#services">Services</a><a href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener" data-umami-event="LinkedIn click">LinkedIn</a></p></div></aside><!-- /author -->
   <div class="cta"><p>If you report under TNFD, ESRS E4 or GRI 101 and have a list of sites to screen, email me at <a href="mailto:ana@timebooster.ai?subject=Nature%20disclosure%20screening%20enquiry" data-umami-event="Email click">ana@timebooster.ai</a>.</p></div>
 
   <!-- related --><section class="related" aria-labelledby="related-h">

@@ -23,8 +23,9 @@ a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6
 h1{font:400 clamp(38px,5.5vw,64px)/1.02 var(--serif);margin:14px 0 18px;text-wrap:balance}
 h2{font:400 clamp(28px,3.4vw,38px)/1.1 var(--serif);margin:52px 0 12px;text-wrap:balance}
 h2{display:flex;align-items:baseline}
-h2 .n{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
-@media (max-width:1000px){h2 .n{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
+body{counter-reset:sec}h2.num::before{counter-increment:sec;content:counter(sec)}
+h2.num::before{flex:0 0 1.2em;margin:-.3em 22px 0 calc(-1.2em - 22px);text-align:right;font:italic 400 clamp(52px,6vw,72px)/1 var(--serif);color:var(--rose)}
+@media (max-width:1000px){h2.num::before{flex:0 0 auto;margin:-.2em 14px 0 0;text-align:left;font-size:46px}}
 p,li{color:var(--ink-2)}
 .lede{font-size:19.5px;color:var(--ink)}
 ol,ul{padding-left:22px}
@@ -90,37 +91,37 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
   </div><!-- /plan -->
   <!-- plan --><div class="plan"><span class="tag">Step 2 · to confirm</span><p><b>The case:</b> one of the wind farms between Kavarna and Cape Kaliakra whose environmental documents are public, ideally a lender's disclosure, so the pre-screening can be compared with a real assessment. To be chosen and confirmed at the start of step 2.</p></div><!-- /plan -->
 
-  <h2><span class="n">1</span>The question</h2>
+  <h2 class="num">The question</h2>
   <p>IFC Performance Standard 6 tells modified habitat from natural habitat, and sets stricter rules for critical habitat, which can be either. A project can't significantly convert or degrade natural habitat unless, among other conditions, there is no viable alternative and the losses are mitigated, and in critical habitat it has to show, among other things, net gains for the features that make it critical. EBRD Performance Requirement 6 sets out the same idea with its own terms. So the lender's first desk questions are what the land is, what lives there that matters, and which protected or recognised areas are nearby.</p>
   <p>Critical habitat is defined by five criteria: habitat of significant importance to Critically Endangered or Endangered species; to endemic or restricted-range species; to migratory or congregatory species; highly threatened or unique ecosystems; and areas associated with key evolutionary processes. A layer overlay can say a site is near something; it can't go through these one by one.</p>
 
-  <h2><span class="n">2</span>What an overlay sees at Kaliakra, and what it misses</h2>
+  <h2 class="num">What an overlay sees at Kaliakra, and what it misses</h2>
   <p>The <a href="nature-disclosure-bulgaria.html">portfolio screening for Bulgaria</a> flags 19 of the 21 wind sites within 1 km of the Kaliakra Birds Directive site as "assessment likely", and the other 2 for a check. This can't serve as a check on the screening, because it can't fail: a site inside or next to the protected area is flagged by the rule itself.</p>
   <p>The court case was about something an overlay of protected areas can't see: the part of the important bird area left <i>outside</i> the protected site. Important bird areas are key biodiversity areas, and their boundaries sit behind a licence that doesn't allow this use. The critical habitat screening layer stands in for them at about 1 km, which is coarse beside a single wind farm.</p>
   <a class="fig" href="assets/s2_limits.jpg"><img src="assets/s2_limits.jpg" alt="Three panels: critical habitat layer pixels of about 0.7 by 0.9 km over a 43 ha solar park; wind turbines near Kavarna grouped at 1.5 km and at 800 m; and a timeline of the years each layer describes" loading="lazy" width="2210" height="1003"></a>
   <p class="fig-note">A coarse layer, a boundary that depends on a rule, and layers of different ages.</p>
   <!-- plan --><div class="plan"><span class="tag">Step 2 · planned</span><p>An honest test instead of the circular one: the pre-screening's answer for the chosen wind farm compared with what its published environmental documents concluded about critical habitat and birds. Where they differ, the page says why.</p></div><!-- /plan -->
 
-  <h2><span class="n">3</span>Natural or modified habitat</h2>
+  <h2 class="num">Natural or modified habitat</h2>
   <!-- plan --><div class="plan"><span class="tag">Step 2 · planned</span>
     <p>A map of natural habitat (steppe grassland, shrub, woodland, wetland, coastal cliffs) and modified habitat (arable, built-up, roads) on the wind farm and in its area of influence, from the Sentinel-2 record before and after construction, with the annual land cover maps as a second opinion.</p>
     <p>Classed field by field from the seasonal record, as in the <a href="habitat-premap.html">habitat pre-map sample</a>: arable land shows bare soil every year, steppe grassland never does. Checked on random points against Sentinel-2 views, with an accuracy table.</p>
     <p>Headline: hectares of natural habitat inside the footprint and the area of influence, and how much of it was lost or gained since construction.</p>
   </div><!-- /plan -->
 
-  <h2><span class="n">4</span>What the protected sites are designated for</h2>
+  <h2 class="num">What the protected sites are designated for</h2>
   <!-- plan --><div class="plan"><span class="tag">Step 2 · planned</span>
     <p>For each Natura 2000 site within reach of the wind farm, the species and habitats it is designated for, from its Standard Data Form (European Environment Agency): birds under the Birds Directive, other species and habitat types under the Habitats Directive, with their status at the site.</p>
     <p>Those species looked up in the IUCN Red List categories, to see which could trigger the first and third criteria (threatened species; migratory or congregatory species).</p>
   </div><!-- /plan -->
 
-  <h2><span class="n">5</span>Species and habitats around the site</h2>
+  <h2 class="num">Species and habitats around the site</h2>
   <!-- plan --><div class="plan"><span class="tag">Step 2 · planned</span>
     <p>The European Environment Agency's distribution grids from the Member States' reports under Article 12 of the Birds Directive and Article 17 of the Habitats Directive: which listed species and habitat types are recorded in the 10 km squares around the site. They are coarse, but open, and they partly stand in for the species data that sit behind licences.</p>
     <p>For wind, the place on the Via Pontica, one of Europe's main bird migration routes along the western Black Sea coast, with its source.</p>
   </div><!-- /plan -->
 
-  <h2><span class="n">6</span>The five criteria, one by one</h2>
+  <h2 class="num">The five criteria, one by one</h2>
   <div class="tbl"><table>
     <tr><th>Criterion</th><th>What open data says</th><th>What it can't say</th><th>What the assessment needs</th></tr>
     <tr class="planned"><td>1. Critically Endangered or Endangered species</td><td><i>Step 2</i></td><td><i>Step 2</i></td><td><i>Step 2</i></td></tr>
@@ -132,7 +133,7 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
   </table></div>
   <p>Each row will give its sources and distances. The table is shaped to drop into the critical habitat section of an environmental and social assessment, as the starting point for the specialist.</p>
 
-  <h2><span class="n">7</span>What open data can't tell here</h2>
+  <h2 class="num">What open data can't tell here</h2>
   <p>Whether the site is critical habitat is for the assessment to decide, with species data and field survey.</p>
   <ul>
     <li><b>Key biodiversity areas, important bird areas and species records,</b> which sit behind licences that don't allow this use. A client with an IBAT licence can add them without changing the rest.</li>
@@ -141,16 +142,16 @@ a.fig{position:relative;cursor:zoom-in}a.fig::after{content:"";position:absolute
     <li><b>The final call,</b> which belongs to the assessment.</li>
   </ul>
 
-  <h2><span class="n">8</span>What the checks caught</h2>
+  <h2 class="num">What the checks caught</h2>
   <div class="ai">
     <p>Grouping turbines within 1.5 km joined the wind farms around Kavarna into one 6,000 ha site, so turbines 8 km from the bird area were flagged along with it. The map showed it, and the published 800 m replaced it. The first screening flagged almost every site in Bulgaria, because potential critical habitat covers most of the lowlands; it is now reported, not flagged. And the Kaliakra "known case", first shown as a check, turned out to be circular; it is now treated as a limit of the overlay.</p>
     <p>The scripts were written with an AI agent and checked as described here; <a href="ai-gis-guide.html">how I work with AI on GIS</a>.</p>
   </div>
 
-  <h2><span class="n">9</span>Downloads</h2>
+  <h2 class="num">Downloads</h2>
   <!-- plan --><div class="plan"><span class="tag">Step 2 · planned</span><p>A lender-style pre-screening note for the wind farm (PDF), and the habitat map, the species and habitat lists and the criteria table (GeoPackage, CSV).</p></div><!-- /plan -->
 
-  <h2><span class="n">10</span>Sources</h2>
+  <h2 class="num">Sources</h2>
   <ul>
     <li>IFC Performance Standard 6 (2012) and Guidance Note 6 (2019). <a href="https://www.ebrd.com/environment/pdf-guidance-note-ebrd-performance-requirement-6.pdf">EBRD Performance Requirement 6, guidance note</a></li>
     <li>Dunnett, S. et al. (2025). An update to the global Critical Habitat screening layer. Scientific Data 12, 1812. <a href="https://zenodo.org/records/17120213">Data and code</a></li>

@@ -1,6 +1,6 @@
-# Ana Silva · GIS & remote sensing
+# Ana Silva · Remote sensing and GIS
 
-> Freelance GIS automation, regulatory GIS and satellite monitoring from Sofia, Bulgaria, for environmental, infrastructure and nature-risk teams: habitat pre-mapping and monitoring, site screening for sensitive locations, and AI-assisted GIS workflows. Built on open data. Freelance work is contracted through Timebooster. Agriculture work is taken on through Atlastico. Languages: Portuguese, English, Bulgarian, Spanish (comprehension).
+> Freelance remote sensing and GIS from Sofia, Bulgaria, for ecology, environmental assessment and nature-risk teams: habitat pre-mapping and monitoring, site screening for lenders and nature disclosures, and AI-assisted GIS workflows. Built on open data. Freelance work is contracted through Timebooster. Agriculture work is taken on through Atlastico. Languages: Portuguese, English, Bulgarian, Spanish (comprehension).
 
 Every study states its method, how it was checked against imagery or independent data, and its limits.
 
@@ -14,7 +14,7 @@ Desk work delivered as GIS layers, tables and methods notes that drop into the c
 
 ## Freelance work
 
-- [Agentic AI for GIS teams: faster production without leaking client data](https://kirjawa.github.io/ai-gis-guide.html): Three playbooks done with an AI agent on real open data (schema-only setup, CAD to GIS, QGIS Atlas), ten real failures from geospatial pipelines, the checks that catch them, and training formats for GIS teams.
+- [Agentic AI for GIS teams: faster production without leaking client data](https://kirjawa.github.io/ai-gis-guide.html): Three playbooks done with an AI agent on open data (schema-only setup, CAD to GIS, QGIS Atlas), ten failures from geospatial pipelines, the checks that catch them, and training formats for GIS teams.
 - [Desk-based habitat pre-map and monitoring for biodiversity net gain](https://kirjawa.github.io/habitat-premap.html): A pre-map of the Fenwick Solar Farm site from open Sentinel-2, Sentinel-1 and LiDAR data, checked against its published biodiversity net gain survey, with the site's record since 2017, ten winters of flooding and a table for the statutory metric.
 - [Monitoring a solar park between survey visits](https://kirjawa.github.io/solar-monitoring.html): Cleve Hill Solar Park in Kent from open Sentinel-2 and Sentinel-1 data: construction dated against the published milestones, and its habitat management area for wintering birds followed year by year, with what to check on the next ecologist visit.
 - [Screening a portfolio for nature disclosures: Bulgaria](https://kirjawa.github.io/nature-disclosure-bulgaria.html): 504 solar parks and wind farms in Bulgaria screened on open data for the TNFD Locate phase, ESRS E4 and GRI 101-5: sites in or near sensitive locations, with the distance stated, and the land around them year by year.
