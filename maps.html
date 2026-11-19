@@ -229,7 +229,10 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
 .svc .more{margin-top:10px}
 
 /* ---------- Atlastico card on the front page (light) ---------- */
-.t-atl .body{gap:10px}
+.t-atl{grid-column:span 6;display:grid;grid-template-columns:1.25fr 1fr}      /* a full row: picture left, text right */
+.t-atl figure.fig{border-bottom:0;border-right:1px solid var(--hair);height:100%;min-height:300px}
+.t-atl figure.fig img{object-fit:cover}
+.t-atl .body{gap:10px;align-content:center;padding:clamp(22px,3vw,38px)}
 .t-atl .atl-logo{width:150px;height:auto;margin-top:2px}
 .t-atl .go{justify-self:start;margin-top:6px;background:var(--forest);color:#fff;text-decoration:none;font:600 14.5px/1 var(--sans);padding:12px 18px;border-radius:99px}
 .t-atl .go:hover{background:var(--pine)}
@@ -256,6 +259,22 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
 .contact.light .btn-c.primary:hover{background:var(--pine)}
 nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-color:var(--blush);text-decoration-thickness:2px}
 
+/* ---------- front page: the menu stays while scrolling ----------
+   The script at the end sets "stick" on <html> (so without scripts the menu stays where it was)
+   and "scrolled" once the page has moved: the bar turns solid and shows the Email me button. */
+.nav-pills{display:flex;align-items:center;gap:8px}
+a.nav-mail{display:none;color:#fff;background:var(--forest);text-decoration:none;font:600 14px/1 var(--sans);padding:10px 16px;border-radius:99px;white-space:nowrap}
+a.nav-mail:hover{background:var(--pine)}
+.stick .hero{z-index:4}                                   /* keeps the fixed menu above the sections that follow */
+.stick .hero nav.top{position:fixed;transition:background .2s}
+.scrolled .hero nav.top{background:rgba(253,246,247,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--hair)}
+.scrolled .hero nav.top .wrap{padding-block:11px}
+.scrolled .hero .mark{color:var(--forest);text-shadow:none;font-size:25px}
+.scrolled .hero nav.top ul a{color:var(--ink);text-shadow:none}
+.scrolled .hero a.nav-mail{display:inline-block}
+#maps,#work,#services,#about,#contact{scroll-margin-top:66px}
+@media (max-width:900px){.scrolled .hero a.nav-li{display:none}}      /* one button when space is short: Email me */
+
 /* ---------- maps strip (front page): the #30DayMapChallenge maps drift by; each opens in the Maps tab ---------- */
 .mapstrip{padding-block:clamp(22px,3vw,34px) 0}
 .ms-head{display:flex;justify-content:space-between;align-items:center;gap:8px 20px;flex-wrap:wrap;margin-bottom:12px}
@@ -279,7 +298,8 @@ nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-colo
   .intro,.about{grid-template-columns:1fr}
   .services{grid-template-columns:1fr}
   .mosaic{grid-template-columns:repeat(2,1fr)}
-  .t-lead,.t-side,.t-third,.t-note,.t-wide,.t-duo,.t-feature,.t-half,.t-guide{grid-column:span 2}
+  .t-lead,.t-side,.t-third,.t-note,.t-wide,.t-duo,.t-feature,.t-half,.t-guide,.t-atl{grid-column:span 2}
+  .t-atl{grid-template-columns:1fr}.t-atl figure.fig{border-right:0;border-bottom:1px solid var(--hair);height:auto;min-height:0;aspect-ratio:1.7}
   .t-guide{grid-template-columns:1fr}.t-guide ol{border-left:0;border-top:1px solid var(--hair)}
   .t-feature{grid-template-columns:1fr}.t-feature figure{order:-1;height:auto}
   .t-duo .figs{flex-direction:column}.t-duo .body,.t-split .body{grid-template-columns:1fr}
@@ -292,6 +312,11 @@ nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-colo
   nav.top ul{order:3;flex:0 0 100%;justify-content:space-between;gap:6px}
   nav.top ul a{display:block;font-size:14.5px;padding:9px 0}
   .ms-track{gap:10px}.ms-track a{width:132px}.ms-track img{border-radius:12px}
+  .scrolled .hero nav.top .wrap{padding-block:8px 0;row-gap:0}
+  .scrolled .hero .mark{font-size:23px}
+  .scrolled .hero nav.top ul a{padding:7px 0}
+  .scrolled .hero a.nav-mail{padding:8px 14px}
+  #maps,#work,#services,#about,#contact{scroll-margin-top:88px}
   .hero-copy{padding-top:max(140px,18vh)}
   .services,.facts{grid-template-columns:1fr}
   .terrain .lab,.terrain .num,.terrain .lead{display:none}
