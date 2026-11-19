@@ -252,6 +252,24 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
 .contact.light .btn-c.primary:hover{background:var(--pine)}
 nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-color:var(--blush);text-decoration-thickness:2px}
 
+/* ---------- maps strip (front page): the #30DayMapChallenge maps drift by; each opens in the Maps tab ---------- */
+.mapstrip{padding-block:clamp(22px,3vw,34px) 0}
+.ms-head{display:flex;justify-content:space-between;align-items:center;gap:8px 20px;flex-wrap:wrap;margin-bottom:12px}
+.ms-head h2{line-height:1.5}
+.ms-ctl{display:flex;align-items:center;gap:6px 18px}
+.ms-ctl .more{margin:0}
+.ms-pause{background:none;border:0;padding:6px 0;font:500 13.5px/1 var(--mono);color:var(--muted);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.ms-pause[hidden]{display:none}
+.ms-track{display:flex;gap:14px;overflow-x:auto;scrollbar-width:none;padding:4px max(clamp(16px,4vw,40px),calc(50vw - 590px + clamp(16px,4vw,40px))) 10px}
+.ms-track::-webkit-scrollbar{display:none}
+.ms-track:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.ms-track a{flex:none;width:clamp(150px,15vw,200px);text-decoration:none;color:var(--muted);font:400 11.5px/1.4 var(--mono)}
+.ms-track img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:14px;background:var(--wash);box-shadow:0 0 0 1px var(--hair);transition:transform .25s,box-shadow .25s}
+.ms-track a:hover img{transform:translateY(-3px);box-shadow:0 0 0 1px var(--hair),0 12px 26px rgba(7,59,53,.2)}
+.ms-track a:hover span{color:var(--rose-ink)}
+.ms-track span{display:block;margin-top:8px}
+.mapstrip+.wrap .intro{padding-top:clamp(36px,5vw,60px)}
+
 /* ---------- responsive ---------- */
 @media (max-width:980px){
   .intro,.about{grid-template-columns:1fr}
@@ -269,6 +287,7 @@ nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-colo
   .nav-right{display:contents}
   nav.top ul{order:3;flex:0 0 100%;justify-content:space-between;gap:6px}
   nav.top ul a{display:block;font-size:14.5px;padding:9px 0}
+  .ms-track{gap:10px}.ms-track a{width:132px}.ms-track img{border-radius:12px}
   .hero-copy{padding-top:max(140px,18vh)}
   .services,.facts{grid-template-columns:1fr}
   .terrain .lab,.terrain .num,.terrain .lead{display:none}
@@ -290,6 +309,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
 .lb .prev{left:12px;top:50%;transform:translateY(-50%)}
 .lb .next-b{right:12px;top:50%;transform:translateY(-50%)}
 .lb .hint{position:absolute;top:22px;left:64px;font:400 12px var(--mono);color:rgba(248,211,218,.8)}
+@media (max-width:374px){nav.top ul a{font-size:13.5px}}      /* six links on the narrowest phones */
 @media (max-width:640px){.lb-stage{inset:52px 8px 70px}.lb .prev,.lb .next-b{top:auto;bottom:14px;transform:none}.lb-cap{left:60px;right:60px;bottom:22px;font-size:12.5px}.lb .hint{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -305,6 +325,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
         <li><a href="./#work">Work</a></li>
         <li><a href="./#services">Services</a></li>
         <li><a href="agriculture.html" aria-current="page">Agriculture</a></li>
+        <li><a href="maps.html" data-umami-event="Nav click" data-umami-event-to="Maps">Maps</a></li>
         <li><a href="./#about">About</a></li>
         <li><a href="./#contact" data-umami-event="Contact click">Contact</a></li>
       </ul>

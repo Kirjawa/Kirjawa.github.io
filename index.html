@@ -257,6 +257,24 @@ footer .wrap{border-top:1px solid rgba(248,211,218,.15);padding-top:18px;display
 .contact.light .btn-c.primary:hover{background:var(--pine)}
 nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-color:var(--blush);text-decoration-thickness:2px}
 
+/* ---------- maps strip (front page): the #30DayMapChallenge maps drift by; each opens in the Maps tab ---------- */
+.mapstrip{padding-block:clamp(22px,3vw,34px) 0}
+.ms-head{display:flex;justify-content:space-between;align-items:center;gap:8px 20px;flex-wrap:wrap;margin-bottom:12px}
+.ms-head h2{line-height:1.5}
+.ms-ctl{display:flex;align-items:center;gap:6px 18px}
+.ms-ctl .more{margin:0}
+.ms-pause{background:none;border:0;padding:6px 0;font:500 13.5px/1 var(--mono);color:var(--muted);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.ms-pause[hidden]{display:none}
+.ms-track{display:flex;gap:14px;overflow-x:auto;scrollbar-width:none;padding:4px max(clamp(16px,4vw,40px),calc(50vw - 590px + clamp(16px,4vw,40px))) 10px}
+.ms-track::-webkit-scrollbar{display:none}
+.ms-track:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.ms-track a{flex:none;width:clamp(150px,15vw,200px);text-decoration:none;color:var(--muted);font:400 11.5px/1.4 var(--mono)}
+.ms-track img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:14px;background:var(--wash);box-shadow:0 0 0 1px var(--hair);transition:transform .25s,box-shadow .25s}
+.ms-track a:hover img{transform:translateY(-3px);box-shadow:0 0 0 1px var(--hair),0 12px 26px rgba(7,59,53,.2)}
+.ms-track a:hover span{color:var(--rose-ink)}
+.ms-track span{display:block;margin-top:8px}
+.mapstrip+.wrap .intro{padding-top:clamp(36px,5vw,60px)}
+
 /* ---------- responsive ---------- */
 @media (max-width:980px){
   .intro,.about{grid-template-columns:1fr}
@@ -274,6 +292,7 @@ nav.top ul a[aria-current="page"]{text-decoration:underline;text-decoration-colo
   .nav-right{display:contents}
   nav.top ul{order:3;flex:0 0 100%;justify-content:space-between;gap:6px}
   nav.top ul a{display:block;font-size:14.5px;padding:9px 0}
+  .ms-track{gap:10px}.ms-track a{width:132px}.ms-track img{border-radius:12px}
   .hero-copy{padding-top:max(140px,18vh)}
   .services,.facts{grid-template-columns:1fr}
   .terrain .lab,.terrain .num,.terrain .lead{display:none}
@@ -295,6 +314,7 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
 .lb .prev{left:12px;top:50%;transform:translateY(-50%)}
 .lb .next-b{right:12px;top:50%;transform:translateY(-50%)}
 .lb .hint{position:absolute;top:22px;left:64px;font:400 12px var(--mono);color:rgba(248,211,218,.8)}
+@media (max-width:374px){nav.top ul a{font-size:13.5px}}      /* six links on the narrowest phones */
 @media (max-width:640px){.lb-stage{inset:52px 8px 70px}.lb .prev,.lb .next-b{top:auto;bottom:14px;transform:none}.lb-cap{left:60px;right:60px;bottom:22px;font-size:12.5px}.lb .hint{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -307,11 +327,12 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
       <a class="mark" href="#top">Ana Silva</a>
       <div class="nav-right">
       <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="agriculture.html">Agriculture</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#work" data-umami-event="Nav click" data-umami-event-to="Work">Work</a></li>
+        <li><a href="#services" data-umami-event="Nav click" data-umami-event-to="Services">Services</a></li>
+        <li><a href="agriculture.html" data-umami-event="Nav click" data-umami-event-to="Agriculture">Agriculture</a></li>
+        <li><a href="maps.html" data-umami-event="Nav click" data-umami-event-to="Maps">Maps</a></li>
+        <li><a href="#about" data-umami-event="Nav click" data-umami-event-to="About">About</a></li>
+        <li><a href="#contact" data-umami-event="Nav click" data-umami-event-to="Contact">Contact</a></li>
       </ul>
       <a class="nav-li" href="https://www.linkedin.com/in/ana-luisa-silva/" target="_blank" rel="noopener" data-umami-event="LinkedIn click">LinkedIn</a>
       </div>
@@ -346,6 +367,13 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
 </div>
 
 <main>
+    <section class="mapstrip" id="maps" aria-labelledby="ms-h">
+      <div class="wrap ms-head">
+        <h2 class="eyebrow" id="ms-h">#30DayMapChallenge · one map a day in November</h2>
+        <div class="ms-ctl"><button type="button" class="ms-pause" aria-pressed="false" hidden>Pause</button><a class="more" href="maps.html" data-umami-event="Maps strip see all">See all 18 maps →</a></div>
+      </div>
+      <div class="ms-track" tabindex="0" role="group" aria-label="Maps of the challenge, scrolls sideways"><a href="maps.html#red-breasted-geese" data-umami-event="Maps strip click" data-umami-event-map="red-breasted-geese"><img src="maps/red-breasted-geese_s.jpg" alt="From the tundra to the Black Sea" width="400" height="400" loading="lazy" decoding="async"><span>Day 1 · Points</span></a><a href="maps.html#starry-night-black-sea" data-umami-event="Maps strip click" data-umami-event-map="starry-night-black-sea"><img src="maps/starry-night-black-sea_s.jpg" alt="Starry Night over the Black Sea" width="400" height="400" loading="lazy" decoding="async"><span>Day 2 · Lines</span></a><a href="maps.html#rila-lakes" data-umami-event="Maps strip click" data-umami-event-map="rila-lakes"><img src="maps/rila-lakes_s.jpg" alt="Ten Rila lakes and the shapes behind their names" width="400" height="400" loading="lazy" decoding="async"><span>Day 3 · Polygons</span></a><a href="maps.html#bulgaria-crop-clusters" data-umami-event="Maps strip click" data-umami-event-map="bulgaria-crop-clusters"><img src="maps/bulgaria-crop-clusters_s.jpg" alt="Where Bulgaria’s crops gather" width="400" height="400" loading="lazy" decoding="async"><span>Day 4 · Clusters</span></a><a href="maps.html#vitosha-viewshed" data-umami-event="Maps strip click" data-umami-event-map="vitosha-viewshed"><img src="maps/vitosha-viewshed_s.jpg" alt="How much of Vitosha’s summit Sofia sees" width="400" height="400" loading="lazy" decoding="async"><span>Day 5 · Sight</span></a><a href="maps.html#lisbon-1755" data-umami-event="Maps strip click" data-umami-event-map="lisbon-1755"><img src="maps/lisbon-1755_s.jpg" alt="Lisbon’s Baixa, before and after 1755" width="400" height="400" loading="lazy" decoding="async"><span>Day 6 · Vintage</span></a><a href="maps.html#sofia-green-utopia" data-umami-event="Maps strip click" data-umami-event-map="sofia-green-utopia"><img src="maps/sofia-green-utopia_s.jpg" alt="Central Sofia as it could be" width="400" height="400" loading="lazy" decoding="async"><span>Day 8 · Utopia</span></a><a href="maps.html#no2-capitals" data-umami-event="Maps strip click" data-umami-event-map="no2-capitals"><img src="maps/no2-capitals_s.jpg" alt="Twelve capitals, twelve halos" width="400" height="400" loading="lazy" decoding="async"><span>Day 9 · Urban-rural</span></a><a href="maps.html#balkan-rivers-prompting" data-umami-event="Maps strip click" data-umami-event-map="balkan-rivers-prompting"><img src="maps/balkan-rivers-prompting_s.jpg" alt="One map, asked four times" width="400" height="400" loading="lazy" decoding="async"><span>Day 10 · Prompting only</span></a><a href="maps.html#andaman-internal-waves" data-umami-event="Maps strip click" data-umami-event-map="andaman-internal-waves"><img src="maps/andaman-internal-waves_s.jpg" alt="Internal waves in the Andaman Sea" width="400" height="400" loading="lazy" decoding="async"><span>Day 11 · Sound</span></a><a href="maps.html#lighthouse-reach" data-umami-event="Maps strip click" data-umami-event-map="lighthouse-reach"><img src="maps/lighthouse-reach_s.jpg" alt="Everything the light touches" width="400" height="400" loading="lazy" decoding="async"><span>Day 12 · Power</span></a><a href="maps.html#nortada-upwelling" data-umami-event="Maps strip click" data-umami-event-map="nortada-upwelling"><img src="maps/nortada-upwelling_s.jpg" alt="The nortada: wind, cold water, plankton" width="400" height="400" loading="lazy" decoding="async"><span>Day 13 · Interactions</span></a><a href="maps.html#oldest-tales" data-umami-event="Maps strip click" data-umami-event-map="oldest-tales"><img src="maps/oldest-tales_s.jpg" alt="The oldest tales of Europe" width="400" height="400" loading="lazy" decoding="async"><span>Day 14 · Borgesian map</span></a><a href="maps.html#europe-inside-out" data-umami-event="Maps strip click" data-umami-event-map="europe-inside-out"><img src="maps/europe-inside-out_s.jpg" alt="Europe, inside out" width="400" height="400" loading="lazy" decoding="async"><span>Day 15 · Inside out</span></a><a href="maps.html#sofia-kindergartens" data-umami-event="Maps strip click" data-umami-event-map="sofia-kindergartens"><img src="maps/sofia-kindergartens_s.jpg" alt="Where an ad meets a parent" width="400" height="400" loading="lazy" decoding="async"><span>Day 16 · Collaborative map</span></a><a href="maps.html#forest-shadows-tesso-nilo" data-umami-event="Maps strip click" data-umami-event-map="forest-shadows-tesso-nilo"><img src="maps/forest-shadows-tesso-nilo_s.jpg" alt="The shadows of Tesso Nilo’s forest" width="400" height="400" loading="lazy" decoding="async"><span>Day 17 · Light &amp; dark</span></a><a href="maps.html#unmapped-seafloor" data-umami-event="Maps strip click" data-umami-event-map="unmapped-seafloor"><img src="maps/unmapped-seafloor_s.jpg" alt="Over two thirds of the sea floor is null" width="400" height="400" loading="lazy" decoding="async"><span>Day 18 · NULL</span></a><a href="maps.html#scent-of-bulgaria" data-umami-event="Maps strip click" data-umami-event-map="scent-of-bulgaria"><img src="maps/scent-of-bulgaria_s.jpg" alt="The scent of Bulgaria" width="400" height="400" loading="lazy" decoding="async"><span>Day 19 · Smell</span></a></div>
+    </section>
   <div class="wrap">
     <section class="intro" aria-labelledby="intro-h">
       <div>
@@ -590,6 +618,45 @@ dialog.lb::backdrop{background:rgba(7,39,36,.6)}
       navigator.clipboard.writeText(m).then(function(){ done('Copied'); },function(){ done(m); });
     } else { done(m); }
   });
+})();
+</script>
+<script>
+/* maps strip: a slow drift that stops under the pointer, on touch, on keyboard focus and with the Pause button;
+   with "reduce motion" set, or without scripts, it stays a row to scroll by hand */
+(function(){
+  var tr=document.querySelector('.ms-track'); if(!tr||!window.requestAnimationFrame) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var btn=document.querySelector('.ms-pause'), set=[].slice.call(tr.children), n=set.length; if(!n) return;
+  function copy(){ set.forEach(function(a){ var c=a.cloneNode(true); c.setAttribute('aria-hidden','true'); c.tabIndex=-1; tr.appendChild(c); }); }
+  copy();
+  var W=0, pos=0, last=0, t0=0, hover=false, held=false, off=false, seen=true, timer=0, SPEED=26;   // px per second
+  function measure(){ W=tr.children[n].offsetLeft-tr.children[0].offsetLeft;
+    while(W>0 && tr.scrollWidth-tr.clientWidth<W+8) copy(); }                                  // always one full set to the right
+  measure(); window.addEventListener('resize',measure);
+  function tick(t){
+    var dt=Math.min(.25,(t-t0)/1000||0); t0=t;
+    if(Math.abs(tr.scrollLeft-last)>1.5) pos=tr.scrollLeft;                                    // moved by hand
+    if(!(hover||held||off||!seen||document.hidden)) pos+=SPEED*dt;
+    if(W>0&&pos>=W) pos-=W;
+    if(Math.abs(pos-tr.scrollLeft)>=.5) tr.scrollLeft=pos;
+    last=tr.scrollLeft; requestAnimationFrame(tick);
+  }
+  tr.addEventListener('mouseenter',function(){ hover=true; }); tr.addEventListener('mouseleave',function(){ hover=false; });
+  tr.addEventListener('focusin',function(){ held=true; }); tr.addEventListener('focusout',function(){ held=false; });
+  tr.addEventListener('touchstart',function(){ clearTimeout(timer); held=true; },{passive:true});
+  tr.addEventListener('touchend',function(){ clearTimeout(timer); timer=setTimeout(function(){ held=false; },2500); },{passive:true});
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ seen=es[0].isIntersecting; }).observe(tr);
+  if(btn){ btn.hidden=false; btn.addEventListener('click',function(){ off=!off; btn.textContent=off?'Play':'Pause'; btn.setAttribute('aria-pressed',off?'true':'false'); }); }
+  requestAnimationFrame(tick);
+})();
+/* which sections a visitor reaches (once each per visit), to tell scrolling from menu jumps */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  function track(name,props,tries){ if(window.umami){ try{ umami.track(name,props); }catch(e){} }
+    else if((tries||0)<6) setTimeout(function(){ track(name,props,(tries||0)+1); },1000); }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
+    io.unobserve(e.target); track('Section reached',{section:e.target.id}); }); },{rootMargin:'0px 0px -30% 0px'});
+  ['maps','work','services','about','contact'].forEach(function(id){ var s=document.getElementById(id); if(s) io.observe(s); });
 })();
 </script>
 <dialog class="lb" id="lb" aria-label="Figure viewer">

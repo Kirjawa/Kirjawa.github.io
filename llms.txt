@@ -30,6 +30,10 @@ Desk work delivered as GIS layers, tables and methods notes that drop into the c
 - [Southern Niger: are farmers' fields getting woodier?](https://kirjawa.github.io/farmland-trees.html): Forty years of dry-season Landsat over farmland in Maradi and Zinder, separating rain from farmer-managed regrowth.
 - [Season's Pulse: every field's season, dekad by dekad](https://kirjawa.github.io/season-pulse/): An interactive replay from February 2025 to September 2026 for 7,567 fields on Bulgaria's Danube plain: crop, growth against the region and the field's own past, and field events, from Sentinel-2, Landsat and Sentinel-1.
 
+## Maps
+
+- [November, in maps](https://kirjawa.github.io/maps.html): One map a day for the #30DayMapChallenge, November 2026: Copernicus Sentinels and other open data, animations, and paintings borrowed for their palettes, each with its sources.
+
 ## Contact
 
 - [Portfolio and contact](https://kirjawa.github.io/#contact)
