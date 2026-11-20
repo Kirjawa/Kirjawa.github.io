@@ -145,7 +145,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   <h2>The question</h2>
   <p>Bare soil loses carbon, dries out and blows away. Since 2023, EU farm payments come with a soil-cover rule. In Bulgaria, since August 2024, it asks farmers to keep at least 80% of their arable land covered from 1 June to 30 September. Stubble counts as cover. So I asked: how many days a year does each field actually lie bare, and did anything change after the rule? I looked at Dobrudja, Bulgaria's grain belt, where wheat, sunflower and maize cover almost 500,000 ha.</p>
 
-  <h2>How I did it</h2>
+  <h2>How bare days on Dobrudja's fields were counted</h2>
   <div class="flow" role="figure" aria-label="Workflow of the study, from open data sources to results, with the checks at each step">
     <p class="lbl">Open data in</p>
     <div class="srcs"><span>Parcel register 2018–25</span><span>Sentinel-2 L2A</span><span>Sentinel-1 radar</span><span>MODIS daily snow</span><span>ERA5-Land and ERA5 weather</span><span>OpenStreetMap and JRC water</span></div>
@@ -174,7 +174,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
     <li><b>Testing the rule.</b> Each field is compared with itself before and after 2023, taking out the crop, the previous crop and spring rain. The uncertainty comes from the 7 yearly values, not from 70,000 field-years, so it isn't overstated.</li>
   </ol>
 
-  <h2>How I checked it</h2>
+  <h2>How the method was checked on 200 field views, labelled blind</h2>
   <ul>
     <li><b>A random spot-check.</b> In the pilot area I drew 15 random field dates and judged each one on the image. About 11 to 13 of 15 were right, and the misses were borderline cases.</li>
     <li><b>200 views, labelled blind.</b> I drew 200 random field views across all areas and years and labelled each image by eye without seeing what the method had called it. Of the views that were clear enough to judge, living plants were right 89% of the time, while stubble and bare soil were right about 65 to 70% of the time. They get confused with each other in both directions, by about the same amount, so the yearly shares stay fair, but a single field on a single day is less certain. On the views taken on wet soil that the method no longer calls, 15 of 16 were bare soil, which supports leaving them out.</li>

@@ -133,7 +133,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   <h2>The question</h2>
   <p>The Maritsa Iztok lignite complex near Galabovo has four power plants within about 20 km, and it is often described as Europe's largest single source of sulphur dioxide. The plants report their yearly emissions to the EU register. The Sentinel-5P satellite measures SO₂ and NO₂ over the complex almost every day. So I asked: do the two tell the same story? The study looks at the complex as a whole, from 2019 to 2024.</p>
 
-  <h2>How I did it</h2>
+  <h2>How SO₂ and NOx were estimated from Sentinel-5P</h2>
   <div class="flow" role="figure" aria-label="Workflow of the study, from open data sources to results, with the checks at each step">
     <p class="lbl">Open data in</p>
     <div class="srcs"><span>Sentinel-5P SO₂ and NO₂ (ESA reprocessed)</span><span>ERA5 wind</span><span>EU industrial emissions register</span><span>NASA global SO₂ catalogue</span></div>
@@ -150,7 +150,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
     <div class="outs"><span>Yearly SO₂ and NOx estimated from space, 2019–2024</span><span>Comparison with the reports and with NASA</span><span>Maps and plume figures</span></div>
   </div>
 
-  <h2>How I checked it</h2>
+  <h2>How the estimates were checked against NASA's SO₂ catalogue</h2>
   <ul>
     <li><b>Software versions.</b> Sentinel-5P's processing software was upgraded in 2020 and 2021. I used ESA's reprocessed archive, where SO₂ shares one version across all years and NO₂ up to 2022, and checked that the older version gives the same result on the same days.</li>
     <li><b>Method settings.</b> A simpler method that measures the plume crossing lines 10 to 40 km downwind gives the same ups and downs whatever the distance, wind height or season weighting (correlation 0.97 to 0.99).</li>

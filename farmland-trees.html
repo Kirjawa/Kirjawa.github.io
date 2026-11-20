@@ -139,7 +139,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   <h2>The question</h2>
   <p>Since the 1980s, farmers in southern Niger have let trees and shrubs regrow on their fields from old roots and stumps. It's called farmer-managed natural regeneration, and it's one of the best-known restoration stories in Africa. I wanted to see what the satellite record shows: where did farmland get woodier since the late 1980s, and how much of it is just the rain coming back after the droughts? I looked at 17,800 km² of southern Maradi and western Zinder, on the Niger side of the border.</p>
 
-  <h2>How I did it</h2>
+  <h2>How greening in Maradi and Zinder was measured</h2>
   <div class="flow" role="figure" aria-label="Workflow of the study, from open data sources to results, with the checks at each step">
     <p class="lbl">Open data in</p>
     <div class="srcs"><span>Landsat 1985–2025</span><span>Sentinel-2 L2A</span><span>ESA WorldCover 2021</span><span>CHIRPS and ERA5 rain</span><span>MODIS burned area</span><span>1 m canopy height map</span></div>
@@ -159,7 +159,7 @@ dialog.lb{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;ma
   </div>
   <p>The idea is simple. In the dry season crops are harvested and grass is dead, so anything still green is a tree or a shrub. If a field is greener in the dry season now than in the late 1980s, it holds more woody plants. The hard part is making images 35 years apart comparable, which is what most of the steps above are about.</p>
 
-  <h2>How I checked it</h2>
+  <h2>How the greening was checked against Sentinel-2 and a 1 m tree map</h2>
   <ul>
     <li><b>Overlapping tracks.</b> Where two Landsat tracks cover the same ground, each on its own dates, they give the same pattern (r 0.8 and 0.6).</li>
     <li><b>Land that shouldn't change.</b> Bare rock and crust shifted +0.012 between the old and new images, against +0.039 on farmland. About a third of the raw change is the images, and that part is taken out.</li>
